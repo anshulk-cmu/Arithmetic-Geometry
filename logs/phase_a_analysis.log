@@ -1,0 +1,38 @@
+14:01:57 INFO     ======================================================================
+14:01:57 INFO     Phase A — Pre-flight Diagnostics starting
+14:01:57 INFO     ======================================================================
+14:01:57 INFO     Analysis 1: Activation Norm Profile...
+14:01:58 INFO       Done: 45 entries
+14:01:59 INFO       Plotted norm_profile_all.png and norm_profile_correct_wrong.png
+14:01:59 INFO       L3_layer16: correct norm 11.1 vs wrong 10.8, ratio 1.021
+14:01:59 INFO       L3_layer24: correct norm 25.2 vs wrong 24.4, ratio 1.034
+14:01:59 INFO       L3_layer31: correct norm 77.8 vs wrong 76.9, ratio 1.011
+14:01:59 INFO       L4_layer16: correct norm 10.9 vs wrong 10.6, ratio 1.027
+14:01:59 INFO       L4_layer24: correct norm 24.6 vs wrong 23.6, ratio 1.038
+14:01:59 INFO       L4_layer31: correct norm 77.3 vs wrong 76.2, ratio 1.014
+14:01:59 INFO       L5_layer16: correct norm 10.7 vs wrong 10.5, ratio 1.023
+14:01:59 INFO       L5_layer24: correct norm 23.7 vs wrong 23.2, ratio 1.022
+14:01:59 INFO       L5_layer31: correct norm 76.9 vs wrong 74.9, ratio 1.026
+14:01:59 INFO     Analysis 2: Cross-Layer CKA Matrices...
+14:02:07 INFO       Done: 5 CKA matrices
+14:02:08 INFO       Plotted CKA matrices
+14:02:08 INFO       L1: 3 redundant layer pairs (CKA > 0.98)
+14:02:08 INFO         layers 6 & 8: CKA = 0.9802
+14:02:08 INFO         layers 20 & 24: CKA = 0.9847
+14:02:08 INFO         layers 24 & 28: CKA = 0.9951
+14:02:08 INFO       L2: 3 redundant layer pairs (CKA > 0.98)
+14:02:08 INFO         layers 20 & 24: CKA = 0.9881
+14:02:08 INFO         layers 20 & 28: CKA = 0.9844
+14:02:08 INFO         layers 24 & 28: CKA = 0.9952
+14:02:08 INFO       L3: 3 redundant layer pairs (CKA > 0.98)
+14:02:08 INFO         layers 20 & 24: CKA = 0.985
+14:02:08 INFO         layers 20 & 28: CKA = 0.9847
+14:02:08 INFO         layers 24 & 28: CKA = 0.994
+14:02:08 INFO       L4: 3 redundant layer pairs (CKA > 0.98)
+14:02:08 INFO         layers 20 & 24: CKA = 0.9901
+14:02:08 INFO         layers 20 & 28: CKA = 0.9859
+14:02:08 INFO         layers 24 & 28: CKA = 0.9956
+14:02:08 INFO       L5: 2 redundant layer pairs (CKA > 0.98)
+14:02:08 INFO         layers 20 & 24: CKA = 0.9871
+14:02:08 INFO         layers 24 & 28: CKA = 0.9898
+14:02:08 INFO     Phase A diagnostics complete in 11.0s
