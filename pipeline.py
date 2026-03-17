@@ -52,13 +52,14 @@ def load_config(config_path=None):
     # Derive concrete paths
     ws = Path(cfg["paths"]["workspace"])
     dr = Path(cfg["paths"]["data_root"])
-    cfg["paths"]["labels_dir"] = str(ws / "data")
+    cfg["paths"]["labels_dir"] = str(ws / "labels")
     cfg["paths"]["logs_dir"] = str(ws / "logs")
+    cfg["paths"]["plots_dir"] = str(ws / "plots")
     cfg["paths"]["activations_dir"] = str(dr / "activations")
     cfg["paths"]["answers_dir"] = str(dr / "answers")
 
     # Ensure all directories exist
-    for key in ("labels_dir", "logs_dir", "activations_dir", "answers_dir"):
+    for key in ("labels_dir", "logs_dir", "plots_dir", "activations_dir", "answers_dir"):
         Path(cfg["paths"][key]).mkdir(parents=True, exist_ok=True)
 
     return cfg
@@ -365,7 +366,7 @@ def format_prompts(all_problems, cfg):
 # ====================================================================
 
 def save_datasets(all_problems, all_labels, all_prompts, cfg, logger):
-    """Write per-level JSON to workspace/data/."""
+    """Write per-level JSON to workspace/labels/."""
     out_dir = Path(cfg["paths"]["labels_dir"])
 
     for lvl in sorted(all_problems):
@@ -460,7 +461,7 @@ def load_model(cfg, logger):
     logger.info(f"Loading model: {name} (dtype={cfg['model']['dtype']})")
     t0 = time.time()
     model = AutoModelForCausalLM.from_pretrained(
-        name, torch_dtype=dtype, device_map="auto",
+        name, dtype=dtype, device_map="auto",
     )
     model.eval()
     device = next(model.parameters()).device
@@ -477,9 +478,14 @@ def make_hook(storage, layer_idx):
 
     Each returned hook captures its own `layer_idx` value.
     """
+    import torch
+
     def hook_fn(module, input, output):
-        # output[0]: (batch, seq_len, hidden_dim)
-        storage[layer_idx] = output[0][:, -1, :].detach().cpu()
+        # transformers >=5.x: LlamaDecoderLayer returns a plain tensor
+        # transformers <5.x: returns a tuple, hidden_states at index 0
+        hidden = output if isinstance(output, torch.Tensor) else output[0]
+        # hidden: (batch, seq_len, hidden_dim) — take last token
+        storage[layer_idx] = hidden[:, -1, :].detach().float().cpu()
     return hook_fn
 
 
@@ -500,7 +506,7 @@ def extract_activations(model, tokenizer, all_prompts, cfg, logger):
         # --- Checkpoint: skip level if all layer files exist + correct shape
         all_exist = True
         for layer in layers:
-            fpath = act_dir / f"activations_level{lvl}_layer{layer}.npy"
+            fpath = act_dir / f"level{lvl}_layer{layer}.npy"
             if fpath.exists():
                 try:
                     arr = np.load(fpath, mmap_mode="r")
@@ -558,7 +564,7 @@ def extract_activations(model, tokenizer, all_prompts, cfg, logger):
         # --- Concatenate + save
         for layer in layers:
             arr = np.concatenate(level_acts[layer], axis=0)
-            np.save(act_dir / f"activations_level{lvl}_layer{layer}.npy", arr)
+            np.save(act_dir / f"level{lvl}_layer{layer}.npy", arr)
         del level_acts
 
         elapsed = time.time() - t0
@@ -581,7 +587,7 @@ def post_extraction_checks(all_prompts, cfg, logger):
     for lvl in sorted(all_prompts):
         n = len(all_prompts[lvl])
         for layer in layers:
-            fpath = act_dir / f"activations_level{lvl}_layer{layer}.npy"
+            fpath = act_dir / f"level{lvl}_layer{layer}.npy"
             arr = np.load(fpath)
 
             # Shape
@@ -630,14 +636,14 @@ def post_extraction_checks(all_prompts, cfg, logger):
 # ====================================================================
 
 def parse_number(text):
-    """Extract first integer from generated text."""
-    digits = []
-    for ch in text.strip():
-        if ch.isdigit():
-            digits.append(ch)
-        elif digits:
-            break
-    return int("".join(digits)) if digits else None
+    """Extract first integer from generated text, handling comma thousands."""
+    import re
+    if not text:
+        return None
+    m = re.search(r'\d[\d,]*\d|\d', text.strip())
+    if m:
+        return int(m.group().replace(",", ""))
+    return None
 
 
 def generate_answers(model, tokenizer, all_prompts, cfg, logger):
@@ -667,6 +673,7 @@ def generate_answers(model, tokenizer, all_prompts, cfg, logger):
 
                 outputs = model.generate(
                     **inputs, max_new_tokens=max_new, do_sample=False,
+                    pad_token_id=tokenizer.eos_token_id,
                 )
 
                 for i in range(len(batch)):
@@ -725,7 +732,7 @@ def save_answers(all_answers, all_labels, cfg, logger):
             "results": rows,
         }
 
-        path = ans_dir / f"answers_level_{lvl}.json"
+        path = ans_dir / f"level_{lvl}.json"
         with open(path, "w") as f:
             json.dump(output, f)
         logger.info(
@@ -744,8 +751,9 @@ def save_answers(all_answers, all_labels, cfg, logger):
 # ====================================================================
 
 def generate_plots(all_prompts, all_problems, accuracies, cfg, logger):
-    """Three validation PNG plots saved to logs/."""
-    logs_dir = Path(cfg["paths"]["logs_dir"])
+    """Three validation PNG plots saved to plots/."""
+    plots_dir = Path(cfg["paths"]["plots_dir"])
+    plots_dir.mkdir(parents=True, exist_ok=True)
     layers = cfg["model"]["layers"]
     act_dir = Path(cfg["paths"]["activations_dir"])
     levels = sorted(all_prompts)
@@ -763,7 +771,7 @@ def generate_plots(all_prompts, all_problems, accuracies, cfg, logger):
     ax.set_ylabel("Accuracy")
     ax.set_title("Accuracy by Difficulty Level")
     fig.tight_layout()
-    fig.savefig(logs_dir / "accuracy_by_level.png", dpi=150)
+    fig.savefig(plots_dir / "accuracy_by_level.png", dpi=150)
     plt.close(fig)
     logger.info("Saved accuracy_by_level.png")
 
@@ -774,7 +782,7 @@ def generate_plots(all_prompts, all_problems, accuracies, cfg, logger):
         means = []
         for layer in layers:
             arr = np.load(
-                act_dir / f"activations_level{lvl}_layer{layer}.npy",
+                act_dir / f"level{lvl}_layer{layer}.npy",
                 mmap_mode="r",
             )
             means.append(np.linalg.norm(arr, axis=1).mean())
@@ -784,7 +792,7 @@ def generate_plots(all_prompts, all_problems, accuracies, cfg, logger):
     ax.set_title("Activation Norm Profile")
     ax.legend()
     fig.tight_layout()
-    fig.savefig(logs_dir / "activation_norm_profile.png", dpi=150)
+    fig.savefig(plots_dir / "activation_norm_profile.png", dpi=150)
     plt.close(fig)
     logger.info("Saved activation_norm_profile.png")
 
@@ -819,7 +827,7 @@ def generate_plots(all_prompts, all_problems, accuracies, cfg, logger):
 
     fig.suptitle("Digit Coverage", fontsize=13)
     fig.tight_layout()
-    fig.savefig(logs_dir / "digit_coverage.png", dpi=150)
+    fig.savefig(plots_dir / "digit_coverage.png", dpi=150)
     plt.close(fig)
     logger.info("Saved digit_coverage.png")
 

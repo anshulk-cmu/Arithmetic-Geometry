@@ -1,0 +1,383 @@
+============================================================
+Arithmetic Geometry Pipeline
+============================================================
+Job ID: 6613715
+Node: babel-u9-32
+Start time: Tue Mar 17 01:40:42 EDT 2026
+============================================================
+Activating conda environment...
+
+Running pre-flight checks...
+  Checking GPU...
+index, name, memory.total [MiB]
+0, NVIDIA RTX A6000, 49140 MiB
+  Checking Python packages...
+  All packages available
+  Checking local model...
+  Model found: 30G
+  Checking config...
+  config.yaml found
+  Checking output directories...
+  Output directories ready
+
+Pre-flight checks passed!
+
+============================================================
+Running pipeline.py
+  Model: Llama 3.1 8B (local, bfloat16)
+  Levels: 5 (16,064 problems total)
+  Layers: [4, 6, 8, 12, 16, 20, 24, 28, 31]
+  Batch size: 32
+============================================================
+
+01:41:10 | INFO    | ============================================================
+01:41:10 | INFO    | Arithmetic Geometry Pipeline
+01:41:10 | INFO    | ============================================================
+01:41:10 | INFO    | --- Generating problems ---
+01:41:10 | INFO    | Level 1: 64 problems (64 unique), a in [2,9], b in [2,9]
+01:41:10 | INFO    | Level 2: 4000 problems (718 unique), a in [10,99], b in [2,9]
+01:41:10 | INFO    | Level 3: 4000 problems (3174 unique), a in [10,99], b in [10,99]
+01:41:10 | INFO    | Level 4: 4000 problems (3897 unique), a in [100,999], b in [10,99]
+01:41:10 | INFO    | Level 5: 4000 problems (3992 unique), a in [100,999], b in [100,999]
+01:41:10 | INFO    | Total problems across all levels: 16064
+01:41:10 | INFO    | --- Computing labels ---
+01:41:10 | INFO    | Level 1: computed 64 label sets
+01:41:10 | INFO    | Level 2: computed 4000 label sets
+01:41:10 | INFO    | Level 3: computed 4000 label sets
+01:41:11 | INFO    | Level 4: computed 4000 label sets
+01:41:11 | INFO    | Level 5: computed 4000 label sets
+01:41:11 | INFO    | --- Verifying labels ---
+01:41:11 | INFO    | Level 1: max carry bounds = [8]
+01:41:11 | INFO    | Level 1: all 64 labels verified
+01:41:11 | INFO    | Level 2: max carry bounds = [8, 8]
+01:41:11 | INFO    | Level 2: all 4000 labels verified
+01:41:11 | INFO    | Level 3: max carry bounds = [8, 17, 9]
+01:41:11 | INFO    | Level 3: all 4000 labels verified
+01:41:11 | INFO    | Level 4: max carry bounds = [8, 17, 17, 9]
+01:41:11 | INFO    | Level 4: all 4000 labels verified
+01:41:11 | INFO    | Level 5: max carry bounds = [8, 17, 26, 18, 9]
+01:41:11 | INFO    | Level 5: all 4000 labels verified
+01:41:11 | INFO    | --- Saving datasets ---
+01:41:11 | INFO    | Level 1: saved level_1.json (0.0 MB)
+01:41:11 | INFO    | Level 2: saved level_2.json (2.9 MB)
+01:41:11 | INFO    | Level 3: saved level_3.json (3.7 MB)
+01:41:12 | INFO    | Level 4: saved level_4.json (4.4 MB)
+01:41:12 | INFO    | Level 5: saved level_5.json (5.2 MB)
+01:41:12 | INFO    | --- Loading tokenizer ---
+01:41:17 | INFO    | Loading tokenizer: /data/user_data/anshulk/arithmetic-geometry/model
+01:41:18 | INFO    | Tokenizer ready (vocab=128000, pad=eos=128001)
+01:41:18 | INFO    | Level 1: token lengths={6}, last tokens={' ='}
+01:41:18 | INFO    | Level 2: token lengths={6}, last tokens={' ='}
+01:41:18 | INFO    | Level 3: token lengths={6}, last tokens={' ='}
+01:41:18 | INFO    | Level 4: token lengths={6}, last tokens={' ='}
+01:41:18 | INFO    | Level 5: token lengths={6}, last tokens={' ='}
+01:41:18 | INFO    | Tokenization verification: PASS
+01:41:18 | INFO    | --- Loading model ---
+01:41:18 | INFO    | Loading model: /data/user_data/anshulk/arithmetic-geometry/model (dtype=bfloat16)
+01:42:03 | INFO    | Model loaded in 44.7s on cuda:0
+01:42:03 | INFO    | --- Extracting activations ---
+01:42:03 | INFO    | Level 1: extracting 64 prompts x 9 layers
+01:42:05 | INFO    |   Level 1: 64/64
+01:42:05 | INFO    | Level 1: extraction done in 2.0s
+01:42:05 | INFO    | Level 2: extracting 4000 prompts x 9 layers
+01:42:06 | INFO    |   Level 2: 320/4000
+01:42:06 | INFO    |   Level 2: 640/4000
+01:42:07 | INFO    |   Level 2: 960/4000
+01:42:07 | INFO    |   Level 2: 1280/4000
+01:42:08 | INFO    |   Level 2: 1600/4000
+01:42:08 | INFO    |   Level 2: 1920/4000
+01:42:09 | INFO    |   Level 2: 2240/4000
+01:42:09 | INFO    |   Level 2: 2560/4000
+01:42:10 | INFO    |   Level 2: 2880/4000
+01:42:10 | INFO    |   Level 2: 3200/4000
+01:42:11 | INFO    |   Level 2: 3520/4000
+01:42:11 | INFO    |   Level 2: 3840/4000
+01:42:11 | INFO    |   Level 2: 4000/4000
+01:42:12 | INFO    | Level 2: extraction done in 7.1s
+01:42:12 | INFO    | Level 3: extracting 4000 prompts x 9 layers
+01:42:13 | INFO    |   Level 3: 320/4000
+01:42:13 | INFO    |   Level 3: 640/4000
+01:42:14 | INFO    |   Level 3: 960/4000
+01:42:14 | INFO    |   Level 3: 1280/4000
+01:42:15 | INFO    |   Level 3: 1600/4000
+01:42:15 | INFO    |   Level 3: 1920/4000
+01:42:16 | INFO    |   Level 3: 2240/4000
+01:42:16 | INFO    |   Level 3: 2560/4000
+01:42:17 | INFO    |   Level 3: 2880/4000
+01:42:17 | INFO    |   Level 3: 3200/4000
+01:42:18 | INFO    |   Level 3: 3520/4000
+01:42:18 | INFO    |   Level 3: 3840/4000
+01:42:18 | INFO    |   Level 3: 4000/4000
+01:42:19 | INFO    | Level 3: extraction done in 7.0s
+01:42:19 | INFO    | Level 4: extracting 4000 prompts x 9 layers
+01:42:20 | INFO    |   Level 4: 320/4000
+01:42:20 | INFO    |   Level 4: 640/4000
+01:42:21 | INFO    |   Level 4: 960/4000
+01:42:21 | INFO    |   Level 4: 1280/4000
+01:42:22 | INFO    |   Level 4: 1600/4000
+01:42:22 | INFO    |   Level 4: 1920/4000
+01:42:23 | INFO    |   Level 4: 2240/4000
+01:42:23 | INFO    |   Level 4: 2560/4000
+01:42:24 | INFO    |   Level 4: 2880/4000
+01:42:24 | INFO    |   Level 4: 3200/4000
+01:42:25 | INFO    |   Level 4: 3520/4000
+01:42:25 | INFO    |   Level 4: 3840/4000
+01:42:26 | INFO    |   Level 4: 4000/4000
+01:42:27 | INFO    | Level 4: extraction done in 7.3s
+01:42:27 | INFO    | Level 5: extracting 4000 prompts x 9 layers
+01:42:27 | INFO    |   Level 5: 320/4000
+01:42:28 | INFO    |   Level 5: 640/4000
+01:42:28 | INFO    |   Level 5: 960/4000
+01:42:29 | INFO    |   Level 5: 1280/4000
+01:42:29 | INFO    |   Level 5: 1600/4000
+01:42:30 | INFO    |   Level 5: 1920/4000
+01:42:30 | INFO    |   Level 5: 2240/4000
+01:42:31 | INFO    |   Level 5: 2560/4000
+01:42:31 | INFO    |   Level 5: 2880/4000
+01:42:32 | INFO    |   Level 5: 3200/4000
+01:42:32 | INFO    |   Level 5: 3520/4000
+01:42:33 | INFO    |   Level 5: 3840/4000
+01:42:33 | INFO    |   Level 5: 4000/4000
+01:42:34 | INFO    | Level 5: extraction done in 7.1s
+01:42:34 | INFO    | Activation extraction complete
+01:42:34 | INFO    | --- Post-extraction sanity checks ---
+01:42:34 | INFO    | Level 1: sanity checks done
+01:42:34 | INFO    | Level 2: sanity checks done
+01:42:35 | INFO    | Level 3: sanity checks done
+01:42:35 | INFO    | Level 4: sanity checks done
+01:42:36 | INFO    | Level 5: sanity checks done
+01:42:36 | INFO    | All post-extraction sanity checks PASSED
+01:42:36 | INFO    | --- Generating answers ---
+01:42:36 | INFO    | Level 1: generating answers for 64 problems
+01:42:38 | INFO    |   Level 1: 64/64
+01:42:38 | INFO    | Level 1: generation done in 1.7s
+01:42:38 | INFO    | Level 2: generating answers for 4000 problems
+01:42:41 | INFO    |   Level 2: 320/4000
+01:42:45 | INFO    |   Level 2: 640/4000
+01:42:49 | INFO    |   Level 2: 960/4000
+01:42:52 | INFO    |   Level 2: 1280/4000
+01:42:56 | INFO    |   Level 2: 1600/4000
+01:43:00 | INFO    |   Level 2: 1920/4000
+01:43:03 | INFO    |   Level 2: 2240/4000
+01:43:07 | INFO    |   Level 2: 2560/4000
+01:43:11 | INFO    |   Level 2: 2880/4000
+01:43:14 | INFO    |   Level 2: 3200/4000
+01:43:18 | INFO    |   Level 2: 3520/4000
+01:43:22 | INFO    |   Level 2: 3840/4000
+01:43:23 | INFO    |   Level 2: 4000/4000
+01:43:23 | INFO    | Level 2: generation done in 45.8s
+01:43:23 | INFO    | Level 3: generating answers for 4000 problems
+01:43:27 | INFO    |   Level 3: 320/4000
+01:43:31 | INFO    |   Level 3: 640/4000
+01:43:34 | INFO    |   Level 3: 960/4000
+01:43:38 | INFO    |   Level 3: 1280/4000
+01:43:42 | INFO    |   Level 3: 1600/4000
+01:43:46 | INFO    |   Level 3: 1920/4000
+01:43:49 | INFO    |   Level 3: 2240/4000
+01:43:53 | INFO    |   Level 3: 2560/4000
+01:43:57 | INFO    |   Level 3: 2880/4000
+01:44:00 | INFO    |   Level 3: 3200/4000
+01:44:04 | INFO    |   Level 3: 3520/4000
+01:44:08 | INFO    |   Level 3: 3840/4000
+01:44:10 | INFO    |   Level 3: 4000/4000
+01:44:10 | INFO    | Level 3: generation done in 46.1s
+01:44:10 | INFO    | Level 4: generating answers for 4000 problems
+01:44:13 | INFO    |   Level 4: 320/4000
+01:44:17 | INFO    |   Level 4: 640/4000
+01:44:21 | INFO    |   Level 4: 960/4000
+01:44:24 | INFO    |   Level 4: 1280/4000
+01:44:28 | INFO    |   Level 4: 1600/4000
+01:44:32 | INFO    |   Level 4: 1920/4000
+01:44:35 | INFO    |   Level 4: 2240/4000
+01:44:39 | INFO    |   Level 4: 2560/4000
+01:44:43 | INFO    |   Level 4: 2880/4000
+01:44:47 | INFO    |   Level 4: 3200/4000
+01:44:50 | INFO    |   Level 4: 3520/4000
+01:44:54 | INFO    |   Level 4: 3840/4000
+01:44:56 | INFO    |   Level 4: 4000/4000
+01:44:56 | INFO    | Level 4: generation done in 46.3s
+01:44:56 | INFO    | Level 5: generating answers for 4000 problems
+01:45:00 | INFO    |   Level 5: 320/4000
+01:45:03 | INFO    |   Level 5: 640/4000
+01:45:07 | INFO    |   Level 5: 960/4000
+01:45:11 | INFO    |   Level 5: 1280/4000
+01:45:14 | INFO    |   Level 5: 1600/4000
+01:45:18 | INFO    |   Level 5: 1920/4000
+01:45:22 | INFO    |   Level 5: 2240/4000
+01:45:26 | INFO    |   Level 5: 2560/4000
+01:45:29 | INFO    |   Level 5: 2880/4000
+01:45:33 | INFO    |   Level 5: 3200/4000
+01:45:37 | INFO    |   Level 5: 3520/4000
+01:45:40 | INFO    |   Level 5: 3840/4000
+01:45:42 | INFO    |   Level 5: 4000/4000
+01:45:42 | INFO    | Level 5: generation done in 46.4s
+01:45:42 | INFO    | --- Saving answers ---
+01:45:42 | INFO    | Level 1: accuracy 100.0% (64/64)
+01:45:42 | INFO    | Level 2: accuracy 99.4% (3977/4000)
+01:45:42 | INFO    | Level 3: accuracy 66.0% (2638/4000)
+01:45:42 | INFO    | Level 4: accuracy 28.7% (1147/4000)
+01:45:42 | INFO    | Level 5: accuracy 6.0% (239/4000)
+01:45:42 | INFO    | --- Generating diagnostic plots ---
+01:45:43 | INFO    | Saved accuracy_by_level.png
+01:45:44 | INFO    | Saved activation_norm_profile.png
+01:45:45 | INFO    | Saved digit_coverage.png
+01:45:45 | INFO    | ============================================================
+01:45:45 | INFO    | Pipeline complete in 4.6 min
+01:45:45 | INFO    | Activation storage: 2.21 GB
+01:45:45 | INFO    | Answer storage: 2.1 MB
+01:45:45 | INFO    |   Level 1 accuracy: 100.0%
+01:45:45 | INFO    |   Level 2 accuracy: 99.4%
+01:45:45 | INFO    |   Level 3 accuracy: 66.0%
+01:45:45 | INFO    |   Level 4 accuracy: 28.7%
+01:45:45 | INFO    |   Level 5 accuracy: 6.0%
+01:45:45 | INFO    | ============================================================
+
+============================================================
+Running analysis.py
+  Error classification, per-digit accuracy, carry correlation
+  Error structure, input difficulty, 6 diagnostic plots
+============================================================
+
+01:45:47 | INFO    | ============================================================
+01:45:47 | INFO    | Arithmetic Geometry Error Analysis
+01:45:47 | INFO    | ============================================================
+01:45:47 | INFO    | --- Loading data ---
+01:45:47 | INFO    | Level 1: 64 results, accuracy 100.0% (64/64)
+01:45:47 | INFO    | Level 2: 4000 results, accuracy 99.4% (3977/4000)
+01:45:47 | INFO    | Level 3: 4000 results, accuracy 66.0% (2638/4000)
+01:45:47 | INFO    | Level 4: 4000 results, accuracy 28.7% (1147/4000)
+01:45:47 | INFO    | Level 5: 4000 results, accuracy 6.0% (239/4000)
+01:45:47 | INFO    | Level 1: loaded 64 label sets
+01:45:47 | INFO    | Level 2: loaded 4000 label sets
+01:45:47 | INFO    | Level 3: loaded 4000 label sets
+01:45:47 | INFO    | Level 4: loaded 4000 label sets
+01:45:47 | INFO    | Level 5: loaded 4000 label sets
+01:45:47 | INFO    | Level 1: merged 64 entries
+01:45:47 | INFO    | Level 2: merged 4000 entries
+01:45:47 | INFO    | Level 3: merged 4000 entries
+01:45:47 | INFO    | Level 4: merged 4000 entries
+01:45:47 | INFO    | Level 5: merged 4000 entries
+01:45:47 | INFO    | --- Classifying errors ---
+01:45:47 | INFO    | Level 1: 0 wrong — 
+01:45:47 | INFO    | Level 2: 23 wrong — close_arithmetic: 2, magnitude_error: 21
+01:45:47 | INFO    | Level 3: 1362 wrong — close_arithmetic: 1251, large_arithmetic: 2, magnitude_error: 109
+01:45:47 | INFO    | Level 4: 2853 wrong — close_arithmetic: 2718, magnitude_error: 135
+01:45:47 | INFO    | Level 5: 3761 wrong — close_arithmetic: 3234, large_arithmetic: 3, magnitude_error: 524
+01:45:47 | INFO    | --- Per-digit accuracy ---
+01:45:47 | INFO    | Level 1: per-digit accuracy (MSF) = [100.0%, 100.0%] (n=64 same-magnitude)
+01:45:47 | INFO    | Level 2: per-digit accuracy (MSF) = [100.0%, 100.0%, 99.9%] (n=3979 same-magnitude)
+01:45:47 | INFO    | Level 3: per-digit accuracy (MSF) = [99.3%, 93.8%, 70.3%, 81.2%] (n=3891 same-magnitude)
+01:45:47 | INFO    | Level 4: per-digit accuracy (MSF) = [99.2%, 93.1%, 52.3%, 39.6%, 80.4%] (n=3865 same-magnitude)
+01:45:47 | INFO    | Level 5: per-digit accuracy (MSF) = [99.1%, 91.4%, 43.7%, 16.2%, 35.6%, 84.0%] (n=3476 same-magnitude)
+01:45:47 | INFO    | --- Carry correlation ---
+01:45:47 | INFO    | Level 1: accuracy by carry count — 0 carries: 100.0% (n=6), 1 carries: 100.0% (n=58)
+01:45:47 | INFO    | Level 2: accuracy by carry count — 0 carries: 100.0% (n=271), 1 carries: 98.5% (n=1149), 2 carries: 99.8% (n=2580)
+01:45:47 | INFO    | Level 3: accuracy by carry count — 0 carries: 97.8% (n=186), 1 carries: 91.6% (n=332), 2 carries: 72.6% (n=1470), 3 carries: 53.9% (n=2012)
+01:45:47 | INFO    | Level 4: accuracy by carry count — 0 carries: 80.9% (n=89), 1 carries: 68.0% (n=122), 2 carries: 47.8% (n=431), 3 carries: 32.7% (n=1356), 4 carries: 17.1% (n=2002)
+01:45:47 | INFO    | Level 5: accuracy by carry count — 0 carries: 56.5% (n=23), 1 carries: 17.8% (n=45), 2 carries: 21.5% (n=130), 3 carries: 12.0% (n=535), 4 carries: 5.6% (n=1432), 5 carries: 2.5% (n=1835)
+01:45:47 | INFO    | --- Error structure ---
+01:45:47 | INFO    | Level 2: 23 arithmetic errors | median rel err=90.141% | even=100.0% | 10s complement=16.7% | underestimate=100.0%
+01:45:47 | INFO    | Level 3: 1362 arithmetic errors | median rel err=0.465% | even=94.5% | 10s complement=52.8% | underestimate=59.9%
+01:45:47 | INFO    | Level 4: 2853 arithmetic errors | median rel err=0.255% | even=94.6% | 10s complement=41.3% | underestimate=56.1%
+01:45:47 | INFO    | Level 5: 3761 arithmetic errors | median rel err=0.235% | even=91.9% | 10s complement=33.0% | underestimate=64.3%
+01:45:47 | INFO    | --- Input difficulty ---
+01:45:47 | INFO    | Level 1: accuracy by product digits — 1-digit: 100.0% (n=6), 2-digit: 100.0% (n=58)
+01:45:47 | INFO    | Level 2: accuracy by product digits — 2-digit: 100.0% (n=621), 3-digit: 99.3% (n=3379)
+01:45:47 | INFO    | Level 3: accuracy by product digits — 3-digit: 94.3% (n=714), 4-digit: 59.8% (n=3286)
+01:45:47 | INFO    | Level 4: accuracy by product digits — 4-digit: 50.7% (n=706), 5-digit: 24.0% (n=3294)
+01:45:48 | INFO    | Level 5: accuracy by product digits — 5-digit: 13.2% (n=718), 6-digit: 4.4% (n=3282)
+01:45:48 | INFO    | --- Generating plots ---
+01:45:48 | INFO    | Saved per_digit_accuracy_heatmap.png
+01:45:48 | INFO    | Saved error_distributions.png
+01:45:48 | INFO    | Saved accuracy_vs_carries.png
+01:45:48 | INFO    | Saved accuracy_vs_magnitude.png
+01:45:49 | INFO    | Saved error_categories.png
+01:45:49 | INFO    | Saved digit_accuracy_by_carry.png
+01:45:49 | INFO    | --- Summary ---
+01:45:49 | INFO    | Saved analysis summary to /data/user_data/anshulk/arithmetic-geometry/answers/analysis_summary.json
+01:45:49 | INFO    | ============================================================
+01:45:49 | INFO    | ANALYSIS REPORT: Llama 3.1 8B Multiplication
+01:45:49 | INFO    | ============================================================
+01:45:49 | INFO    | 
+01:45:49 | INFO    | ACCURACY:
+01:45:49 | INFO    |   Level 1: 100.0% (64/64)
+01:45:49 | INFO    |   Level 2: 99.4% (3977/4000)
+01:45:49 | INFO    |   Level 3: 66.0% (2638/4000)
+01:45:49 | INFO    |   Level 4: 28.7% (1147/4000)
+01:45:49 | INFO    |   Level 5: 6.0% (239/4000)
+01:45:49 | INFO    | 
+01:45:49 | INFO    | ERROR CATEGORIES:
+01:45:49 | INFO    |   Level 1: no errors
+01:45:49 | INFO    |   Level 2: 23 wrong — close_arithmetic: 2 (9%), magnitude_error: 21 (91%)
+01:45:49 | INFO    |   Level 3: 1362 wrong — close_arithmetic: 1251 (92%), large_arithmetic: 2 (0%), magnitude_error: 109 (8%)
+01:45:49 | INFO    |   Level 4: 2853 wrong — close_arithmetic: 2718 (95%), magnitude_error: 135 (5%)
+01:45:49 | INFO    |   Level 5: 3761 wrong — close_arithmetic: 3234 (86%), large_arithmetic: 3 (0%), magnitude_error: 524 (14%)
+01:45:49 | INFO    | 
+01:45:49 | INFO    | PER-DIGIT ACCURACY (MSF, same-magnitude):
+01:45:49 | INFO    |   Level 1: Pos0=100%, Pos1=100%
+01:45:49 | INFO    |   Level 2: Pos0=100%, Pos1=100%, Pos2=100%
+01:45:49 | INFO    |   Level 3: Pos0=99%, Pos1=94%, Pos2=70%, Pos3=81%
+01:45:49 | INFO    |   Level 4: Pos0=99%, Pos1=93%, Pos2=52%, Pos3=40%, Pos4=80%
+01:45:49 | INFO    |   Level 5: Pos0=99%, Pos1=91%, Pos2=44%, Pos3=16%, Pos4=36%, Pos5=84%
+01:45:49 | INFO    | 
+01:45:49 | INFO    | KEY FINDINGS:
+01:45:49 | INFO    |   Level 3: even=94%, 10s_comp=53%, underest=60%, median_rel_err=0.465%
+01:45:49 | INFO    |   Level 4: even=95%, 10s_comp=41%, underest=56%, median_rel_err=0.255%
+01:45:49 | INFO    |   Level 5: even=92%, 10s_comp=33%, underest=64%, median_rel_err=0.235%
+01:45:49 | INFO    | ============================================================
+01:45:49 | INFO    | Analysis complete in 2.1s
+
+============================================================
+Post-Run Validation
+============================================================
+--- Activation Files ---
+  Level 1: shape=(64, 4096), norms=[69, 75, 78]
+  Level 2: shape=(4000, 4096), norms=[70, 76, 81]
+  Level 3: shape=(4000, 4096), norms=[71, 77, 85]
+  Level 4: shape=(4000, 4096), norms=[65, 77, 87]
+  Level 5: shape=(4000, 4096), norms=[59, 75, 88]
+  Total: 2.21 GB
+
+--- Answer Files ---
+  Level 1: accuracy=100.0% (64/64)
+  Level 2: accuracy=99.4% (3977/4000)
+  Level 3: accuracy=66.0% (2638/4000)
+  Level 4: accuracy=28.7% (1147/4000)
+  Level 5: accuracy=6.0% (239/4000)
+
+--- Analysis Summary ---
+  analysis_summary.json: exists (6 KB)
+
+--- Plots ---
+  accuracy_by_level.png: OK (32 KB)
+  activation_norm_profile.png: OK (85 KB)
+  digit_coverage.png: OK (44 KB)
+  per_digit_accuracy_heatmap.png: OK (61 KB)
+  error_distributions.png: OK (78 KB)
+  accuracy_vs_carries.png: OK (79 KB)
+  accuracy_vs_magnitude.png: OK (38 KB)
+  error_categories.png: OK (44 KB)
+  digit_accuracy_by_carry.png: OK (91 KB)
+
+============================================================
+Job Complete
+============================================================
+End time: Tue Mar 17 01:45:50 EDT 2026
+Pipeline exit code: 0
+Analysis exit code: 0
+Total runtime: 308 seconds (5 minutes)
+
+Final GPU memory state:
+index, memory.used [MiB], memory.total [MiB]
+0, 1 MiB, 49140 MiB
+
+Generated files:
+  Activations:
+  45 .npy files
+  Answers:
+  6 .json files
+  Plots:
+  9 .png files
+
+============================================================
+All stages completed successfully

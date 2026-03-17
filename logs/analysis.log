@@ -1,0 +1,88 @@
+2026-03-17 01:45:47,357 | INFO    | ============================================================
+2026-03-17 01:45:47,357 | INFO    | Arithmetic Geometry Error Analysis
+2026-03-17 01:45:47,357 | INFO    | ============================================================
+2026-03-17 01:45:47,357 | INFO    | --- Loading data ---
+2026-03-17 01:45:47,357 | INFO    | Level 1: 64 results, accuracy 100.0% (64/64)
+2026-03-17 01:45:47,364 | INFO    | Level 2: 4000 results, accuracy 99.4% (3977/4000)
+2026-03-17 01:45:47,370 | INFO    | Level 3: 4000 results, accuracy 66.0% (2638/4000)
+2026-03-17 01:45:47,377 | INFO    | Level 4: 4000 results, accuracy 28.7% (1147/4000)
+2026-03-17 01:45:47,383 | INFO    | Level 5: 4000 results, accuracy 6.0% (239/4000)
+2026-03-17 01:45:47,384 | INFO    | Level 1: loaded 64 label sets
+2026-03-17 01:45:47,482 | INFO    | Level 2: loaded 4000 label sets
+2026-03-17 01:45:47,574 | INFO    | Level 3: loaded 4000 label sets
+2026-03-17 01:45:47,695 | INFO    | Level 4: loaded 4000 label sets
+2026-03-17 01:45:47,847 | INFO    | Level 5: loaded 4000 label sets
+2026-03-17 01:45:47,849 | INFO    | Level 1: merged 64 entries
+2026-03-17 01:45:47,855 | INFO    | Level 2: merged 4000 entries
+2026-03-17 01:45:47,862 | INFO    | Level 3: merged 4000 entries
+2026-03-17 01:45:47,873 | INFO    | Level 4: merged 4000 entries
+2026-03-17 01:45:47,881 | INFO    | Level 5: merged 4000 entries
+2026-03-17 01:45:47,881 | INFO    | --- Classifying errors ---
+2026-03-17 01:45:47,881 | INFO    | Level 1: 0 wrong — 
+2026-03-17 01:45:47,882 | INFO    | Level 2: 23 wrong — close_arithmetic: 2, magnitude_error: 21
+2026-03-17 01:45:47,884 | INFO    | Level 3: 1362 wrong — close_arithmetic: 1251, large_arithmetic: 2, magnitude_error: 109
+2026-03-17 01:45:47,886 | INFO    | Level 4: 2853 wrong — close_arithmetic: 2718, magnitude_error: 135
+2026-03-17 01:45:47,888 | INFO    | Level 5: 3761 wrong — close_arithmetic: 3234, large_arithmetic: 3, magnitude_error: 524
+2026-03-17 01:45:47,888 | INFO    | --- Per-digit accuracy ---
+2026-03-17 01:45:47,888 | INFO    | Level 1: per-digit accuracy (MSF) = [100.0%, 100.0%] (n=64 same-magnitude)
+2026-03-17 01:45:47,893 | INFO    | Level 2: per-digit accuracy (MSF) = [100.0%, 100.0%, 99.9%] (n=3979 same-magnitude)
+2026-03-17 01:45:47,897 | INFO    | Level 3: per-digit accuracy (MSF) = [99.3%, 93.8%, 70.3%, 81.2%] (n=3891 same-magnitude)
+2026-03-17 01:45:47,902 | INFO    | Level 4: per-digit accuracy (MSF) = [99.2%, 93.1%, 52.3%, 39.6%, 80.4%] (n=3865 same-magnitude)
+2026-03-17 01:45:47,907 | INFO    | Level 5: per-digit accuracy (MSF) = [99.1%, 91.4%, 43.7%, 16.2%, 35.6%, 84.0%] (n=3476 same-magnitude)
+2026-03-17 01:45:47,907 | INFO    | --- Carry correlation ---
+2026-03-17 01:45:47,908 | INFO    | Level 1: accuracy by carry count — 0 carries: 100.0% (n=6), 1 carries: 100.0% (n=58)
+2026-03-17 01:45:47,915 | INFO    | Level 2: accuracy by carry count — 0 carries: 100.0% (n=271), 1 carries: 98.5% (n=1149), 2 carries: 99.8% (n=2580)
+2026-03-17 01:45:47,923 | INFO    | Level 3: accuracy by carry count — 0 carries: 97.8% (n=186), 1 carries: 91.6% (n=332), 2 carries: 72.6% (n=1470), 3 carries: 53.9% (n=2012)
+2026-03-17 01:45:47,932 | INFO    | Level 4: accuracy by carry count — 0 carries: 80.9% (n=89), 1 carries: 68.0% (n=122), 2 carries: 47.8% (n=431), 3 carries: 32.7% (n=1356), 4 carries: 17.1% (n=2002)
+2026-03-17 01:45:47,941 | INFO    | Level 5: accuracy by carry count — 0 carries: 56.5% (n=23), 1 carries: 17.8% (n=45), 2 carries: 21.5% (n=130), 3 carries: 12.0% (n=535), 4 carries: 5.6% (n=1432), 5 carries: 2.5% (n=1835)
+2026-03-17 01:45:47,941 | INFO    | --- Error structure ---
+2026-03-17 01:45:47,962 | INFO    | Level 2: 23 arithmetic errors | median rel err=90.141% | even=100.0% | 10s complement=16.7% | underestimate=100.0%
+2026-03-17 01:45:47,965 | INFO    | Level 3: 1362 arithmetic errors | median rel err=0.465% | even=94.5% | 10s complement=52.8% | underestimate=59.9%
+2026-03-17 01:45:47,968 | INFO    | Level 4: 2853 arithmetic errors | median rel err=0.255% | even=94.6% | 10s complement=41.3% | underestimate=56.1%
+2026-03-17 01:45:47,973 | INFO    | Level 5: 3761 arithmetic errors | median rel err=0.235% | even=91.9% | 10s complement=33.0% | underestimate=64.3%
+2026-03-17 01:45:47,973 | INFO    | --- Input difficulty ---
+2026-03-17 01:45:47,973 | INFO    | Level 1: accuracy by product digits — 1-digit: 100.0% (n=6), 2-digit: 100.0% (n=58)
+2026-03-17 01:45:47,980 | INFO    | Level 2: accuracy by product digits — 2-digit: 100.0% (n=621), 3-digit: 99.3% (n=3379)
+2026-03-17 01:45:47,986 | INFO    | Level 3: accuracy by product digits — 3-digit: 94.3% (n=714), 4-digit: 59.8% (n=3286)
+2026-03-17 01:45:47,998 | INFO    | Level 4: accuracy by product digits — 4-digit: 50.7% (n=706), 5-digit: 24.0% (n=3294)
+2026-03-17 01:45:48,009 | INFO    | Level 5: accuracy by product digits — 5-digit: 13.2% (n=718), 6-digit: 4.4% (n=3282)
+2026-03-17 01:45:48,009 | INFO    | --- Generating plots ---
+2026-03-17 01:45:48,273 | INFO    | Saved per_digit_accuracy_heatmap.png
+2026-03-17 01:45:48,669 | INFO    | Saved error_distributions.png
+2026-03-17 01:45:48,827 | INFO    | Saved accuracy_vs_carries.png
+2026-03-17 01:45:48,959 | INFO    | Saved accuracy_vs_magnitude.png
+2026-03-17 01:45:49,137 | INFO    | Saved error_categories.png
+2026-03-17 01:45:49,445 | INFO    | Saved digit_accuracy_by_carry.png
+2026-03-17 01:45:49,446 | INFO    | --- Summary ---
+2026-03-17 01:45:49,453 | INFO    | Saved analysis summary to /data/user_data/anshulk/arithmetic-geometry/answers/analysis_summary.json
+2026-03-17 01:45:49,453 | INFO    | ============================================================
+2026-03-17 01:45:49,454 | INFO    | ANALYSIS REPORT: Llama 3.1 8B Multiplication
+2026-03-17 01:45:49,454 | INFO    | ============================================================
+2026-03-17 01:45:49,454 | INFO    | 
+2026-03-17 01:45:49,454 | INFO    | ACCURACY:
+2026-03-17 01:45:49,454 | INFO    |   Level 1: 100.0% (64/64)
+2026-03-17 01:45:49,454 | INFO    |   Level 2: 99.4% (3977/4000)
+2026-03-17 01:45:49,454 | INFO    |   Level 3: 66.0% (2638/4000)
+2026-03-17 01:45:49,454 | INFO    |   Level 4: 28.7% (1147/4000)
+2026-03-17 01:45:49,454 | INFO    |   Level 5: 6.0% (239/4000)
+2026-03-17 01:45:49,454 | INFO    | 
+2026-03-17 01:45:49,454 | INFO    | ERROR CATEGORIES:
+2026-03-17 01:45:49,455 | INFO    |   Level 1: no errors
+2026-03-17 01:45:49,455 | INFO    |   Level 2: 23 wrong — close_arithmetic: 2 (9%), magnitude_error: 21 (91%)
+2026-03-17 01:45:49,455 | INFO    |   Level 3: 1362 wrong — close_arithmetic: 1251 (92%), large_arithmetic: 2 (0%), magnitude_error: 109 (8%)
+2026-03-17 01:45:49,455 | INFO    |   Level 4: 2853 wrong — close_arithmetic: 2718 (95%), magnitude_error: 135 (5%)
+2026-03-17 01:45:49,455 | INFO    |   Level 5: 3761 wrong — close_arithmetic: 3234 (86%), large_arithmetic: 3 (0%), magnitude_error: 524 (14%)
+2026-03-17 01:45:49,455 | INFO    | 
+2026-03-17 01:45:49,455 | INFO    | PER-DIGIT ACCURACY (MSF, same-magnitude):
+2026-03-17 01:45:49,455 | INFO    |   Level 1: Pos0=100%, Pos1=100%
+2026-03-17 01:45:49,455 | INFO    |   Level 2: Pos0=100%, Pos1=100%, Pos2=100%
+2026-03-17 01:45:49,455 | INFO    |   Level 3: Pos0=99%, Pos1=94%, Pos2=70%, Pos3=81%
+2026-03-17 01:45:49,455 | INFO    |   Level 4: Pos0=99%, Pos1=93%, Pos2=52%, Pos3=40%, Pos4=80%
+2026-03-17 01:45:49,455 | INFO    |   Level 5: Pos0=99%, Pos1=91%, Pos2=44%, Pos3=16%, Pos4=36%, Pos5=84%
+2026-03-17 01:45:49,456 | INFO    | 
+2026-03-17 01:45:49,456 | INFO    | KEY FINDINGS:
+2026-03-17 01:45:49,456 | INFO    |   Level 3: even=94%, 10s_comp=53%, underest=60%, median_rel_err=0.465%
+2026-03-17 01:45:49,456 | INFO    |   Level 4: even=95%, 10s_comp=41%, underest=56%, median_rel_err=0.255%
+2026-03-17 01:45:49,456 | INFO    |   Level 5: even=92%, 10s_comp=33%, underest=64%, median_rel_err=0.235%
+2026-03-17 01:45:49,456 | INFO    | ============================================================
+2026-03-17 01:45:49,456 | INFO    | Analysis complete in 2.1s
