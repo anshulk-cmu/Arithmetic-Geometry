@@ -60,8 +60,9 @@ These are mathematical facts about the product, not steps of any algorithm.
 ├── run.sh                 # SLURM job script — runs both stages
 ├── .gitignore
 ├── README.md
-├── labels/                # per-level problem labels (16 MB)
-│   └── level_{1-5}.json
+├── labels/                # per-level problem labels + analysis summary
+│   ├── level_{1-5}.json
+│   └── analysis_summary.json
 ├── plots/                 # all diagnostic plots (9 total)
 │   ├── accuracy_by_level.png           # pipeline
 │   ├── activation_norm_profile.png     # pipeline

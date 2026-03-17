@@ -1,0 +1,242 @@
+{
+  "levels": {
+    "1": {
+      "n_problems": 64,
+      "accuracy": 1.0,
+      "n_correct": 64,
+      "error_categories": {},
+      "per_digit_accuracy": {
+        "n_same_magnitude": 64,
+        "n_digits": 2,
+        "per_position_accuracy": [
+          1.0,
+          1.0
+        ],
+        "per_position_correct": [
+          64,
+          58
+        ],
+        "per_position_total": [
+          64,
+          58
+        ]
+      }
+    },
+    "2": {
+      "n_problems": 4000,
+      "accuracy": 0.99425,
+      "n_correct": 3977,
+      "error_categories": {
+        "magnitude_error": 21,
+        "close_arithmetic": 2
+      },
+      "per_digit_accuracy": {
+        "n_same_magnitude": 3979,
+        "n_digits": 3,
+        "per_position_accuracy": [
+          1.0,
+          1.0,
+          0.9994044073853484
+        ],
+        "per_position_correct": [
+          3979,
+          3979,
+          3356
+        ],
+        "per_position_total": [
+          3979,
+          3979,
+          3358
+        ]
+      },
+      "error_structure": {
+        "n_wrong": 23,
+        "mean_error": -643.5652173913044,
+        "median_error": -576.0,
+        "std_error": 229.06992023263888,
+        "mean_abs_error": 643.5652173913044,
+        "median_abs_error": 576.0,
+        "mean_rel_error": 0.8662297995398316,
+        "median_rel_error": 0.9014084507042254,
+        "p95_rel_error": 0.9929078014184397,
+        "even_frac": 1.0,
+        "div10_frac": 0.4782608695652174,
+        "div20_frac": 0.17391304347826086,
+        "div100_frac": 0.0,
+        "units_mismatch": 12,
+        "units_complement": 2,
+        "units_complement_frac": 0.16666666666666666,
+        "n_negative": 23,
+        "n_positive": 0,
+        "underestimate_frac": 1.0
+      }
+    },
+    "3": {
+      "n_problems": 4000,
+      "accuracy": 0.6595,
+      "n_correct": 2638,
+      "error_categories": {
+        "close_arithmetic": 1251,
+        "magnitude_error": 109,
+        "large_arithmetic": 2
+      },
+      "per_digit_accuracy": {
+        "n_same_magnitude": 3891,
+        "n_digits": 4,
+        "per_position_accuracy": [
+          0.9925469031097405,
+          0.9378051914674891,
+          0.7029041377537908,
+          0.8125
+        ],
+        "per_position_correct": [
+          3862,
+          3649,
+          2735,
+          2613
+        ],
+        "per_position_total": [
+          3891,
+          3891,
+          3891,
+          3216
+        ]
+      },
+      "error_structure": {
+        "n_wrong": 1362,
+        "mean_error": -54.322320117474305,
+        "median_error": -10.0,
+        "std_error": 3296.7072979633094,
+        "mean_abs_error": 500.68355359765053,
+        "median_abs_error": 16.0,
+        "mean_rel_error": 0.1227316926678073,
+        "median_rel_error": 0.004648482860522394,
+        "p95_rel_error": 0.9772463002114166,
+        "even_frac": 0.9449339207048458,
+        "div10_frac": 0.4977973568281938,
+        "div20_frac": 0.2305433186490455,
+        "div100_frac": 0.002936857562408223,
+        "units_mismatch": 684,
+        "units_complement": 361,
+        "units_complement_frac": 0.5277777777777778,
+        "n_negative": 816,
+        "n_positive": 546,
+        "underestimate_frac": 0.5991189427312775
+      }
+    },
+    "4": {
+      "n_problems": 4000,
+      "accuracy": 0.28675,
+      "n_correct": 1147,
+      "error_categories": {
+        "close_arithmetic": 2718,
+        "magnitude_error": 135
+      },
+      "per_digit_accuracy": {
+        "n_same_magnitude": 3865,
+        "n_digits": 5,
+        "per_position_accuracy": [
+          0.9922380336351876,
+          0.9314359637774903,
+          0.5226390685640362,
+          0.39560155239327294,
+          0.803952321204517
+        ],
+        "per_position_correct": [
+          3835,
+          3600,
+          2020,
+          1529,
+          2563
+        ],
+        "per_position_total": [
+          3865,
+          3865,
+          3865,
+          3865,
+          3188
+        ]
+      },
+      "error_structure": {
+        "n_wrong": 2853,
+        "mean_error": -2083.931650893796,
+        "median_error": -18.0,
+        "std_error": 11206.632819806502,
+        "mean_abs_error": 2169.03785488959,
+        "median_abs_error": 60.0,
+        "mean_rel_error": 0.0483460243112686,
+        "median_rel_error": 0.002554278416347382,
+        "p95_rel_error": 0.0111952978142968,
+        "even_frac": 0.945671223273747,
+        "div10_frac": 0.6901507185418857,
+        "div20_frac": 0.5061338941465124,
+        "div100_frac": 0.056782334384858045,
+        "units_mismatch": 884,
+        "units_complement": 365,
+        "units_complement_frac": 0.41289592760180993,
+        "n_negative": 1600,
+        "n_positive": 1253,
+        "underestimate_frac": 0.5608131791097091
+      }
+    },
+    "5": {
+      "n_problems": 4000,
+      "accuracy": 0.05975,
+      "n_correct": 239,
+      "error_categories": {
+        "close_arithmetic": 3234,
+        "magnitude_error": 524,
+        "large_arithmetic": 3
+      },
+      "per_digit_accuracy": {
+        "n_same_magnitude": 3476,
+        "n_digits": 6,
+        "per_position_accuracy": [
+          0.9910817031070196,
+          0.9136939010356732,
+          0.4369965477560414,
+          0.1616800920598389,
+          0.35558112773302647,
+          0.8395989974937343
+        ],
+        "per_position_correct": [
+          3445,
+          3176,
+          1519,
+          562,
+          1236,
+          2345
+        ],
+        "per_position_total": [
+          3476,
+          3476,
+          3476,
+          3476,
+          3476,
+          2793
+        ]
+      },
+      "error_structure": {
+        "n_wrong": 3761,
+        "mean_error": 265886672716.36133,
+        "median_error": -210.0,
+        "std_error": 16303865689739.373,
+        "mean_abs_error": 265886794009.77213,
+        "median_abs_error": 520.0,
+        "mean_rel_error": 1410083.5274127708,
+        "median_rel_error": 0.0023530334522922467,
+        "p95_rel_error": 0.9990033457775394,
+        "even_frac": 0.9189045466631215,
+        "div10_frac": 0.7301249667641585,
+        "div20_frac": 0.5711247008774262,
+        "div100_frac": 0.15767083222547196,
+        "units_mismatch": 1015,
+        "units_complement": 335,
+        "units_complement_frac": 0.33004926108374383,
+        "n_negative": 2419,
+        "n_positive": 1342,
+        "underestimate_frac": 0.6431800053177347
+      }
+    }
+  }
+}

@@ -659,10 +659,13 @@ def build_summary(answers, merged, digit_accuracy, carry_correlation,
 
 def save_summary(summary, cfg, logger):
     ans_dir = Path(cfg["paths"]["answers_dir"])
-    path = ans_dir / "analysis_summary.json"
-    with open(path, "w") as f:
-        json.dump(summary, f, indent=2, default=str)
-    logger.info(f"Saved analysis summary to {path}")
+    labels_dir = Path(cfg["paths"]["labels_dir"])
+
+    for dest in [ans_dir, labels_dir]:
+        path = dest / "analysis_summary.json"
+        with open(path, "w") as f:
+            json.dump(summary, f, indent=2, default=str)
+        logger.info(f"Saved analysis summary to {path}")
 
 
 def print_report(summary, logger):
