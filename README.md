@@ -1,90 +1,58 @@
 # Arithmetic Geometry
 
-Mechanistic interpretability study of how Llama 3.1 8B internally represents multiplication. We extract residual stream activations across 9 layers for 16,064 multiplication problems at 5 difficulty levels, paired with algorithm-agnostic mathematical labels (partial products, column sums, carries, running sums), then analyze error patterns to understand where the internal math breaks down.
+Mechanistic interpretability study of how Llama 3.1 8B internally represents multiplication. We extract residual stream activations across 9 layers for 16,064 multiplication problems at 5 difficulty levels, pair them with algorithm-agnostic mathematical labels, then analyze where the internal math breaks down for wrong answers.
 
 ## Research Question
 
-When a transformer gets multiplication wrong, where does the internal math break down? We study how activation geometry degrades across difficulty levels (1x1 through 3x3 digit multiplication) and between correct vs. wrong answers.
+When a transformer gets multiplication wrong, where does the internal math break down? Bai et al. (2025) found Fourier-basis digit representations in tiny 2-layer models. Gurnee et al. (2025) found helical manifolds in Claude 3.5 Haiku. Nobody has systematically tested whether these structures exist in a large pre-trained model doing arithmetic. We fill that gap using Llama 3.1 8B with a difficulty gradient from trivial (1x1 digit, 100% accuracy) to near-impossible (3x3 digit, 6% accuracy).
 
 ## Dataset
 
-| Level | Type | Problems |
-|-------|------|----------|
-| 1 | 1-digit x 1-digit | 64 (all unique pairs, 2-9) |
-| 2 | 2-digit x 1-digit | 4,000 |
-| 3 | 2-digit x 2-digit | 4,000 |
-| 4 | 3-digit x 2-digit | 4,000 |
-| 5 | 3-digit x 3-digit | 4,000 |
+| Level | Type | Problems | Correct | Wrong | Accuracy |
+|-------|------|----------|---------|-------|----------|
+| 1 | 1x1 digit | 64 | 64 | 0 | 100.0% |
+| 2 | 2x1 digit | 4,000 | 3,977 | 23 | 99.4% |
+| 3 | 2x2 digit | 4,000 | 2,638 | 1,362 | 66.0% |
+| 4 | 3x2 digit | 4,000 | 1,147 | 2,853 | 28.7% |
+| 5 | 3x3 digit | 4,000 | 239 | 3,761 | 6.0% |
 
-**Total: 16,064 problems**
-
-### Labels (algorithm-agnostic)
-
-For every problem `a x b`, we compute:
-- Input digit decomposition by place value
-- All pairwise partial products (e.g., for 2x2: 4 products)
-- Column sums grouped by `i+j=k`
-- Carries and running sums (LSF propagation)
-- Answer digits in both MSF and LSF order
-- Per-digit difficulty annotation (partial product count, max column sum, carry chain length)
-
-These are mathematical facts about the product, not steps of any algorithm.
-
-### Carry Bounds (verified)
-
-| Level | Max Carries by Column |
-|-------|----------------------|
-| 1 (1x1) | [8] |
-| 2 (2x1) | [8, 8] |
-| 3 (2x2) | [8, 17, 9] |
-| 4 (3x2) | [8, 17, 17, 9] |
-| 5 (3x3) | [8, 17, 26, 18, 9] |
+**16,064 problems total. 8,065 correct, 7,999 wrong.** Levels 3-5 are the effective range for correct/wrong geometric comparison.
 
 ## Model
 
-**Llama 3.1 8B base** (`meta-llama/Meta-Llama-3.1-8B`), loaded locally in bfloat16.
+- **Llama 3.1 8B base** (not instruct) — base model avoids RLHF confounds
+- 32 transformer layers, 4096-dim hidden state, loaded in bfloat16 (~16 GB VRAM)
+- Activations extracted at layers **[4, 6, 8, 12, 16, 20, 24, 28, 31]** spanning early/mid/late
+- Residual stream captured at the `" ="` token (last prompt position, attends to full input)
+- Prompt format: `"{a} * {b} ="` — MSF to match pre-training distribution
+- Greedy decoding (`do_sample=False`, deterministic)
 
-- 32 transformer layers, hidden dim 4096
-- Activations extracted at layers: [4, 6, 8, 12, 16, 20, 24, 28, 31]
-- Residual stream at the `=` token (last prompt position)
-- Prompt format: `"{a} * {b} ="` (MSF, standard written English)
-- Greedy decoding (`do_sample=False`, `max_new_tokens=12`)
+## Labels
+
+Every problem gets algorithm-agnostic mathematical labels: all pairwise partial products, column sums grouped by output position (`i+j=k`), carries and running sums via LSF propagation, answer digits in both MSF and LSF order, and per-digit difficulty annotations (partial product count, max column sum, carry chain length). These are mathematical facts about the product, not steps of any specific algorithm. The model may use long multiplication, Fourier-space computation, or something entirely alien — the labels test whether it represents these quantities regardless of method. All 16,064 label sets are verified against tight per-column carry bounds.
 
 ## Project Structure
 
 ```
-/home/anshulk/arithmetic-geometry/       (workspace, in git)
-├── pipeline.py            # Stage 1: generate, extract, evaluate
-├── analysis.py            # Stage 2: error pattern analysis (no GPU)
-├── config.yaml            # all parameters, paths, model config
-├── run.sh                 # SLURM job script — runs both stages
-├── .gitignore
-├── README.md
-├── labels/                # per-level problem labels + analysis summary
+arithmetic-geometry/                     (workspace, in git)
+├── pipeline.py                          # generate problems, extract activations, evaluate
+├── analysis.py                          # error pattern analysis (CPU only, no GPU)
+├── config.yaml                          # all parameters, paths, model config
+├── run.sh                               # SLURM job script (runs both stages)
+├── labels/                              # per-level labels + analysis summary
 │   ├── level_{1-5}.json
 │   └── analysis_summary.json
-├── plots/                 # all diagnostic plots (9 total)
-│   ├── accuracy_by_level.png           # pipeline
-│   ├── activation_norm_profile.png     # pipeline
-│   ├── digit_coverage.png             # pipeline
-│   ├── per_digit_accuracy_heatmap.png  # analysis
-│   ├── error_distributions.png         # analysis
-│   ├── accuracy_vs_carries.png         # analysis
-│   ├── accuracy_vs_magnitude.png       # analysis
-│   ├── error_categories.png            # analysis
-│   └── digit_accuracy_by_carry.png     # analysis
-└── logs/                  # pipeline + analysis logs, SLURM output
-    ├── pipeline.log
-    ├── analysis.log
-    └── slurm-*.out/err
+├── plots/                               # 9 diagnostic plots (3 pipeline + 6 analysis)
+├── logs/                                # pipeline.log, analysis.log, slurm output
+└── docs/
+    └── datageneration_stage_analysis.md # complete data generation reference
 
 /data/user_data/anshulk/arithmetic-geometry/  (heavy files, not in git)
-├── model/                 # Llama 3.1 8B weights (~15 GB)
-├── activations/           # .npy files (~2.2 GB, 45 files)
-│   └── level{N}_layer{L}.npy
-└── answers/               # per-level accuracy + analysis summary
-    ├── level_{1-5}.json
-    └── analysis_summary.json
+├── model/                               # Llama 3.1 8B weights (~30 GB)
+├── activations/                         # 45 .npy files, 2.21 GB total
+│   └── level{N}_layer{L}.npy           # shape (n_problems, 4096), float32
+└── answers/                             # per-level predictions + correctness
+    └── level_{1-5}.json
 ```
 
 ## Setup
@@ -105,48 +73,30 @@ snapshot_download('meta-llama/Meta-Llama-3.1-8B',
 ## Usage
 
 ```bash
-# Full end-to-end on SLURM (A6000 GPU)
-conda activate geometry
+# Full end-to-end on SLURM (A6000 GPU, ~5 minutes)
 sbatch run.sh
 
 # Or run stages separately
-python pipeline.py          # Stage 1: requires GPU
-python analysis.py          # Stage 2: CPU only
+python pipeline.py          # Stage 1: generate, extract, evaluate (requires GPU)
+python analysis.py          # Stage 2: error analysis + plots (CPU only)
 ```
 
-### Stage 1: Pipeline (`pipeline.py`)
+**Stage 1** (`pipeline.py`): Generates problems, computes and verifies labels, loads the model once, extracts activations at 9 layers with checkpoint/resume, greedy-decodes answers, saves everything. Supports resume if interrupted.
 
-1. Generate 16,064 problems with full mathematical labels
-2. Verify all labels (carry bounds, running sum consistency, product reconstruction)
-3. Save labeled datasets to `labels/`
-4. Load tokenizer, verify tokenization (all levels: 6 tokens, last = `" ="`)
-5. Load model once (bfloat16, ~16 GB VRAM)
-6. Extract activations at 9 layers with checkpoint/resume
-7. Post-extraction sanity checks (no NaN/Inf, distinct activations, norm range)
-8. Greedy decode all problems, compute per-level accuracy
-9. Save answers with correctness flags
-10. Generate 3 diagnostic plots
+**Stage 2** (`analysis.py`): Loads saved answers and labels, classifies errors, computes per-digit accuracy, carry correlation, error structure (even bias, 10's complement, underestimation), input difficulty, generates 6 analysis plots, and saves a JSON summary.
 
-### Stage 2: Analysis (`analysis.py`)
+## Documentation
 
-1. Load answers and labels, merge into enriched dataset
-2. Classify errors: close arithmetic, magnitude error, large arithmetic
-3. Per-digit accuracy (MSF) — which digit positions fail?
-4. Carry correlation — accuracy vs number of carries
-5. Error structure — even/odd bias, divisibility, 10's complement, underestimation
-6. Input difficulty — accuracy vs leading digits, product magnitude
-7. Generate 6 analysis plots
-8. Save JSON summary + text report
+- **[Data Generation Stage Analysis](docs/datageneration_stage_analysis.md)** — Complete reference for this stage: every design decision, full math walkthroughs with real examples, tokenization patterns, the hook mechanism, carry bound proofs, error classification logic, and all results with numbers verified against logs.
 
-## Key Design Decisions
+## Key Findings (Data Generation Stage)
 
-- **MSF (most-significant-first)** output matches the model's training distribution
-- **Level 1 has only 64 unique problems** (2-9 x 2-9), effective sample size is 64
-- **Model loads once**, shared across extraction and answer generation
-- **Checkpoint/resume**: extraction skips level-layer combos where `.npy` already exists
-- **`make_hook()` factory function** avoids the Python closure-over-loop-variable bug
-- **`pad_token = eos_token`** required for Llama's tokenizer
-- **Comma-aware parser** handles model outputs like `"3,894"` correctly
+- **Accuracy gradient works**: monotonic drop from 100% (1x1) to 6% (3x3)
+- **U-shaped per-digit accuracy**: first and last digits are easy (84-99%), middle digits collapse (16% at Level 5 position 3) — confirms Bai et al.'s carry-chain bottleneck in a production-scale model
+- **Carries dominate difficulty**: Level 5 with 0 carries = 56.5% accuracy; with 5 carries = 2.5%
+- **Errors are structured, not random**: median relative error is 0.24% at Level 5; 86-95% of errors are close arithmetic (same digit count, <5% off)
+- **Even error bias**: 92-95% of errors preserve the ground truth's parity
+- **Zero garbage output**: the model always produces a parseable number
 
 ## Downstream Analysis (planned)
 
