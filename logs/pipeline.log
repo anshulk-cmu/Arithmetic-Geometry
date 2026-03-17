@@ -1,0 +1,73 @@
+2026-03-16 23:34:08,705 | INFO    | Level 1: 64 problems (64 unique), a in [2,9], b in [2,9]
+2026-03-16 23:34:08,708 | DEBUG   | Level 2 digit coverage: a_leading={6: 446, 2: 469, 8: 384, 7: 431, 3: 466, 9: 449, 1: 455, 4: 462, 5: 438}, b_leading={2: 486, 3: 482, 6: 500, 5: 477, 4: 508, 8: 529, 7: 510, 9: 508}
+2026-03-16 23:34:08,708 | INFO    | Level 2: 4000 problems (718 unique), a in [10,99], b in [2,9]
+2026-03-16 23:34:08,710 | DEBUG   | Level 3 digit coverage: a_leading={6: 452, 7: 438, 1: 416, 8: 485, 9: 458, 4: 423, 3: 447, 5: 422, 2: 459}, b_leading={5: 444, 9: 459, 8: 464, 1: 428, 6: 456, 7: 417, 2: 454, 3: 445, 4: 433}
+2026-03-16 23:34:08,710 | INFO    | Level 3: 4000 problems (3174 unique), a in [10,99], b in [10,99]
+2026-03-16 23:34:08,712 | DEBUG   | Level 4 digit coverage: a_leading={7: 434, 3: 458, 6: 448, 1: 443, 5: 408, 4: 440, 8: 475, 9: 453, 2: 441}, b_leading={2: 467, 3: 414, 7: 457, 1: 442, 6: 446, 9: 441, 5: 443, 4: 422, 8: 468}
+2026-03-16 23:34:08,712 | INFO    | Level 4: 4000 problems (3897 unique), a in [100,999], b in [10,99]
+2026-03-16 23:34:08,713 | DEBUG   | Level 5 digit coverage: a_leading={6: 496, 2: 398, 3: 443, 8: 389, 5: 434, 9: 450, 7: 479, 1: 462, 4: 449}, b_leading={3: 452, 2: 437, 5: 439, 8: 423, 4: 477, 7: 432, 9: 434, 6: 464, 1: 442}
+2026-03-16 23:34:08,713 | INFO    | Level 5: 4000 problems (3992 unique), a in [100,999], b in [100,999]
+2026-03-16 23:34:08,714 | INFO    | Total problems across all levels: 16064
+2026-03-16 23:34:08,714 | INFO    | Level 1: computed 64 label sets
+2026-03-16 23:34:08,754 | INFO    | Level 2: computed 4000 label sets
+2026-03-16 23:34:08,788 | INFO    | Level 3: computed 4000 label sets
+2026-03-16 23:34:08,851 | INFO    | Level 4: computed 4000 label sets
+2026-03-16 23:34:08,935 | INFO    | Level 5: computed 4000 label sets
+2026-03-16 23:34:08,935 | INFO    | Level 1: max carry bounds = [8]
+2026-03-16 23:34:08,935 | INFO    | Level 1: all 64 labels verified
+2026-03-16 23:34:08,935 | INFO    | Level 2: max carry bounds = [8, 8]
+2026-03-16 23:34:08,939 | INFO    | Level 2: all 4000 labels verified
+2026-03-16 23:34:08,939 | INFO    | Level 3: max carry bounds = [8, 17, 9]
+2026-03-16 23:34:08,944 | INFO    | Level 3: all 4000 labels verified
+2026-03-16 23:34:08,944 | INFO    | Level 4: max carry bounds = [8, 17, 17, 9]
+2026-03-16 23:34:08,950 | INFO    | Level 4: all 4000 labels verified
+2026-03-16 23:34:08,950 | INFO    | Level 5: max carry bounds = [8, 17, 26, 18, 9]
+2026-03-16 23:34:08,956 | INFO    | Level 5: all 4000 labels verified
+2026-03-16 23:34:26,817 | INFO    | Level 1: 64 problems (64 unique), a in [2,9], b in [2,9]
+2026-03-16 23:34:26,818 | DEBUG   | Level 2 digit coverage: a_leading={6: 446, 2: 469, 8: 384, 7: 431, 3: 466, 9: 449, 1: 455, 4: 462, 5: 438}, b_leading={2: 486, 3: 482, 6: 500, 5: 477, 4: 508, 8: 529, 7: 510, 9: 508}
+2026-03-16 23:34:26,818 | INFO    | Level 2: 4000 problems (718 unique), a in [10,99], b in [2,9]
+2026-03-16 23:34:26,820 | DEBUG   | Level 3 digit coverage: a_leading={6: 452, 7: 438, 1: 416, 8: 485, 9: 458, 4: 423, 3: 447, 5: 422, 2: 459}, b_leading={5: 444, 9: 459, 8: 464, 1: 428, 6: 456, 7: 417, 2: 454, 3: 445, 4: 433}
+2026-03-16 23:34:26,821 | INFO    | Level 3: 4000 problems (3174 unique), a in [10,99], b in [10,99]
+2026-03-16 23:34:26,822 | DEBUG   | Level 4 digit coverage: a_leading={7: 434, 3: 458, 6: 448, 1: 443, 5: 408, 4: 440, 8: 475, 9: 453, 2: 441}, b_leading={2: 467, 3: 414, 7: 457, 1: 442, 6: 446, 9: 441, 5: 443, 4: 422, 8: 468}
+2026-03-16 23:34:26,822 | INFO    | Level 4: 4000 problems (3897 unique), a in [100,999], b in [10,99]
+2026-03-16 23:34:26,824 | DEBUG   | Level 5 digit coverage: a_leading={6: 496, 2: 398, 3: 443, 8: 389, 5: 434, 9: 450, 7: 479, 1: 462, 4: 449}, b_leading={3: 452, 2: 437, 5: 439, 8: 423, 4: 477, 7: 432, 9: 434, 6: 464, 1: 442}
+2026-03-16 23:34:26,824 | INFO    | Level 5: 4000 problems (3992 unique), a in [100,999], b in [100,999]
+2026-03-16 23:34:26,824 | INFO    | Total problems across all levels: 16064
+2026-03-16 23:34:26,825 | INFO    | Level 1: computed 64 label sets
+2026-03-16 23:34:26,866 | INFO    | Level 2: computed 4000 label sets
+2026-03-16 23:34:26,898 | INFO    | Level 3: computed 4000 label sets
+2026-03-16 23:34:26,965 | INFO    | Level 4: computed 4000 label sets
+2026-03-16 23:34:27,054 | INFO    | Level 5: computed 4000 label sets
+2026-03-16 23:34:27,054 | INFO    | Level 1: max carry bounds = [8]
+2026-03-16 23:34:27,055 | INFO    | Level 1: all 64 labels verified
+2026-03-16 23:34:27,055 | INFO    | Level 2: max carry bounds = [8, 8]
+2026-03-16 23:34:27,059 | INFO    | Level 2: all 4000 labels verified
+2026-03-16 23:34:27,059 | INFO    | Level 3: max carry bounds = [8, 17, 9]
+2026-03-16 23:34:27,064 | INFO    | Level 3: all 4000 labels verified
+2026-03-16 23:34:27,064 | INFO    | Level 4: max carry bounds = [8, 17, 17, 9]
+2026-03-16 23:34:27,070 | INFO    | Level 4: all 4000 labels verified
+2026-03-16 23:34:27,070 | INFO    | Level 5: max carry bounds = [8, 17, 26, 18, 9]
+2026-03-16 23:34:27,075 | INFO    | Level 5: all 4000 labels verified
+2026-03-16 23:34:27,082 | INFO    | Level 1: saved level_1.json (0.0 MB)
+2026-03-16 23:34:27,247 | INFO    | Level 2: saved level_2.json (2.9 MB)
+2026-03-16 23:34:27,453 | INFO    | Level 3: saved level_3.json (3.7 MB)
+2026-03-16 23:34:27,755 | INFO    | Level 4: saved level_4.json (4.4 MB)
+2026-03-16 23:34:28,041 | INFO    | Level 5: saved level_5.json (5.2 MB)
+2026-03-16 23:36:09,313 | INFO    | Level 1: 64 problems (64 unique), a in [2,9], b in [2,9]
+2026-03-16 23:36:09,315 | DEBUG   | Level 2 digit coverage: a_leading={6: 446, 2: 469, 8: 384, 7: 431, 3: 466, 9: 449, 1: 455, 4: 462, 5: 438}, b_leading={2: 486, 3: 482, 6: 500, 5: 477, 4: 508, 8: 529, 7: 510, 9: 508}
+2026-03-16 23:36:09,315 | INFO    | Level 2: 4000 problems (718 unique), a in [10,99], b in [2,9]
+2026-03-16 23:36:09,317 | DEBUG   | Level 3 digit coverage: a_leading={6: 452, 7: 438, 1: 416, 8: 485, 9: 458, 4: 423, 3: 447, 5: 422, 2: 459}, b_leading={5: 444, 9: 459, 8: 464, 1: 428, 6: 456, 7: 417, 2: 454, 3: 445, 4: 433}
+2026-03-16 23:36:09,317 | INFO    | Level 3: 4000 problems (3174 unique), a in [10,99], b in [10,99]
+2026-03-16 23:36:09,319 | DEBUG   | Level 4 digit coverage: a_leading={7: 434, 3: 458, 6: 448, 1: 443, 5: 408, 4: 440, 8: 475, 9: 453, 2: 441}, b_leading={2: 467, 3: 414, 7: 457, 1: 442, 6: 446, 9: 441, 5: 443, 4: 422, 8: 468}
+2026-03-16 23:36:09,319 | INFO    | Level 4: 4000 problems (3897 unique), a in [100,999], b in [10,99]
+2026-03-16 23:36:09,321 | DEBUG   | Level 5 digit coverage: a_leading={6: 496, 2: 398, 3: 443, 8: 389, 5: 434, 9: 450, 7: 479, 1: 462, 4: 449}, b_leading={3: 452, 2: 437, 5: 439, 8: 423, 4: 477, 7: 432, 9: 434, 6: 464, 1: 442}
+2026-03-16 23:36:09,321 | INFO    | Level 5: 4000 problems (3992 unique), a in [100,999], b in [100,999]
+2026-03-16 23:36:09,321 | INFO    | Total problems across all levels: 16064
+2026-03-16 23:36:11,828 | INFO    | Loading tokenizer: meta-llama/Meta-Llama-3.1-8B
+2026-03-16 23:36:12,935 | INFO    | Tokenizer ready (vocab=128000, pad=eos=128001)
+2026-03-16 23:36:12,937 | INFO    | Level 1: token lengths={6}, last tokens={' ='}
+2026-03-16 23:36:12,937 | INFO    | Level 2: token lengths={6}, last tokens={' ='}
+2026-03-16 23:36:12,937 | INFO    | Level 3: token lengths={6}, last tokens={' ='}
+2026-03-16 23:36:12,938 | INFO    | Level 4: token lengths={6}, last tokens={' ='}
+2026-03-16 23:36:12,938 | INFO    | Level 5: token lengths={6}, last tokens={' ='}
+2026-03-16 23:36:12,938 | INFO    | Tokenization verification: PASS

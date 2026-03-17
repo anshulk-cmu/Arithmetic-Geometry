@@ -1,0 +1,43 @@
+# =============================================================================
+# Arithmetic Geometry Pipeline Configuration
+# =============================================================================
+
+model:
+  name: /data/user_data/anshulk/arithmetic-geometry/model
+  dtype: bfloat16            # inference dtype (~16 GB VRAM)
+  num_layers: 32             # total layers in model (for validation)
+  hidden_dim: 4096           # expected hidden dimension
+  layers: [4, 6, 8, 12, 16, 20, 24, 28, 31]  # layers to extract
+
+dataset:
+  problems_per_level: 4000   # default per level (Level 1 overridden to 64)
+  seed: 42
+  prompt_template: "{a} * {b} ="
+  levels:
+    1:
+      a_range: [2, 9]
+      b_range: [2, 9]
+      unique_only: true      # generate all 64 unique pairs, ignore problems_per_level
+    2:
+      a_range: [10, 99]
+      b_range: [2, 9]
+    3:
+      a_range: [10, 99]
+      b_range: [10, 99]
+    4:
+      a_range: [100, 999]
+      b_range: [10, 99]
+    5:
+      a_range: [100, 999]
+      b_range: [100, 999]
+
+generation:
+  batch_size: 32
+  max_new_tokens: 12
+
+storage:
+  activation_dtype: float32  # saved activation precision (no loss)
+
+paths:
+  workspace: /home/anshulk/arithmetic-geometry
+  data_root: /data/user_data/anshulk/arithmetic-geometry

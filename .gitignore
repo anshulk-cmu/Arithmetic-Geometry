@@ -1,0 +1,14 @@
+# Heavy binary files (activations stored on /data/, not in repo)
+*.npy
+*.npz
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.eggs/
+
+# Environment
+.env
+*.token
