@@ -1,0 +1,120 @@
+19:29:44 INFO     ======================================================================
+19:29:44 INFO     Phase B — Concept Deconfounding
+19:29:44 INFO     ======================================================================
+19:29:44 INFO     Levels: [1, 2, 3, 4, 5]
+19:29:44 INFO     Report threshold: |r| > 0.1
+19:29:44 INFO     Action threshold: |r| > 0.3
+19:29:44 INFO     Spearman top-k: 30
+19:29:44 INFO     Processing L1...
+19:29:44 INFO       Population 'all': 64 problems
+19:29:44 INFO         11 concepts after preprocessing
+19:29:44 INFO         R_raw computed (11x11)
+19:29:44 INFO         R_resid computed
+19:29:44 INFO         Pairs |r_resid| > 0.3: 9 (structural=8, resid_induced=1, sampling=0, unexplained=0)
+19:29:44 INFO         Actions: deconfound=0, flag_use_raw=1
+/home/anshulk/arithmetic-geometry/phase_b_deconfounding.py:656: ConstantInputWarning: An input array is constant; the correlation coefficient is not defined.
+  rho, _ = spearmanr(vi[mask], vj[mask])
+19:29:45 INFO       Population 'correct': 64 problems
+19:29:45 INFO         8 concepts after preprocessing
+19:29:45 INFO         R_raw computed (8x8)
+19:29:45 INFO         R_resid computed
+19:29:45 INFO         Pairs |r_resid| > 0.3: 9 (structural=8, resid_induced=1, sampling=0, unexplained=0)
+19:29:45 INFO         Actions: deconfound=0, flag_use_raw=1
+19:29:46 INFO       L1 complete (2.0s)
+19:29:46 INFO     Processing L2...
+19:29:46 INFO       Population 'all': 4000 problems
+19:29:46 INFO         20 concepts after preprocessing
+19:29:46 INFO         R_raw computed (20x20)
+19:29:46 INFO         R_resid computed
+19:29:46 INFO         Pairs |r_resid| > 0.3: 49 (structural=48, resid_induced=1, sampling=0, unexplained=0)
+19:29:46 INFO         Actions: deconfound=0, flag_use_raw=1
+19:29:48 INFO       Population 'correct': 3993 problems
+19:29:48 INFO         16 concepts after preprocessing
+19:29:48 INFO         R_raw computed (16x16)
+19:29:48 INFO         R_resid computed
+19:29:48 INFO         Pairs |r_resid| > 0.3: 49 (structural=48, resid_induced=1, sampling=0, unexplained=0)
+19:29:48 INFO         Actions: deconfound=0, flag_use_raw=1
+19:29:49 INFO       L2 complete (3.8s)
+19:29:49 INFO     Processing L3...
+19:29:50 INFO       Population 'all': 10000 problems
+19:29:50 INFO         27 concepts after preprocessing
+19:29:50 INFO         R_raw computed (27x27)
+19:29:50 INFO         R_resid computed
+19:29:50 INFO         Pairs |r_resid| > 0.3: 93 (structural=92, resid_induced=1, sampling=0, unexplained=0)
+19:29:50 INFO         Actions: deconfound=0, flag_use_raw=1
+19:29:53 INFO       Population 'correct': 6720 problems
+19:29:53 INFO         22 concepts after preprocessing
+19:29:53 INFO         R_raw computed (22x22)
+19:29:53 INFO         R_resid computed
+19:29:53 INFO         Pairs |r_resid| > 0.3: 92 (structural=91, resid_induced=1, sampling=0, unexplained=0)
+19:29:53 INFO         Actions: deconfound=0, flag_use_raw=1
+19:29:55 INFO       Population 'wrong': 3280 problems
+19:29:55 INFO         22 concepts after preprocessing
+19:29:55 INFO         R_raw computed (22x22)
+19:29:55 INFO         R_resid computed
+19:29:55 INFO         Pairs |r_resid| > 0.3: 96 (structural=95, resid_induced=1, sampling=0, unexplained=0)
+19:29:55 INFO         Actions: deconfound=0, flag_use_raw=1
+19:29:58 INFO       L3 complete (8.3s)
+19:29:58 INFO     Processing L4...
+19:29:58 INFO       Population 'all': 10000 problems
+19:29:58 INFO         34 concepts after preprocessing
+19:29:58 INFO         R_raw computed (34x34)
+19:29:58 INFO         R_resid computed
+19:29:58 INFO         Pairs |r_resid| > 0.3: 138 (structural=137, resid_induced=1, sampling=0, unexplained=0)
+19:29:58 INFO         Actions: deconfound=0, flag_use_raw=1
+19:29:59 INFO       Population 'correct': 2897 problems
+19:29:59 INFO         28 concepts after preprocessing
+19:29:59 INFO         R_raw computed (28x28)
+19:29:59 INFO         R_resid computed
+19:29:59 INFO         Pairs |r_resid| > 0.3: 143 (structural=142, resid_induced=1, sampling=0, unexplained=0)
+19:29:59 INFO         Actions: deconfound=0, flag_use_raw=1
+19:30:03 INFO       Population 'wrong': 7103 problems
+19:30:03 INFO         28 concepts after preprocessing
+19:30:03 INFO         R_raw computed (28x28)
+19:30:03 INFO         R_resid computed
+19:30:03 INFO         Pairs |r_resid| > 0.3: 137 (structural=136, resid_induced=1, sampling=0, unexplained=0)
+19:30:03 INFO         Actions: deconfound=0, flag_use_raw=1
+19:30:06 INFO       L4 complete (8.5s)
+19:30:06 INFO     Processing L5...
+19:30:06 INFO       Population 'all': 122223 problems
+19:30:06 INFO         42 concepts after preprocessing
+19:30:07 INFO         R_raw computed (42x42)
+19:30:09 INFO         R_resid computed
+19:30:09 INFO         Pairs |r_resid| > 0.3: 205 (structural=204, resid_induced=1, sampling=0, unexplained=0)
+19:30:09 INFO         Actions: deconfound=0, flag_use_raw=1
+19:30:11 INFO       Population 'correct': 4197 problems
+19:30:11 INFO         35 concepts after preprocessing
+19:30:11 INFO         R_raw computed (35x35)
+19:30:11 INFO         R_resid computed
+19:30:11 INFO         Pairs |r_resid| > 0.3: 207 (structural=205, resid_induced=1, sampling=1, unexplained=0)
+19:30:11 INFO         Actions: deconfound=1, flag_use_raw=1
+19:30:13 INFO       Population 'wrong': 118026 problems
+19:30:13 INFO         35 concepts after preprocessing
+19:30:13 INFO         R_raw computed (35x35)
+19:30:14 INFO         R_resid computed
+19:30:14 INFO         Pairs |r_resid| > 0.3: 197 (structural=196, resid_induced=1, sampling=0, unexplained=0)
+19:30:14 INFO         Actions: deconfound=0, flag_use_raw=1
+19:30:16 INFO       L5 complete (9.6s)
+19:30:16 INFO     
+19:30:16 INFO     Generating summary outputs...
+19:30:16 INFO     Saved classified_pairs.csv (2677 rows)
+19:30:16 INFO     Saved spearman_comparison.csv (388 rows)
+19:30:16 INFO     Saved deconfounding_plan.json
+19:30:16 INFO     Saved summary.json
+19:30:16 INFO     
+19:30:16 INFO     ======================================================================
+19:30:16 INFO     Phase B complete: 5 levels, 32.3s (0.5 min)
+19:30:16 INFO     ======================================================================
+19:30:16 INFO     DECISION: Product residualization sufficient, but some concepts
+19:30:16 INFO       should use raw activations to avoid residualization artifacts.
+19:30:16 INFO       See deconfounding_plan.json for details.
+19:30:16 INFO       L1 actionable pairs:
+19:30:16 INFO         a_units                   vs b_units                   r_resid=-0.852  class=residualization  action=flag_use_raw
+19:30:16 INFO       L2 actionable pairs:
+19:30:16 INFO         a_tens                    vs b_units                   r_resid=-0.814  class=residualization  action=flag_use_raw
+19:30:16 INFO       L3 actionable pairs:
+19:30:16 INFO         a_tens                    vs b_tens                    r_resid=-0.796  class=residualization  action=flag_use_raw
+19:30:16 INFO       L4 actionable pairs:
+19:30:16 INFO         a_hundreds                vs b_tens                    r_resid=-0.802  class=residualization  action=flag_use_raw
+19:30:16 INFO       L5 actionable pairs:
+19:30:16 INFO         a_hundreds                vs b_hundreds                r_resid=-0.801  class=residualization  action=flag_use_raw

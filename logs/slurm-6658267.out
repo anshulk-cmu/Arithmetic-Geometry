@@ -1,0 +1,49 @@
+============================================================
+Phase B — Concept Deconfounding
+============================================================
+Job ID: 6658267
+Node: babel-v9-16
+Start time: Thu Mar 19 19:29:35 EDT 2026
+============================================================
+Activating conda environment...
+
+Running pre-flight checks...
+  Checking Python packages...
+  All packages available
+  Checking config...
+  Checking coloring DataFrames...
+  Coloring DFs: 5 .pkl files
+  Creating output directories...
+  Output directories ready
+
+Pre-flight checks passed!
+
+============================================================
+Running Phase B
+  Expected runtime: < 1 minute
+============================================================
+
+
+============================================================
+Post-Run Validation
+============================================================
+--- Data outputs ---
+  classified_pairs.csv: 247494 bytes
+  spearman_comparison.csv: 28995 bytes
+  deconfounding_plan.json: 702 bytes
+  summary.json: 6113 bytes
+  Correlation matrix CSVs: 26
+
+--- Plots ---
+  Heatmap plots: 39
+
+============================================================
+Job Complete
+============================================================
+End time: Thu Mar 19 19:30:16 EDT 2026
+Exit code: 0
+Total runtime: 41 seconds
+
+Phase B completed successfully
+
+Decision: raw_activation_override_only

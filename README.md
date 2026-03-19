@@ -45,7 +45,8 @@ For L5 carry analysis, rare carry values are binned: carry_1 >= 12, carry_2 >= 1
 |-------|--------|--------|--------|
 | Data Generation | Complete | `pipeline.py`, `generate_l5_problems.py`, `analysis.py` | 45 activation files (20.09 GB), labels, error analysis |
 | L5 Screening | Complete | `generate_l5_problems.py` | 810K evaluations cached, 122,223 selected |
-| Phase A: Visual Reconnaissance | Complete (L1-L5 old data) | `phase_a_embeddings.py`, `phase_a_analysis.py` | 351 UMAP/t-SNE embeddings, interestingness scores |
+| Phase A: Visual Reconnaissance | Complete (L1-L5) | `phase_a_embeddings.py`, `phase_a_analysis.py` | 351 UMAP/t-SNE embeddings, interestingness scores |
+| Phase B: Concept Deconfounding | Complete | `phase_b_deconfounding.py` | 2,677 classified pairs, correlation matrices, deconfounding plan |
 | Phase C: Concept Subspaces | Needs rerun (L3-L5) | `phase_c_subspaces.py` | Previous: 2,835 subspaces; rerun needed with new data + carry binning |
 | Phase D: LDA for Carries | Planned | — | — |
 | Fourier Screening | Planned | — | — |
@@ -67,6 +68,14 @@ For L5 carry analysis, rare carry values are binned: carry_1 >= 12, carry_2 >= 1
 - **Product magnitude is the dominant axis**: must be controlled in downstream analysis
 - **Correct/wrong answers separate clearly at L3-L5**: maximum divergence score |Δ| = 0.695
 - **CKA reveals layer groups**: layers 20-24-28 are globally similar (CKA > 0.98), but concept-specific subspaces can still rotate between them
+
+### Phase B: Concept Deconfounding
+
+- **2,677 correlated pairs classified across all levels**, zero unexplained — every pair above |r| = 0.1 falls into a known category
+- **Product residualization is sufficient**: no additional multi-concept deconfounding needed for Phase C's primary ("all") population
+- **Suppression effect discovered**: product residualization creates r ≈ -0.80 anti-correlation between leading-digit pairs (a_tens↔b_tens at L3, a_hundreds↔b_hundreds at L5) that does not exist in raw data. Label-level impact is 63% shared variance; activation-level impact is estimated ~3% because product occupies 1 of 4096 dimensions while digit encodings use 8+
+- **L5 sampling bias is small**: carry-stratified sampling induces r = +0.20 between a_units and b_units (below action threshold in "all" population; rises to r = +0.34 in the 4,197-problem correct-only population)
+- **Structural correlations dominate**: 92-204 pairs per level are arithmetic relationships (carry chains, column-sum dependencies, digit-to-partial-product links). These are features of multiplication, not confounds
 
 ### Phase C: LRH Works for Atomic Concepts
 
@@ -91,10 +100,12 @@ arithmetic-geometry/                       (workspace, in git)
 ├── analysis.py                            # error pattern analysis (CPU only)
 ├── phase_a_embeddings.py                  # UMAP/t-SNE embeddings + interestingness scoring
 ├── phase_a_analysis.py                    # Phase A summary analysis
+├── phase_b_deconfounding.py                # label-level correlation diagnostics (CPU, <1 min)
 ├── phase_c_subspaces.py                   # concept subspace identification via cond. covariance + SVD
 ├── config.yaml                            # all parameters, paths, model config
 ├── run.sh                                 # SLURM: main pipeline (GPU, ~14 min)
 ├── run_l5_screen.sh                       # SLURM: L5 screening (GPU, ~50 min)
+├── run_phase_b.sh                         # SLURM: Phase B deconfounding (CPU, <1 min)
 ├── labels/                                # per-level labels + analysis summary
 │   ├── level_{1-5}.json                   # L5 is 160 MB (122,223 problems)
 │   └── analysis_summary.json
@@ -104,6 +115,7 @@ arithmetic-geometry/                       (workspace, in git)
 └── docs/
     ├── datageneration_analysis.md         # complete data generation reference
     ├── phase_a_analysis.md                # complete Phase A reference
+    ├── phase_b_analysis.md                # complete Phase B reference
     └── phase_c_analysis.md                # complete Phase C reference
 
 /data/user_data/anshulk/arithmetic-geometry/  (heavy files, not in git)
@@ -119,6 +131,11 @@ arithmetic-geometry/                       (workspace, in git)
 │   ├── coloring_dfs/                      # 5 .pkl coloring DataFrames
 │   ├── embeddings/                        # 117 CSVs with 2D coordinates
 │   └── interestingness/                   # scoring results
+├── phase_b/                               # Phase B outputs
+│   ├── correlation_matrices/              # 26 CSV files (raw + residualized per level/pop)
+│   ├── classified_pairs.csv               # 2,677 pairs with classification + action
+│   ├── deconfounding_plan.json            # per-level confound lists for Phase C
+│   └── summary.json                       # aggregate statistics
 └── phase_c/                               # Phase C outputs (~5 GB)
     ├── residualized/                      # 45 product-residualized activation files
     ├── subspaces/                         # concept subspaces (basis, eigenvalues, null)
@@ -152,6 +169,9 @@ sbatch run_l5_screen.sh
 # Step 2: Main pipeline (A6000 GPU, ~14 minutes)
 sbatch run.sh
 
+# Phase B: concept deconfounding (CPU only, <1 minute)
+sbatch run_phase_b.sh
+
 # Phase C: concept subspaces (CPU only, 12 cores)
 sbatch run_phase_c.sh
 
@@ -163,6 +183,7 @@ python phase_c_subspaces.py --config config.yaml --pilot
 
 - **[Data Generation Stage Analysis](docs/datageneration_analysis.md)** — Every design decision, full math walkthroughs, tokenization patterns, carry bound proofs, error classification, carry binning decisions, all results verified against logs
 - **[Phase A Analysis](docs/phase_a_analysis.md)** — UMAP/t-SNE embedding methodology, interestingness scoring, CKA matrices, activation norm profiles, priority list for downstream phases
+- **[Phase B Analysis](docs/phase_b_analysis.md)** — Label-level correlation diagnostics, the suppression effect discovery, four-category classification system, deconfounding plan, all 2,677 pairs verified
 - **[Phase C Analysis](docs/phase_c_analysis.md)** — Conditional covariance + SVD methodology, permutation null validation, eigenvalue spectra, cross-layer alignment, correct/wrong divergence, all 2,835 subspaces documented
 
 ## What's Next: Beyond Linear Subspaces
