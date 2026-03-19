@@ -40,9 +40,10 @@ and see what clusters. The output is a priority list telling Phase C and D where
 
 The data generation stage gave us:
 - 45 activation files (5 levels x 9 layers), each shape (n_problems, 4096) in float32
-- 16,064 problems total (64 at Level 1, 4,000 each at Levels 2-5)
+- 146,287 problems total (64 L1, 4,000 L2, 10,000 L3, 10,000 L4, 122,223 L5)
 - Rich label system: input digits, partial products, column sums, carries, answer digits
-- Accuracy gradient: 100% (L1) → 99.4% (L2) → 34.1% (L3) → 28.7% (L4) → 6.0% (L5)
+- Accuracy gradient: 100% (L1) → 99.8% (L2) → 67.2% (L3) → 29.0% (L4) → 3.4% (L5)
+- L5 uses a carry-stratified dataset (122,223 problems selected from 810,000 screened)
 
 Phase A takes these raw materials and produces visual maps showing which label variables
 create visible structure in the embedding space, and — critically — which structures
@@ -108,11 +109,11 @@ this is the case before interpreting UMAP plots.
 
 | Level | Layer 4 | Layer 6 | Layer 8 | Layer 12 | Layer 16 | Layer 20 | Layer 24 | Layer 28 | Layer 31 |
 |-------|---------|---------|---------|----------|----------|----------|----------|----------|----------|
-| L1    | 3.78    | 5.30    | 6.47    | 8.01     | 10.64    | 16.06    | 23.94    | 35.44    | 74.72    |
-| L2    | 3.71    | 5.11    | 6.27    | 8.06     | 11.06    | 17.08    | 25.54    | 37.34    | 76.07    |
-| L3    | 3.67    | 5.12    | 6.31    | 8.42     | 10.98    | 16.56    | 24.91    | 36.71    | 77.48    |
-| L4    | 3.65    | 5.05    | 6.47    | 8.36     | 10.69    | 15.98    | 23.91    | 35.88    | 76.53    |
-| L5    | 3.56    | 5.10    | 6.59    | 8.31     | 10.48    | 15.47    | 23.22    | 35.06    | 75.05    |
+| L1    | 3.78    | 5.31    | 6.47    | 8.00     | 10.63    | 16.03    | 23.90    | 35.42    | 74.76    |
+| L2    | 3.71    | 5.10    | 6.28    | 8.07     | 11.06    | 17.09    | 25.55    | 37.35    | 76.12    |
+| L3    | 3.67    | 5.12    | 6.32    | 8.43     | 10.97    | 16.56    | 24.92    | 36.72    | 77.51    |
+| L4    | 3.65    | 5.05    | 6.48    | 8.37     | 10.68    | 15.97    | 23.89    | 35.88    | 76.59    |
+| L5    | 3.56    | 5.09    | 6.61    | 8.32     | 10.44    | 15.43    | 23.17    | 34.97    | 74.37    |
 
 All levels follow the same monotonic growth pattern. Norms roughly double every ~4
 layers from layer 4 to layer 28, then jump ~2x from layer 28 to layer 31. This is
@@ -126,33 +127,33 @@ for L3-L5.
 
 | Key | Correct mean | Correct std | Wrong mean | Wrong std | Ratio (C/W) |
 |-----|-------------|------------|-----------|----------|-------------|
-| L3 layer 4  | 3.68 | 0.04 | 3.66 | 0.03 | 1.005 |
-| L3 layer 6  | 5.12 | 0.05 | 5.14 | 0.05 | 0.996 |
-| L3 layer 8  | 6.29 | 0.11 | 6.34 | 0.10 | 0.992 |
-| L3 layer 12 | 8.41 | 0.14 | 8.48 | 0.11 | 0.992 |
-| L3 layer 16 | 11.05| 0.33 | 10.82| 0.26 | 1.021 |
-| L3 layer 20 | 16.70| 0.67 | 16.30| 0.60 | 1.025 |
-| L3 layer 24 | 25.24| 1.26 | 24.41| 1.07 | 1.034 |
-| L3 layer 28 | 36.97| 1.33 | 36.14| 1.20 | 1.023 |
-| L3 layer 31 | 77.77| 1.88 | 76.94| 1.80 | 1.011 |
-| L4 layer 4  | 3.66 | 0.03 | 3.65 | 0.03 | 1.006 |
-| L4 layer 6  | 5.04 | 0.06 | 5.06 | 0.05 | 0.997 |
-| L4 layer 8  | 6.41 | 0.12 | 6.51 | 0.12 | 0.994 |
-| L4 layer 12 | 8.36 | 0.12 | 8.37 | 0.11 | 0.998 |
-| L4 layer 16 | 10.88| 0.50 | 10.60| 0.42 | 1.027 |
-| L4 layer 20 | 16.32| 1.01 | 15.83| 0.90 | 1.031 |
-| L4 layer 24 | 24.55| 1.63 | 23.64| 1.55 | 1.038 |
-| L4 layer 28 | 36.50| 1.60 | 35.58| 1.58 | 1.026 |
-| L4 layer 31 | 77.31| 2.21 | 76.23| 2.39 | 1.014 |
-| L5 layer 4  | 3.58 | 0.04 | 3.56 | 0.04 | 1.008 |
-| L5 layer 6  | 5.10 | 0.08 | 5.10 | 0.08 | 1.000 |
-| L5 layer 8  | 6.50 | 0.17 | 6.59 | 0.17 | 0.994 |
-| L5 layer 12 | 8.37 | 0.16 | 8.30 | 0.15 | 1.006 |
-| L5 layer 16 | 10.74| 0.45 | 10.49| 0.47 | 1.023 |
-| L5 layer 20 | 15.72| 1.04 | 15.43| 0.87 | 1.019 |
-| L5 layer 24 | 23.70| 1.73 | 23.19| 1.48 | 1.022 |
-| L5 layer 28 | 35.69| 1.71 | 35.04| 1.53 | 1.018 |
-| L5 layer 31 | 76.86| 3.29 | 74.90| 3.56 | 1.026 |
+| L3 layer 4  | 3.68 | 0.04 | 3.66 | 0.03 | 1.004 |
+| L3 layer 6  | 5.11 | 0.05 | 5.13 | 0.05 | 0.996 |
+| L3 layer 8  | 6.30 | 0.11 | 6.35 | 0.10 | 0.993 |
+| L3 layer 12 | 8.40 | 0.13 | 8.48 | 0.10 | 0.991 |
+| L3 layer 16 | 11.04| 0.32 | 10.83| 0.26 | 1.020 |
+| L3 layer 20 | 16.69| 0.69 | 16.29| 0.59 | 1.025 |
+| L3 layer 24 | 25.19| 1.27 | 24.36| 1.12 | 1.034 |
+| L3 layer 28 | 36.99| 1.32 | 36.14| 1.15 | 1.023 |
+| L3 layer 31 | 77.76| 1.95 | 76.99| 1.83 | 1.010 |
+| L4 layer 4  | 3.66 | 0.04 | 3.64 | 0.03 | 1.006 |
+| L4 layer 6  | 5.04 | 0.07 | 5.05 | 0.06 | 0.998 |
+| L4 layer 8  | 6.46 | 0.14 | 6.49 | 0.13 | 0.994 |
+| L4 layer 12 | 8.36 | 0.13 | 8.37 | 0.12 | 0.998 |
+| L4 layer 16 | 10.86| 0.47 | 10.61| 0.44 | 1.024 |
+| L4 layer 20 | 16.27| 0.96 | 15.84| 0.92 | 1.027 |
+| L4 layer 24 | 24.47| 1.62 | 23.66| 1.54 | 1.034 |
+| L4 layer 28 | 36.47| 1.60 | 35.64| 1.58 | 1.023 |
+| L4 layer 31 | 77.42| 2.16 | 76.26| 2.33 | 1.015 |
+| L5 layer 4  | 3.58 | 0.04 | 3.56 | 0.04 | 1.005 |
+| L5 layer 6  | 5.10 | 0.07 | 5.09 | 0.08 | 1.000 |
+| L5 layer 8  | 6.54 | 0.16 | 6.61 | 0.17 | 0.990 |
+| L5 layer 12 | 8.37 | 0.15 | 8.32 | 0.17 | 1.006 |
+| L5 layer 16 | 10.64| 0.44 | 10.43| 0.42 | 1.020 |
+| L5 layer 20 | 15.71| 0.86 | 15.42| 0.81 | 1.019 |
+| L5 layer 24 | 23.57| 1.48 | 23.15| 1.38 | 1.018 |
+| L5 layer 28 | 35.46| 1.53 | 34.95| 1.46 | 1.015 |
+| L5 layer 31 | 75.81| 3.26 | 74.32| 3.60 | 1.020 |
 
 ### Interpretation
 
@@ -202,20 +203,19 @@ means the two layers are functionally redundant for our purposes.
 
 | Level | Pair | CKA |
 |-------|------|-----|
-| L1 | layers 6 & 8   | 0.9802 |
-| L1 | layers 20 & 24 | 0.9847 |
-| L1 | layers 24 & 28 | 0.9951 |
-| L2 | layers 20 & 24 | 0.9881 |
-| L2 | layers 20 & 28 | 0.9844 |
-| L2 | layers 24 & 28 | 0.9952 |
-| L3 | layers 20 & 24 | 0.9850 |
-| L3 | layers 20 & 28 | 0.9847 |
-| L3 | layers 24 & 28 | 0.9940 |
-| L4 | layers 20 & 24 | 0.9901 |
-| L4 | layers 20 & 28 | 0.9859 |
-| L4 | layers 24 & 28 | 0.9956 |
-| L5 | layers 20 & 24 | 0.9871 |
-| L5 | layers 24 & 28 | 0.9898 |
+| L1 | layers 20 & 24 | 0.9848 |
+| L1 | layers 24 & 28 | 0.9953 |
+| L2 | layers 20 & 24 | 0.9880 |
+| L2 | layers 20 & 28 | 0.9840 |
+| L2 | layers 24 & 28 | 0.9950 |
+| L3 | layers 20 & 24 | 0.9843 |
+| L3 | layers 20 & 28 | 0.9845 |
+| L3 | layers 24 & 28 | 0.9943 |
+| L4 | layers 20 & 24 | 0.9903 |
+| L4 | layers 20 & 28 | 0.9853 |
+| L4 | layers 24 & 28 | 0.9952 |
+| L5 | layers 20 & 24 | 0.9844 |
+| L5 | layers 24 & 28 | 0.9900 |
 
 ### The full CKA matrix (Level 3, representative)
 
@@ -256,9 +256,9 @@ L31   0.56  0.61  0.64  0.70  0.78  0.76  0.74  0.78  1.00
 
 | Pair | L1 | L2 | L3 | L4 | L5 |
 |------|-----|-----|-----|-----|-----|
-| 20-24 | 0.985 | 0.988 | 0.985 | 0.990 | 0.987 |
-| 24-28 | 0.995 | 0.995 | 0.994 | 0.996 | 0.990 |
-| 20-28 | 0.976 | 0.984 | 0.985 | 0.986 | 0.975 |
+| 20-24 | 0.985 | 0.988 | 0.984 | 0.990 | 0.984 |
+| 24-28 | 0.995 | 0.995 | 0.994 | 0.995 | 0.990 |
+| 20-28 | 0.976 | 0.984 | 0.985 | 0.985 | 0.975 |
 
 **Verdict for Phase C:** Skip layer 24. It adds nothing over layers 20 and 28.
 Run Phase C on [4, 8, 12, 16, 20, 28, 31] — 7 layers instead of 9, saving ~22% of
@@ -272,12 +272,13 @@ The embedding pipeline (`phase_a_embeddings.py`) runs in 6 steps:
 
 | Step | Description | Time |
 |------|-------------|------|
-| 1 | Build coloring DataFrames (label + answer data → pandas) | 1s |
-| 2-3 | Compute UMAP/t-SNE embeddings, build CSVs | 89s |
-| 4 | Score all CSVs for interestingness | 325s |
-| 5 | Generate summaries (heatmaps, comparison tables) | 8s |
-| 6 | Generate tiered plots (243 total) | 62s |
-| **Total** | | **485s (8.1 min)** |
+| 1 | Build coloring DataFrames (label + answer data → pandas) | ~30s |
+| 1b | Subsample L5 (122,223 → 6,030, carry-stratified) | ~2s |
+| 2-3 | Compute UMAP/t-SNE embeddings, build CSVs | ~240s |
+| 4 | Score all CSVs for interestingness | ~1065s |
+| 5 | Generate summaries (heatmaps, comparison tables, L5 Δ) | ~7s |
+| 6 | Generate tiered plots (243 total) | ~26s |
+| **Total** | | **~1370s (22.8 min)** |
 
 Step 2-3 uses cuML GPU acceleration (NVIDIA RTX A6000). On CPU this step would
 take 3-6 hours. On GPU it completes in 89 seconds.
@@ -300,28 +301,36 @@ All embeddings use random_state=42 for reproducibility.
 
 For each level, problems are split into populations:
 
-| Level | All | Correct | Wrong | Wrong % | Populations |
-|-------|-----|---------|-------|---------|-------------|
-| L1 | 64 | 64 | 0 | 0% | all, correct |
-| L2 | 4,000 | 3,977 | 23 | 0.6% | all, correct |
-| L3 | 4,000 | 2,638 | 1,362 | 34.1% | all, correct, wrong |
-| L4 | 4,000 | 1,147 | 2,853 | 71.3% | all, correct, wrong |
-| L5 | 4,000 | 239 | 3,761 | 94.0% | all, correct, wrong |
+| Level | Full dataset | Embedding input | Correct | Wrong | Acc % | Populations |
+|-------|-------------|----------------|---------|-------|-------|-------------|
+| L1 | 64 | 64 | 64 | 0 | 100% | all, correct |
+| L2 | 4,000 | 4,000 | 3,993 | 7 | 99.8% | all, correct |
+| L3 | 10,000 | 10,000 | 6,720 | 3,280 | 67.2% | all, correct, wrong |
+| L4 | 10,000 | 10,000 | 2,897 | 7,103 | 29.0% | all, correct, wrong |
+| L5 | 122,223 | 6,030 (subsampled) | 280 | 5,750 | 4.6% | all, correct, wrong |
 
 L1 and L2 have no "wrong" population (fewer than 30 wrong answers). L3-L5 have
 all three populations, making them the focus of the correct-vs-wrong analysis.
+
+**L5 subsampling:** The full L5 dataset (122,223 problems) is too large for UMAP.
+It is subsampled to 6,030 points stratified by `n_nonzero_carries` using natural
+frequencies from the 810,000-problem screening space. Within each carry bin,
+correct answers get a floor of 50 samples (or all available if fewer exist).
+The subsample preserves the natural carry distribution while keeping the correct
+population visible at 4.6% (280 correct out of 6,030 total). Full metadata is
+saved to `l5_subsample_meta.json`.
 
 ### CSV structure
 
 Each CSV combines the embedding coordinates with the full label set:
 
-| Level | Rows per CSV | Columns | Example columns |
-|-------|-------------|---------|-----------------|
-| L1 | 64 | 28 | a, b, correct, a_units, b_units, pp_a0_x_b0, carry_0, product, umap_2d_x, ... |
-| L2 | 4,000 (all) / 3,977 (correct) | 41 | + a_tens, b_tens decomposition |
-| L3 | 4,000 / 2,638 / 1,362 | 48 | + 4 partial products, 3 column sums, 3 carries |
-| L4 | 4,000 / 1,147 / 2,853 | 55 | + 6 partial products, 4 column sums, 4 carries |
-| L5 | 4,000 / 239 / 3,761 | 63 | + 9 partial products, 5 column sums, 5 carries, 6 answer digits |
+| Level | Rows per CSV (all/correct/wrong) | Columns | Example columns |
+|-------|----------------------------------|---------|-----------------|
+| L1 | 64 / 64 / — | 28 | a, b, correct, a_units, b_units, pp_a0_x_b0, carry_0, product, umap_2d_x, ... |
+| L2 | 4,000 / 3,993 / — | 41 | + a_tens, b_tens decomposition |
+| L3 | 10,000 / 6,720 / 3,280 | 48 | + 4 partial products, 3 column sums, 3 carries |
+| L4 | 10,000 / 2,897 / 7,103 | 55 | + 6 partial products, 4 column sums, 4 carries |
+| L5 | 6,030 / 280 / 5,750 | 63 | + 9 partial products, 5 column sums, 5 carries, 6 answer digits |
 
 Total: **117 CSVs** across all combinations, occupying 52 MB.
 
@@ -398,19 +407,27 @@ digit values in the embedding space.
 
 ### Score statistics
 
-| Category | Count | Mean | Std | Max |
-|----------|-------|------|-----|-----|
-| All scores | 10,242 | — | — | — |
-| Valid scores | 9,162 | — | — | — |
-| By method: UMAP 2D | 4,581 | 0.097 | 0.259 | 0.924 |
-| By method: t-SNE 2D | 4,581 | 0.079 | 0.272 | 0.948 |
-| By metric: Silhouette | 4,500 | -0.090 | 0.141 | 0.516 |
-| By metric: Spearman | 2,682 | 0.353 | 0.249 | 0.948 |
-| By metric: Angular | 1,980 | 0.133 | 0.172 | 0.801 |
+| Category | Count | Mean | Max |
+|----------|-------|------|-----|
+| All scores | 10,242 | — | — |
+| Valid scores | 9,162 | — | — |
+| By metric: Silhouette | 4,500 | -0.072 | 0.537 |
+| By metric: Spearman | 2,682 | 0.381 | 0.953 |
+| By metric: Angular | 1,980 | 0.140 | 0.762 |
 
 1,080 scores are NaN (insufficient data — populations with <30 valid values for
 a variable, or constant variables within a population like "correct" in the
 correct-only split).
+
+**New columns in scores CSV:**
+- `metric_note`: set to `"2d_silhouette_unreliable_for_ranking"` for all 5,580
+  silhouette scores. Silhouette on 2D embeddings systematically underscores
+  categorical variables (mean ~ -0.07). Do not deprioritize carries or digits
+  based on low silhouette alone. Phase C numbers take precedence.
+- `sampling_note`: set to `"carry_stratified_dataset"` for all 3,312 L5 scores.
+  The L5 dataset is carry-stratified, so carry variables may appear artificially
+  salient. This is a flag, not a correction — reweighting would require knowing
+  the true joint distribution of all concept labels under natural sampling.
 
 **Key observation:** Spearman scores dominate the top of the rankings because
 continuous variables (product, partial products, column sums) create smooth gradients
@@ -427,45 +444,40 @@ The top 50 UMAP interestingness findings, ranked by Spearman |r| on UMAP 2D axes
 
 | Rank | Level | Layer | Pop | Variable | Score |
 |------|-------|-------|-----|----------|-------|
-| 1 | L3 | 16 | wrong | product | 0.924 |
-| 2 | L3 | 16 | wrong | pp_a1_x_b1 | 0.914 |
-| 3 | L3 | 16 | wrong | col_sum_2 | 0.914 |
-| 4 | L3 | 6 | all | product | 0.912 |
-| 5 | L3 | 16 | all | product | 0.910 |
-| 6 | L3 | 6 | all | pp_a1_x_b1 | 0.896 |
-| 7 | L3 | 6 | all | col_sum_2 | 0.896 |
-| 8 | L3 | 16 | all | pp_a1_x_b1 | 0.896 |
-| 9 | L3 | 16 | all | col_sum_2 | 0.896 |
-| 10 | L1 | 24 | all | product | 0.894 |
-| 11 | L3 | 16 | correct | product | 0.884 |
-| 12 | L3 | 6 | correct | product | 0.879 |
-| 13 | L3 | 12 | wrong | product | 0.875 |
-| 14 | L1 | 12 | all | product | 0.869 |
-| 15 | L3 | 6 | correct | pp_a1_x_b1 | 0.869 |
+| 1 | L5 | 6 | wrong | pp_a2_x_b2 | 0.927 |
+| 2 | L5 | 6 | wrong | col_sum_4 | 0.927 |
+| 3 | L1 | 8 | all | pp_a0_x_b0 | 0.924 |
+| 4 | L1 | 8 | all | col_sum_0 | 0.924 |
+| 5 | L1 | 8 | all | product | 0.924 |
+| 6 | L5 | 6 | wrong | product | 0.920 |
+| 7 | L5 | 12 | wrong | pp_a2_x_b2 | 0.905 |
+| 8 | L5 | 12 | wrong | col_sum_4 | 0.905 |
+| 9 | L5 | 12 | wrong | product | 0.901 |
+| 10 | L4 | 12 | wrong | product | 0.885 |
+| 11 | L4 | 12 | wrong | pp_a2_x_b1 | 0.882 |
+| 12 | L4 | 12 | wrong | col_sum_3 | 0.882 |
+| 13 | L3 | 16 | wrong | product | 0.878 |
+| 14 | L4 | 16 | wrong | product | 0.875 |
+| 15 | L3 | 16 | wrong | pp_a1_x_b1 | 0.870 |
 
-**Patterns in the top 50:**
+**Patterns in the top 50 (shifted significantly from old dataset):**
 
-1. **Product dominates.** The product value (ground truth) is the single most
-   visible variable in UMAP space. This makes sense: the product is the highest-variance
-   scalar derived from the inputs, and UMAP preserves variance.
+1. **L5 wrong population dominates.** 6 of the top 9 entries are L5 wrong (was L3
+   before). With 5,750 wrong samples (vs 3,761 before), the L5 wrong population
+   is now large enough for UMAP to resolve clean structure. The dominant partial
+   product `pp_a2_x_b2` (hundreds × hundreds) scores 0.927 — higher than any
+   previous top finding.
 
-2. **L3 dominates.** 28 of the top 50 entries are Level 3. This is the "sweet spot"
-   level: 2-digit x 2-digit multiplication with a 34% error rate. Enough correct
-   answers for clean structure, enough wrong answers for comparison.
+2. **Product is no longer the sole #1.** `pp_a2_x_b2` and `col_sum_4` tie for #1
+   at L5, with product close behind. The dominant partial product is more informative
+   than the product itself in the wrong population — the model's wrong answers are
+   organized by this single cross-term.
 
-3. **Partial products and column sums are redundant.** `pp_a1_x_b1` and `col_sum_2`
-   have identical scores because at L3 (2x2), column sum 2 IS just the partial product
-   `a1*b1`. The deduplication comment in the code is not algebraic — both variables
-   appear when they rank highly.
+3. **Wrong population consistently outscores correct.** This pattern persists from
+   the old dataset but is more extreme with larger samples.
 
-4. **Layer 16 is the most informative.** More top-50 entries appear at layer 16 than
-   any other layer. This is the mid-network layer where the model has processed the
-   input but hasn't yet committed to an output.
-
-5. **Wrong population scores higher than correct for product.** At L3 layer 16:
-   product scores 0.924 in wrong vs 0.884 in correct. The wrong population has a
-   product gradient that UMAP captures more cleanly, possibly because wrong answers
-   cluster by magnitude.
+4. **Layers 6 and 12 appear prominently** for L5 wrong, suggesting early layers
+   already encode the dominant partial product structure that predicts failure.
 
 ---
 
@@ -481,60 +493,64 @@ Total pairs: **792** (only L3-L5 have both populations).
 
 | Level | Pairs | Max |Δ| | Mean |Δ| |
 |-------|-------|---------|----------|
-| L3 | 207 | 0.235 | 0.060 |
-| L4 | 261 | 0.416 | 0.077 |
-| L5 | 324 | 0.695 | 0.178 |
+| L3 | 207 | 0.409 | 0.081 |
+| L4 | 261 | 0.513 | 0.075 |
+| L5 | 324 | 0.915 | 0.237 |
 
-**The gap widens with difficulty.** L3 has modest differences. L5 has dramatic
-differences — the hardest problems show completely different geometric structure
-in correct vs wrong populations.
+**The gap widens dramatically with difficulty.** L3 has moderate differences (max 0.41,
+up from 0.24 with more data). L5 has extreme differences — the top |Δ| is 0.915,
+meaning a variable that scores 0.58 in the wrong population scores -0.34 in the
+correct population (carry_2 at layer 6). This is a qualitatively different regime
+from what the old 239-correct-sample L5 could show.
 
 ### Top concepts STRONGER in wrong population (negative Δ)
 
 | Level | Layer | Variable | Correct | Wrong | Δ |
 |-------|-------|----------|---------|-------|---|
-| L5 | 8 | pp_a2_x_b2 | 0.109 | 0.804 | -0.695 |
-| L5 | 8 | col_sum_4 | 0.109 | 0.804 | -0.695 |
-| L5 | 8 | product | 0.122 | 0.797 | -0.676 |
-| L5 | 24 | carry_2 | -0.391 | 0.276 | -0.666 |
-| L5 | 8 | carry_2 | -0.285 | 0.367 | -0.652 |
-| L5 | 28 | carry_2 | -0.362 | 0.289 | -0.651 |
-| L5 | 8 | max_carry_value | -0.241 | 0.405 | -0.646 |
+| L5 | 6 | carry_2 | -0.340 | 0.575 | -0.915 |
+| L5 | 12 | carry_2 | -0.274 | 0.553 | -0.828 |
+| L5 | 8 | carry_2 | -0.321 | 0.497 | -0.818 |
+| L5 | 31 | carry_2 | -0.251 | 0.503 | -0.754 |
+| L5 | 20 | carry_2 | -0.302 | 0.433 | -0.734 |
+| L5 | 6 | max_carry_value | -0.255 | 0.471 | -0.727 |
+| L5 | 28 | carry_2 | -0.274 | 0.442 | -0.716 |
 
-**Interpretation:** At L5 layer 8, the dominant partial product `pp_a2_x_b2`
-(the hundreds-digit cross product, the largest single partial product in 3x3
-multiplication) creates strong UMAP structure in the wrong population (r=0.80)
-but barely any in the correct population (r=0.11). This means the model's
-early-layer encoding of the dominant partial product is very different when the
-model gets the answer wrong — it over-represents this one product at the expense
-of the others.
+**Interpretation:** `carry_2` (the carry at the hundreds position) is the most
+divergent variable in the entire dataset, with Δ = -0.915 at layer 6. It
+structures the wrong population strongly (silhouette 0.58) while being
+*anti-structured* in the correct population (silhouette -0.34). This negative
+silhouette in the correct population means correct answers are *anti-clustered*
+by carry_2 — the model spreads correct answers across carry values rather than
+grouping by them.
 
-The carry variables (`carry_2`, `max_carry_value`) show the same pattern: they
-structure the wrong population but not the correct one. This supports the
-carry-chain-bottleneck hypothesis from the data generation analysis.
+The carry variables appear at the top across *every* layer (4 through 31),
+not just the mid/late layers as in the old analysis. This is a much stronger
+signal than before: carry difficulty is the dominant axis of geometric
+organization for the model's failed computations, and it starts at the earliest
+layers.
 
 ### Top concepts STRONGER in correct population (positive Δ)
 
 | Level | Layer | Variable | Correct | Wrong | Δ |
 |-------|-------|----------|---------|-------|---|
-| L5 | 8 | col_sum_1 | 0.499 | 0.040 | +0.459 |
-| L5 | 16 | pp_a0_x_b0 | 0.480 | 0.045 | +0.435 |
-| L5 | 16 | col_sum_0 | 0.480 | 0.045 | +0.435 |
-| L5 | 8 | pp_a0_x_b0 | 0.464 | 0.039 | +0.425 |
-| L5 | 20 | pp_a0_x_b0 | 0.495 | 0.077 | +0.418 |
+| L5 | 16 | pp_a0_x_b0 | 0.668 | 0.026 | +0.641 |
+| L5 | 16 | col_sum_0 | 0.668 | 0.026 | +0.641 |
+| L5 | 24 | pp_a0_x_b0 | 0.639 | 0.043 | +0.596 |
+| L5 | 24 | col_sum_0 | 0.639 | 0.043 | +0.596 |
+| L5 | 28 | pp_a0_x_b0 | 0.654 | 0.069 | +0.585 |
 
-**Interpretation:** The units-digit products (`pp_a0_x_b0`, `col_sum_0`,
-`col_sum_1`) create strong UMAP structure in the correct population but not
-the wrong population. When the model gets the answer right, the low-order
-partial products are well-organized in the embedding space. When it gets the
-answer wrong, this structure collapses.
+**Interpretation:** The units-digit products (`pp_a0_x_b0`, `col_sum_0`)
+create very strong UMAP structure in the correct population (Spearman 0.67)
+but nearly zero in the wrong population (0.03). This is a much stronger
+signal than the old dataset showed (was +0.46 max). When the model gets the
+answer right, the units-digit partial product is the dominant organizing axis
+in the mid/late layers. When it gets the answer wrong, this structure is absent.
 
-**The asymmetry tells a story:** Wrong answers are organized by the dominant
-product and carry values (the "big picture" of the multiplication). Correct
-answers are organized by the precise units-digit computations (the "details").
-This aligns with the data generation finding that the model gets the units digit
-right 49-73% of the time even when the overall answer is wrong — it has the
-low-order structure but loses the high-order carry propagation.
+**The asymmetry story is stronger and cleaner with the new data:** Wrong answers
+are organized by carry difficulty (Δ up to -0.92). Correct answers are organized
+by precise units-digit computation (Δ up to +0.64). The two populations inhabit
+geometrically different manifolds — and the divergence starts at layer 6, not
+layer 16 as previously thought.
 
 ---
 
@@ -550,22 +566,23 @@ correlation would catch it.
 
 | Level | Layer | Population | Variable | Angular Score |
 |-------|-------|------------|----------|---------------|
-| L3 | 4 | wrong | b_tens | 0.801 |
-| L4 | 8 | correct | b_tens | 0.790 |
-| L2 | 28 | all | a_tens | 0.774 |
-| L4 | 6 | correct | b_tens | 0.754 |
-| L2 | 20 | correct | b_units | 0.753 |
-| L2 | 16 | correct | b_units | 0.748 |
-| L3 | 31 | wrong | a_tens | 0.744 |
-| L3 | 28 | wrong | a_tens | 0.714 |
-| L1 | 6 | all | a_units | 0.712 |
+| L5 | 4 | all | b_hundreds | 0.762 |
+| L3 | 8 | all | b_tens | 0.748 |
+| L5 | 24 | all | a_hundreds | 0.737 |
+| L2 | 24 | all | a_tens | 0.712 |
+| L4 | 16 | all | a_hundreds | 0.712 |
+| L4 | 28 | all | a_hundreds | 0.710 |
+| L5 | 12 | all | a_hundreds | 0.710 |
+| L3 | 28 | correct | a_tens | 0.708 |
+| L5 | 4 | wrong | b_hundreds | 0.702 |
 
-**Key finding:** Input digits (a_units, a_tens, b_units, b_tens) have strong
-angular correlations (0.7-0.8), suggesting the model encodes them in a roughly
-circular arrangement in activation space. This is consistent with known findings
-about modular arithmetic representations in neural networks. The `b_tens` digit
-shows the strongest angular encoding, appearing at the top of the list across
-multiple levels.
+**Key finding:** Input digits have angular correlations of 0.70-0.76, suggesting
+the model encodes them in a roughly circular arrangement in activation space.
+With the new dataset, `b_hundreds` at L5 shows the strongest angular encoding
+(0.76), followed by `b_tens` at L3 (0.75). The hundreds-digit encoding at L4-L5
+is new — previously invisible with smaller datasets. The `a_hundreds` variable
+appears consistently at 0.71 across L4-L5, confirming circular encoding extends
+to the 3-digit levels.
 
 ---
 
@@ -684,33 +701,35 @@ keep file sizes reasonable.
 4. **Layer 16 is the information peak.** More top-50 entries at layer 16 than
    any other layer. This is the natural starting point for Phase C probes.
 
-5. **L3 is the sweet spot for correct/wrong comparison.** It has the best balance
-   of correct (2,638) and wrong (1,362) answers. L5 has dramatic effects but only
-   239 correct answers, making statistical comparison fragile.
+5. **L5 is now viable for correct/wrong comparison.** With 4,197 correct answers
+   in the full dataset (280 in the UMAP subsample), L5 shows the most dramatic
+   divergences (Δ up to 0.92). L3 remains the best-balanced level (6,720 correct
+   vs 3,280 wrong) for robust statistics.
 
 ### For Phase D (Correct/Wrong Geometry)
 
 1. **Carry variables structure wrong but not correct.** carry_2 and max_carry_value
-   show strong negative Δ at L5 (up to -0.695). The model's wrong answers are
-   organized by carry difficulty, while correct answers are organized by precise
-   digit computations.
+   show strong negative Δ at L5 (up to -0.915). The model's wrong answers are
+   organized by carry difficulty across all layers (4 through 31), while correct
+   answers are *anti-clustered* by carry values.
 
-2. **Low-order products structure correct but not wrong.** pp_a0_x_b0 and col_sum_0/1
-   show strong positive Δ (up to +0.459). The correct population preserves the
-   units-digit computation structure that the wrong population loses.
+2. **Low-order products structure correct but not wrong.** pp_a0_x_b0 and col_sum_0
+   show strong positive Δ (up to +0.641). The correct population preserves the
+   units-digit computation structure that the wrong population completely loses.
 
-3. **The asymmetry grows with difficulty.** Mean |Δ| goes from 0.060 (L3) to
-   0.178 (L5). At L3 the populations are similar; at L5 they are geometrically
-   very different.
+3. **The asymmetry grows dramatically with difficulty.** Mean |Δ| goes from 0.081
+   (L3) to 0.237 (L5). At L3 the populations overlap significantly; at L5 they are
+   geometrically very different. The divergence starts at layer 6, not layer 16.
 
 ### For the Fourier screening step
 
-1. **Angular correlation for digits is 0.70-0.80.** This suggests circular encoding
+1. **Angular correlation for digits is 0.70-0.76.** This suggests circular encoding
    is present but the embedding preserves it only partially. The full 4096D Fourier
    screening may find much stronger signals.
 
-2. **b_tens is the most angularly correlated digit.** Start Fourier screening with
-   the tens digits of the second operand.
+2. **b_hundreds is the most angularly correlated digit** (0.76 at L5 layer 4).
+   `a_hundreds` is consistently 0.71 across L4-L5. Start Fourier screening with
+   the hundreds digits of both operands.
 
 ---
 
@@ -742,28 +761,28 @@ full 4096-dimensional space with proper statistical frameworks.
 ├── analysis/                          # Pre-flight diagnostics
 │   ├── norm_profile.json              # 33 KB — all norm statistics
 │   └── cka_matrices.json              # 33 KB — 5 CKA matrices
+├── l5_subsample_meta.json             # L5 subsampling metadata
 ├── coloring_dfs/                      # Cached label DataFrames
 │   ├── L1_coloring.pkl                # 64 rows
 │   ├── L2_coloring.pkl                # 4,000 rows
-│   ├── L3_coloring.pkl                # 4,000 rows
-│   ├── L4_coloring.pkl                # 4,000 rows
-│   └── L5_coloring.pkl                # 4,000 rows
+│   ├── L3_coloring.pkl                # 10,000 rows
+│   ├── L4_coloring.pkl                # 10,000 rows
+│   └── L5_coloring.pkl                # 122,223 rows (full; subsample applied at embedding time)
 ├── csvs/                              # 52 MB — 117 CSVs
 │   ├── L1_layer04_all.csv             # 64 rows, 28 cols
 │   ├── L1_layer04_correct.csv
 │   ├── ...
-│   └── L5_layer31_wrong.csv           # 3,761 rows, 63 cols
+│   └── L5_layer31_wrong.csv           # 5,750 rows, 63 cols
 ├── embeddings/                        # 14 MB — 351 .npy files
 │   ├── L1/layer_04/all_umap_2d.npy
 │   ├── ...
 │   └── L5/layer_31/wrong_tsne_2d.npy
 └── scores/                            # Interestingness scores
-    ├── interestingness_scores.csv     # 10,242 rows
+    ├── interestingness_scores.csv     # 10,242 rows (with metric_note, sampling_note cols)
     ├── top_50_findings.md
     ├── correct_wrong_comparison.md
-    └── correct_wrong_comparison.csv   # 792 rows
-
-Total: 68 MB
+    ├── correct_wrong_comparison.csv   # 792 rows
+    └── l5_delta_interestingness.md    # Dedicated L5 correct/wrong Δ analysis
 ```
 
 ### Plot outputs (on workspace)
@@ -786,7 +805,9 @@ Total: 68 MB
 ├── tsne_validation/                   # 30 t-SNE comparison plots
 └── umap_3d/                           # 15 interactive 3D HTML files
 
-Total: 251 PNG files + 15 HTML files, 53 MB
+├── L5_delta_interestingness.png        # First-class L5 Δ heatmap (200 DPI)
+
+Total: 252 PNG files + 15 HTML files
 ```
 
 ### Log outputs
@@ -806,9 +827,9 @@ Total: 251 PNG files + 15 HTML files, 53 MB
 
 | Property | Value |
 |----------|-------|
-| Date | March 17, 2026 |
-| SLURM job ID | 6618712 |
-| Node | babel-n5-20 |
+| Date | March 19, 2026 |
+| SLURM job ID | 6654499 |
+| Node | babel-w9-28 |
 | GPU | NVIDIA RTX A6000, 49,140 MiB VRAM |
 | CPU cores | 8 |
 | RAM | 64 GB |
@@ -821,29 +842,32 @@ Total: 251 PNG files + 15 HTML files, 53 MB
 ### Timing breakdown
 
 ```
-Start time: 13:59:15
-Pre-flight checks:                    13:59:15 — 13:59:26  (11 seconds)
+Start time: 14:54:15
+Pre-flight checks:                    14:54:15 — 14:54:35  (20 seconds)
   - cuML import check: 0s (pre-installed)
   - Package checks: 2s
   - Input data verification: 1s
 
-Phase A analysis (pre-flight):       13:59:26 — 13:59:39  (13 seconds)
-  - Norm profile: 3 seconds
-  - CKA matrices: 10 seconds
+Phase A analysis (pre-flight):       loaded from cache  (0 seconds, run separately)
+  - Norm profile: 63 seconds (when run fresh with 122K L5)
+  - CKA matrices: 16 seconds
 
-Phase A embeddings:                  13:59:41 — 14:10:15  (485 seconds)
-  - Build coloring DataFrames:        1 second
-  - Compute 351 embeddings (GPU):     89 seconds
-  - Score 117 CSVs:                   325 seconds
-  - Generate summaries:               8 seconds
-  - Generate 243 plots:               62 seconds
+Phase A embeddings:                  14:54:35 — 15:17:26  (1370 seconds)
+  - Build coloring DataFrames:        ~30 seconds (122K L5)
+  - L5 subsampling:                   ~2 seconds
+  - Compute 351 embeddings (GPU):     ~240 seconds
+  - Score 117 CSVs:                   ~1065 seconds
+  - Generate summaries + L5 Δ:        ~7 seconds
+  - Generate 243 plots:               ~26 seconds
 
-Total wall time: 508 seconds (8 minutes 28 seconds)
+Total wall time: 1392 seconds (23 minutes)
 ```
 
-Interestingness scoring (325 seconds) dominates the runtime. It involves computing
-silhouette scores on 4000-point embeddings, which requires O(n^2) pairwise distances.
-This step runs on CPU (sklearn silhouette_score does not have a GPU implementation).
+Interestingness scoring (~1065 seconds) dominates the runtime. It involves computing
+silhouette scores on 10,000-point embeddings (L3/L4), which requires O(n^2)
+pairwise distances. With the 2.5x increase in L3/L4 dataset size (4,000 → 10,000),
+scoring time increased ~3x due to the quadratic cost. This step runs on CPU
+(sklearn silhouette_score does not have a GPU implementation).
 
 ### Reproducibility
 
@@ -864,11 +888,11 @@ index, memory.used [MiB], memory.total [MiB]
 ```
 
 GPU memory was fully released. Peak usage during cuML UMAP was approximately
-2-3 GB (estimated from cuML's internal allocations for 4000 x 4096 float32 data).
+2-4 GB (estimated from cuML's internal allocations for 10,000 x 4096 float32 data).
 
 ---
 
 *End of document. All numbers verified against norm_profile.json, cka_matrices.json,
-interestingness_scores.csv, correct_wrong_comparison.csv, top_50_findings.md,
-phase_a_embeddings.log, phase_a_analysis.log, and slurm-6618712.out/err as of
-March 17, 2026.*
+interestingness_scores.csv, correct_wrong_comparison.csv, l5_delta_interestingness.md,
+top_50_findings.md, l5_subsample_meta.json, phase_a_embeddings.log,
+phase_a_analysis.log, and slurm-6654499.out/err as of March 19, 2026.*

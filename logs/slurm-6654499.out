@@ -1,0 +1,79 @@
+============================================================
+Phase A — Embeddings + Pre-flight Diagnostics
+============================================================
+Job ID: 6654499
+Node: babel-w9-28
+Start time: Thu Mar 19 14:54:15 EDT 2026
+============================================================
+Activating conda environment...
+
+Running pre-flight checks...
+  Checking GPU...
+index, name, memory.total [MiB]
+0, NVIDIA RTX A6000, 49140 MiB
+  Checking cuML...
+  cuML available
+  Checking Python packages...
+  All packages available
+  Checking config...
+  Checking input data...
+  Activations: 45 .npy files
+  Answers: 6 .json files
+  Creating output directories...
+  Output directories ready
+
+Pre-flight checks passed!
+
+============================================================
+Step 1: phase_a_analysis.py
+  Activation norm profile + cross-layer CKA matrices
+  Expected runtime: ~2 minutes
+============================================================
+
+
+Step 1 done (20 seconds elapsed)
+
+============================================================
+Step 2: phase_a_embeddings.py
+  UMAP/t-SNE embeddings, interestingness scoring, plots
+  Expected runtime: ~15-30 min (GPU) / ~3-6 hrs (CPU)
+============================================================
+
+
+============================================================
+Post-Run Validation
+============================================================
+--- Data outputs ---
+  CSVs: 117 (expected ~117)
+  Embedding .npy files: 351
+
+--- Analysis outputs ---
+  norm_profile.json: OK (33K)
+  cka_matrices.json: OK (33K)
+
+--- Scores ---
+  interestingness_scores.csv: 10243 rows
+  top_50_findings.md: OK
+  correct_wrong_comparison.md: OK
+  correct_wrong_comparison.csv: OK
+  l5_delta_interestingness.md: OK
+  l5_subsample_meta.json: OK (33K)
+
+--- Plots ---
+  Heatmaps: 16
+  Analysis plots: 7
+  Scatter plots: 229
+
+============================================================
+Job Complete
+============================================================
+End time: Thu Mar 19 15:17:27 EDT 2026
+Analysis exit code: 0
+Embeddings exit code: 0
+Total runtime: 1392 seconds (23 minutes)
+
+Final GPU memory state:
+index, memory.used [MiB], memory.total [MiB]
+0, 1 MiB, 49140 MiB
+
+All stages completed successfully

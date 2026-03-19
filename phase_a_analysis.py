@@ -226,28 +226,39 @@ def linear_cka(X, Y):
 
 
 def analysis_cka_matrices(paths, logger):
-    """9×9 linear CKA between all layer pairs, per level."""
+    """9×9 linear CKA between all layer pairs, per level.
+
+    For large datasets (L5 = 122K), we determine the subsample indices first
+    and load only the subsampled rows via np.load with mmap_mode, avoiding
+    loading all 9 full activation files (~40 GB for L5) into RAM.
+    """
     logger.info("Analysis 2: Cross-Layer CKA Matrices...")
     results = {}
     rng = np.random.RandomState(42)
 
     for level in tqdm(LEVELS, desc="CKA"):
-        layer_data = {}
-        n_full = None
-        for layer in LAYERS:
-            X = load_activations(level, layer, paths["act_dir"])
-            if n_full is None:
-                n_full = X.shape[0]
-            layer_data[layer] = X
+        # Determine n_full from the first layer file shape (via mmap, no RAM)
+        first_path = paths["act_dir"] / f"level{level}_layer{LAYERS[0]}.npy"
+        n_full = np.load(first_path, mmap_mode="r").shape[0]
 
         n_sub = min(CKA_SUBSAMPLE, n_full)
         idx = rng.choice(n_full, n_sub, replace=False) if n_sub < n_full else np.arange(n_full)
+        idx_sorted = np.sort(idx)  # sorted for sequential disk access
+
+        # Load only subsampled rows per layer
+        layer_data = {}
+        for layer in LAYERS:
+            X_mmap = np.load(paths["act_dir"] / f"level{level}_layer{layer}.npy", mmap_mode="r")
+            layer_data[layer] = np.array(X_mmap[idx_sorted], dtype=np.float64)
+
+        logger.debug(f"  L{level}: loaded {n_sub} subsampled rows from {len(LAYERS)} layers "
+                     f"(full dataset: {n_full})")
 
         cka_matrix = np.zeros((len(LAYERS), len(LAYERS)))
         for i, l1 in enumerate(LAYERS):
             for j, l2 in enumerate(LAYERS):
                 if i <= j:
-                    cka_val = linear_cka(layer_data[l1][idx], layer_data[l2][idx])
+                    cka_val = linear_cka(layer_data[l1], layer_data[l2])
                     cka_matrix[i, j] = cka_val
                     cka_matrix[j, i] = cka_val
 

@@ -44,7 +44,7 @@ echo "============================================================"
 cd /home/anshulk/arithmetic-geometry || { echo "Failed to cd to workspace"; exit 1; }
 
 echo "Activating conda environment..."
-eval "$(conda shell.bash hook)"
+source /home/anshulk/miniconda3/etc/profile.d/conda.sh
 conda activate geometry || { echo "Failed to activate geometry environment"; exit 1; }
 
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
@@ -201,7 +201,7 @@ if [ -f "$SCORES" ]; then
 else
     echo "  interestingness_scores.csv: MISSING"
 fi
-for f in top_50_findings.md correct_wrong_comparison.md correct_wrong_comparison.csv; do
+for f in top_50_findings.md correct_wrong_comparison.md correct_wrong_comparison.csv l5_delta_interestingness.md; do
     path="$PHASE_A_DATA/scores/$f"
     if [ -f "$path" ]; then
         echo "  $f: OK"
@@ -209,6 +209,14 @@ for f in top_50_findings.md correct_wrong_comparison.md correct_wrong_comparison
         echo "  $f: MISSING"
     fi
 done
+
+# L5 subsample metadata
+L5_META="$PHASE_A_DATA/l5_subsample_meta.json"
+if [ -f "$L5_META" ]; then
+    echo "  l5_subsample_meta.json: OK ($(du -h "$L5_META" | cut -f1))"
+else
+    echo "  l5_subsample_meta.json: MISSING"
+fi
 
 echo ""
 echo "--- Plots ---"

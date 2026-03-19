@@ -1,0 +1,193 @@
+14:54:33 INFO     ======================================================================
+14:54:33 INFO     Phase A — Pre-flight Diagnostics starting
+14:54:33 INFO     ======================================================================
+14:54:33 INFO     Norm profile: loading cached results...
+14:54:33 INFO       Plotted norm_profile_all.png and norm_profile_correct_wrong.png
+14:54:33 INFO       L3_layer16: correct norm 11.0 vs wrong 10.8, ratio 1.020
+14:54:33 INFO       L3_layer24: correct norm 25.2 vs wrong 24.4, ratio 1.034
+14:54:33 INFO       L3_layer31: correct norm 77.8 vs wrong 77.0, ratio 1.010
+14:54:33 INFO       L4_layer16: correct norm 10.9 vs wrong 10.6, ratio 1.024
+14:54:33 INFO       L4_layer24: correct norm 24.5 vs wrong 23.7, ratio 1.034
+14:54:33 INFO       L4_layer31: correct norm 77.4 vs wrong 76.3, ratio 1.015
+14:54:33 INFO       L5_layer16: correct norm 10.6 vs wrong 10.4, ratio 1.020
+14:54:33 INFO       L5_layer24: correct norm 23.6 vs wrong 23.2, ratio 1.018
+14:54:33 INFO       L5_layer31: correct norm 75.8 vs wrong 74.3, ratio 1.020
+14:54:33 INFO     CKA matrices: loading cached results...
+14:54:35 INFO       Plotted CKA matrices
+14:54:35 INFO       L1: 2 redundant layer pairs (CKA > 0.98)
+14:54:35 INFO         layers 20 & 24: CKA = 0.9848
+14:54:35 INFO         layers 24 & 28: CKA = 0.9953
+14:54:35 INFO       L2: 3 redundant layer pairs (CKA > 0.98)
+14:54:35 INFO         layers 20 & 24: CKA = 0.988
+14:54:35 INFO         layers 20 & 28: CKA = 0.984
+14:54:35 INFO         layers 24 & 28: CKA = 0.995
+14:54:35 INFO       L3: 3 redundant layer pairs (CKA > 0.98)
+14:54:35 INFO         layers 20 & 24: CKA = 0.9843
+14:54:35 INFO         layers 20 & 28: CKA = 0.9845
+14:54:35 INFO         layers 24 & 28: CKA = 0.9943
+14:54:35 INFO       L4: 3 redundant layer pairs (CKA > 0.98)
+14:54:35 INFO         layers 20 & 24: CKA = 0.9903
+14:54:35 INFO         layers 20 & 28: CKA = 0.9853
+14:54:35 INFO         layers 24 & 28: CKA = 0.9952
+14:54:35 INFO       L5: 2 redundant layer pairs (CKA > 0.98)
+14:54:35 INFO         layers 20 & 24: CKA = 0.9844
+14:54:35 INFO         layers 24 & 28: CKA = 0.99
+14:54:35 INFO     Phase A diagnostics complete in 1.8s
+14:54:36 INFO     ======================================================================
+14:54:36 INFO     Phase A — Embeddings pipeline starting
+14:54:36 INFO       Embedding backend: cuML GPU
+14:54:36 INFO     ======================================================================
+14:54:36 INFO     Step 1: Building coloring DataFrames...
+14:54:36 INFO       L1: built and cached (64 rows, 20 cols)
+14:54:36 INFO       L2: built and cached (4000 rows, 33 cols)
+14:54:37 INFO       L3: built and cached (10000 rows, 40 cols)
+14:54:37 INFO       L4: built and cached (10000 rows, 47 cols)
+14:54:43 INFO       L5: built and cached (122223 rows, 55 cols)
+14:54:43 INFO     Step 1 done: 146287 total problems
+14:54:43 INFO     Step 1b: Subsampling L5 (carry-stratified, natural frequencies)...
+14:54:43 INFO       L5 subsampled: 6030 points (280 correct = 4.6%)
+14:54:43 INFO         nzc=0: 69 points (50c/19w, natural freq 0.006)
+14:54:43 INFO         nzc=1: 59 points (30c/29w, natural freq 0.010)
+14:54:43 INFO         nzc=2: 208 points (50c/158w, natural freq 0.035)
+14:54:43 INFO         nzc=3: 818 points (50c/768w, natural freq 0.136)
+14:54:43 INFO         nzc=4: 2079 points (50c/2029w, natural freq 0.347)
+14:54:43 INFO         nzc=5: 2797 points (50c/2747w, natural freq 0.466)
+14:54:43 INFO       Subsample metadata saved to /data/user_data/anshulk/arithmetic-geometry/phase_a/l5_subsample_meta.json
+14:54:43 INFO     Steps 2-3: Computing embeddings and building CSVs...
+14:54:46 INFO       L1 layer 04 all: 64 points, 2.4s
+14:54:46 INFO       L1 layer 04 correct: 64 points, 0.1s
+14:54:46 INFO       L1 layer 06 all: 64 points, 0.1s
+14:54:46 INFO       L1 layer 06 correct: 64 points, 0.1s
+14:54:46 INFO       L1 layer 08 all: 64 points, 0.3s
+14:54:46 INFO       L1 layer 08 correct: 64 points, 0.1s
+14:54:47 INFO       L1 layer 12 all: 64 points, 0.1s
+14:54:47 INFO       L1 layer 12 correct: 64 points, 0.1s
+14:54:47 INFO       L1 layer 16 all: 64 points, 0.1s
+14:54:47 INFO       L1 layer 16 correct: 64 points, 0.1s
+14:54:47 INFO       L1 layer 20 all: 64 points, 0.1s
+14:54:47 INFO       L1 layer 20 correct: 64 points, 0.3s
+14:54:47 INFO       L1 layer 24 all: 64 points, 0.1s
+14:54:47 INFO       L1 layer 24 correct: 64 points, 0.1s
+14:54:48 INFO       L1 layer 28 all: 64 points, 0.3s
+14:54:48 INFO       L1 layer 28 correct: 64 points, 0.1s
+14:54:48 INFO       L1 layer 31 all: 64 points, 0.4s
+14:54:49 INFO       L1 layer 31 correct: 64 points, 0.2s
+14:54:53 INFO       L2 layer 04 all: 4000 points, 4.1s
+14:54:56 INFO       L2 layer 04 correct: 3993 points, 2.8s
+14:54:58 INFO       L2 layer 06 all: 4000 points, 2.5s
+14:55:00 INFO       L2 layer 06 correct: 3993 points, 2.2s
+14:55:03 INFO       L2 layer 08 all: 4000 points, 2.1s
+14:55:06 INFO       L2 layer 08 correct: 3993 points, 3.2s
+14:55:10 INFO       L2 layer 12 all: 4000 points, 4.2s
+14:55:13 INFO       L2 layer 12 correct: 3993 points, 2.8s
+14:55:15 INFO       L2 layer 16 all: 4000 points, 1.6s
+14:55:16 INFO       L2 layer 16 correct: 3993 points, 1.2s
+14:55:18 INFO       L2 layer 20 all: 4000 points, 1.6s
+14:55:19 INFO       L2 layer 20 correct: 3993 points, 1.5s
+14:55:22 INFO       L2 layer 24 all: 4000 points, 2.1s
+14:55:24 INFO       L2 layer 24 correct: 3993 points, 1.8s
+14:55:26 INFO       L2 layer 28 all: 4000 points, 2.3s
+14:55:28 INFO       L2 layer 28 correct: 3993 points, 1.5s
+14:55:30 INFO       L2 layer 31 all: 4000 points, 1.5s
+14:55:31 INFO       L2 layer 31 correct: 3993 points, 1.3s
+14:55:35 INFO       L3 layer 04 all: 10000 points, 3.7s
+14:55:38 INFO       L3 layer 04 correct: 6720 points, 3.0s
+14:55:40 INFO       L3 layer 04 wrong: 3280 points, 1.7s
+14:55:43 INFO       L3 layer 06 all: 10000 points, 2.6s
+14:55:45 INFO       L3 layer 06 correct: 6720 points, 2.1s
+14:55:46 INFO       L3 layer 06 wrong: 3280 points, 0.6s
+14:55:49 INFO       L3 layer 08 all: 10000 points, 3.4s
+14:55:52 INFO       L3 layer 08 correct: 6720 points, 2.7s
+14:55:53 INFO       L3 layer 08 wrong: 3280 points, 1.5s
+14:55:58 INFO       L3 layer 12 all: 10000 points, 3.9s
+14:56:00 INFO       L3 layer 12 correct: 6720 points, 2.0s
+14:56:01 INFO       L3 layer 12 wrong: 3280 points, 1.1s
+14:56:04 INFO       L3 layer 16 all: 10000 points, 2.5s
+14:56:06 INFO       L3 layer 16 correct: 6720 points, 2.3s
+14:56:07 INFO       L3 layer 16 wrong: 3280 points, 1.5s
+14:56:12 INFO       L3 layer 20 all: 10000 points, 3.7s
+14:56:13 INFO       L3 layer 20 correct: 6720 points, 1.6s
+14:56:14 INFO       L3 layer 20 wrong: 3280 points, 0.8s
+14:56:17 INFO       L3 layer 24 all: 10000 points, 2.6s
+14:56:19 INFO       L3 layer 24 correct: 6720 points, 2.2s
+14:56:21 INFO       L3 layer 24 wrong: 3280 points, 1.9s
+14:56:25 INFO       L3 layer 28 all: 10000 points, 3.5s
+14:56:28 INFO       L3 layer 28 correct: 6720 points, 2.7s
+14:56:28 INFO       L3 layer 28 wrong: 3280 points, 0.8s
+14:56:31 INFO       L3 layer 31 all: 10000 points, 2.5s
+14:56:33 INFO       L3 layer 31 correct: 6720 points, 1.8s
+14:56:35 INFO       L3 layer 31 wrong: 3280 points, 2.0s
+14:56:39 INFO       L4 layer 04 all: 10000 points, 4.1s
+14:56:42 INFO       L4 layer 04 correct: 2897 points, 2.2s
+14:56:44 INFO       L4 layer 04 wrong: 7103 points, 2.1s
+14:56:46 INFO       L4 layer 06 all: 10000 points, 1.8s
+14:56:47 INFO       L4 layer 06 correct: 2897 points, 1.5s
+14:56:49 INFO       L4 layer 06 wrong: 7103 points, 1.7s
+14:56:53 INFO       L4 layer 08 all: 10000 points, 4.0s
+14:56:55 INFO       L4 layer 08 correct: 2897 points, 1.9s
+14:56:57 INFO       L4 layer 08 wrong: 7103 points, 1.7s
+14:57:00 INFO       L4 layer 12 all: 10000 points, 2.8s
+14:57:01 INFO       L4 layer 12 correct: 2897 points, 1.0s
+14:57:03 INFO       L4 layer 12 wrong: 7103 points, 1.1s
+14:57:07 INFO       L4 layer 16 all: 10000 points, 3.9s
+14:57:08 INFO       L4 layer 16 correct: 2897 points, 1.3s
+14:57:11 INFO       L4 layer 16 wrong: 7103 points, 3.0s
+14:57:14 INFO       L4 layer 20 all: 10000 points, 2.3s
+14:57:15 INFO       L4 layer 20 correct: 2897 points, 0.6s
+14:57:16 INFO       L4 layer 20 wrong: 7103 points, 1.2s
+14:57:18 INFO       L4 layer 24 all: 10000 points, 2.0s
+14:57:19 INFO       L4 layer 24 correct: 2897 points, 1.2s
+14:57:22 INFO       L4 layer 24 wrong: 7103 points, 2.4s
+14:57:25 INFO       L4 layer 28 all: 10000 points, 3.6s
+14:57:27 INFO       L4 layer 28 correct: 2897 points, 1.1s
+14:57:28 INFO       L4 layer 28 wrong: 7103 points, 1.4s
+14:57:30 INFO       L4 layer 31 all: 10000 points, 1.5s
+14:57:30 INFO       L4 layer 31 correct: 2897 points, 0.5s
+14:57:31 INFO       L4 layer 31 wrong: 7103 points, 1.1s
+14:57:38 INFO       L5 layer 04 all: 6030 points, 6.2s
+14:57:38 INFO       L5 layer 04 correct: 280 points, 0.4s
+14:57:41 INFO       L5 layer 04 wrong: 5750 points, 2.5s
+14:57:46 INFO       L5 layer 06 all: 6030 points, 5.1s
+14:57:46 INFO       L5 layer 06 correct: 280 points, 0.7s
+14:57:48 INFO       L5 layer 06 wrong: 5750 points, 1.8s
+14:57:54 INFO       L5 layer 08 all: 6030 points, 5.5s
+14:57:55 INFO       L5 layer 08 correct: 280 points, 0.9s
+14:57:57 INFO       L5 layer 08 wrong: 5750 points, 2.1s
+14:58:02 INFO       L5 layer 12 all: 6030 points, 5.5s
+14:58:03 INFO       L5 layer 12 correct: 280 points, 0.5s
+14:58:05 INFO       L5 layer 12 wrong: 5750 points, 2.6s
+14:58:11 INFO       L5 layer 16 all: 6030 points, 6.1s
+14:58:12 INFO       L5 layer 16 correct: 280 points, 0.2s
+14:58:13 INFO       L5 layer 16 wrong: 5750 points, 0.9s
+14:58:17 INFO       L5 layer 20 all: 6030 points, 4.4s
+14:58:17 INFO       L5 layer 20 correct: 280 points, 0.4s
+14:58:19 INFO       L5 layer 20 wrong: 5750 points, 1.5s
+14:58:24 INFO       L5 layer 24 all: 6030 points, 5.4s
+14:58:25 INFO       L5 layer 24 correct: 280 points, 0.6s
+14:58:27 INFO       L5 layer 24 wrong: 5750 points, 1.8s
+14:58:32 INFO       L5 layer 28 all: 6030 points, 5.0s
+14:58:32 INFO       L5 layer 28 correct: 280 points, 0.2s
+14:58:33 INFO       L5 layer 28 wrong: 5750 points, 1.0s
+14:58:38 INFO       L5 layer 31 all: 6030 points, 5.5s
+14:58:39 INFO       L5 layer 31 correct: 280 points, 0.5s
+14:58:41 INFO       L5 layer 31 wrong: 5750 points, 1.7s
+14:58:41 INFO     Steps 2-3 done: 351 embeddings, 117 CSVs
+14:58:41 INFO     Step 4: Computing interestingness scores...
+14:58:41 INFO     Scoring 117 CSVs...
+Scoring CSVs:   0%|          | 0/117 [00:00<?, ?it/s]Scoring CSVs:   4%|▍         | 5/117 [00:00<00:02, 44.37it/s]Scoring CSVs:   9%|▊         | 10/117 [00:00<00:02, 46.29it/s]Scoring CSVs:  13%|█▎        | 15/117 [00:00<00:02, 46.98it/s]Scoring CSVs:  17%|█▋        | 20/117 [00:06<00:46,  2.08it/s]Scoring CSVs:  20%|█▉        | 23/117 [00:15<01:43,  1.10s/it]Scoring CSVs:  21%|██▏       | 25/117 [00:20<02:13,  1.45s/it]Scoring CSVs:  23%|██▎       | 27/117 [00:26<02:39,  1.77s/it]Scoring CSVs:  24%|██▍       | 28/117 [00:29<02:48,  1.90s/it]Scoring CSVs:  25%|██▍       | 29/117 [00:32<03:04,  2.09s/it]Scoring CSVs:  26%|██▌       | 30/117 [00:35<03:12,  2.21s/it]Scoring CSVs:  26%|██▋       | 31/117 [00:38<03:26,  2.40s/it]Scoring CSVs:  27%|██▋       | 32/117 [00:41<03:30,  2.47s/it]Scoring CSVs:  28%|██▊       | 33/117 [00:44<03:41,  2.63s/it]Scoring CSVs:  29%|██▉       | 34/117 [00:46<03:40,  2.66s/it]Scoring CSVs:  30%|██▉       | 35/117 [00:50<03:48,  2.79s/it]Scoring CSVs:  31%|███       | 36/117 [00:52<03:44,  2.77s/it]Scoring CSVs:  32%|███▏      | 37/117 [01:15<11:27,  8.59s/it]Scoring CSVs:  32%|███▏      | 38/117 [01:23<11:05,  8.42s/it]Scoring CSVs:  33%|███▎      | 39/117 [01:27<09:04,  6.98s/it]Scoring CSVs:  34%|███▍      | 40/117 [01:50<15:01, 11.71s/it]Scoring CSVs:  35%|███▌      | 41/117 [01:58<13:27, 10.63s/it]Scoring CSVs:  36%|███▌      | 42/117 [02:01<10:36,  8.48s/it]Scoring CSVs:  37%|███▋      | 43/117 [02:24<15:40, 12.71s/it]Scoring CSVs:  38%|███▊      | 44/117 [02:32<13:42, 11.27s/it]Scoring CSVs:  38%|███▊      | 45/117 [02:36<10:46,  8.98s/it]Scoring CSVs:  39%|███▉      | 46/117 [02:58<15:28, 13.08s/it]Scoring CSVs:  40%|████      | 47/117 [03:06<13:26, 11.52s/it]Scoring CSVs:  41%|████      | 48/117 [03:10<10:31,  9.15s/it]Scoring CSVs:  42%|████▏     | 49/117 [03:33<14:59, 13.23s/it]Scoring CSVs:  43%|████▎     | 50/117 [03:40<12:58, 11.62s/it]Scoring CSVs:  44%|████▎     | 51/117 [03:44<10:07,  9.20s/it]Scoring CSVs:  44%|████▍     | 52/117 [04:07<14:19, 13.22s/it]Scoring CSVs:  45%|████▌     | 53/117 [04:14<12:23, 11.62s/it]Scoring CSVs:  46%|████▌     | 54/117 [04:18<09:40,  9.21s/it]Scoring CSVs:  47%|████▋     | 55/117 [04:41<13:40, 13.23s/it]Scoring CSVs:  48%|████▊     | 56/117 [04:49<11:49, 11.63s/it]Scoring CSVs:  49%|████▊     | 57/117 [04:52<09:12,  9.21s/it]Scoring CSVs:  50%|████▉     | 58/117 [05:15<13:01, 13.25s/it]Scoring CSVs:  50%|█████     | 59/117 [05:23<11:15, 11.65s/it]Scoring CSVs:  51%|█████▏    | 60/117 [05:26<08:45,  9.22s/it]Scoring CSVs:  52%|█████▏    | 61/117 [05:49<12:20, 13.23s/it]Scoring CSVs:  53%|█████▎    | 62/117 [05:57<10:39, 11.62s/it]Scoring CSVs:  54%|█████▍    | 63/117 [06:00<08:17,  9.21s/it]Scoring CSVs:  55%|█████▍    | 64/117 [06:30<13:32, 15.33s/it]Scoring CSVs:  56%|█████▌    | 65/117 [06:32<09:54, 11.44s/it]Scoring CSVs:  56%|█████▋    | 66/117 [06:50<11:14, 13.22s/it]Scoring CSVs:  57%|█████▋    | 67/117 [07:19<15:02, 18.05s/it]Scoring CSVs:  58%|█████▊    | 68/117 [07:21<10:52, 13.31s/it]Scoring CSVs:  59%|█████▉    | 69/117 [07:39<11:39, 14.57s/it]Scoring CSVs:  60%|█████▉    | 70/117 [08:08<14:52, 18.98s/it]Scoring CSVs:  61%|██████    | 71/117 [08:10<10:40, 13.92s/it]Scoring CSVs:  62%|██████▏   | 72/117 [08:28<11:14, 14.99s/it]Scoring CSVs:  62%|██████▏   | 73/117 [08:57<14:08, 19.28s/it]Scoring CSVs:  63%|██████▎   | 74/117 [08:59<10:07, 14.12s/it]Scoring CSVs:  64%|██████▍   | 75/117 [09:16<10:35, 15.13s/it]Scoring CSVs:  65%|██████▍   | 76/117 [09:45<13:04, 19.13s/it]Scoring CSVs:  66%|██████▌   | 77/117 [09:47<09:20, 14.00s/it]Scoring CSVs:  67%|██████▋   | 78/117 [10:04<09:37, 14.81s/it]Scoring CSVs:  68%|██████▊   | 79/117 [10:32<12:00, 18.95s/it]Scoring CSVs:  68%|██████▊   | 80/117 [10:35<08:44, 14.17s/it]Scoring CSVs:  69%|██████▉   | 81/117 [10:56<09:40, 16.11s/it]Scoring CSVs:  70%|███████   | 82/117 [11:28<12:09, 20.86s/it]Scoring CSVs:  71%|███████   | 83/117 [11:30<08:40, 15.31s/it]Scoring CSVs:  72%|███████▏  | 84/117 [11:49<09:03, 16.47s/it]Scoring CSVs:  73%|███████▎  | 85/117 [12:21<11:13, 21.06s/it]Scoring CSVs:  74%|███████▎  | 86/117 [12:24<07:59, 15.46s/it]Scoring CSVs:  74%|███████▍  | 87/117 [12:43<08:17, 16.60s/it]Scoring CSVs:  75%|███████▌  | 88/117 [13:15<10:14, 21.19s/it]Scoring CSVs:  76%|███████▌  | 89/117 [13:17<07:15, 15.54s/it]Scoring CSVs:  77%|███████▋  | 90/117 [13:36<07:27, 16.58s/it]Scoring CSVs:  78%|███████▊  | 91/117 [13:51<06:55, 16.00s/it]Scoring CSVs:  79%|███████▉  | 93/117 [14:04<04:38, 11.61s/it]Scoring CSVs:  80%|████████  | 94/117 [14:18<04:43, 12.35s/it]Scoring CSVs:  82%|████████▏ | 96/117 [14:31<03:28,  9.93s/it]Scoring CSVs:  83%|████████▎ | 97/117 [14:46<03:39, 11.00s/it]Scoring CSVs:  85%|████████▍ | 99/117 [14:59<02:46,  9.23s/it]Scoring CSVs:  85%|████████▌ | 100/117 [15:14<02:56, 10.41s/it]Scoring CSVs:  87%|████████▋ | 102/117 [15:27<02:13,  8.91s/it]Scoring CSVs:  88%|████████▊ | 103/117 [15:41<02:22, 10.15s/it]Scoring CSVs:  90%|████████▉ | 105/117 [15:54<01:45,  8.77s/it]Scoring CSVs:  91%|█████████ | 106/117 [16:09<01:50, 10.02s/it]Scoring CSVs:  92%|█████████▏| 108/117 [16:22<01:18,  8.69s/it]Scoring CSVs:  93%|█████████▎| 109/117 [16:37<01:19,  9.95s/it]Scoring CSVs:  95%|█████████▍| 111/117 [16:50<00:51,  8.66s/it]Scoring CSVs:  96%|█████████▌| 112/117 [17:04<00:49,  9.92s/it]Scoring CSVs:  97%|█████████▋| 114/117 [17:17<00:25,  8.64s/it]Scoring CSVs:  98%|█████████▊| 115/117 [17:32<00:19,  9.89s/it]Scoring CSVs: 100%|██████████| 117/117 [17:45<00:00,  8.62s/it]Scoring CSVs: 100%|██████████| 117/117 [17:45<00:00,  9.11s/it]
+15:16:26 INFO       Flagged 3312 L5 scores with sampling_note='carry_stratified_dataset'
+15:16:26 INFO     Step 4 done: 10242 scores (9162 valid)
+15:16:26 INFO     Step 5: Generating summaries...
+15:16:33 INFO     Generated 16 interestingness heatmaps
+15:16:33 INFO     Top 50 findings saved to /data/user_data/anshulk/arithmetic-geometry/phase_a/scores/top_50_findings.md
+15:16:33 INFO     Correct/wrong comparison: 792 variable pairs, top |Δ| = 0.9152
+15:16:33 INFO       L5 Δ heatmap: /home/anshulk/arithmetic-geometry/plots/phase_a/L5_delta_interestingness.png
+15:16:33 INFO       L5 Δ summary: /data/user_data/anshulk/arithmetic-geometry/phase_a/scores/l5_delta_interestingness.md
+15:16:33 INFO     Step 5 done
+15:16:33 INFO     Step 6: Generating plots (tiered)...
+15:16:58 INFO     Tier 1 mandatory: 108 plots
+15:17:18 INFO     Tier 2 score-driven: 90 plots
+15:17:25 INFO     Tier 3 t-SNE validation: 30 plots
+15:17:26 INFO     Tier 4 3D exploration: 15 plots
+15:17:26 INFO     Step 6 done: 243 total plots
+15:17:26 INFO     Phase A embeddings pipeline complete in 1370.3s (22.8m)

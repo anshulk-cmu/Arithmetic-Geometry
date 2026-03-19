@@ -53,6 +53,10 @@ PLOT_LEVELS = [3, 5]
 PLOT_LAYERS = [4, 16, 31]
 MIN_POPULATION = 30  # skip populations smaller than this
 
+# L5 subsampling: target ~6,000 points from 122K, stratified by n_nonzero_carries
+L5_SUBSAMPLE_TARGET = 6000
+L5_CORRECT_FLOOR_PER_BIN = 50  # minimum correct samples per carry bin (if available)
+
 # Variables that only exist for wrong answers (NaN for correct)
 ERROR_VARS = {"abs_error", "rel_error", "signed_error", "underestimate", "even_pred", "div10_pred", "error_category"}
 IDENTITY_COLS = {"problem_idx", "a", "b", "ground_truth", "predicted"}
@@ -225,6 +229,107 @@ def get_populations(df, level):
         pops["wrong"] = wrong_df
 
     return pops
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# L5 SUBSAMPLING
+# ═══════════════════════════════════════════════════════════════════════════════
+
+def subsample_l5(df, screening_cache_path, target=L5_SUBSAMPLE_TARGET,
+                 correct_floor=L5_CORRECT_FLOOR_PER_BIN, seed=42, logger=None):
+    """Subsample L5 to ~target points, stratified by n_nonzero_carries.
+
+    Strategy:
+    - Natural carry frequencies from the full 810K screening space determine
+      per-bin allocation (bin = n_nonzero_carries value 0-5).
+    - Within each bin, correct answers get a floor of `correct_floor` samples
+      (or all available if fewer exist). If the natural allocation for a bin is
+      smaller than the correct floor, the bin is expanded to fit.
+    - Wrong answers fill the remainder of each bin's allocation.
+    - The correct population ends up at ~5-6% of the subsample, enough for
+      visual comparison without distorting the natural carry distribution.
+
+    Returns:
+        df_sub: subsampled DataFrame with reset index matching original row positions
+        meta: dict with allocation details for documentation
+    """
+    rng = np.random.RandomState(seed)
+
+    # Compute natural carry frequencies from 810K screening space
+    cache = np.load(screening_cache_path)
+    carries_810k = np.stack([cache[f"carry_{i}"] for i in range(5)], axis=1)
+    nzc_810k = np.sum(carries_810k > 0, axis=1)
+    n_total_810k = len(nzc_810k)
+    from collections import Counter
+    nzc_freq_810k = Counter(nzc_810k.tolist())
+
+    # Compute n_nonzero_carries for each row in the selected dataset
+    nzc = df["n_nonzero_carries"].values
+    bins = sorted(nzc_freq_810k.keys())
+
+    # Compute per-bin allocation
+    allocation = {}
+    for b in bins:
+        nat_alloc = round(nzc_freq_810k[b] / n_total_810k * target)
+        bin_mask = nzc == b
+        avail_correct = int((bin_mask & (df["correct"].values == True)).sum())
+        avail_wrong = int((bin_mask & (df["correct"].values == False)).sum())
+
+        n_correct = min(correct_floor, avail_correct)
+        # Expand bin if natural allocation can't fit the correct floor
+        if nat_alloc < n_correct:
+            nat_alloc = n_correct + max(10, round(nat_alloc * 0.5))
+
+        n_wrong = min(nat_alloc - n_correct, avail_wrong)
+        allocation[b] = {
+            "total": n_correct + n_wrong,
+            "correct": n_correct,
+            "wrong": n_wrong,
+            "avail_correct": avail_correct,
+            "avail_wrong": avail_wrong,
+            "natural_freq": nzc_freq_810k[b] / n_total_810k,
+        }
+
+    # Sample indices
+    selected_indices = []
+    for b in bins:
+        alloc = allocation[b]
+        bin_correct_idx = df.index[(nzc == b) & (df["correct"].values == True)].values
+        bin_wrong_idx = df.index[(nzc == b) & (df["correct"].values == False)].values
+
+        if alloc["correct"] > 0 and len(bin_correct_idx) > 0:
+            chosen_c = rng.choice(bin_correct_idx, alloc["correct"], replace=False)
+            selected_indices.extend(chosen_c.tolist())
+
+        if alloc["wrong"] > 0 and len(bin_wrong_idx) > 0:
+            chosen_w = rng.choice(bin_wrong_idx, alloc["wrong"], replace=False)
+            selected_indices.extend(chosen_w.tolist())
+
+    selected_indices = sorted(selected_indices)
+    df_sub = df.loc[selected_indices]
+
+    total_sampled = len(df_sub)
+    total_correct = int(df_sub["correct"].sum())
+    meta = {
+        "target": target,
+        "actual": total_sampled,
+        "correct": total_correct,
+        "wrong": total_sampled - total_correct,
+        "correct_pct": round(100 * total_correct / total_sampled, 1),
+        "per_bin": allocation,
+        "screening_n": n_total_810k,
+    }
+
+    if logger:
+        logger.info(f"  L5 subsampled: {total_sampled} points "
+                    f"({total_correct} correct = {meta['correct_pct']}%)")
+        for b in bins:
+            a = allocation[b]
+            logger.info(f"    nzc={b}: {a['total']} points "
+                        f"({a['correct']}c/{a['wrong']}w, "
+                        f"natural freq {a['natural_freq']:.3f})")
+
+    return df_sub, meta
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -405,10 +510,18 @@ def score_single_csv(csv_path):
             metric_type, is_digit = classify_variable(col, df[col])
             score = compute_interestingness_score(df[col], emb_2d, metric_type)
 
+            # Silhouette on 2D embeddings systematically underscores categorical
+            # variables (mean ~ -0.09). Flag these so downstream phases know
+            # not to deprioritize carries/digits based on low silhouette alone.
+            metric_note = ""
+            if metric_type == "silhouette":
+                metric_note = "2d_silhouette_unreliable_for_ranking"
+
             results.append({
                 "level": level, "layer": layer, "population": pop,
                 "method": method, "variable": col,
                 "metric_type": metric_type, "score": score,
+                "metric_note": metric_note,
             })
 
             # Angular correlation for digit variables
@@ -418,6 +531,7 @@ def score_single_csv(csv_path):
                     "level": level, "layer": layer, "population": pop,
                     "method": method, "variable": col,
                     "metric_type": "angular", "score": ang_score,
+                    "metric_note": "",
                 })
 
     return results
@@ -769,6 +883,99 @@ def generate_correct_wrong_comparison(scores_df, scores_dir, logger):
                 f"top |Δ| = {merged['abs_delta'].iloc[0]:.4f}")
 
 
+def generate_l5_delta_heatmap(scores_df, plot_dir, scores_dir, logger):
+    """Dedicated L5 Δ-interestingness heatmap — first-class output.
+
+    With 4,197 correct samples (vs 239 previously), this is the first
+    meaningful correct/wrong comparison at L5. Generates a high-resolution
+    heatmap and a focused markdown summary that directly motivates Phase C
+    correct/wrong divergence analysis.
+    """
+    mask = ((scores_df["method"] == "umap_2d") &
+            (scores_df["metric_type"] != "angular") &
+            (scores_df["level"] == 5))
+    sub = scores_df[mask].dropna(subset=["score"])
+
+    correct = sub[sub["population"] == "correct"][["layer", "variable", "score"]]
+    wrong = sub[sub["population"] == "wrong"][["layer", "variable", "score"]]
+
+    merged = correct.merge(wrong, on=["layer", "variable"], suffixes=("_correct", "_wrong"))
+    if merged.empty:
+        logger.info("L5 Δ heatmap: no correct/wrong overlap")
+        return
+
+    merged["delta"] = merged["score_correct"] - merged["score_wrong"]
+
+    # Build pivot: variable × layer
+    pivot = merged.pivot_table(index="variable", columns="layer", values="delta", aggfunc="first")
+    if pivot.empty:
+        return
+
+    # Sort by max absolute delta
+    pivot = pivot.loc[pivot.abs().max(axis=1).sort_values(ascending=False).index]
+    vabs = max(0.3, float(pivot.abs().max().max()))
+
+    # Generate at higher resolution than the standard heatmaps
+    save_path = plot_dir / "L5_delta_interestingness.png"
+    save_path.parent.mkdir(parents=True, exist_ok=True)
+    fig, ax = plt.subplots(figsize=(14, max(8, len(pivot) * 0.35)))
+    im = ax.imshow(pivot.values, aspect="auto", cmap="RdBu_r", vmin=-vabs, vmax=vabs)
+    ax.set_xticks(range(len(pivot.columns)))
+    ax.set_xticklabels(pivot.columns)
+    ax.set_yticks(range(len(pivot.index)))
+    ax.set_yticklabels(pivot.index, fontsize=7)
+    ax.set_xlabel("Layer")
+    ax.set_title("L5 — Δ Interestingness (correct − wrong)\n"
+                 "Blue = stronger in correct | Red = stronger in wrong",
+                 fontsize=12)
+    plt.colorbar(im, ax=ax, label="Δ score (correct − wrong)")
+    plt.tight_layout()
+    plt.savefig(save_path, dpi=200, bbox_inches="tight")
+    plt.close()
+    logger.info(f"  L5 Δ heatmap: {save_path}")
+
+    # Generate focused markdown summary
+    lines = ["# L5 Δ-Interestingness: Correct vs Wrong\n"]
+    lines.append("This is a first-class Phase A output. With 4,197 correct samples at L5")
+    lines.append("(vs 239 previously), this is the first meaningful correct/wrong comparison")
+    lines.append("at the hardest difficulty level. It directly motivates Phase C's")
+    lines.append("correct/wrong divergence analysis.\n")
+    lines.append("**Positive Δ** = concept structures the correct population more than wrong.")
+    lines.append("**Negative Δ** = concept structures the wrong population more than correct.\n")
+
+    # Top 10 each direction
+    top_positive = merged.nlargest(10, "delta")
+    top_negative = merged.nsmallest(10, "delta")
+
+    lines.append("## Strongest in correct population (positive Δ)\n")
+    lines.append("| Layer | Variable | Correct | Wrong | Δ |")
+    lines.append("|-------|----------|---------|-------|---|")
+    for _, row in top_positive.iterrows():
+        lines.append(f"| {row['layer']:.0f} | {row['variable']} | "
+                     f"{row['score_correct']:.4f} | {row['score_wrong']:.4f} | "
+                     f"{row['delta']:+.4f} |")
+
+    lines.append("\n## Strongest in wrong population (negative Δ)\n")
+    lines.append("| Layer | Variable | Correct | Wrong | Δ |")
+    lines.append("|-------|----------|---------|-------|---|")
+    for _, row in top_negative.iterrows():
+        lines.append(f"| {row['layer']:.0f} | {row['variable']} | "
+                     f"{row['score_correct']:.4f} | {row['score_wrong']:.4f} | "
+                     f"{row['delta']:+.4f} |")
+
+    lines.append(f"\n## Summary statistics\n")
+    lines.append(f"- Total variable pairs: {len(merged)}")
+    lines.append(f"- Max positive Δ: {merged['delta'].max():+.4f}")
+    lines.append(f"- Max negative Δ: {merged['delta'].min():+.4f}")
+    lines.append(f"- Mean |Δ|: {merged['delta'].abs().mean():.4f}")
+
+    out_path = scores_dir / "l5_delta_interestingness.md"
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    with open(out_path, "w") as f:
+        f.write("\n".join(lines))
+    logger.info(f"  L5 Δ summary: {out_path}")
+
+
 # ═══════════════════════════════════════════════════════════════════════════════
 # MAIN
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -828,6 +1035,25 @@ def main():
                         f"{len(coloring_dfs[level].columns)} cols)")
     logger.info(f"Step 1 done: {sum(len(df) for df in coloring_dfs.values())} total problems")
 
+    # ── STEP 1b: L5 SUBSAMPLING ───────────────────────────────────────────
+    l5_subsample_meta = None
+    if 5 in LEVELS and len(coloring_dfs[5]) > L5_SUBSAMPLE_TARGET:
+        screening_cache = paths["data_root"] / "l5_screening" / "l5_evaluation_cache.npz"
+        if screening_cache.exists():
+            logger.info("Step 1b: Subsampling L5 (carry-stratified, natural frequencies)...")
+            coloring_dfs[5], l5_subsample_meta = subsample_l5(
+                coloring_dfs[5], screening_cache, logger=logger)
+            # Save subsample metadata alongside the coloring df
+            meta_path = paths["phase_a_data"] / "l5_subsample_meta.json"
+            meta_path.parent.mkdir(parents=True, exist_ok=True)
+            with open(meta_path, "w") as f:
+                json.dump(l5_subsample_meta, f, indent=2)
+            logger.info(f"  Subsample metadata saved to {meta_path}")
+        else:
+            logger.warning(f"  L5 screening cache not found at {screening_cache}, "
+                           f"skipping subsampling — UMAP on {len(coloring_dfs[5])} "
+                           f"points will be very slow or OOM")
+
     # ── STEP 2 & 3: EMBEDDINGS + CSVs ─────────────────────────────────────
     logger.info("Steps 2-3: Computing embeddings and building CSVs...")
     methods = ["umap_2d", "umap_3d", "tsne_2d"]
@@ -837,7 +1063,13 @@ def main():
     for level in LEVELS:
         df = coloring_dfs[level]
         for layer in LAYERS:
-            X_full = load_activations(level, layer, paths["act_dir"])
+            # For L5 (122K full, ~6K subsampled), use mmap to avoid loading
+            # the full 1.9 GB file when we only need ~6K rows
+            act_path = paths["act_dir"] / f"level{level}_layer{layer}.npy"
+            if level == 5 and l5_subsample_meta is not None:
+                X_full = np.load(act_path, mmap_mode="r")
+            else:
+                X_full = load_activations(level, layer, paths["act_dir"])
             pops = get_populations(df, level)
 
             for pop_name, df_pop in pops.items():
@@ -852,7 +1084,7 @@ def main():
 
                 # Slice activations to population
                 idx = df_pop.index.values
-                X_pop = X_full[idx]
+                X_pop = np.array(X_full[idx])
                 n = X_pop.shape[0]
                 params = get_embedding_params(n)
 
@@ -884,6 +1116,15 @@ def main():
     else:
         logger.info("Step 4: Computing interestingness scores...")
         scores_df = score_all_csvs(csv_dir, logger)
+
+        # Flag L5 scores: the dataset is carry-stratified, so carry variables
+        # will appear artificially salient. Flag, don't reweight.
+        scores_df["sampling_note"] = ""
+        if l5_subsample_meta is not None:
+            scores_df.loc[scores_df["level"] == 5, "sampling_note"] = "carry_stratified_dataset"
+            n_flagged = (scores_df["sampling_note"] == "carry_stratified_dataset").sum()
+            logger.info(f"  Flagged {n_flagged} L5 scores with sampling_note='carry_stratified_dataset'")
+
         scores_dir.mkdir(parents=True, exist_ok=True)
         scores_df.to_csv(scores_path, index=False)
     logger.info(f"Step 4 done: {len(scores_df)} scores ({scores_df['score'].notna().sum()} valid)")
@@ -893,6 +1134,7 @@ def main():
     generate_interestingness_heatmaps(scores_df, plot_dir, logger)
     generate_top_findings(scores_df, scores_dir, logger)
     generate_correct_wrong_comparison(scores_df, scores_dir, logger)
+    generate_l5_delta_heatmap(scores_df, plot_dir, scores_dir, logger)
     logger.info("Step 5 done")
 
     # ── STEP 6: PLOTS ─────────────────────────────────────────────────────

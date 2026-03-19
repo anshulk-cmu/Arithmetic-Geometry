@@ -1,0 +1,508 @@
+14:54:36 INFO     ======================================================================
+14:54:36 INFO     Phase A — Embeddings pipeline starting
+14:54:36 INFO       Embedding backend: cuML GPU
+14:54:36 INFO     ======================================================================
+14:54:36 INFO     Step 1: Building coloring DataFrames...
+14:54:36 INFO       L1: built and cached (64 rows, 20 cols)
+14:54:36 INFO       L2: built and cached (4000 rows, 33 cols)
+14:54:37 INFO       L3: built and cached (10000 rows, 40 cols)
+14:54:37 INFO       L4: built and cached (10000 rows, 47 cols)
+14:54:43 INFO       L5: built and cached (122223 rows, 55 cols)
+14:54:43 INFO     Step 1 done: 146287 total problems
+14:54:43 INFO     Step 1b: Subsampling L5 (carry-stratified, natural frequencies)...
+14:54:43 INFO       L5 subsampled: 6030 points (280 correct = 4.6%)
+14:54:43 INFO         nzc=0: 69 points (50c/19w, natural freq 0.006)
+14:54:43 INFO         nzc=1: 59 points (30c/29w, natural freq 0.010)
+14:54:43 INFO         nzc=2: 208 points (50c/158w, natural freq 0.035)
+14:54:43 INFO         nzc=3: 818 points (50c/768w, natural freq 0.136)
+14:54:43 INFO         nzc=4: 2079 points (50c/2029w, natural freq 0.347)
+14:54:43 INFO         nzc=5: 2797 points (50c/2747w, natural freq 0.466)
+14:54:43 INFO       Subsample metadata saved to /data/user_data/anshulk/arithmetic-geometry/phase_a/l5_subsample_meta.json
+14:54:43 INFO     Steps 2-3: Computing embeddings and building CSVs...
+14:54:45 DEBUG        umap_2d: 2.1s
+14:54:45 DEBUG        umap_3d: 0.0s
+14:54:46 DEBUG        tsne_2d: 0.2s
+14:54:46 INFO       L1 layer 04 all: 64 points, 2.4s
+14:54:46 DEBUG        umap_2d: 0.0s
+14:54:46 DEBUG        umap_3d: 0.0s
+14:54:46 DEBUG        tsne_2d: 0.0s
+14:54:46 INFO       L1 layer 04 correct: 64 points, 0.1s
+14:54:46 DEBUG        umap_2d: 0.0s
+14:54:46 DEBUG        umap_3d: 0.0s
+14:54:46 DEBUG        tsne_2d: 0.0s
+14:54:46 INFO       L1 layer 06 all: 64 points, 0.1s
+14:54:46 DEBUG        umap_2d: 0.0s
+14:54:46 DEBUG        umap_3d: 0.0s
+14:54:46 DEBUG        tsne_2d: 0.1s
+14:54:46 INFO       L1 layer 06 correct: 64 points, 0.1s
+14:54:46 DEBUG        umap_2d: 0.0s
+14:54:46 DEBUG        umap_3d: 0.0s
+14:54:46 DEBUG        tsne_2d: 0.2s
+14:54:46 INFO       L1 layer 08 all: 64 points, 0.3s
+14:54:46 DEBUG        umap_2d: 0.0s
+14:54:46 DEBUG        umap_3d: 0.0s
+14:54:46 DEBUG        tsne_2d: 0.0s
+14:54:46 INFO       L1 layer 08 correct: 64 points, 0.1s
+14:54:46 DEBUG        umap_2d: 0.0s
+14:54:46 DEBUG        umap_3d: 0.0s
+14:54:47 DEBUG        tsne_2d: 0.0s
+14:54:47 INFO       L1 layer 12 all: 64 points, 0.1s
+14:54:47 DEBUG        umap_2d: 0.0s
+14:54:47 DEBUG        umap_3d: 0.0s
+14:54:47 DEBUG        tsne_2d: 0.0s
+14:54:47 INFO       L1 layer 12 correct: 64 points, 0.1s
+14:54:47 DEBUG        umap_2d: 0.0s
+14:54:47 DEBUG        umap_3d: 0.0s
+14:54:47 DEBUG        tsne_2d: 0.0s
+14:54:47 INFO       L1 layer 16 all: 64 points, 0.1s
+14:54:47 DEBUG        umap_2d: 0.0s
+14:54:47 DEBUG        umap_3d: 0.0s
+14:54:47 DEBUG        tsne_2d: 0.0s
+14:54:47 INFO       L1 layer 16 correct: 64 points, 0.1s
+14:54:47 DEBUG        umap_2d: 0.0s
+14:54:47 DEBUG        umap_3d: 0.0s
+14:54:47 DEBUG        tsne_2d: 0.0s
+14:54:47 INFO       L1 layer 20 all: 64 points, 0.1s
+14:54:47 DEBUG        umap_2d: 0.0s
+14:54:47 DEBUG        umap_3d: 0.0s
+14:54:47 DEBUG        tsne_2d: 0.3s
+14:54:47 INFO       L1 layer 20 correct: 64 points, 0.3s
+14:54:47 DEBUG        umap_2d: 0.0s
+14:54:47 DEBUG        umap_3d: 0.0s
+14:54:47 DEBUG        tsne_2d: 0.0s
+14:54:47 INFO       L1 layer 24 all: 64 points, 0.1s
+14:54:47 DEBUG        umap_2d: 0.0s
+14:54:47 DEBUG        umap_3d: 0.0s
+14:54:47 DEBUG        tsne_2d: 0.0s
+14:54:47 INFO       L1 layer 24 correct: 64 points, 0.1s
+14:54:48 DEBUG        umap_2d: 0.0s
+14:54:48 DEBUG        umap_3d: 0.0s
+14:54:48 DEBUG        tsne_2d: 0.2s
+14:54:48 INFO       L1 layer 28 all: 64 points, 0.3s
+14:54:48 DEBUG        umap_2d: 0.0s
+14:54:48 DEBUG        umap_3d: 0.0s
+14:54:48 DEBUG        tsne_2d: 0.0s
+14:54:48 INFO       L1 layer 28 correct: 64 points, 0.1s
+14:54:48 DEBUG        umap_2d: 0.0s
+14:54:48 DEBUG        umap_3d: 0.0s
+14:54:48 DEBUG        tsne_2d: 0.3s
+14:54:48 INFO       L1 layer 31 all: 64 points, 0.4s
+14:54:48 DEBUG        umap_2d: 0.0s
+14:54:48 DEBUG        umap_3d: 0.0s
+14:54:49 DEBUG        tsne_2d: 0.1s
+14:54:49 INFO       L1 layer 31 correct: 64 points, 0.2s
+14:54:50 DEBUG        umap_2d: 1.4s
+14:54:52 DEBUG        umap_3d: 1.4s
+14:54:53 DEBUG        tsne_2d: 1.1s
+14:54:53 INFO       L2 layer 04 all: 4000 points, 4.1s
+14:54:53 DEBUG        umap_2d: 0.5s
+14:54:54 DEBUG        umap_3d: 1.0s
+14:54:56 DEBUG        tsne_2d: 1.2s
+14:54:56 INFO       L2 layer 04 correct: 3993 points, 2.8s
+14:54:56 DEBUG        umap_2d: 0.5s
+14:54:57 DEBUG        umap_3d: 0.8s
+14:54:58 DEBUG        tsne_2d: 1.1s
+14:54:58 INFO       L2 layer 06 all: 4000 points, 2.5s
+14:54:59 DEBUG        umap_2d: 0.5s
+14:55:00 DEBUG        umap_3d: 0.8s
+14:55:00 DEBUG        tsne_2d: 0.8s
+14:55:00 INFO       L2 layer 06 correct: 3993 points, 2.2s
+14:55:01 DEBUG        umap_2d: 0.8s
+14:55:02 DEBUG        umap_3d: 0.5s
+14:55:03 DEBUG        tsne_2d: 0.7s
+14:55:03 INFO       L2 layer 08 all: 4000 points, 2.1s
+14:55:04 DEBUG        umap_2d: 1.0s
+14:55:04 DEBUG        umap_3d: 0.7s
+14:55:06 DEBUG        tsne_2d: 1.4s
+14:55:06 INFO       L2 layer 08 correct: 3993 points, 3.2s
+14:55:08 DEBUG        umap_2d: 1.5s
+14:55:09 DEBUG        umap_3d: 1.5s
+14:55:10 DEBUG        tsne_2d: 1.2s
+14:55:10 INFO       L2 layer 12 all: 4000 points, 4.2s
+14:55:12 DEBUG        umap_2d: 1.4s
+14:55:12 DEBUG        umap_3d: 0.7s
+14:55:13 DEBUG        tsne_2d: 0.7s
+14:55:13 INFO       L2 layer 12 correct: 3993 points, 2.8s
+14:55:14 DEBUG        umap_2d: 0.4s
+14:55:14 DEBUG        umap_3d: 0.3s
+14:55:15 DEBUG        tsne_2d: 0.8s
+14:55:15 INFO       L2 layer 16 all: 4000 points, 1.6s
+14:55:15 DEBUG        umap_2d: 0.2s
+14:55:15 DEBUG        umap_3d: 0.3s
+14:55:16 DEBUG        tsne_2d: 0.7s
+14:55:16 INFO       L2 layer 16 correct: 3993 points, 1.2s
+14:55:16 DEBUG        umap_2d: 0.2s
+14:55:17 DEBUG        umap_3d: 0.3s
+14:55:18 DEBUG        tsne_2d: 1.1s
+14:55:18 INFO       L2 layer 20 all: 4000 points, 1.6s
+14:55:18 DEBUG        umap_2d: 0.2s
+14:55:18 DEBUG        umap_3d: 0.3s
+14:55:19 DEBUG        tsne_2d: 1.0s
+14:55:19 INFO       L2 layer 20 correct: 3993 points, 1.5s
+14:55:20 DEBUG        umap_2d: 0.2s
+14:55:21 DEBUG        umap_3d: 0.8s
+14:55:22 DEBUG        tsne_2d: 0.9s
+14:55:22 INFO       L2 layer 24 all: 4000 points, 2.1s
+14:55:22 DEBUG        umap_2d: 0.3s
+14:55:23 DEBUG        umap_3d: 0.4s
+14:55:24 DEBUG        tsne_2d: 1.0s
+14:55:24 INFO       L2 layer 24 correct: 3993 points, 1.8s
+14:55:25 DEBUG        umap_2d: 0.5s
+14:55:25 DEBUG        umap_3d: 0.6s
+14:55:26 DEBUG        tsne_2d: 1.1s
+14:55:26 INFO       L2 layer 28 all: 4000 points, 2.3s
+14:55:27 DEBUG        umap_2d: 0.2s
+14:55:27 DEBUG        umap_3d: 0.4s
+14:55:28 DEBUG        tsne_2d: 0.8s
+14:55:28 INFO       L2 layer 28 correct: 3993 points, 1.5s
+14:55:28 DEBUG        umap_2d: 0.4s
+14:55:29 DEBUG        umap_3d: 0.3s
+14:55:30 DEBUG        tsne_2d: 0.8s
+14:55:30 INFO       L2 layer 31 all: 4000 points, 1.5s
+14:55:30 DEBUG        umap_2d: 0.3s
+14:55:30 DEBUG        umap_3d: 0.2s
+14:55:31 DEBUG        tsne_2d: 0.7s
+14:55:31 INFO       L2 layer 31 correct: 3993 points, 1.3s
+14:55:32 DEBUG        umap_2d: 0.6s
+14:55:33 DEBUG        umap_3d: 0.7s
+14:55:35 DEBUG        tsne_2d: 2.2s
+14:55:35 INFO       L3 layer 04 all: 10000 points, 3.7s
+14:55:36 DEBUG        umap_2d: 1.0s
+14:55:37 DEBUG        umap_3d: 0.6s
+14:55:38 DEBUG        tsne_2d: 1.3s
+14:55:38 INFO       L3 layer 04 correct: 6720 points, 3.0s
+14:55:39 DEBUG        umap_2d: 0.5s
+14:55:39 DEBUG        umap_3d: 0.3s
+14:55:40 DEBUG        tsne_2d: 0.8s
+14:55:40 INFO       L3 layer 04 wrong: 3280 points, 1.7s
+14:55:41 DEBUG        umap_2d: 0.6s
+14:55:42 DEBUG        umap_3d: 0.6s
+14:55:43 DEBUG        tsne_2d: 1.2s
+14:55:43 INFO       L3 layer 06 all: 10000 points, 2.6s
+14:55:44 DEBUG        umap_2d: 0.6s
+14:55:44 DEBUG        umap_3d: 0.5s
+14:55:45 DEBUG        tsne_2d: 0.9s
+14:55:45 INFO       L3 layer 06 correct: 6720 points, 2.1s
+14:55:45 DEBUG        umap_2d: 0.2s
+14:55:45 DEBUG        umap_3d: 0.2s
+14:55:46 DEBUG        tsne_2d: 0.2s
+14:55:46 INFO       L3 layer 06 wrong: 3280 points, 0.6s
+14:55:47 DEBUG        umap_2d: 0.7s
+14:55:48 DEBUG        umap_3d: 0.9s
+14:55:49 DEBUG        tsne_2d: 1.6s
+14:55:49 INFO       L3 layer 08 all: 10000 points, 3.4s
+14:55:50 DEBUG        umap_2d: 0.7s
+14:55:51 DEBUG        umap_3d: 0.9s
+14:55:52 DEBUG        tsne_2d: 1.0s
+14:55:52 INFO       L3 layer 08 correct: 6720 points, 2.7s
+14:55:52 DEBUG        umap_2d: 0.2s
+14:55:53 DEBUG        umap_3d: 0.4s
+14:55:53 DEBUG        tsne_2d: 0.8s
+14:55:53 INFO       L3 layer 08 wrong: 3280 points, 1.5s
+14:55:55 DEBUG        umap_2d: 0.9s
+14:55:56 DEBUG        umap_3d: 1.1s
+14:55:58 DEBUG        tsne_2d: 1.7s
+14:55:58 INFO       L3 layer 12 all: 10000 points, 3.9s
+14:55:58 DEBUG        umap_2d: 0.6s
+14:55:59 DEBUG        umap_3d: 0.4s
+14:56:00 DEBUG        tsne_2d: 0.9s
+14:56:00 INFO       L3 layer 12 correct: 6720 points, 2.0s
+14:56:00 DEBUG        umap_2d: 0.2s
+14:56:00 DEBUG        umap_3d: 0.2s
+14:56:01 DEBUG        tsne_2d: 0.6s
+14:56:01 INFO       L3 layer 12 wrong: 3280 points, 1.1s
+14:56:02 DEBUG        umap_2d: 0.5s
+14:56:02 DEBUG        umap_3d: 0.7s
+14:56:03 DEBUG        tsne_2d: 1.2s
+14:56:04 INFO       L3 layer 16 all: 10000 points, 2.5s
+14:56:04 DEBUG        umap_2d: 0.6s
+14:56:05 DEBUG        umap_3d: 0.5s
+14:56:06 DEBUG        tsne_2d: 1.1s
+14:56:06 INFO       L3 layer 16 correct: 6720 points, 2.3s
+14:56:06 DEBUG        umap_2d: 0.4s
+14:56:07 DEBUG        umap_3d: 0.4s
+14:56:07 DEBUG        tsne_2d: 0.7s
+14:56:07 INFO       L3 layer 16 wrong: 3280 points, 1.5s
+14:56:09 DEBUG        umap_2d: 0.9s
+14:56:10 DEBUG        umap_3d: 1.0s
+14:56:11 DEBUG        tsne_2d: 1.6s
+14:56:12 INFO       L3 layer 20 all: 10000 points, 3.7s
+14:56:12 DEBUG        umap_2d: 0.3s
+14:56:12 DEBUG        umap_3d: 0.4s
+14:56:13 DEBUG        tsne_2d: 0.9s
+14:56:13 INFO       L3 layer 20 correct: 6720 points, 1.6s
+14:56:14 DEBUG        umap_2d: 0.4s
+14:56:14 DEBUG        umap_3d: 0.2s
+14:56:14 DEBUG        tsne_2d: 0.1s
+14:56:14 INFO       L3 layer 20 wrong: 3280 points, 0.8s
+14:56:15 DEBUG        umap_2d: 0.6s
+14:56:15 DEBUG        umap_3d: 0.6s
+14:56:17 DEBUG        tsne_2d: 1.3s
+14:56:17 INFO       L3 layer 24 all: 10000 points, 2.6s
+14:56:17 DEBUG        umap_2d: 0.4s
+14:56:18 DEBUG        umap_3d: 0.6s
+14:56:19 DEBUG        tsne_2d: 1.1s
+14:56:19 INFO       L3 layer 24 correct: 6720 points, 2.2s
+14:56:19 DEBUG        umap_2d: 0.4s
+14:56:20 DEBUG        umap_3d: 0.5s
+14:56:21 DEBUG        tsne_2d: 1.0s
+14:56:21 INFO       L3 layer 24 wrong: 3280 points, 1.9s
+14:56:22 DEBUG        umap_2d: 0.7s
+14:56:23 DEBUG        umap_3d: 1.0s
+14:56:25 DEBUG        tsne_2d: 1.6s
+14:56:25 INFO       L3 layer 28 all: 10000 points, 3.5s
+14:56:26 DEBUG        umap_2d: 0.8s
+14:56:26 DEBUG        umap_3d: 0.6s
+14:56:28 DEBUG        tsne_2d: 1.2s
+14:56:28 INFO       L3 layer 28 correct: 6720 points, 2.7s
+14:56:28 DEBUG        umap_2d: 0.1s
+14:56:28 DEBUG        umap_3d: 0.4s
+14:56:28 DEBUG        tsne_2d: 0.2s
+14:56:28 INFO       L3 layer 28 wrong: 3280 points, 0.8s
+14:56:29 DEBUG        umap_2d: 0.5s
+14:56:30 DEBUG        umap_3d: 0.6s
+14:56:31 DEBUG        tsne_2d: 1.3s
+14:56:31 INFO       L3 layer 31 all: 10000 points, 2.5s
+14:56:32 DEBUG        umap_2d: 0.3s
+14:56:32 DEBUG        umap_3d: 0.4s
+14:56:33 DEBUG        tsne_2d: 1.0s
+14:56:33 INFO       L3 layer 31 correct: 6720 points, 1.8s
+14:56:33 DEBUG        umap_2d: 0.5s
+14:56:34 DEBUG        umap_3d: 0.4s
+14:56:35 DEBUG        tsne_2d: 1.0s
+14:56:35 INFO       L3 layer 31 wrong: 3280 points, 2.0s
+14:56:37 DEBUG        umap_2d: 1.2s
+14:56:37 DEBUG        umap_3d: 0.8s
+14:56:39 DEBUG        tsne_2d: 1.9s
+14:56:39 INFO       L4 layer 04 all: 10000 points, 4.1s
+14:56:40 DEBUG        umap_2d: 0.6s
+14:56:40 DEBUG        umap_3d: 0.5s
+14:56:41 DEBUG        tsne_2d: 1.0s
+14:56:42 INFO       L4 layer 04 correct: 2897 points, 2.2s
+14:56:42 DEBUG        umap_2d: 0.3s
+14:56:42 DEBUG        umap_3d: 0.4s
+14:56:44 DEBUG        tsne_2d: 1.2s
+14:56:44 INFO       L4 layer 04 wrong: 7103 points, 2.1s
+14:56:45 DEBUG        umap_2d: 0.7s
+14:56:45 DEBUG        umap_3d: 0.6s
+14:56:46 DEBUG        tsne_2d: 0.3s
+14:56:46 INFO       L4 layer 06 all: 10000 points, 1.8s
+14:56:46 DEBUG        umap_2d: 0.2s
+14:56:47 DEBUG        umap_3d: 0.5s
+14:56:47 DEBUG        tsne_2d: 0.8s
+14:56:47 INFO       L4 layer 06 correct: 2897 points, 1.5s
+14:56:48 DEBUG        umap_2d: 0.5s
+14:56:49 DEBUG        umap_3d: 0.7s
+14:56:49 DEBUG        tsne_2d: 0.4s
+14:56:49 INFO       L4 layer 06 wrong: 7103 points, 1.7s
+14:56:50 DEBUG        umap_2d: 0.9s
+14:56:52 DEBUG        umap_3d: 1.1s
+14:56:53 DEBUG        tsne_2d: 1.8s
+14:56:53 INFO       L4 layer 08 all: 10000 points, 4.0s
+14:56:54 DEBUG        umap_2d: 0.3s
+14:56:55 DEBUG        umap_3d: 0.8s
+14:56:55 DEBUG        tsne_2d: 0.8s
+14:56:55 INFO       L4 layer 08 correct: 2897 points, 1.9s
+14:56:56 DEBUG        umap_2d: 0.9s
+14:56:57 DEBUG        umap_3d: 0.5s
+14:56:57 DEBUG        tsne_2d: 0.3s
+14:56:57 INFO       L4 layer 08 wrong: 7103 points, 1.7s
+14:56:58 DEBUG        umap_2d: 0.8s
+14:56:59 DEBUG        umap_3d: 0.7s
+14:57:00 DEBUG        tsne_2d: 1.1s
+14:57:00 INFO       L4 layer 12 all: 10000 points, 2.8s
+14:57:00 DEBUG        umap_2d: 0.1s
+14:57:01 DEBUG        umap_3d: 0.2s
+14:57:01 DEBUG        tsne_2d: 0.7s
+14:57:01 INFO       L4 layer 12 correct: 2897 points, 1.0s
+14:57:02 DEBUG        umap_2d: 0.4s
+14:57:02 DEBUG        umap_3d: 0.4s
+14:57:02 DEBUG        tsne_2d: 0.1s
+14:57:03 INFO       L4 layer 12 wrong: 7103 points, 1.1s
+14:57:04 DEBUG        umap_2d: 1.0s
+14:57:05 DEBUG        umap_3d: 1.1s
+14:57:07 DEBUG        tsne_2d: 1.6s
+14:57:07 INFO       L4 layer 16 all: 10000 points, 3.9s
+14:57:07 DEBUG        umap_2d: 0.3s
+14:57:07 DEBUG        umap_3d: 0.2s
+14:57:08 DEBUG        tsne_2d: 0.6s
+14:57:08 INFO       L4 layer 16 correct: 2897 points, 1.3s
+14:57:09 DEBUG        umap_2d: 0.7s
+14:57:10 DEBUG        umap_3d: 1.1s
+14:57:11 DEBUG        tsne_2d: 1.1s
+14:57:11 INFO       L4 layer 16 wrong: 7103 points, 3.0s
+14:57:12 DEBUG        umap_2d: 0.5s
+14:57:13 DEBUG        umap_3d: 0.5s
+14:57:14 DEBUG        tsne_2d: 1.1s
+14:57:14 INFO       L4 layer 20 all: 10000 points, 2.3s
+14:57:14 DEBUG        umap_2d: 0.1s
+14:57:14 DEBUG        umap_3d: 0.4s
+14:57:14 DEBUG        tsne_2d: 0.1s
+14:57:15 INFO       L4 layer 20 correct: 2897 points, 0.6s
+14:57:15 DEBUG        umap_2d: 0.3s
+14:57:15 DEBUG        umap_3d: 0.5s
+14:57:16 DEBUG        tsne_2d: 0.2s
+14:57:16 INFO       L4 layer 20 wrong: 7103 points, 1.2s
+14:57:17 DEBUG        umap_2d: 0.6s
+14:57:17 DEBUG        umap_3d: 0.6s
+14:57:18 DEBUG        tsne_2d: 0.6s
+14:57:18 INFO       L4 layer 24 all: 10000 points, 2.0s
+14:57:18 DEBUG        umap_2d: 0.4s
+14:57:19 DEBUG        umap_3d: 0.5s
+14:57:19 DEBUG        tsne_2d: 0.3s
+14:57:19 INFO       L4 layer 24 correct: 2897 points, 1.2s
+14:57:20 DEBUG        umap_2d: 0.6s
+14:57:21 DEBUG        umap_3d: 1.0s
+14:57:21 DEBUG        tsne_2d: 0.5s
+14:57:22 INFO       L4 layer 24 wrong: 7103 points, 2.4s
+14:57:23 DEBUG        umap_2d: 0.7s
+14:57:24 DEBUG        umap_3d: 1.1s
+14:57:25 DEBUG        tsne_2d: 1.7s
+14:57:25 INFO       L4 layer 28 all: 10000 points, 3.6s
+14:57:26 DEBUG        umap_2d: 0.5s
+14:57:26 DEBUG        umap_3d: 0.4s
+14:57:27 DEBUG        tsne_2d: 0.1s
+14:57:27 INFO       L4 layer 28 correct: 2897 points, 1.1s
+14:57:27 DEBUG        umap_2d: 0.5s
+14:57:28 DEBUG        umap_3d: 0.5s
+14:57:28 DEBUG        tsne_2d: 0.3s
+14:57:28 INFO       L4 layer 28 wrong: 7103 points, 1.4s
+14:57:29 DEBUG        umap_2d: 0.5s
+14:57:29 DEBUG        umap_3d: 0.5s
+14:57:30 DEBUG        tsne_2d: 0.3s
+14:57:30 INFO       L4 layer 31 all: 10000 points, 1.5s
+14:57:30 DEBUG        umap_2d: 0.2s
+14:57:30 DEBUG        umap_3d: 0.2s
+14:57:30 DEBUG        tsne_2d: 0.1s
+14:57:30 INFO       L4 layer 31 correct: 2897 points, 0.5s
+14:57:31 DEBUG        umap_2d: 0.4s
+14:57:31 DEBUG        umap_3d: 0.5s
+14:57:31 DEBUG        tsne_2d: 0.2s
+14:57:31 INFO       L4 layer 31 wrong: 7103 points, 1.1s
+14:57:36 DEBUG        umap_2d: 0.7s
+14:57:37 DEBUG        umap_3d: 0.7s
+14:57:38 DEBUG        tsne_2d: 0.9s
+14:57:38 INFO       L5 layer 04 all: 6030 points, 6.2s
+14:57:38 DEBUG        umap_2d: 0.2s
+14:57:38 DEBUG        umap_3d: 0.1s
+14:57:38 DEBUG        tsne_2d: 0.1s
+14:57:38 INFO       L5 layer 04 correct: 280 points, 0.4s
+14:57:39 DEBUG        umap_2d: 0.8s
+14:57:39 DEBUG        umap_3d: 0.6s
+14:57:40 DEBUG        tsne_2d: 1.0s
+14:57:41 INFO       L5 layer 04 wrong: 5750 points, 2.5s
+14:57:44 DEBUG        umap_2d: 0.3s
+14:57:45 DEBUG        umap_3d: 0.6s
+14:57:46 DEBUG        tsne_2d: 0.8s
+14:57:46 INFO       L5 layer 06 all: 6030 points, 5.1s
+14:57:46 DEBUG        umap_2d: 0.1s
+14:57:46 DEBUG        umap_3d: 0.1s
+14:57:46 DEBUG        tsne_2d: 0.5s
+14:57:46 INFO       L5 layer 06 correct: 280 points, 0.7s
+14:57:47 DEBUG        umap_2d: 0.3s
+14:57:47 DEBUG        umap_3d: 0.3s
+14:57:48 DEBUG        tsne_2d: 1.1s
+14:57:48 INFO       L5 layer 06 wrong: 5750 points, 1.8s
+14:57:52 DEBUG        umap_2d: 0.5s
+14:57:53 DEBUG        umap_3d: 0.5s
+14:57:54 DEBUG        tsne_2d: 1.0s
+14:57:54 INFO       L5 layer 08 all: 6030 points, 5.5s
+14:57:54 DEBUG        umap_2d: 0.3s
+14:57:54 DEBUG        umap_3d: 0.1s
+14:57:55 DEBUG        tsne_2d: 0.5s
+14:57:55 INFO       L5 layer 08 correct: 280 points, 0.9s
+14:57:55 DEBUG        umap_2d: 0.7s
+14:57:56 DEBUG        umap_3d: 0.6s
+14:57:57 DEBUG        tsne_2d: 0.7s
+14:57:57 INFO       L5 layer 08 wrong: 5750 points, 2.1s
+14:58:01 DEBUG        umap_2d: 0.3s
+14:58:01 DEBUG        umap_3d: 0.4s
+14:58:02 DEBUG        tsne_2d: 0.9s
+14:58:02 INFO       L5 layer 12 all: 6030 points, 5.5s
+14:58:02 DEBUG        umap_2d: 0.1s
+14:58:02 DEBUG        umap_3d: 0.1s
+14:58:03 DEBUG        tsne_2d: 0.4s
+14:58:03 INFO       L5 layer 12 correct: 280 points, 0.5s
+14:58:04 DEBUG        umap_2d: 0.8s
+14:58:04 DEBUG        umap_3d: 0.5s
+14:58:05 DEBUG        tsne_2d: 1.2s
+14:58:05 INFO       L5 layer 12 wrong: 5750 points, 2.6s
+14:58:11 DEBUG        umap_2d: 0.6s
+14:58:11 DEBUG        umap_3d: 0.5s
+14:58:11 DEBUG        tsne_2d: 0.1s
+14:58:11 INFO       L5 layer 16 all: 6030 points, 6.1s
+14:58:11 DEBUG        umap_2d: 0.1s
+14:58:12 DEBUG        umap_3d: 0.1s
+14:58:12 DEBUG        tsne_2d: 0.1s
+14:58:12 INFO       L5 layer 16 correct: 280 points, 0.2s
+14:58:12 DEBUG        umap_2d: 0.4s
+14:58:12 DEBUG        umap_3d: 0.3s
+14:58:12 DEBUG        tsne_2d: 0.1s
+14:58:13 INFO       L5 layer 16 wrong: 5750 points, 0.9s
+14:58:16 DEBUG        umap_2d: 0.6s
+14:58:17 DEBUG        umap_3d: 0.3s
+14:58:17 DEBUG        tsne_2d: 0.1s
+14:58:17 INFO       L5 layer 20 all: 6030 points, 4.4s
+14:58:17 DEBUG        umap_2d: 0.1s
+14:58:17 DEBUG        umap_3d: 0.3s
+14:58:17 DEBUG        tsne_2d: 0.1s
+14:58:17 INFO       L5 layer 20 correct: 280 points, 0.4s
+14:58:18 DEBUG        umap_2d: 0.2s
+14:58:18 DEBUG        umap_3d: 0.6s
+14:58:19 DEBUG        tsne_2d: 0.5s
+14:58:19 INFO       L5 layer 20 wrong: 5750 points, 1.5s
+14:58:23 DEBUG        umap_2d: 0.9s
+14:58:24 DEBUG        umap_3d: 0.4s
+14:58:24 DEBUG        tsne_2d: 0.6s
+14:58:24 INFO       L5 layer 24 all: 6030 points, 5.4s
+14:58:24 DEBUG        umap_2d: 0.1s
+14:58:25 DEBUG        umap_3d: 0.3s
+14:58:25 DEBUG        tsne_2d: 0.2s
+14:58:25 INFO       L5 layer 24 correct: 280 points, 0.6s
+14:58:26 DEBUG        umap_2d: 0.6s
+14:58:26 DEBUG        umap_3d: 0.8s
+14:58:27 DEBUG        tsne_2d: 0.3s
+14:58:27 INFO       L5 layer 24 wrong: 5750 points, 1.8s
+14:58:31 DEBUG        umap_2d: 0.4s
+14:58:31 DEBUG        umap_3d: 0.4s
+14:58:32 DEBUG        tsne_2d: 0.2s
+14:58:32 INFO       L5 layer 28 all: 6030 points, 5.0s
+14:58:32 DEBUG        umap_2d: 0.1s
+14:58:32 DEBUG        umap_3d: 0.1s
+14:58:32 DEBUG        tsne_2d: 0.1s
+14:58:32 INFO       L5 layer 28 correct: 280 points, 0.2s
+14:58:32 DEBUG        umap_2d: 0.3s
+14:58:33 DEBUG        umap_3d: 0.4s
+14:58:33 DEBUG        tsne_2d: 0.2s
+14:58:33 INFO       L5 layer 28 wrong: 5750 points, 1.0s
+14:58:37 DEBUG        umap_2d: 0.5s
+14:58:38 DEBUG        umap_3d: 1.0s
+14:58:38 DEBUG        tsne_2d: 0.5s
+14:58:38 INFO       L5 layer 31 all: 6030 points, 5.5s
+14:58:39 DEBUG        umap_2d: 0.1s
+14:58:39 DEBUG        umap_3d: 0.3s
+14:58:39 DEBUG        tsne_2d: 0.2s
+14:58:39 INFO       L5 layer 31 correct: 280 points, 0.5s
+14:58:39 DEBUG        umap_2d: 0.4s
+14:58:40 DEBUG        umap_3d: 0.5s
+14:58:41 DEBUG        tsne_2d: 0.6s
+14:58:41 INFO       L5 layer 31 wrong: 5750 points, 1.7s
+14:58:41 INFO     Steps 2-3 done: 351 embeddings, 117 CSVs
+14:58:41 INFO     Step 4: Computing interestingness scores...
+14:58:41 INFO     Scoring 117 CSVs...
+15:16:26 INFO       Flagged 3312 L5 scores with sampling_note='carry_stratified_dataset'
+15:16:26 INFO     Step 4 done: 10242 scores (9162 valid)
+15:16:26 INFO     Step 5: Generating summaries...
+15:16:33 INFO     Generated 16 interestingness heatmaps
+15:16:33 INFO     Top 50 findings saved to /data/user_data/anshulk/arithmetic-geometry/phase_a/scores/top_50_findings.md
+15:16:33 INFO     Correct/wrong comparison: 792 variable pairs, top |Δ| = 0.9152
+15:16:33 INFO       L5 Δ heatmap: /home/anshulk/arithmetic-geometry/plots/phase_a/L5_delta_interestingness.png
+15:16:33 INFO       L5 Δ summary: /data/user_data/anshulk/arithmetic-geometry/phase_a/scores/l5_delta_interestingness.md
+15:16:33 INFO     Step 5 done
+15:16:33 INFO     Step 6: Generating plots (tiered)...
+15:16:58 INFO     Tier 1 mandatory: 108 plots
+15:17:18 INFO     Tier 2 score-driven: 90 plots
+15:17:25 INFO     Tier 3 t-SNE validation: 30 plots
+15:17:26 INFO     Tier 4 3D exploration: 15 plots
+15:17:26 INFO     Step 6 done: 243 total plots
+15:17:26 INFO     Phase A embeddings pipeline complete in 1370.3s (22.8m)
