@@ -10,7 +10,7 @@ model:
   layers: [4, 6, 8, 12, 16, 20, 24, 28, 31]  # layers to extract
 
 dataset:
-  problems_per_level: 4000   # default per level (Level 1 overridden to 64)
+  problems_per_level: 4000   # default per level (L2 uses this; L1 overridden by unique_only)
   seed: 42
   prompt_template: "{a} * {b} ="
   levels:
@@ -24,15 +24,18 @@ dataset:
     3:
       a_range: [10, 99]
       b_range: [10, 99]
+      problems_per_level: 10000
     4:
       a_range: [100, 999]
       b_range: [10, 99]
+      problems_per_level: 10000
     5:
       a_range: [100, 999]
       b_range: [100, 999]
+      problems_file: /data/user_data/anshulk/arithmetic-geometry/l5_screening/l5_selected_problems.json
 
 generation:
-  batch_size: 32
+  batch_size: 256            # A6000 48GB: ~32GB headroom after model (~16GB bfloat16)
   max_new_tokens: 12
 
 storage:

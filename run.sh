@@ -13,15 +13,23 @@
 # ============================================================================
 # SLURM Job Script for Arithmetic Geometry Pipeline
 # ============================================================================
-# Extracts residual stream activations from Llama 3.1 8B (base) across 9 layers
-# for 16,064 multiplication problems at 5 difficulty levels.
+# Extracts residual stream activations from Llama 3.1 8B (base) across 9 layers.
+#
+# Dataset:
+#   L1: 64 problems (exhaustive 1x1 grid)
+#   L2: 4,000 problems (2x1 digit, random)
+#   L3: 10,000 problems (2x2 digit, random)
+#   L4: 10,000 problems (3x2 digit, random)
+#   L5: ~35,000-40,000 problems (3x3 digit, carry-balanced from screening)
+#
+# PREREQUISITE: run_l5_screen.sh must complete first to produce L5 problem set.
 #
 # Model: Meta-Llama-3.1-8B (local, bfloat16 ~16 GB VRAM)
-# GPU: A6000 (48 GB) — plenty of headroom
-# Expected runtime: ~2-3 hours
+# GPU: A6000 (48 GB), batch_size=256
+# Expected runtime: ~30-40 minutes
 #
 # Outputs:
-#   Activations: /data/user_data/anshulk/arithmetic-geometry/activations/ (~2.9 GB)
+#   Activations: /data/user_data/anshulk/arithmetic-geometry/activations/ (~10 GB)
 #   Answers:     /data/user_data/anshulk/arithmetic-geometry/answers/
 #   Labels:      /home/anshulk/arithmetic-geometry/labels/
 #   Logs+Plots:  /home/anshulk/arithmetic-geometry/logs/
@@ -96,6 +104,16 @@ if [ ! -f "config.yaml" ]; then
 fi
 echo "  config.yaml found"
 
+# L5 screening output (prerequisite)
+echo "  Checking L5 screening output..."
+L5_SELECTED="/data/user_data/anshulk/arithmetic-geometry/l5_screening/l5_selected_problems.json"
+if [ ! -f "$L5_SELECTED" ]; then
+    echo "  ERROR: L5 screening output not found at $L5_SELECTED"
+    echo "  Run 'sbatch run_l5_screen.sh' first."
+    exit 1
+fi
+echo "  L5 screening output found"
+
 # Output directories
 echo "  Checking output directories..."
 mkdir -p /home/anshulk/arithmetic-geometry/labels
@@ -116,9 +134,9 @@ echo ""
 echo "============================================================"
 echo "Running pipeline.py"
 echo "  Model: Llama 3.1 8B (local, bfloat16)"
-echo "  Levels: 5 (16,064 problems total)"
+echo "  Levels: L1(64) + L2(4K) + L3(10K) + L4(10K) + L5(~35-40K from screening)"
 echo "  Layers: [4, 6, 8, 12, 16, 20, 24, 28, 31]"
-echo "  Batch size: 32"
+echo "  Batch size: 256"
 echo "============================================================"
 echo ""
 
@@ -194,6 +212,22 @@ for lvl in levels:
         print(f'  Level {lvl}: accuracy={data[\"accuracy\"]:.1%} ({data[\"n_correct\"]}/{data[\"n_problems\"]})')
     else:
         print(f'  MISSING: {f.name}')
+
+print()
+print('--- L5 Screening Match Check ---')
+l5_sel = Path('/data/user_data/anshulk/arithmetic-geometry/l5_screening/l5_selected_problems.json')
+l5_ans = ans_dir / 'level_5.json'
+if l5_sel.exists() and l5_ans.exists():
+    sel = json.load(open(l5_sel))
+    ans = json.load(open(l5_ans))
+    expected = sel['n_correct']
+    actual = ans['n_correct']
+    if expected == actual:
+        print(f'  PASS: screening n_correct={expected} matches pipeline n_correct={actual}')
+    else:
+        print(f'  MISMATCH: screening n_correct={expected} vs pipeline n_correct={actual}')
+else:
+    print('  SKIP: missing files')
 
 print()
 print('--- Analysis Summary ---')

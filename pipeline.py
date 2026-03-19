@@ -21,14 +21,11 @@ from collections import Counter
 from logging.handlers import RotatingFileHandler
 from pathlib import Path
 
-import matplotlib
-matplotlib.use("Agg")
-import matplotlib.pyplot as plt
 import numpy as np
 import yaml
 
-# Torch / HF imports deferred to where they're needed so that
-# dataset generation + label verification can run without GPU.
+# matplotlib, torch, and HF imports deferred to where they're needed so that
+# other scripts can import utility functions without heavy dependencies.
 
 
 # ====================================================================
@@ -113,7 +110,17 @@ def generate_problems(cfg, logger):
         a_lo, a_hi = lc["a_range"]
         b_lo, b_hi = lc["b_range"]
 
-        if lc.get("unique_only", False):
+        if lc.get("problems_file"):
+            # Read pre-selected problems (e.g., L5 two-phase balanced selection)
+            pf = Path(lc["problems_file"])
+            with open(pf) as f:
+                selected = json.load(f)
+            a_vals = selected["a"]
+            b_vals = selected["b"]
+            logger.info(
+                f"Level {lvl}: loaded {len(a_vals)} problems from {pf.name}"
+            )
+        elif lc.get("unique_only", False):
             pairs = [
                 (a, b)
                 for a in range(a_lo, a_hi + 1)
@@ -122,8 +129,9 @@ def generate_problems(cfg, logger):
             a_vals = [p[0] for p in pairs]
             b_vals = [p[1] for p in pairs]
         else:
-            a_vals = rng.randint(a_lo, a_hi + 1, size=n_default).tolist()
-            b_vals = rng.randint(b_lo, b_hi + 1, size=n_default).tolist()
+            n_level = lc.get("problems_per_level", n_default)
+            a_vals = rng.randint(a_lo, a_hi + 1, size=n_level).tolist()
+            b_vals = rng.randint(b_lo, b_hi + 1, size=n_level).tolist()
 
         unique_count = len(set(zip(a_vals, b_vals)))
 
@@ -752,6 +760,10 @@ def save_answers(all_answers, all_labels, cfg, logger):
 
 def generate_plots(all_prompts, all_problems, accuracies, cfg, logger):
     """Three validation PNG plots saved to plots/."""
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+
     plots_dir = Path(cfg["paths"]["plots_dir"])
     plots_dir.mkdir(parents=True, exist_ok=True)
     layers = cfg["model"]["layers"]

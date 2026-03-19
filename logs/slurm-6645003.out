@@ -1,0 +1,44 @@
+============================================================
+L5 Two-Phase Screening
+============================================================
+Job ID: 6645003
+Node: babel-v9-16
+Start time: Wed Mar 18 07:15:49 PM EDT 2026
+============================================================
+
+Running pre-flight checks...
+  Checking GPU...
+index, name, memory.total [MiB]
+0, NVIDIA RTX A6000, 49140 MiB
+  Checking Python packages...
+  All packages available
+  Checking local model...
+  Model found: 30G
+  config.yaml found
+  Output directories ready
+
+Pre-flight checks passed!
+
+============================================================
+Running generate_l5_problems.py
+  Problems: 810,000 (all 3-digit × 3-digit pairs)
+  Batch size: 256
+  Model: Llama 3.1 8B (bfloat16)
+============================================================
+
+
+============================================================
+Post-Screening Validation
+============================================================
+Selected: 122,223 problems (4,197 correct)
+Screened: 810,000 total, 49,504 correct (6.112%)
+Hard ceilings: 25 carry values below floor
+  Cache: 1.0K
+
+============================================================
+Screening Complete
+============================================================
+End time: Wed Mar 18 08:06:16 PM EDT 2026
+Exit code: 0
+Total runtime: 3027 seconds (50 minutes)
+SUCCESS — run 'sbatch run.sh' next for the main pipeline

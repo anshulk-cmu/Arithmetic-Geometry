@@ -1,0 +1,298 @@
+============================================================
+L5 Two-Phase Dataset Generation
+============================================================
+Enumerating all 810,000 L5 problems...
+Enumeration complete: 810,000 problems in 1.6s
+Evaluating 810,000 problems with model...
+Loading tokenizer: /data/user_data/anshulk/arithmetic-geometry/model
+Tokenizer ready (vocab=128000, pad=eos=128001)
+Loading model: /data/user_data/anshulk/arithmetic-geometry/model (dtype=bfloat16)
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights:   0%|          | 1/291 [00:02<12:06,  2.51s/it]Loading weights:   1%|          | 2/291 [00:05<13:28,  2.80s/it]Loading weights:   1%|          | 3/291 [00:05<07:43,  1.61s/it]Loading weights:   2%|▏         | 6/291 [00:05<02:42,  1.75it/s]Loading weights:   3%|▎         | 10/291 [00:06<01:19,  3.54it/s]Loading weights:   4%|▍         | 13/291 [00:06<01:01,  4.51it/s]Loading weights:   5%|▌         | 15/291 [00:07<01:10,  3.89it/s]Loading weights:   6%|▌         | 18/291 [00:07<00:50,  5.43it/s]Loading weights:   7%|▋         | 20/291 [00:07<00:42,  6.41it/s]Loading weights:   8%|▊         | 22/291 [00:07<00:42,  6.36it/s]Loading weights:   8%|▊         | 24/291 [00:08<00:46,  5.76it/s]Loading weights:   9%|▉         | 26/291 [00:08<00:38,  6.87it/s]Loading weights:  10%|▉         | 28/291 [00:08<00:35,  7.34it/s]Loading weights:  11%|█         | 31/291 [00:08<00:30,  8.43it/s]Loading weights:  11%|█▏        | 33/291 [00:09<00:47,  5.44it/s]Loading weights:  13%|█▎        | 37/291 [00:09<00:35,  7.20it/s]Loading weights:  14%|█▎        | 40/291 [00:10<00:33,  7.53it/s]Loading weights:  14%|█▍        | 41/291 [00:10<00:44,  5.65it/s]Loading weights:  14%|█▍        | 42/291 [00:11<00:53,  4.64it/s]Loading weights:  16%|█▌        | 46/291 [00:11<00:37,  6.56it/s]Loading weights:  17%|█▋        | 49/291 [00:12<00:42,  5.67it/s]Loading weights:  18%|█▊        | 51/291 [00:12<00:38,  6.17it/s]Loading weights:  19%|█▊        | 54/291 [00:12<00:28,  8.44it/s]Loading weights:  19%|█▉        | 56/291 [00:12<00:26,  8.90it/s]Loading weights:  20%|█▉        | 58/291 [00:12<00:27,  8.47it/s]Loading weights:  21%|██        | 60/291 [00:13<00:35,  6.54it/s]Loading weights:  22%|██▏       | 63/291 [00:13<00:26,  8.77it/s]Loading weights:  22%|██▏       | 65/291 [00:13<00:25,  8.69it/s]Loading weights:  23%|██▎       | 67/291 [00:13<00:24,  9.28it/s]Loading weights:  24%|██▎       | 69/291 [00:14<00:45,  4.87it/s]Loading weights:  25%|██▌       | 73/291 [00:14<00:27,  7.88it/s]Loading weights:  26%|██▌       | 76/291 [00:15<00:21,  9.83it/s]Loading weights:  27%|██▋       | 78/291 [00:15<00:30,  6.96it/s]Loading weights:  28%|██▊       | 81/291 [00:15<00:22,  9.25it/s]Loading weights:  29%|██▊       | 83/291 [00:15<00:19, 10.52it/s]Loading weights:  29%|██▉       | 85/291 [00:16<00:24,  8.32it/s]Loading weights:  30%|██▉       | 87/291 [00:16<00:28,  7.26it/s]Loading weights:  31%|███▏      | 91/291 [00:16<00:18, 10.95it/s]Loading weights:  32%|███▏      | 94/291 [00:17<00:18, 10.57it/s]Loading weights:  33%|███▎      | 96/291 [00:17<00:27,  7.20it/s]Loading weights:  34%|███▍      | 100/291 [00:17<00:20,  9.54it/s]Loading weights:  35%|███▌      | 103/291 [00:18<00:18, 10.01it/s]Loading weights:  36%|███▌      | 105/291 [00:18<00:29,  6.36it/s]Loading weights:  37%|███▋      | 109/291 [00:19<00:20,  8.92it/s]Loading weights:  38%|███▊      | 112/291 [00:19<00:16, 10.97it/s]Loading weights:  39%|███▉      | 114/291 [00:19<00:25,  6.92it/s]Loading weights:  40%|████      | 117/291 [00:20<00:21,  7.95it/s]Loading weights:  42%|████▏     | 121/291 [00:20<00:16, 10.56it/s]Loading weights:  42%|████▏     | 123/291 [00:20<00:22,  7.44it/s]Loading weights:  44%|████▎     | 127/291 [00:21<00:17,  9.55it/s]Loading weights:  45%|████▍     | 130/291 [00:21<00:17,  9.31it/s]Loading weights:  45%|████▌     | 132/291 [00:22<00:26,  6.07it/s]Loading weights:  46%|████▋     | 135/291 [00:22<00:19,  7.91it/s]Loading weights:  48%|████▊     | 139/291 [00:22<00:19,  7.99it/s]Loading weights:  48%|████▊     | 141/291 [00:23<00:22,  6.53it/s]Loading weights:  49%|████▉     | 144/291 [00:23<00:19,  7.67it/s]Loading weights:  51%|█████     | 149/291 [00:24<00:20,  6.81it/s]Loading weights:  53%|█████▎    | 154/291 [00:24<00:14,  9.66it/s]Loading weights:  54%|█████▍    | 157/291 [00:24<00:15,  8.88it/s]Loading weights:  55%|█████▍    | 159/291 [00:25<00:18,  7.03it/s]Loading weights:  55%|█████▌    | 161/291 [00:25<00:15,  8.13it/s]Loading weights:  56%|█████▌    | 163/291 [00:25<00:14,  8.78it/s]Loading weights:  57%|█████▋    | 166/291 [00:25<00:12, 10.41it/s]Loading weights:  58%|█████▊    | 168/291 [00:26<00:17,  7.03it/s]Loading weights:  59%|█████▉    | 172/291 [00:26<00:14,  8.17it/s]Loading weights:  60%|██████    | 175/291 [00:27<00:11,  9.72it/s]Loading weights:  61%|██████    | 177/291 [00:27<00:15,  7.35it/s]Loading weights:  62%|██████▏   | 181/291 [00:27<00:10, 10.24it/s]Loading weights:  63%|██████▎   | 184/291 [00:27<00:10, 10.28it/s]Loading weights:  64%|██████▍   | 186/291 [00:28<00:12,  8.63it/s]Loading weights:  65%|██████▍   | 188/291 [00:28<00:11,  9.27it/s]Loading weights:  66%|██████▌   | 191/291 [00:28<00:08, 11.73it/s]Loading weights:  66%|██████▋   | 193/291 [00:28<00:07, 12.45it/s]Loading weights:  67%|██████▋   | 195/291 [00:29<00:14,  6.57it/s]Loading weights:  68%|██████▊   | 198/291 [00:29<00:11,  7.95it/s]Loading weights:  69%|██████▉   | 202/291 [00:29<00:08,  9.96it/s]Loading weights:  70%|███████   | 204/291 [00:30<00:15,  5.68it/s]Loading weights:  71%|███████   | 207/291 [00:31<00:16,  4.99it/s]Loading weights:  73%|███████▎  | 211/291 [00:31<00:11,  7.04it/s]Loading weights:  73%|███████▎  | 213/291 [00:32<00:13,  5.89it/s]Loading weights:  75%|███████▍  | 217/291 [00:32<00:09,  8.03it/s]Loading weights:  76%|███████▌  | 220/291 [00:33<00:09,  7.27it/s]Loading weights:  76%|███████▋  | 222/291 [00:33<00:09,  7.34it/s]Loading weights:  77%|███████▋  | 225/291 [00:33<00:07,  8.84it/s]Loading weights:  79%|███████▊  | 229/291 [00:33<00:06, 10.25it/s]Loading weights:  79%|███████▉  | 231/291 [00:34<00:08,  7.49it/s]Loading weights:  81%|████████  | 235/291 [00:34<00:05,  9.88it/s]Loading weights:  82%|████████▏ | 238/291 [00:34<00:05, 10.14it/s]Loading weights:  82%|████████▏ | 240/291 [00:35<00:06,  7.54it/s]Loading weights:  84%|████████▎ | 243/291 [00:35<00:05,  9.53it/s]Loading weights:  84%|████████▍ | 245/291 [00:35<00:04,  9.70it/s]Loading weights:  85%|████████▍ | 247/291 [00:35<00:04,  9.64it/s]Loading weights:  86%|████████▌ | 249/291 [00:36<00:06,  6.34it/s]Loading weights:  87%|████████▋ | 252/291 [00:36<00:04,  8.05it/s]Loading weights:  88%|████████▊ | 256/291 [00:37<00:04,  8.06it/s]Loading weights:  89%|████████▊ | 258/291 [00:37<00:04,  6.68it/s]Loading weights:  90%|█████████ | 262/291 [00:37<00:02,  9.67it/s]Loading weights:  91%|█████████ | 265/291 [00:38<00:02,  8.97it/s]Loading weights:  92%|█████████▏| 267/291 [00:38<00:02,  8.02it/s]Loading weights:  93%|█████████▎| 270/291 [00:38<00:02,  9.11it/s]Loading weights:  93%|█████████▎| 272/291 [00:38<00:01, 10.14it/s]Loading weights:  94%|█████████▍| 274/291 [00:39<00:01,  9.83it/s]Loading weights:  95%|█████████▍| 276/291 [00:39<00:02,  6.96it/s]Loading weights:  96%|█████████▌| 280/291 [00:39<00:01, 10.59it/s]Loading weights:  97%|█████████▋| 283/291 [00:40<00:00,  8.89it/s]Loading weights:  98%|█████████▊| 285/291 [00:40<00:00,  7.62it/s]Loading weights:  99%|█████████▉| 289/291 [00:40<00:00, 10.70it/s]Loading weights: 100%|██████████| 291/291 [00:40<00:00,  7.15it/s]
+Model loaded in 42.8s on cuda:0
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+   12,800/810,000 (1.6%) correct_so_far=2,185 (17.07%) ETA=49min
+   25,600/810,000 (3.2%) correct_so_far=4,030 (15.74%) ETA=48min
+   38,400/810,000 (4.7%) correct_so_far=5,428 (14.14%) ETA=47min
+   51,200/810,000 (6.3%) correct_so_far=7,093 (13.85%) ETA=46min
+   64,000/810,000 (7.9%) correct_so_far=8,484 (13.26%) ETA=45min
+   76,800/810,000 (9.5%) correct_so_far=9,723 (12.66%) ETA=44min
+   89,600/810,000 (11.1%) correct_so_far=10,417 (11.63%) ETA=44min
+  102,400/810,000 (12.6%) correct_so_far=11,570 (11.30%) ETA=43min
+  115,200/810,000 (14.2%) correct_so_far=12,854 (11.16%) ETA=42min
+  128,000/810,000 (15.8%) correct_so_far=14,206 (11.10%) ETA=41min
+  140,800/810,000 (17.4%) correct_so_far=15,665 (11.13%) ETA=40min
+  153,600/810,000 (19.0%) correct_so_far=16,687 (10.86%) ETA=40min
+  166,400/810,000 (20.5%) correct_so_far=17,824 (10.71%) ETA=39min
+  179,200/810,000 (22.1%) correct_so_far=18,813 (10.50%) ETA=38min
+  192,000/810,000 (23.7%) correct_so_far=19,940 (10.39%) ETA=37min
+  204,800/810,000 (25.3%) correct_so_far=20,987 (10.25%) ETA=37min
+  217,600/810,000 (26.9%) correct_so_far=21,887 (10.06%) ETA=36min
+  230,400/810,000 (28.4%) correct_so_far=22,710 (9.86%) ETA=35min
+  243,200/810,000 (30.0%) correct_so_far=23,475 (9.65%) ETA=34min
+  256,000/810,000 (31.6%) correct_so_far=24,557 (9.59%) ETA=33min
+  268,800/810,000 (33.2%) correct_so_far=25,335 (9.43%) ETA=33min
+  281,600/810,000 (34.8%) correct_so_far=26,325 (9.35%) ETA=32min
+  294,400/810,000 (36.3%) correct_so_far=26,901 (9.14%) ETA=31min
+  307,200/810,000 (37.9%) correct_so_far=27,614 (8.99%) ETA=30min
+  320,000/810,000 (39.5%) correct_so_far=28,420 (8.88%) ETA=30min
+  332,800/810,000 (41.1%) correct_so_far=29,009 (8.72%) ETA=29min
+  345,600/810,000 (42.7%) correct_so_far=29,925 (8.66%) ETA=28min
+  358,400/810,000 (44.2%) correct_so_far=30,570 (8.53%) ETA=27min
+  371,200/810,000 (45.8%) correct_so_far=31,691 (8.54%) ETA=27min
+  384,000/810,000 (47.4%) correct_so_far=32,113 (8.36%) ETA=26min
+  396,800/810,000 (49.0%) correct_so_far=32,630 (8.22%) ETA=25min
+  409,600/810,000 (50.6%) correct_so_far=33,192 (8.10%) ETA=24min
+  422,400/810,000 (52.1%) correct_so_far=33,691 (7.98%) ETA=23min
+  435,200/810,000 (53.7%) correct_so_far=34,262 (7.87%) ETA=23min
+  448,000/810,000 (55.3%) correct_so_far=34,818 (7.77%) ETA=22min
+  460,800/810,000 (56.9%) correct_so_far=35,647 (7.74%) ETA=21min
+  473,600/810,000 (58.5%) correct_so_far=36,435 (7.69%) ETA=20min
+  486,400/810,000 (60.0%) correct_so_far=37,034 (7.61%) ETA=20min
+  499,200/810,000 (61.6%) correct_so_far=37,692 (7.55%) ETA=19min
+  512,000/810,000 (63.2%) correct_so_far=38,215 (7.46%) ETA=18min
+  524,800/810,000 (64.8%) correct_so_far=38,785 (7.39%) ETA=17min
+  537,600/810,000 (66.4%) correct_so_far=39,271 (7.30%) ETA=16min
+  550,400/810,000 (68.0%) correct_so_far=39,942 (7.26%) ETA=16min
+  563,200/810,000 (69.5%) correct_so_far=40,496 (7.19%) ETA=15min
+  576,000/810,000 (71.1%) correct_so_far=40,928 (7.11%) ETA=14min
+  588,800/810,000 (72.7%) correct_so_far=41,685 (7.08%) ETA=13min
+  601,600/810,000 (74.3%) correct_so_far=42,216 (7.02%) ETA=13min
+  614,400/810,000 (75.9%) correct_so_far=42,800 (6.97%) ETA=12min
+  627,200/810,000 (77.4%) correct_so_far=43,255 (6.90%) ETA=11min
+  640,000/810,000 (79.0%) correct_so_far=43,988 (6.87%) ETA=10min
+  652,800/810,000 (80.6%) correct_so_far=44,247 (6.78%) ETA=9min
+  665,600/810,000 (82.2%) correct_so_far=44,612 (6.70%) ETA=9min
+  678,400/810,000 (83.8%) correct_so_far=45,162 (6.66%) ETA=8min
+  691,200/810,000 (85.3%) correct_so_far=45,589 (6.60%) ETA=7min
+  704,000/810,000 (86.9%) correct_so_far=46,151 (6.56%) ETA=6min
+  716,800/810,000 (88.5%) correct_so_far=46,550 (6.49%) ETA=6min
+  729,600/810,000 (90.1%) correct_so_far=47,174 (6.47%) ETA=5min
+  742,400/810,000 (91.7%) correct_so_far=47,493 (6.40%) ETA=4min
+  755,200/810,000 (93.2%) correct_so_far=47,855 (6.34%) ETA=3min
+  768,000/810,000 (94.8%) correct_so_far=48,320 (6.29%) ETA=3min
+  780,800/810,000 (96.4%) correct_so_far=48,820 (6.25%) ETA=2min
+  793,600/810,000 (98.0%) correct_so_far=49,163 (6.19%) ETA=1min
+  806,400/810,000 (99.6%) correct_so_far=49,439 (6.13%) ETA=0min
+  810,000/810,000 (100.0%) correct_so_far=49,504 (6.11%) ETA=0min
+Evaluation complete in 48.9min: 49,504/810,000 correct (6.112%)
+Saved evaluation cache: /data/user_data/anshulk/arithmetic-geometry/l5_screening/l5_evaluation_cache.npz (2.4 MB)
+============================================================
+SELECTION ALGORITHM
+Parameters: CORRECT_CAP=500, FLOOR_ALL=500
+============================================================
+carry_0 values: [np.int8(0), np.int8(1), np.int8(2), np.int8(3), np.int8(4), np.int8(5), np.int8(6), np.int8(7), np.int8(8)]
+  carry_0=0: SELECT 5,152 (correct=500/33,019, wrong=4,652, accuracy=0.097)
+  carry_0=1: SELECT 13,915 (correct=500/4,948, wrong=13,415, accuracy=0.036)
+  carry_0=2: SELECT 14,269 (correct=500/3,690, wrong=13,769, accuracy=0.035)
+  carry_0=3: SELECT 11,090 (correct=500/3,287, wrong=10,590, accuracy=0.045)
+  carry_0=4: SELECT 15,258 (correct=500/2,389, wrong=14,758, accuracy=0.033)
+  carry_0=5: SELECT 20,904 (correct=500/775, wrong=20,404, accuracy=0.024)
+  carry_0=6: SELECT 17,558 (correct=500/692, wrong=17,058, accuracy=0.028)
+  carry_0=7: SELECT 15,977 (correct=500/507, wrong=15,477, accuracy=0.031)
+  carry_0=8: INCLUDE ALL 8,100 (correct=197, accuracy=0.024)
+
+Total selected: 122,223 problems
+Selected correct: 4,197
+Selected wrong: 118,026
+
+============================================================
+BALANCE REPORT
+============================================================
+
+carry_0:
+  value=  0: total= 5,152, correct=  500
+  value=  1: total=13,915, correct=  500
+  value=  2: total=14,269, correct=  500
+  value=  3: total=11,090, correct=  500
+  value=  4: total=15,258, correct=  500
+  value=  5: total=20,904, correct=  500
+  value=  6: total=17,558, correct=  500
+  value=  7: total=15,977, correct=  500
+  value=  8: total= 8,100, correct=  197
+
+carry_1:
+  value=  0: total= 3,744, correct=  331
+  value=  1: total= 6,647, correct=  271
+  value=  2: total= 9,430, correct=  381
+  value=  3: total=11,072, correct=  438
+  value=  4: total=12,500, correct=  455
+  value=  5: total=13,362, correct=  475
+  value=  6: total=12,899, correct=  407
+  value=  7: total=12,428, correct=  416
+  value=  8: total=11,739, correct=  300
+  value=  9: total= 8,386, correct=  223
+  value= 10: total= 6,675, correct=  167
+  value= 11: total= 5,367, correct=  134
+  value= 12: total= 3,407, correct=  109
+  value= 13: total= 2,071, correct=   40 *** BELOW 100
+  value= 14: total= 1,360, correct=   16 *** BELOW 100
+  value= 15: total=   735, correct=   17 *** BELOW 100
+  value= 16: total=   320, correct=   12 *** BELOW 100
+  value= 17: total=    81, correct=    5 *** BELOW 100
+
+carry_2:
+  value=  0: total=   272, correct=  111
+  value=  1: total= 1,075, correct=  162
+  value=  2: total= 2,810, correct=  306
+  value=  3: total= 4,908, correct=  446
+  value=  4: total= 7,059, correct=  513
+  value=  5: total= 9,115, correct=  445
+  value=  6: total=10,352, correct=  439
+  value=  7: total=11,571, correct=  393
+  value=  8: total=11,980, correct=  321
+  value=  9: total=11,705, correct=  320
+  value= 10: total=10,935, correct=  227
+  value= 11: total= 9,628, correct=  187
+  value= 12: total= 8,225, correct=  111
+  value= 13: total= 6,737, correct=   95 *** BELOW 100
+  value= 14: total= 5,100, correct=   42 *** BELOW 100
+  value= 15: total= 3,733, correct=   32 *** BELOW 100
+  value= 16: total= 2,674, correct=   22 *** BELOW 100
+  value= 17: total= 1,762, correct=   13 *** BELOW 100
+  value= 18: total= 1,123, correct=    2 *** BELOW 100
+  value= 19: total=   682, correct=    5 *** BELOW 100
+  value= 20: total=   381, correct=    1 *** BELOW 100
+  value= 21: total=   206, correct=    2 *** BELOW 100
+  value= 22: total=   112, correct=    1 *** BELOW 100
+  value= 23: total=    51, correct=    0 *** BELOW 100
+  value= 24: total=    20, correct=    0 *** BELOW 100
+  value= 25: total=     6, correct=    0 *** BELOW 100
+  value= 26: total=     1, correct=    1 *** BELOW 100
+
+carry_3:
+  value=  0: total= 4,266, correct=  428
+  value=  1: total=11,854, correct=  899
+  value=  2: total=14,719, correct=  711
+  value=  3: total=15,330, correct=  595
+  value=  4: total=14,978, correct=  474
+  value=  5: total=13,546, correct=  357
+  value=  6: total=12,006, correct=  274
+  value=  7: total=10,097, correct=  194
+  value=  8: total= 8,270, correct=  117
+  value=  9: total= 6,269, correct=   71 *** BELOW 100
+  value= 10: total= 4,202, correct=   37 *** BELOW 100
+  value= 11: total= 2,697, correct=   18 *** BELOW 100
+  value= 12: total= 1,760, correct=   12 *** BELOW 100
+  value= 13: total= 1,066, correct=    5 *** BELOW 100
+  value= 14: total=   628, correct=    3 *** BELOW 100
+  value= 15: total=   317, correct=    1 *** BELOW 100
+  value= 16: total=   147, correct=    0 *** BELOW 100
+  value= 17: total=    59, correct=    0 *** BELOW 100
+  value= 18: total=    12, correct=    1 *** BELOW 100
+
+carry_4:
+  value=  0: total=20,677, correct=1,911
+  value=  1: total=29,038, correct=1,180
+  value=  2: total=21,143, correct=  554
+  value=  3: total=15,794, correct=  240
+  value=  4: total=12,179, correct=  153
+  value=  5: total= 9,169, correct=   82 *** BELOW 100
+  value=  6: total= 6,579, correct=   44 *** BELOW 100
+  value=  7: total= 4,351, correct=   22 *** BELOW 100
+  value=  8: total= 2,483, correct=    7 *** BELOW 100
+  value=  9: total=   810, correct=    4 *** BELOW 100
+
+a_units:
+  value=0: total= 1,203, correct=  216
+  value=1: total= 1,178, correct=   59 *** BELOW 100
+  value=2: total= 4,859, correct=  163
+  value=3: total= 6,143, correct=  162
+  value=4: total= 7,814, correct=  330
+  value=5: total= 9,881, correct=  636
+  value=6: total=14,084, correct=  451
+  value=7: total=18,812, correct=  430
+  value=8: total=25,914, correct=  855
+  value=9: total=32,335, correct=  895
+
+a_tens:
+  value=0: total=12,175, correct=  393
+  value=1: total=12,236, correct=  325
+  value=2: total=12,308, correct=  545
+  value=3: total=12,215, correct=  419
+  value=4: total=12,192, correct=  501
+  value=5: total=12,213, correct=  404
+  value=6: total=12,126, correct=  400
+  value=7: total=12,284, correct=  474
+  value=8: total=12,283, correct=  383
+  value=9: total=12,191, correct=  353
+
+a_hundreds:
+  value=1: total=13,631, correct=  979
+  value=2: total=13,646, correct=  810
+  value=3: total=13,616, correct=  567
+  value=4: total=13,509, correct=  432
+  value=5: total=13,554, correct=  310
+  value=6: total=13,536, correct=  332
+  value=7: total=13,589, correct=  342
+  value=8: total=13,582, correct=  241
+  value=9: total=13,560, correct=  184
+
+b_units:
+  value=0: total= 1,253, correct=  254
+  value=1: total= 1,201, correct=   32 *** BELOW 100
+  value=2: total= 4,672, correct=  228
+  value=3: total= 6,229, correct=  123
+  value=4: total= 7,698, correct=  392
+  value=5: total=10,197, correct=  504
+  value=6: total=14,098, correct=  458
+  value=7: total=18,893, correct=  331
+  value=8: total=25,785, correct=1,106
+  value=9: total=32,197, correct=  769
+
+b_tens:
+  value=0: total=12,158, correct=  547
+  value=1: total=12,183, correct=  397
+  value=2: total=12,220, correct=  577
+  value=3: total=12,225, correct=  354
+  value=4: total=12,175, correct=  444
+  value=5: total=12,298, correct=  381
+  value=6: total=12,314, correct=  446
+  value=7: total=12,253, correct=  369
+  value=8: total=12,157, correct=  396
+  value=9: total=12,240, correct=  286
+
+b_hundreds:
+  value=1: total=13,700, correct=1,152
+  value=2: total=13,418, correct=  822
+  value=3: total=13,497, correct=  621
+  value=4: total=13,548, correct=  405
+  value=5: total=13,672, correct=  323
+  value=6: total=13,650, correct=  321
+  value=7: total=13,667, correct=  225
+  value=8: total=13,585, correct=  235
+  value=9: total=13,486, correct=   93 *** BELOW 100
+
+============================================================
+HARD CEILINGS (full 810K space)
+============================================================
+  carry_1=13: 51 correct out of 2,835 (ceiling — cannot reach 100)
+  carry_1=14: 20 correct out of 1,620 (ceiling — cannot reach 100)
+  carry_1=15: 22 correct out of 810 (ceiling — cannot reach 100)
+  carry_1=16: 13 correct out of 324 (ceiling — cannot reach 100)
+  carry_1=17: 5 correct out of 81 (ceiling — cannot reach 100)
+  carry_2=15: 66 correct out of 8,591 (ceiling — cannot reach 100)
+  carry_2=16: 38 correct out of 5,565 (ceiling — cannot reach 100)
+  carry_2=17: 22 correct out of 3,265 (ceiling — cannot reach 100)
+  carry_2=18: 5 correct out of 1,877 (ceiling — cannot reach 100)
+  carry_2=19: 8 correct out of 1,023 (ceiling — cannot reach 100)
+  carry_2=20: 2 correct out of 526 (ceiling — cannot reach 100)
+  carry_2=21: 3 correct out of 262 (ceiling — cannot reach 100)
+  carry_2=22: 1 correct out of 126 (ceiling — cannot reach 100)
+  carry_2=23: 0 correct out of 56 (ceiling — cannot reach 100)
+  carry_2=24: 0 correct out of 21 (ceiling — cannot reach 100)
+  carry_2=25: 0 correct out of 6 (ceiling — cannot reach 100)
+  carry_2=26: 1 correct out of 1 (ceiling — cannot reach 100)
+  carry_3=12: 95 correct out of 9,896 (ceiling — cannot reach 100)
+  carry_3=13: 57 correct out of 5,887 (ceiling — cannot reach 100)
+  carry_3=14: 18 correct out of 3,282 (ceiling — cannot reach 100)
+  carry_3=15: 7 correct out of 1,655 (ceiling — cannot reach 100)
+  carry_3=16: 0 correct out of 722 (ceiling — cannot reach 100)
+  carry_3=17: 0 correct out of 237 (ceiling — cannot reach 100)
+  carry_3=18: 1 correct out of 45 (ceiling — cannot reach 100)
+  carry_4=9: 16 correct out of 5,077 (ceiling — cannot reach 100)
+
+Saved selected problems: /data/user_data/anshulk/arithmetic-geometry/l5_screening/l5_selected_problems.json (1.2 MB)
+  n_selected=122,223, n_correct=4,197
+
+Total time: 49.9 min
+============================================================

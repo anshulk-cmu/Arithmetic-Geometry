@@ -1,0 +1,296 @@
+2026-03-18 19:16:19,642 | INFO    | ============================================================
+2026-03-18 19:16:19,642 | INFO    | L5 Two-Phase Dataset Generation
+2026-03-18 19:16:19,642 | INFO    | ============================================================
+2026-03-18 19:16:19,643 | INFO    | Enumerating all 810,000 L5 problems...
+2026-03-18 19:16:21,195 | INFO    | Enumeration complete: 810,000 problems in 1.6s
+2026-03-18 19:16:21,196 | INFO    | Evaluating 810,000 problems with model...
+2026-03-18 19:16:29,779 | INFO    | Loading tokenizer: /data/user_data/anshulk/arithmetic-geometry/model
+2026-03-18 19:16:30,585 | INFO    | Tokenizer ready (vocab=128000, pad=eos=128001)
+2026-03-18 19:16:30,611 | INFO    | Loading model: /data/user_data/anshulk/arithmetic-geometry/model (dtype=bfloat16)
+2026-03-18 19:17:13,391 | INFO    | Model loaded in 42.8s on cuda:0
+2026-03-18 19:18:01,255 | INFO    |    12,800/810,000 (1.6%) correct_so_far=2,185 (17.07%) ETA=49min
+2026-03-18 19:18:46,987 | INFO    |    25,600/810,000 (3.2%) correct_so_far=4,030 (15.74%) ETA=48min
+2026-03-18 19:19:33,104 | INFO    |    38,400/810,000 (4.7%) correct_so_far=5,428 (14.14%) ETA=47min
+2026-03-18 19:20:19,353 | INFO    |    51,200/810,000 (6.3%) correct_so_far=7,093 (13.85%) ETA=46min
+2026-03-18 19:21:05,842 | INFO    |    64,000/810,000 (7.9%) correct_so_far=8,484 (13.26%) ETA=45min
+2026-03-18 19:21:52,258 | INFO    |    76,800/810,000 (9.5%) correct_so_far=9,723 (12.66%) ETA=44min
+2026-03-18 19:22:38,635 | INFO    |    89,600/810,000 (11.1%) correct_so_far=10,417 (11.63%) ETA=44min
+2026-03-18 19:23:25,014 | INFO    |   102,400/810,000 (12.6%) correct_so_far=11,570 (11.30%) ETA=43min
+2026-03-18 19:24:11,430 | INFO    |   115,200/810,000 (14.2%) correct_so_far=12,854 (11.16%) ETA=42min
+2026-03-18 19:24:57,818 | INFO    |   128,000/810,000 (15.8%) correct_so_far=14,206 (11.10%) ETA=41min
+2026-03-18 19:25:44,201 | INFO    |   140,800/810,000 (17.4%) correct_so_far=15,665 (11.13%) ETA=40min
+2026-03-18 19:26:30,575 | INFO    |   153,600/810,000 (19.0%) correct_so_far=16,687 (10.86%) ETA=40min
+2026-03-18 19:27:16,952 | INFO    |   166,400/810,000 (20.5%) correct_so_far=17,824 (10.71%) ETA=39min
+2026-03-18 19:28:03,330 | INFO    |   179,200/810,000 (22.1%) correct_so_far=18,813 (10.50%) ETA=38min
+2026-03-18 19:28:49,703 | INFO    |   192,000/810,000 (23.7%) correct_so_far=19,940 (10.39%) ETA=37min
+2026-03-18 19:29:36,076 | INFO    |   204,800/810,000 (25.3%) correct_so_far=20,987 (10.25%) ETA=37min
+2026-03-18 19:30:22,437 | INFO    |   217,600/810,000 (26.9%) correct_so_far=21,887 (10.06%) ETA=36min
+2026-03-18 19:31:08,947 | INFO    |   230,400/810,000 (28.4%) correct_so_far=22,710 (9.86%) ETA=35min
+2026-03-18 19:31:55,305 | INFO    |   243,200/810,000 (30.0%) correct_so_far=23,475 (9.65%) ETA=34min
+2026-03-18 19:32:41,660 | INFO    |   256,000/810,000 (31.6%) correct_so_far=24,557 (9.59%) ETA=33min
+2026-03-18 19:33:28,015 | INFO    |   268,800/810,000 (33.2%) correct_so_far=25,335 (9.43%) ETA=33min
+2026-03-18 19:34:14,384 | INFO    |   281,600/810,000 (34.8%) correct_so_far=26,325 (9.35%) ETA=32min
+2026-03-18 19:35:00,749 | INFO    |   294,400/810,000 (36.3%) correct_so_far=26,901 (9.14%) ETA=31min
+2026-03-18 19:35:47,135 | INFO    |   307,200/810,000 (37.9%) correct_so_far=27,614 (8.99%) ETA=30min
+2026-03-18 19:36:33,658 | INFO    |   320,000/810,000 (39.5%) correct_so_far=28,420 (8.88%) ETA=30min
+2026-03-18 19:37:20,017 | INFO    |   332,800/810,000 (41.1%) correct_so_far=29,009 (8.72%) ETA=29min
+2026-03-18 19:38:06,436 | INFO    |   345,600/810,000 (42.7%) correct_so_far=29,925 (8.66%) ETA=28min
+2026-03-18 19:38:52,828 | INFO    |   358,400/810,000 (44.2%) correct_so_far=30,570 (8.53%) ETA=27min
+2026-03-18 19:39:39,202 | INFO    |   371,200/810,000 (45.8%) correct_so_far=31,691 (8.54%) ETA=27min
+2026-03-18 19:40:25,593 | INFO    |   384,000/810,000 (47.4%) correct_so_far=32,113 (8.36%) ETA=26min
+2026-03-18 19:41:11,967 | INFO    |   396,800/810,000 (49.0%) correct_so_far=32,630 (8.22%) ETA=25min
+2026-03-18 19:41:58,320 | INFO    |   409,600/810,000 (50.6%) correct_so_far=33,192 (8.10%) ETA=24min
+2026-03-18 19:42:44,657 | INFO    |   422,400/810,000 (52.1%) correct_so_far=33,691 (7.98%) ETA=23min
+2026-03-18 19:43:30,990 | INFO    |   435,200/810,000 (53.7%) correct_so_far=34,262 (7.87%) ETA=23min
+2026-03-18 19:44:17,328 | INFO    |   448,000/810,000 (55.3%) correct_so_far=34,818 (7.77%) ETA=22min
+2026-03-18 19:45:03,676 | INFO    |   460,800/810,000 (56.9%) correct_so_far=35,647 (7.74%) ETA=21min
+2026-03-18 19:45:50,069 | INFO    |   473,600/810,000 (58.5%) correct_so_far=36,435 (7.69%) ETA=20min
+2026-03-18 19:46:36,591 | INFO    |   486,400/810,000 (60.0%) correct_so_far=37,034 (7.61%) ETA=20min
+2026-03-18 19:47:22,939 | INFO    |   499,200/810,000 (61.6%) correct_so_far=37,692 (7.55%) ETA=19min
+2026-03-18 19:48:09,302 | INFO    |   512,000/810,000 (63.2%) correct_so_far=38,215 (7.46%) ETA=18min
+2026-03-18 19:48:55,650 | INFO    |   524,800/810,000 (64.8%) correct_so_far=38,785 (7.39%) ETA=17min
+2026-03-18 19:49:42,018 | INFO    |   537,600/810,000 (66.4%) correct_so_far=39,271 (7.30%) ETA=16min
+2026-03-18 19:50:28,359 | INFO    |   550,400/810,000 (68.0%) correct_so_far=39,942 (7.26%) ETA=16min
+2026-03-18 19:51:14,708 | INFO    |   563,200/810,000 (69.5%) correct_so_far=40,496 (7.19%) ETA=15min
+2026-03-18 19:52:01,221 | INFO    |   576,000/810,000 (71.1%) correct_so_far=40,928 (7.11%) ETA=14min
+2026-03-18 19:52:47,616 | INFO    |   588,800/810,000 (72.7%) correct_so_far=41,685 (7.08%) ETA=13min
+2026-03-18 19:53:33,997 | INFO    |   601,600/810,000 (74.3%) correct_so_far=42,216 (7.02%) ETA=13min
+2026-03-18 19:54:20,368 | INFO    |   614,400/810,000 (75.9%) correct_so_far=42,800 (6.97%) ETA=12min
+2026-03-18 19:55:06,724 | INFO    |   627,200/810,000 (77.4%) correct_so_far=43,255 (6.90%) ETA=11min
+2026-03-18 19:55:53,099 | INFO    |   640,000/810,000 (79.0%) correct_so_far=43,988 (6.87%) ETA=10min
+2026-03-18 19:56:39,428 | INFO    |   652,800/810,000 (80.6%) correct_so_far=44,247 (6.78%) ETA=9min
+2026-03-18 19:57:25,823 | INFO    |   665,600/810,000 (82.2%) correct_so_far=44,612 (6.70%) ETA=9min
+2026-03-18 19:58:12,190 | INFO    |   678,400/810,000 (83.8%) correct_so_far=45,162 (6.66%) ETA=8min
+2026-03-18 19:58:58,577 | INFO    |   691,200/810,000 (85.3%) correct_so_far=45,589 (6.60%) ETA=7min
+2026-03-18 19:59:44,947 | INFO    |   704,000/810,000 (86.9%) correct_so_far=46,151 (6.56%) ETA=6min
+2026-03-18 20:00:31,335 | INFO    |   716,800/810,000 (88.5%) correct_so_far=46,550 (6.49%) ETA=6min
+2026-03-18 20:01:17,702 | INFO    |   729,600/810,000 (90.1%) correct_so_far=47,174 (6.47%) ETA=5min
+2026-03-18 20:02:04,544 | INFO    |   742,400/810,000 (91.7%) correct_so_far=47,493 (6.40%) ETA=4min
+2026-03-18 20:02:50,917 | INFO    |   755,200/810,000 (93.2%) correct_so_far=47,855 (6.34%) ETA=3min
+2026-03-18 20:03:37,313 | INFO    |   768,000/810,000 (94.8%) correct_so_far=48,320 (6.29%) ETA=3min
+2026-03-18 20:04:23,711 | INFO    |   780,800/810,000 (96.4%) correct_so_far=48,820 (6.25%) ETA=2min
+2026-03-18 20:05:10,134 | INFO    |   793,600/810,000 (98.0%) correct_so_far=49,163 (6.19%) ETA=1min
+2026-03-18 20:05:56,514 | INFO    |   806,400/810,000 (99.6%) correct_so_far=49,439 (6.13%) ETA=0min
+2026-03-18 20:06:10,312 | INFO    |   810,000/810,000 (100.0%) correct_so_far=49,504 (6.11%) ETA=0min
+2026-03-18 20:06:10,313 | INFO    | Evaluation complete in 48.9min: 49,504/810,000 correct (6.112%)
+2026-03-18 20:06:12,560 | INFO    | Saved evaluation cache: /data/user_data/anshulk/arithmetic-geometry/l5_screening/l5_evaluation_cache.npz (2.4 MB)
+2026-03-18 20:06:12,560 | INFO    | ============================================================
+2026-03-18 20:06:12,561 | INFO    | SELECTION ALGORITHM
+2026-03-18 20:06:12,561 | INFO    | Parameters: CORRECT_CAP=500, FLOOR_ALL=500
+2026-03-18 20:06:12,561 | INFO    | ============================================================
+2026-03-18 20:06:12,588 | INFO    | carry_0 values: [np.int8(0), np.int8(1), np.int8(2), np.int8(3), np.int8(4), np.int8(5), np.int8(6), np.int8(7), np.int8(8)]
+2026-03-18 20:06:12,612 | INFO    |   carry_0=0: SELECT 5,152 (correct=500/33,019, wrong=4,652, accuracy=0.097)
+2026-03-18 20:06:12,620 | INFO    |   carry_0=1: SELECT 13,915 (correct=500/4,948, wrong=13,415, accuracy=0.036)
+2026-03-18 20:06:12,625 | INFO    |   carry_0=2: SELECT 14,269 (correct=500/3,690, wrong=13,769, accuracy=0.035)
+2026-03-18 20:06:12,630 | INFO    |   carry_0=3: SELECT 11,090 (correct=500/3,287, wrong=10,590, accuracy=0.045)
+2026-03-18 20:06:12,634 | INFO    |   carry_0=4: SELECT 15,258 (correct=500/2,389, wrong=14,758, accuracy=0.033)
+2026-03-18 20:06:12,637 | INFO    |   carry_0=5: SELECT 20,904 (correct=500/775, wrong=20,404, accuracy=0.024)
+2026-03-18 20:06:12,639 | INFO    |   carry_0=6: SELECT 17,558 (correct=500/692, wrong=17,058, accuracy=0.028)
+2026-03-18 20:06:12,641 | INFO    |   carry_0=7: SELECT 15,977 (correct=500/507, wrong=15,477, accuracy=0.031)
+2026-03-18 20:06:12,642 | INFO    |   carry_0=8: INCLUDE ALL 8,100 (correct=197, accuracy=0.024)
+2026-03-18 20:06:12,650 | INFO    | 
+Total selected: 122,223 problems
+2026-03-18 20:06:12,650 | INFO    | Selected correct: 4,197
+2026-03-18 20:06:12,650 | INFO    | Selected wrong: 118,026
+2026-03-18 20:06:12,652 | INFO    | 
+============================================================
+2026-03-18 20:06:12,652 | INFO    | BALANCE REPORT
+2026-03-18 20:06:12,652 | INFO    | ============================================================
+2026-03-18 20:06:12,654 | INFO    | 
+carry_0:
+2026-03-18 20:06:12,655 | INFO    |   value=  0: total= 5,152, correct=  500
+2026-03-18 20:06:12,655 | INFO    |   value=  1: total=13,915, correct=  500
+2026-03-18 20:06:12,655 | INFO    |   value=  2: total=14,269, correct=  500
+2026-03-18 20:06:12,656 | INFO    |   value=  3: total=11,090, correct=  500
+2026-03-18 20:06:12,656 | INFO    |   value=  4: total=15,258, correct=  500
+2026-03-18 20:06:12,656 | INFO    |   value=  5: total=20,904, correct=  500
+2026-03-18 20:06:12,656 | INFO    |   value=  6: total=17,558, correct=  500
+2026-03-18 20:06:12,656 | INFO    |   value=  7: total=15,977, correct=  500
+2026-03-18 20:06:12,657 | INFO    |   value=  8: total= 8,100, correct=  197
+2026-03-18 20:06:12,659 | INFO    | 
+carry_1:
+2026-03-18 20:06:12,659 | INFO    |   value=  0: total= 3,744, correct=  331
+2026-03-18 20:06:12,659 | INFO    |   value=  1: total= 6,647, correct=  271
+2026-03-18 20:06:12,660 | INFO    |   value=  2: total= 9,430, correct=  381
+2026-03-18 20:06:12,660 | INFO    |   value=  3: total=11,072, correct=  438
+2026-03-18 20:06:12,660 | INFO    |   value=  4: total=12,500, correct=  455
+2026-03-18 20:06:12,660 | INFO    |   value=  5: total=13,362, correct=  475
+2026-03-18 20:06:12,660 | INFO    |   value=  6: total=12,899, correct=  407
+2026-03-18 20:06:12,661 | INFO    |   value=  7: total=12,428, correct=  416
+2026-03-18 20:06:12,661 | INFO    |   value=  8: total=11,739, correct=  300
+2026-03-18 20:06:12,661 | INFO    |   value=  9: total= 8,386, correct=  223
+2026-03-18 20:06:12,661 | INFO    |   value= 10: total= 6,675, correct=  167
+2026-03-18 20:06:12,661 | INFO    |   value= 11: total= 5,367, correct=  134
+2026-03-18 20:06:12,662 | INFO    |   value= 12: total= 3,407, correct=  109
+2026-03-18 20:06:12,662 | INFO    |   value= 13: total= 2,071, correct=   40 *** BELOW 100
+2026-03-18 20:06:12,662 | INFO    |   value= 14: total= 1,360, correct=   16 *** BELOW 100
+2026-03-18 20:06:12,662 | INFO    |   value= 15: total=   735, correct=   17 *** BELOW 100
+2026-03-18 20:06:12,662 | INFO    |   value= 16: total=   320, correct=   12 *** BELOW 100
+2026-03-18 20:06:12,663 | INFO    |   value= 17: total=    81, correct=    5 *** BELOW 100
+2026-03-18 20:06:12,665 | INFO    | 
+carry_2:
+2026-03-18 20:06:12,665 | INFO    |   value=  0: total=   272, correct=  111
+2026-03-18 20:06:12,665 | INFO    |   value=  1: total= 1,075, correct=  162
+2026-03-18 20:06:12,666 | INFO    |   value=  2: total= 2,810, correct=  306
+2026-03-18 20:06:12,666 | INFO    |   value=  3: total= 4,908, correct=  446
+2026-03-18 20:06:12,666 | INFO    |   value=  4: total= 7,059, correct=  513
+2026-03-18 20:06:12,666 | INFO    |   value=  5: total= 9,115, correct=  445
+2026-03-18 20:06:12,667 | INFO    |   value=  6: total=10,352, correct=  439
+2026-03-18 20:06:12,667 | INFO    |   value=  7: total=11,571, correct=  393
+2026-03-18 20:06:12,667 | INFO    |   value=  8: total=11,980, correct=  321
+2026-03-18 20:06:12,667 | INFO    |   value=  9: total=11,705, correct=  320
+2026-03-18 20:06:12,667 | INFO    |   value= 10: total=10,935, correct=  227
+2026-03-18 20:06:12,668 | INFO    |   value= 11: total= 9,628, correct=  187
+2026-03-18 20:06:12,668 | INFO    |   value= 12: total= 8,225, correct=  111
+2026-03-18 20:06:12,668 | INFO    |   value= 13: total= 6,737, correct=   95 *** BELOW 100
+2026-03-18 20:06:12,668 | INFO    |   value= 14: total= 5,100, correct=   42 *** BELOW 100
+2026-03-18 20:06:12,668 | INFO    |   value= 15: total= 3,733, correct=   32 *** BELOW 100
+2026-03-18 20:06:12,669 | INFO    |   value= 16: total= 2,674, correct=   22 *** BELOW 100
+2026-03-18 20:06:12,669 | INFO    |   value= 17: total= 1,762, correct=   13 *** BELOW 100
+2026-03-18 20:06:12,669 | INFO    |   value= 18: total= 1,123, correct=    2 *** BELOW 100
+2026-03-18 20:06:12,669 | INFO    |   value= 19: total=   682, correct=    5 *** BELOW 100
+2026-03-18 20:06:12,669 | INFO    |   value= 20: total=   381, correct=    1 *** BELOW 100
+2026-03-18 20:06:12,670 | INFO    |   value= 21: total=   206, correct=    2 *** BELOW 100
+2026-03-18 20:06:12,670 | INFO    |   value= 22: total=   112, correct=    1 *** BELOW 100
+2026-03-18 20:06:12,670 | INFO    |   value= 23: total=    51, correct=    0 *** BELOW 100
+2026-03-18 20:06:12,670 | INFO    |   value= 24: total=    20, correct=    0 *** BELOW 100
+2026-03-18 20:06:12,670 | INFO    |   value= 25: total=     6, correct=    0 *** BELOW 100
+2026-03-18 20:06:12,671 | INFO    |   value= 26: total=     1, correct=    1 *** BELOW 100
+2026-03-18 20:06:12,672 | INFO    | 
+carry_3:
+2026-03-18 20:06:12,673 | INFO    |   value=  0: total= 4,266, correct=  428
+2026-03-18 20:06:12,673 | INFO    |   value=  1: total=11,854, correct=  899
+2026-03-18 20:06:12,673 | INFO    |   value=  2: total=14,719, correct=  711
+2026-03-18 20:06:12,673 | INFO    |   value=  3: total=15,330, correct=  595
+2026-03-18 20:06:12,674 | INFO    |   value=  4: total=14,978, correct=  474
+2026-03-18 20:06:12,674 | INFO    |   value=  5: total=13,546, correct=  357
+2026-03-18 20:06:12,674 | INFO    |   value=  6: total=12,006, correct=  274
+2026-03-18 20:06:12,674 | INFO    |   value=  7: total=10,097, correct=  194
+2026-03-18 20:06:12,674 | INFO    |   value=  8: total= 8,270, correct=  117
+2026-03-18 20:06:12,675 | INFO    |   value=  9: total= 6,269, correct=   71 *** BELOW 100
+2026-03-18 20:06:12,675 | INFO    |   value= 10: total= 4,202, correct=   37 *** BELOW 100
+2026-03-18 20:06:12,675 | INFO    |   value= 11: total= 2,697, correct=   18 *** BELOW 100
+2026-03-18 20:06:12,675 | INFO    |   value= 12: total= 1,760, correct=   12 *** BELOW 100
+2026-03-18 20:06:12,675 | INFO    |   value= 13: total= 1,066, correct=    5 *** BELOW 100
+2026-03-18 20:06:12,676 | INFO    |   value= 14: total=   628, correct=    3 *** BELOW 100
+2026-03-18 20:06:12,676 | INFO    |   value= 15: total=   317, correct=    1 *** BELOW 100
+2026-03-18 20:06:12,676 | INFO    |   value= 16: total=   147, correct=    0 *** BELOW 100
+2026-03-18 20:06:12,676 | INFO    |   value= 17: total=    59, correct=    0 *** BELOW 100
+2026-03-18 20:06:12,676 | INFO    |   value= 18: total=    12, correct=    1 *** BELOW 100
+2026-03-18 20:06:12,678 | INFO    | 
+carry_4:
+2026-03-18 20:06:12,678 | INFO    |   value=  0: total=20,677, correct=1,911
+2026-03-18 20:06:12,678 | INFO    |   value=  1: total=29,038, correct=1,180
+2026-03-18 20:06:12,678 | INFO    |   value=  2: total=21,143, correct=  554
+2026-03-18 20:06:12,679 | INFO    |   value=  3: total=15,794, correct=  240
+2026-03-18 20:06:12,679 | INFO    |   value=  4: total=12,179, correct=  153
+2026-03-18 20:06:12,679 | INFO    |   value=  5: total= 9,169, correct=   82 *** BELOW 100
+2026-03-18 20:06:12,679 | INFO    |   value=  6: total= 6,579, correct=   44 *** BELOW 100
+2026-03-18 20:06:12,679 | INFO    |   value=  7: total= 4,351, correct=   22 *** BELOW 100
+2026-03-18 20:06:12,680 | INFO    |   value=  8: total= 2,483, correct=    7 *** BELOW 100
+2026-03-18 20:06:12,680 | INFO    |   value=  9: total=   810, correct=    4 *** BELOW 100
+2026-03-18 20:06:12,682 | INFO    | 
+a_units:
+2026-03-18 20:06:12,682 | INFO    |   value=0: total= 1,203, correct=  216
+2026-03-18 20:06:12,683 | INFO    |   value=1: total= 1,178, correct=   59 *** BELOW 100
+2026-03-18 20:06:12,683 | INFO    |   value=2: total= 4,859, correct=  163
+2026-03-18 20:06:12,683 | INFO    |   value=3: total= 6,143, correct=  162
+2026-03-18 20:06:12,683 | INFO    |   value=4: total= 7,814, correct=  330
+2026-03-18 20:06:12,684 | INFO    |   value=5: total= 9,881, correct=  636
+2026-03-18 20:06:12,684 | INFO    |   value=6: total=14,084, correct=  451
+2026-03-18 20:06:12,684 | INFO    |   value=7: total=18,812, correct=  430
+2026-03-18 20:06:12,684 | INFO    |   value=8: total=25,914, correct=  855
+2026-03-18 20:06:12,684 | INFO    |   value=9: total=32,335, correct=  895
+2026-03-18 20:06:12,685 | INFO    | 
+a_tens:
+2026-03-18 20:06:12,685 | INFO    |   value=0: total=12,175, correct=  393
+2026-03-18 20:06:12,685 | INFO    |   value=1: total=12,236, correct=  325
+2026-03-18 20:06:12,685 | INFO    |   value=2: total=12,308, correct=  545
+2026-03-18 20:06:12,686 | INFO    |   value=3: total=12,215, correct=  419
+2026-03-18 20:06:12,686 | INFO    |   value=4: total=12,192, correct=  501
+2026-03-18 20:06:12,686 | INFO    |   value=5: total=12,213, correct=  404
+2026-03-18 20:06:12,686 | INFO    |   value=6: total=12,126, correct=  400
+2026-03-18 20:06:12,686 | INFO    |   value=7: total=12,284, correct=  474
+2026-03-18 20:06:12,687 | INFO    |   value=8: total=12,283, correct=  383
+2026-03-18 20:06:12,687 | INFO    |   value=9: total=12,191, correct=  353
+2026-03-18 20:06:12,687 | INFO    | 
+a_hundreds:
+2026-03-18 20:06:12,687 | INFO    |   value=1: total=13,631, correct=  979
+2026-03-18 20:06:12,687 | INFO    |   value=2: total=13,646, correct=  810
+2026-03-18 20:06:12,688 | INFO    |   value=3: total=13,616, correct=  567
+2026-03-18 20:06:12,688 | INFO    |   value=4: total=13,509, correct=  432
+2026-03-18 20:06:12,688 | INFO    |   value=5: total=13,554, correct=  310
+2026-03-18 20:06:12,688 | INFO    |   value=6: total=13,536, correct=  332
+2026-03-18 20:06:12,689 | INFO    |   value=7: total=13,589, correct=  342
+2026-03-18 20:06:12,689 | INFO    |   value=8: total=13,582, correct=  241
+2026-03-18 20:06:12,689 | INFO    |   value=9: total=13,560, correct=  184
+2026-03-18 20:06:12,689 | INFO    | 
+b_units:
+2026-03-18 20:06:12,689 | INFO    |   value=0: total= 1,253, correct=  254
+2026-03-18 20:06:12,690 | INFO    |   value=1: total= 1,201, correct=   32 *** BELOW 100
+2026-03-18 20:06:12,690 | INFO    |   value=2: total= 4,672, correct=  228
+2026-03-18 20:06:12,690 | INFO    |   value=3: total= 6,229, correct=  123
+2026-03-18 20:06:12,690 | INFO    |   value=4: total= 7,698, correct=  392
+2026-03-18 20:06:12,691 | INFO    |   value=5: total=10,197, correct=  504
+2026-03-18 20:06:12,691 | INFO    |   value=6: total=14,098, correct=  458
+2026-03-18 20:06:12,691 | INFO    |   value=7: total=18,893, correct=  331
+2026-03-18 20:06:12,691 | INFO    |   value=8: total=25,785, correct=1,106
+2026-03-18 20:06:12,691 | INFO    |   value=9: total=32,197, correct=  769
+2026-03-18 20:06:12,692 | INFO    | 
+b_tens:
+2026-03-18 20:06:12,692 | INFO    |   value=0: total=12,158, correct=  547
+2026-03-18 20:06:12,692 | INFO    |   value=1: total=12,183, correct=  397
+2026-03-18 20:06:12,692 | INFO    |   value=2: total=12,220, correct=  577
+2026-03-18 20:06:12,693 | INFO    |   value=3: total=12,225, correct=  354
+2026-03-18 20:06:12,693 | INFO    |   value=4: total=12,175, correct=  444
+2026-03-18 20:06:12,693 | INFO    |   value=5: total=12,298, correct=  381
+2026-03-18 20:06:12,693 | INFO    |   value=6: total=12,314, correct=  446
+2026-03-18 20:06:12,694 | INFO    |   value=7: total=12,253, correct=  369
+2026-03-18 20:06:12,694 | INFO    |   value=8: total=12,157, correct=  396
+2026-03-18 20:06:12,694 | INFO    |   value=9: total=12,240, correct=  286
+2026-03-18 20:06:12,694 | INFO    | 
+b_hundreds:
+2026-03-18 20:06:12,695 | INFO    |   value=1: total=13,700, correct=1,152
+2026-03-18 20:06:12,695 | INFO    |   value=2: total=13,418, correct=  822
+2026-03-18 20:06:12,695 | INFO    |   value=3: total=13,497, correct=  621
+2026-03-18 20:06:12,695 | INFO    |   value=4: total=13,548, correct=  405
+2026-03-18 20:06:12,696 | INFO    |   value=5: total=13,672, correct=  323
+2026-03-18 20:06:12,696 | INFO    |   value=6: total=13,650, correct=  321
+2026-03-18 20:06:12,696 | INFO    |   value=7: total=13,667, correct=  225
+2026-03-18 20:06:12,696 | INFO    |   value=8: total=13,585, correct=  235
+2026-03-18 20:06:12,696 | INFO    |   value=9: total=13,486, correct=   93 *** BELOW 100
+2026-03-18 20:06:12,696 | INFO    | 
+============================================================
+2026-03-18 20:06:12,697 | INFO    | HARD CEILINGS (full 810K space)
+2026-03-18 20:06:12,697 | INFO    | ============================================================
+2026-03-18 20:06:12,731 | INFO    |   carry_1=13: 51 correct out of 2,835 (ceiling — cannot reach 100)
+2026-03-18 20:06:12,732 | INFO    |   carry_1=14: 20 correct out of 1,620 (ceiling — cannot reach 100)
+2026-03-18 20:06:12,732 | INFO    |   carry_1=15: 22 correct out of 810 (ceiling — cannot reach 100)
+2026-03-18 20:06:12,733 | INFO    |   carry_1=16: 13 correct out of 324 (ceiling — cannot reach 100)
+2026-03-18 20:06:12,734 | INFO    |   carry_1=17: 5 correct out of 81 (ceiling — cannot reach 100)
+2026-03-18 20:06:12,755 | INFO    |   carry_2=15: 66 correct out of 8,591 (ceiling — cannot reach 100)
+2026-03-18 20:06:12,755 | INFO    |   carry_2=16: 38 correct out of 5,565 (ceiling — cannot reach 100)
+2026-03-18 20:06:12,756 | INFO    |   carry_2=17: 22 correct out of 3,265 (ceiling — cannot reach 100)
+2026-03-18 20:06:12,757 | INFO    |   carry_2=18: 5 correct out of 1,877 (ceiling — cannot reach 100)
+2026-03-18 20:06:12,757 | INFO    |   carry_2=19: 8 correct out of 1,023 (ceiling — cannot reach 100)
+2026-03-18 20:06:12,758 | INFO    |   carry_2=20: 2 correct out of 526 (ceiling — cannot reach 100)
+2026-03-18 20:06:12,758 | INFO    |   carry_2=21: 3 correct out of 262 (ceiling — cannot reach 100)
+2026-03-18 20:06:12,759 | INFO    |   carry_2=22: 1 correct out of 126 (ceiling — cannot reach 100)
+2026-03-18 20:06:12,760 | INFO    |   carry_2=23: 0 correct out of 56 (ceiling — cannot reach 100)
+2026-03-18 20:06:12,760 | INFO    |   carry_2=24: 0 correct out of 21 (ceiling — cannot reach 100)
+2026-03-18 20:06:12,761 | INFO    |   carry_2=25: 0 correct out of 6 (ceiling — cannot reach 100)
+2026-03-18 20:06:12,762 | INFO    |   carry_2=26: 1 correct out of 1 (ceiling — cannot reach 100)
+2026-03-18 20:06:12,777 | INFO    |   carry_3=12: 95 correct out of 9,896 (ceiling — cannot reach 100)
+2026-03-18 20:06:12,778 | INFO    |   carry_3=13: 57 correct out of 5,887 (ceiling — cannot reach 100)
+2026-03-18 20:06:12,778 | INFO    |   carry_3=14: 18 correct out of 3,282 (ceiling — cannot reach 100)
+2026-03-18 20:06:12,779 | INFO    |   carry_3=15: 7 correct out of 1,655 (ceiling — cannot reach 100)
+2026-03-18 20:06:12,780 | INFO    |   carry_3=16: 0 correct out of 722 (ceiling — cannot reach 100)
+2026-03-18 20:06:12,780 | INFO    |   carry_3=17: 0 correct out of 237 (ceiling — cannot reach 100)
+2026-03-18 20:06:12,781 | INFO    |   carry_3=18: 1 correct out of 45 (ceiling — cannot reach 100)
+2026-03-18 20:06:12,794 | INFO    |   carry_4=9: 16 correct out of 5,077 (ceiling — cannot reach 100)
+2026-03-18 20:06:12,858 | INFO    | 
+Saved selected problems: /data/user_data/anshulk/arithmetic-geometry/l5_screening/l5_selected_problems.json (1.2 MB)
+2026-03-18 20:06:12,858 | INFO    |   n_selected=122,223, n_correct=4,197
+2026-03-18 20:06:12,860 | INFO    | 
+Total time: 49.9 min
+2026-03-18 20:06:12,860 | INFO    | ============================================================

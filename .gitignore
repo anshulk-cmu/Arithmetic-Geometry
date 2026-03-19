@@ -2,6 +2,9 @@
 *.npy
 *.npz
 
+# Large label files (regenerable from pipeline)
+labels/level_5.json
+
 # Python
 __pycache__/
 *.pyc

@@ -8,19 +8,21 @@ We use multi-digit multiplication in Llama 3.1 8B as a controlled testbed. The c
 
 The LRH finds the ingredients. But does it find the recipe? Multiplication requires composing multiple intermediate steps — carry propagation across columns — and it is precisely this compositional structure that breaks in the model's representations. Linear probes can detect failure (correct vs. wrong) but cannot explain it. We ask: what is the geometric structure *within* concept subspaces, how do these structures interact during composition, and what changes geometrically when computation fails?
 
-Bai et al. (2025) found Fourier-basis digit representations in tiny 2-layer models. Gurnee et al. (2025) found helical manifolds in Claude 3.5 Haiku. Qian et al. (2024) showed carry propagation is the bottleneck. Nobody has systematically tested whether these structures exist in a large pre-trained model, mapped the full computational graph geometrically, or characterized what changes in the manifold geometry between correct and wrong answers. We fill that gap using Llama 3.1 8B with a difficulty gradient from trivial (1x1 digit, 100% accuracy) to near-impossible (3x3 digit, 6% accuracy).
+Bai et al. (2025) found Fourier-basis digit representations in tiny 2-layer models. Gurnee et al. (2025) found helical manifolds in Claude 3.5 Haiku. Qian et al. (2024) showed carry propagation is the bottleneck. Nobody has systematically tested whether these structures exist in a large pre-trained model, mapped the full computational graph geometrically, or characterized what changes in the manifold geometry between correct and wrong answers. We fill that gap using Llama 3.1 8B with a difficulty gradient from trivial (1x1 digit, 100% accuracy) to near-impossible (3x3 digit, 6.1% accuracy).
 
 ## Dataset
 
 | Level | Type | Problems | Correct | Wrong | Accuracy |
 |-------|------|----------|---------|-------|----------|
 | 1 | 1x1 digit | 64 | 64 | 0 | 100.0% |
-| 2 | 2x1 digit | 4,000 | 3,977 | 23 | 99.4% |
-| 3 | 2x2 digit | 4,000 | 2,638 | 1,362 | 66.0% |
-| 4 | 3x2 digit | 4,000 | 1,147 | 2,853 | 28.7% |
-| 5 | 3x3 digit | 4,000 | 239 | 3,761 | 6.0% |
+| 2 | 2x1 digit | 4,000 | 3,993 | 7 | 99.8% |
+| 3 | 2x2 digit | 10,000 | 6,720 | 3,280 | 67.2% |
+| 4 | 3x2 digit | 10,000 | 2,897 | 7,103 | 29.0% |
+| 5 | 3x3 digit | 122,223 | 4,197 | 118,026 | 3.4%* |
 
-**16,064 problems total. 8,065 correct, 7,999 wrong.** Levels 3-5 are the effective range for correct/wrong geometric comparison.
+**146,287 problems total. 17,871 correct, 128,416 wrong.** Levels 3-5 are the effective range for correct/wrong geometric comparison.
+
+*L5 uses a two-phase approach: all 810,000 possible 3-digit x 3-digit problems were screened for correctness (6.11% accuracy on the full space), then a carry-balanced subset was selected targeting 500 correct per carry_0 value. The 3.4% dataset accuracy is lower than the 6.11% true accuracy because the selection deliberately oversamples high-carry problems where the model fails. **Report 6.11% as the model's L5 accuracy.**
 
 ## Model
 
@@ -29,19 +31,22 @@ Bai et al. (2025) found Fourier-basis digit representations in tiny 2-layer mode
 - Activations extracted at layers **[4, 6, 8, 12, 16, 20, 24, 28, 31]** spanning early/mid/late
 - Residual stream captured at the `" ="` token (last prompt position, attends to full input)
 - Prompt format: `"{a} * {b} ="` — MSF to match pre-training distribution
-- Greedy decoding (`do_sample=False`, deterministic)
+- Greedy decoding (`do_sample=False`, deterministic) — verified bit-identical across screening and pipeline runs
 
 ## Labels
 
-Every problem gets algorithm-agnostic mathematical labels: all pairwise partial products, column sums grouped by output position (`i+j=k`), carries and running sums via LSF propagation, answer digits in both MSF and LSF order, and per-digit difficulty annotations (partial product count, max column sum, carry chain length). These are mathematical facts about the product, not steps of any specific algorithm. The model may use long multiplication, Fourier-space computation, or something entirely alien — the labels test whether it represents these quantities regardless of method. All 16,064 label sets are verified against tight per-column carry bounds.
+Every problem gets algorithm-agnostic mathematical labels: all pairwise partial products, column sums grouped by output position (`i+j=k`), carries and running sums via LSF propagation, answer digits in both MSF and LSF order, and per-digit difficulty annotations (partial product count, max column sum, carry chain length). These are mathematical facts about the product, not steps of any specific algorithm. The model may use long multiplication, Fourier-space computation, or something entirely alien — the labels test whether it represents these quantities regardless of method. All 146,287 label sets are verified against tight per-column carry bounds.
+
+For L5 carry analysis, rare carry values are binned: carry_1 >= 12, carry_2 >= 13, carry_3 >= 9, carry_4 >= 5 are grouped into single "high" classes. This ensures >= 100 correct samples per class for Phase C/D. Raw labels store exact values; binning is applied only by analysis code.
 
 ## Pipeline Status
 
 | Stage | Status | Script | Output |
 |-------|--------|--------|--------|
-| Data Generation | Complete | `pipeline.py`, `analysis.py` | 45 activation files (2.21 GB), labels, error analysis |
-| Phase A: Visual Reconnaissance | Complete | `phase_a_embeddings.py`, `phase_a_analysis.py` | 351 UMAP/t-SNE embeddings, interestingness scores, priority list |
-| Phase C: Concept Subspaces | Complete | `phase_c_subspaces.py` | 2,835 subspaces, significance tests, cross-layer alignment |
+| Data Generation | Complete | `pipeline.py`, `generate_l5_problems.py`, `analysis.py` | 45 activation files (20.09 GB), labels, error analysis |
+| L5 Screening | Complete | `generate_l5_problems.py` | 810K evaluations cached, 122,223 selected |
+| Phase A: Visual Reconnaissance | Complete (L1-L5 old data) | `phase_a_embeddings.py`, `phase_a_analysis.py` | 351 UMAP/t-SNE embeddings, interestingness scores |
+| Phase C: Concept Subspaces | Needs rerun (L3-L5) | `phase_c_subspaces.py` | Previous: 2,835 subspaces; rerun needed with new data + carry binning |
 | Phase D: LDA for Carries | Planned | — | — |
 | Fourier Screening | Planned | — | — |
 
@@ -49,11 +54,12 @@ Every problem gets algorithm-agnostic mathematical labels: all pairwise partial 
 
 ### Data Generation
 
-- **Accuracy gradient works**: monotonic drop from 100% (1x1) to 6% (3x3)
-- **U-shaped per-digit accuracy**: first and last digits are easy (84-99%), middle digits collapse (16% at L5 position 3) — confirms Bai et al.'s carry-chain bottleneck in a production model
-- **Carries dominate difficulty**: L5 with 0 carries = 56.5% accuracy; with 5 carries = 2.5%
-- **Errors are structured, not random**: median relative error 0.24% at L5; 86-95% close arithmetic
-- **Even error bias**: 92-95% of errors preserve the ground truth's parity
+- **Accuracy gradient works**: monotonic drop from 100% (1x1) to 6.11% (3x3, full space)
+- **U-shaped per-digit accuracy**: first and last digits are easy (80-99%), middle digits collapse (13.0% at L5 position 3) — confirms Bai et al.'s carry-chain bottleneck in a production model
+- **Carries dominate difficulty**: monotonically decreasing accuracy with carry count at every level
+- **Errors are structured, not random**: median relative error 0.24% at L5; 83-95% close arithmetic
+- **Even error bias**: 90-95% of errors preserve the ground truth's parity
+- **L5 exhaustive screening**: 810,000 problems evaluated, 49,504 correct (6.11%), 25 carry values at hard mathematical ceilings
 
 ### Phase A: Visual Reconnaissance
 
@@ -81,32 +87,33 @@ Every problem gets algorithm-agnostic mathematical labels: all pairwise partial 
 ```
 arithmetic-geometry/                       (workspace, in git)
 ├── pipeline.py                            # generate problems, extract activations, evaluate
+├── generate_l5_problems.py                # L5 two-phase screening + carry-balanced selection
 ├── analysis.py                            # error pattern analysis (CPU only)
 ├── phase_a_embeddings.py                  # UMAP/t-SNE embeddings + interestingness scoring
 ├── phase_a_analysis.py                    # Phase A summary analysis
 ├── phase_c_subspaces.py                   # concept subspace identification via cond. covariance + SVD
 ├── config.yaml                            # all parameters, paths, model config
-├── run.sh                                 # SLURM: data generation (GPU)
-├── run_phase_a.sh                         # SLURM: Phase A (GPU for embeddings)
-├── run_phase_c.sh                         # SLURM: Phase C (CPU only, 12 cores)
+├── run.sh                                 # SLURM: main pipeline (GPU, ~14 min)
+├── run_l5_screen.sh                       # SLURM: L5 screening (GPU, ~50 min)
 ├── labels/                                # per-level labels + analysis summary
-│   ├── level_{1-5}.json
+│   ├── level_{1-5}.json                   # L5 is 160 MB (122,223 problems)
 │   └── analysis_summary.json
 ├── plots/                                 # all generated plots
-│   ├── *.png                              # 9 data generation diagnostic plots
-│   ├── phase_a/                           # 243 UMAP/t-SNE embedding plots + heatmaps
-│   └── phase_c/                           # 955 plots (eigenvalue spectra, heatmaps, trajectories)
+│   └── *.png                              # 9 data generation diagnostic plots
 ├── logs/                                  # execution logs and SLURM output
 └── docs/
-    ├── datageneration_stage_analysis.md   # complete data generation reference
+    ├── datageneration_analysis.md         # complete data generation reference
     ├── phase_a_analysis.md                # complete Phase A reference
     └── phase_c_analysis.md                # complete Phase C reference
 
 /data/user_data/anshulk/arithmetic-geometry/  (heavy files, not in git)
 ├── model/                                 # Llama 3.1 8B weights (~30 GB)
-├── activations/                           # 45 .npy files, 2.21 GB total
+├── l5_screening/                          # L5 two-phase outputs
+│   ├── l5_evaluation_cache.npz            # 810K evaluations (2.4 MB)
+│   └── l5_selected_problems.json          # 122,223 selected problems (1.2 MB)
+├── activations/                           # 45 .npy files, 20.09 GB total
 │   └── level{N}_layer{L}.npy             # shape (n_problems, 4096), float32
-├── answers/                               # per-level predictions + correctness
+├── answers/                               # per-level predictions + correctness (20.7 MB)
 │   └── level_{1-5}.json
 ├── phase_a/                               # Phase A outputs
 │   ├── coloring_dfs/                      # 5 .pkl coloring DataFrames
@@ -114,7 +121,7 @@ arithmetic-geometry/                       (workspace, in git)
 │   └── interestingness/                   # scoring results
 └── phase_c/                               # Phase C outputs (~5 GB)
     ├── residualized/                      # 45 product-residualized activation files
-    ├── subspaces/                         # 2,835 concept subspaces (basis, eigenvalues, null)
+    ├── subspaces/                         # concept subspaces (basis, eigenvalues, null)
     │   └── L{N}/layer_{LL}/{pop}/{concept}/
     ├── projections/                       # projected activations for downstream
     └── summary/                           # master CSVs + significance tables
@@ -139,13 +146,13 @@ snapshot_download('meta-llama/Meta-Llama-3.1-8B',
 ## Usage
 
 ```bash
-# Data generation (A6000 GPU, ~5 minutes)
+# Step 1: L5 screening (A6000 GPU, ~50 minutes — run once, cached)
+sbatch run_l5_screen.sh
+
+# Step 2: Main pipeline (A6000 GPU, ~14 minutes)
 sbatch run.sh
 
-# Phase A: visual reconnaissance (A6000 GPU, ~8 minutes)
-sbatch run_phase_a.sh
-
-# Phase C: concept subspaces (CPU only, 12 cores, ~58 minutes)
+# Phase C: concept subspaces (CPU only, 12 cores)
 sbatch run_phase_c.sh
 
 # Or run Phase C with pilot mode first (L3/layer16 only, ~2 minutes)
@@ -154,7 +161,7 @@ python phase_c_subspaces.py --config config.yaml --pilot
 
 ## Documentation
 
-- **[Data Generation Stage Analysis](docs/datageneration_stage_analysis.md)** — Every design decision, full math walkthroughs, tokenization patterns, carry bound proofs, error classification, all results verified against logs
+- **[Data Generation Stage Analysis](docs/datageneration_analysis.md)** — Every design decision, full math walkthroughs, tokenization patterns, carry bound proofs, error classification, carry binning decisions, all results verified against logs
 - **[Phase A Analysis](docs/phase_a_analysis.md)** — UMAP/t-SNE embedding methodology, interestingness scoring, CKA matrices, activation norm profiles, priority list for downstream phases
 - **[Phase C Analysis](docs/phase_c_analysis.md)** — Conditional covariance + SVD methodology, permutation null validation, eigenvalue spectra, cross-layer alignment, correct/wrong divergence, all 2,835 subspaces documented
 
