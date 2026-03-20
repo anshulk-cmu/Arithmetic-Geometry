@@ -47,7 +47,7 @@ For L5 carry analysis, rare carry values are binned: carry_1 >= 12, carry_2 >= 1
 | L5 Screening | Complete | `generate_l5_problems.py` | 810K evaluations cached, 122,223 selected |
 | Phase A: Visual Reconnaissance | Complete (L1-L5) | `phase_a_embeddings.py`, `phase_a_analysis.py` | 351 UMAP/t-SNE embeddings, interestingness scores |
 | Phase B: Concept Deconfounding | Complete | `phase_b_deconfounding.py` | 2,677 classified pairs, correlation matrices, deconfounding plan |
-| Phase C: Concept Subspaces | Needs rerun (L3-L5) | `phase_c_subspaces.py` | Previous: 2,835 subspaces; rerun needed with new data + carry binning |
+| Phase C: Concept Subspaces | Complete (rerun Mar 19) | `phase_c_subspaces.py` | 2,844 subspaces, 2,750 significant (96.7%), GPU-accelerated |
 | Phase D: LDA for Carries | Planned | — | — |
 | Fourier Screening | Planned | — | — |
 
@@ -77,18 +77,20 @@ For L5 carry analysis, rare carry values are binned: carry_1 >= 12, carry_2 >= 1
 - **L5 sampling bias is small**: carry-stratified sampling induces r = +0.20 between a_units and b_units (below action threshold in "all" population; rises to r = +0.34 in the 4,197-problem correct-only population)
 - **Structural correlations dominate**: 92-204 pairs per level are arithmetic relationships (carry chains, column-sum dependencies, digit-to-partial-product links). These are features of multiplication, not confounds
 
-### Phase C: LRH Works for Atomic Concepts
+### Phase C: LRH Works for Atomic Concepts (confirmed with 17x scale-up)
 
-- **2,835 subspaces identified, 2,513 significant (88.6%)** by permutation null (1,000 shuffles, α=0.01)
-- **Input digits use maximum rank**: a_units (10 values) → 9D subspace, a_tens (9 values) → 8D, all with CV > 0.99. Every ingredient of multiplication is linearly recoverable
-- **Column sums are strongly represented**: col_sum_0 through col_sum_4 all significant (CV 0.97-0.99), confirming the model tracks intermediate computation. Linear methods find the ingredients
-- **Carries, partial products, product magnitude** — all have significant linear subspaces. The LRH is validated for every atomic concept we tested
+- **2,844 subspaces identified, 2,750 significant (96.7%)** by permutation null (1,000 shuffles, α=0.01) — up from 88.6% in the first run, driven by L5
+- **Input digits use maximum rank at all levels, layers, and populations**: a_units (10 values) → 9D subspace, a_tens (9 values) → 8D, all with CV > 0.985. Confirmed in the L5 correct population (4,197 samples) — the "vanishing subspaces" from the first run were sample-size artifacts
+- **Column sums are strongly represented**: col_sum_0 through col_sum_4 all significant at maximum rank (CV 0.998-1.000 at L3), confirming the model tracks intermediate computation
+- **Carries survive in the correct population**: carry_0 through carry_4 are significant at all layers even for L5 correct. The first run showed carry_0 with dim_perm=0 at layers 16+ — now dim_perm=8 everywhere. The model maintains full intermediate computation representations for problems it gets right
+- **Partial products, product magnitude** — all have significant linear subspaces. The LRH is validated for every atomic concept we tested, including in the failure regime
 
-### Phase C: LRH Fails for Composition
+### Phase C: LRH Fails for Composition (confirmed null results)
 
-- **Middle answer digits have no linear subspace**: ans_digit_1_msf (the thousands digit, requiring carry propagation to compute) has dim_perm=0 at every layer and level. The model has all the ingredients (digits, carries, column sums) in clean linear subspaces, but the composed result is not linearly encoded. This is direct evidence that composition is nonlinear
-- **Correct answers compress, wrong answers don't**: at L5, correct subspaces collapse to 1-3D while wrong maintain 8-9D. The model uses a geometrically efficient (likely nonlinear) code when it succeeds — a code that linear subspace methods see as *lower*-dimensional, not *higher*. The correct computation lives on a compact manifold inside the subspace
-- **Correct/wrong divergence is subtle (8-40° principal angles)**: the same subspace is used for both, but the *shape within* differs. The critical difference is in curvature, clustering, and manifold topology — precisely what linear methods cannot characterize
+- **Middle answer digits have no linear subspace at L5 correct**: ans_digit_1 and ans_digit_2 have dim_perm=0 at every single layer with 4,197 samples. This is not a power issue — it is confirmed with ~300-900 samples per digit value. The model has all the ingredients (digits, carries, column sums) in clean linear subspaces, but the composed middle output digits are not linearly encoded
+- **The bottleneck is output, not representation**: the model maintains full-rank input digits, carries, column sums, and partial products for correct L5 problems. Only middle answer digits are absent. The computation pipeline is intact; the failure is in composing intermediates into outputs for the hardest positions
+- **Edge-vs-middle asymmetry scales with difficulty**: L3 has 1 weak answer position, L4 has 2, L5 has 2-3. The middle digits requiring carry chain propagation are hardest. Leading (magnitude) and trailing (modular arithmetic) digits are always represented
+- **Correct/wrong divergence peaks at the output stage**: principal angles between correct and wrong subspaces are 10-18° for input digits, 13-31° for intermediates, 38-48° for middle answer digits. The failure manifests in output encoding, not input encoding
 - **Subspace dimensionality is flat across layers**: carries hold the same linear rank from layer 4 to layer 31, yet the model is clearly computing with them. The computation transforms nonlinearly between layers while projecting to the same linear shadow
 
 ## Project Structure
@@ -101,11 +103,12 @@ arithmetic-geometry/                       (workspace, in git)
 ├── phase_a_embeddings.py                  # UMAP/t-SNE embeddings + interestingness scoring
 ├── phase_a_analysis.py                    # Phase A summary analysis
 ├── phase_b_deconfounding.py                # label-level correlation diagnostics (CPU, <1 min)
-├── phase_c_subspaces.py                   # concept subspace identification via cond. covariance + SVD
+├── phase_c_subspaces.py                   # concept subspace identification via cond. covariance + SVD (GPU-accelerated)
 ├── config.yaml                            # all parameters, paths, model config
 ├── run.sh                                 # SLURM: main pipeline (GPU, ~14 min)
 ├── run_l5_screen.sh                       # SLURM: L5 screening (GPU, ~50 min)
 ├── run_phase_b.sh                         # SLURM: Phase B deconfounding (CPU, <1 min)
+├── run_phase_c.sh                         # SLURM: Phase C subspaces (GPU, ~3.5 hours)
 ├── labels/                                # per-level labels + analysis summary
 │   ├── level_{1-5}.json                   # L5 is 160 MB (122,223 problems)
 │   └── analysis_summary.json
@@ -136,12 +139,11 @@ arithmetic-geometry/                       (workspace, in git)
 │   ├── classified_pairs.csv               # 2,677 pairs with classification + action
 │   ├── deconfounding_plan.json            # per-level confound lists for Phase C
 │   └── summary.json                       # aggregate statistics
-└── phase_c/                               # Phase C outputs (~5 GB)
-    ├── residualized/                      # 45 product-residualized activation files
-    ├── subspaces/                         # concept subspaces (basis, eigenvalues, null)
+└── phase_c/                               # Phase C outputs (26 GB)
+    ├── residualized/                      # 45 product-residualized activation files (21 GB)
+    ├── subspaces/                         # concept subspaces (basis, eigenvalues, null) (5.5 GB)
     │   └── L{N}/layer_{LL}/{pop}/{concept}/
-    ├── projections/                       # projected activations for downstream
-    └── summary/                           # master CSVs + significance tables
+    └── summary/                           # master CSVs (results, divergence, alignment)
 ```
 
 ## Setup
@@ -172,7 +174,7 @@ sbatch run.sh
 # Phase B: concept deconfounding (CPU only, <1 minute)
 sbatch run_phase_b.sh
 
-# Phase C: concept subspaces (CPU only, 12 cores)
+# Phase C: concept subspaces (GPU-accelerated, ~3.5 hours)
 sbatch run_phase_c.sh
 
 # Or run Phase C with pilot mode first (L3/layer16 only, ~2 minutes)
@@ -184,7 +186,7 @@ python phase_c_subspaces.py --config config.yaml --pilot
 - **[Data Generation Stage Analysis](docs/datageneration_analysis.md)** — Every design decision, full math walkthroughs, tokenization patterns, carry bound proofs, error classification, carry binning decisions, all results verified against logs
 - **[Phase A Analysis](docs/phase_a_analysis.md)** — UMAP/t-SNE embedding methodology, interestingness scoring, CKA matrices, activation norm profiles, priority list for downstream phases
 - **[Phase B Analysis](docs/phase_b_analysis.md)** — Label-level correlation diagnostics, the suppression effect discovery, four-category classification system, deconfounding plan, all 2,677 pairs verified
-- **[Phase C Analysis](docs/phase_c_analysis.md)** — Conditional covariance + SVD methodology, permutation null validation, eigenvalue spectra, cross-layer alignment, correct/wrong divergence, all 2,835 subspaces documented
+- **[Phase C Analysis](docs/phase_c_analysis.md)** — Conditional covariance + SVD methodology, permutation null validation, eigenvalue spectra, cross-layer alignment, correct/wrong divergence, all 2,844 subspaces documented. Includes first-run vs rerun comparison showing which findings survived the 17x L5 scale-up
 
 ## What's Next: Beyond Linear Subspaces
 

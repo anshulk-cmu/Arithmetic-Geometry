@@ -13,8 +13,8 @@
 # ============================================================================
 # Phase C — Concept Subspace Identification
 # ============================================================================
-# CPU-only (no GPU needed). SVD on small centroid matrices + permutation null.
-# Dominated by permutation null: ~32 min on 8 cores.
+# GPU-accelerated permutation null via CuPy on A6000.
+# Expected runtime: ~15-30 min with GPU, ~3-4 hours CPU-only.
 #
 # Outputs:
 #   Data:  /data/user_data/anshulk/arithmetic-geometry/phase_c/
@@ -37,7 +37,7 @@ echo "============================================================"
 cd /home/anshulk/arithmetic-geometry || { echo "Failed to cd to workspace"; exit 1; }
 
 echo "Activating conda environment..."
-eval "$(conda shell.bash hook)"
+source /home/anshulk/miniconda3/etc/profile.d/conda.sh
 conda activate geometry || { echo "Failed to activate geometry environment"; exit 1; }
 
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
@@ -91,6 +91,16 @@ mkdir -p /home/anshulk/arithmetic-geometry/plots/phase_c
 mkdir -p /data/user_data/anshulk/arithmetic-geometry/phase_c
 echo "  Output directories ready"
 
+# Clean stale phase_c outputs from previous runs (different data sizes
+# would cause the resume logic to load wrong cached results)
+echo "  Cleaning stale phase_c outputs..."
+PHASE_C_DATA="/data/user_data/anshulk/arithmetic-geometry/phase_c"
+if [ -d "$PHASE_C_DATA" ]; then
+    rm -rf "$PHASE_C_DATA"
+    echo "  Removed $PHASE_C_DATA"
+fi
+mkdir -p "$PHASE_C_DATA"
+
 echo ""
 echo "Pre-flight checks passed!"
 echo ""
@@ -101,11 +111,11 @@ echo ""
 
 echo "============================================================"
 echo "Running Phase C"
-echo "  Expected runtime: ~35-40 min (8 cores)"
+echo "  Expected runtime: ~15-30 min (GPU-accelerated)"
 echo "============================================================"
 echo ""
 
-python phase_c_subspaces.py --config config.yaml --n-jobs 12
+python phase_c_subspaces.py --config config.yaml --n-jobs 1
 PHASE_C_EXIT=$?
 
 # ============================================================================

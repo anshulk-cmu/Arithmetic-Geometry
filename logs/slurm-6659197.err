@@ -1,0 +1,46 @@
+20:38:30 INFO     ======================================================================
+20:38:30 INFO     Phase C — Concept Subspace Identification
+20:38:30 INFO     ======================================================================
+20:38:30 INFO     Levels: [1, 2, 3, 4, 5]
+20:38:30 INFO     Layers: [4, 6, 8, 12, 16, 20, 24, 28, 31]
+20:38:30 INFO     Max tier: all
+20:38:30 INFO     Permutations: 1000 
+20:38:30 INFO     Jobs: 1
+20:38:30 INFO     GPU (CuPy): available
+20:38:30 INFO     
+20:38:30 INFO     Step 1: Subspace identification
+20:38:30 INFO     ----------------------------------------
+20:38:30 INFO     Processing 45 (level, layer) pairs across 5 levels, 9 layers
+Phase C:   0%|          | 0/45 [00:00<?, ?it/s]Phase C:   2%|▏         | 1/45 [00:02<01:48,  2.47s/it]Phase C:   7%|▋         | 3/45 [00:02<00:28,  1.45it/s]Phase C:   9%|▉         | 4/45 [00:02<00:21,  1.93it/s]Phase C:  16%|█▌        | 7/45 [00:02<00:08,  4.27it/s]Phase C:  20%|██        | 9/45 [00:03<00:07,  4.56it/s]Phase C:  20%|██        | 9/45 [00:19<00:07,  4.56it/s]Phase C:  22%|██▏       | 10/45 [00:52<06:00, 10.29s/it]Phase C:  24%|██▍       | 11/45 [01:39<10:36, 18.72s/it]Phase C:  27%|██▋       | 12/45 [02:26<14:03, 25.55s/it]Phase C:  29%|██▉       | 13/45 [03:14<16:39, 31.25s/it]Phase C:  31%|███       | 14/45 [04:00<18:15, 35.33s/it]Phase C:  33%|███▎      | 15/45 [04:46<19:08, 38.27s/it]Phase C:  36%|███▌      | 16/45 [05:33<19:47, 40.95s/it]Phase C:  38%|███▊      | 17/45 [06:20<19:53, 42.64s/it]Phase C:  40%|████      | 18/45 [07:07<19:42, 43.79s/it]Phase C:  42%|████▏     | 19/45 [09:21<30:33, 70.52s/it]Phase C:  44%|████▍     | 20/45 [11:33<36:58, 88.75s/it]Phase C:  47%|████▋     | 21/45 [13:45<40:38, 101.62s/it]Phase C:  49%|████▉     | 22/45 [15:58<42:27, 110.78s/it]Phase C:  51%|█████     | 23/45 [18:10<42:56, 117.12s/it]Phase C:  53%|█████▎    | 24/45 [20:24<42:49, 122.35s/it]Phase C:  56%|█████▌    | 25/45 [22:43<42:23, 127.17s/it]Phase C:  58%|█████▊    | 26/45 [24:55<40:42, 128.56s/it]Phase C:  60%|██████    | 27/45 [27:07<38:56, 129.82s/it]Phase C:  62%|██████▏   | 28/45 [29:58<40:16, 142.16s/it]Phase C:  64%|██████▍   | 29/45 [32:53<40:31, 151.98s/it]Phase C:  67%|██████▋   | 30/45 [35:43<39:21, 157.44s/it]Phase C:  69%|██████▉   | 31/45 [38:35<37:44, 161.77s/it]Phase C:  71%|███████   | 32/45 [41:26<35:37, 164.44s/it]Phase C:  73%|███████▎  | 33/45 [44:20<33:27, 167.26s/it]Phase C:  76%|███████▌  | 34/45 [47:13<31:00, 169.13s/it]Phase C:  78%|███████▊  | 35/45 [50:11<28:36, 171.63s/it]Phase C:  80%|████████  | 36/45 [53:02<25:43, 171.53s/it]Phase C:  82%|████████▏ | 37/45 [1:09:35<55:42, 417.87s/it]Phase C:  84%|████████▍ | 38/45 [1:25:05<1:06:39, 571.42s/it]Phase C:  87%|████████▋ | 39/45 [1:40:42<1:08:06, 681.11s/it]Phase C:  89%|████████▉ | 40/45 [1:57:50<1:05:26, 785.22s/it]Phase C:  91%|█████████ | 41/45 [2:14:18<56:24, 846.20s/it]  Phase C:  93%|█████████▎| 42/45 [2:31:23<44:59, 899.85s/it]Phase C:  96%|█████████▌| 43/45 [2:47:31<30:40, 920.30s/it]Phase C:  98%|█████████▊| 44/45 [3:02:59<15:22, 922.52s/it]Phase C: 100%|██████████| 45/45 [3:18:29<00:00, 924.91s/it]Phase C: 100%|██████████| 45/45 [3:18:29<00:00, 264.67s/it]
+23:57:00 INFO     Step 1 complete: 2844 concept subspaces (11910.0s)
+23:57:00 INFO     
+23:57:00 INFO     Step 2: Cross-layer alignment
+23:57:00 INFO     ----------------------------------------
+23:57:00 INFO     Computing cross-layer alignment...
+23:57:01 INFO     Step 2 complete: 2528 alignment entries (1.6s)
+23:57:01 INFO     
+23:57:01 INFO     Step 3: Correct/wrong divergence
+23:57:01 INFO     ----------------------------------------
+23:57:01 INFO     Computing correct/wrong divergence...
+23:57:02 INFO     Step 3 complete: 792 divergence entries (0.5s)
+23:57:02 INFO     
+23:57:02 INFO     Step 4: Plot generation
+23:57:02 INFO     ----------------------------------------
+23:57:02 INFO     Generating eigenvalue spectrum plots...
+23:58:52 INFO     Generating dimensionality heatmaps...
+23:58:57 INFO     Generating cross-layer trajectory plots...
+23:59:35 INFO     Generating correct/wrong comparison plots...
+23:59:46 INFO     Generated 961 plots
+23:59:46 INFO     Step 4 complete (163.8s)
+23:59:46 INFO     
+23:59:46 INFO     Step 5: Summary tables
+23:59:46 INFO     ----------------------------------------
+23:59:46 INFO     Saved phase_c_results.csv (2844 rows)
+23:59:46 INFO     Saved correct_wrong_divergence.csv (792 rows)
+23:59:46 INFO     Saved alignment_results.csv (2528 rows)
+23:59:46 INFO     
+23:59:46 INFO     ======================================================================
+23:59:46 INFO     Phase C complete: 2844 subspaces, 12076s (201.3 min)
+23:59:46 INFO     ======================================================================
+23:59:46 INFO     Significant subspaces (perm null): 2750 / 2844
+23:59:46 INFO     Strong correct/wrong divergence (<60°): 787 entries

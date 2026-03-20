@@ -1,0 +1,56 @@
+============================================================
+Phase C — Concept Subspace Identification
+============================================================
+Job ID: 6659197
+Node: babel-s9-16
+Start time: Thu Mar 19 20:38:20 EDT 2026
+============================================================
+Activating conda environment...
+
+Running pre-flight checks...
+  Checking Python packages...
+  All packages available
+  Checking config...
+  Checking input data...
+  Activations: 45 .npy files
+  Coloring DFs: 5 .pkl files
+  Creating output directories...
+  Output directories ready
+  Cleaning stale phase_c outputs...
+  Removed /data/user_data/anshulk/arithmetic-geometry/phase_c
+
+Pre-flight checks passed!
+
+============================================================
+Running Phase C
+  Expected runtime: ~15-30 min (GPU-accelerated)
+============================================================
+
+
+============================================================
+Post-Run Validation
+============================================================
+--- Data outputs ---
+  Subspace metadata.json: 2844
+  Basis .npy files: 2844
+  Residualized .npy files: 45 / 45
+
+--- Summary files ---
+  phase_c_results.csv: 2845 rows
+  correct_wrong_divergence.csv: 793 rows
+  alignment_results.csv: 2529 rows
+
+--- Plots ---
+  eigenvalue_spectra: 546 plots
+  dimensionality_heatmaps: 11 plots
+  cross_layer_trajectories: 316 plots
+  correct_wrong_comparison: 88 plots
+
+============================================================
+Job Complete
+============================================================
+End time: Thu Mar 19 23:59:51 EDT 2026
+Exit code: 0
+Total runtime: 12091 seconds (201 minutes)
+
+Phase C completed successfully

@@ -46,6 +46,13 @@ try:
 except ImportError:
     _JOBLIB_AVAILABLE = False
 
+# Optional GPU acceleration via CuPy (ships with RAPIDS/cuML)
+try:
+    import cupy as cp
+    _CUPY_AVAILABLE = cp.cuda.is_available()
+except (ImportError, Exception):
+    _CUPY_AVAILABLE = False
+
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # CONSTANTS
@@ -62,6 +69,17 @@ RATIO_THRESHOLD = 5.0
 PERM_ALPHA = 0.01          # 99th percentile for permutation null
 PP_N_BINS = 9              # bins for partial product values (0-81 → 9 bins)
 PRODUCT_N_BINS = 10        # decile bins for product magnitude
+
+# L5 carry binning: values >= threshold are merged into one group.
+# L3/L4 carries use filter_min_group (drop rare values) instead.
+# See docs/datageneration_analysis.md Section 23 for derivation.
+L5_CARRY_BIN_THRESHOLDS = {
+    "carry_0": None,   # all 9 values viable individually
+    "carry_1": 12,     # values 12-17 → one group (13 classes)
+    "carry_2": 13,     # values 13-26 → one group (14 classes)
+    "carry_3": 9,      # values 9-18  → one group (10 classes)
+    "carry_4": 5,      # values 5-9   → one group (6 classes)
+}
 
 # Eigenvalue spectrum plot: only these layers (to avoid plot explosion)
 PLOT_LAYERS = [4, 16, 31]
@@ -172,11 +190,19 @@ def get_concept_registry(level, df, pop_name="all"):
         ad_idx += 1
 
     # Tier 2: Carries
+    # At L5, rare carry values are merged into a tail group (see Section 23
+    # of datageneration_analysis.md).  At L3/L4, filter_min_group drops them.
     carry_idx = 0
     while f"carry_{carry_idx}" in cols:
         col = f"carry_{carry_idx}"
-        concepts.append({"name": col, "column": col, "tier": 2,
-                         "preprocess": "filter_min_group"})
+        bin_thresh = L5_CARRY_BIN_THRESHOLDS.get(col) if level == 5 else None
+        if bin_thresh is not None:
+            concepts.append({"name": col, "column": col, "tier": 2,
+                             "preprocess": "bin_carry_tail",
+                             "bin_threshold": bin_thresh})
+        else:
+            concepts.append({"name": col, "column": col, "tier": 2,
+                             "preprocess": "filter_min_group"})
         carry_idx += 1
 
     # Tier 2: Column sums (bridge between partial products and carries —
@@ -247,12 +273,25 @@ def bin_product_deciles(values, n_bins=PRODUCT_N_BINS):
     return np.asarray(binned, dtype=np.float64)
 
 
-def preprocess_concept(values, preprocess_type):
+def bin_carry_tail(values, threshold):
+    """Merge carry values >= threshold into a single group.
+
+    Values below threshold keep their original value.
+    Values >= threshold are all set to the threshold value.
+    """
+    result = np.asarray(values, dtype=np.float64).copy()
+    result[result >= threshold] = float(threshold)
+    return result
+
+
+def preprocess_concept(values, preprocess_type, bin_threshold=None):
     """Apply preprocessing to concept values. Returns numpy array."""
     if preprocess_type is None:
         return np.asarray(values, dtype=np.float64)
     elif preprocess_type == "filter_min_group":
         return np.asarray(values, dtype=np.float64)
+    elif preprocess_type == "bin_carry_tail":
+        return bin_carry_tail(np.asarray(values, dtype=np.float64), bin_threshold)
     elif preprocess_type == "bin_9":
         return bin_partial_product(np.asarray(values, dtype=np.float64)).astype(np.float64)
     elif preprocess_type == "bin_deciles":
@@ -308,6 +347,8 @@ def residualize_product(acts, product_values, cache_path=None):
     direction. This prevents product magnitude (the dominant axis per Phase A)
     from contaminating concept subspaces.
 
+    Uses GPU (CuPy) when available for the matmul and outer product.
+
     Args:
         acts: (N, 4096) activation matrix
         product_values: (N,) product magnitudes
@@ -321,21 +362,30 @@ def residualize_product(acts, product_values, cache_path=None):
         if cached.shape == acts.shape:
             return cached
 
-    X_c = acts - acts.mean(axis=0)
-    p_c = product_values.astype(np.float64) - product_values.mean()
-    p_dot_p = p_c @ p_c
-    if p_dot_p < 1e-12:
-        # Product is constant (shouldn't happen but be safe)
-        result = X_c
+    if _CUPY_AVAILABLE:
+        acts_g = cp.asarray(acts)
+        X_c = acts_g - acts_g.mean(axis=0)
+        p_c = cp.asarray(product_values, dtype=cp.float64) - float(product_values.mean())
+        p_dot_p = float(p_c @ p_c)
+        if p_dot_p < 1e-12:
+            result = cp.asnumpy(X_c).astype(np.float32)
+        else:
+            beta = X_c.T @ p_c / p_dot_p
+            result = cp.asnumpy(X_c - cp.outer(p_c, beta)).astype(np.float32)
+        del acts_g, X_c, p_c
+        cp.get_default_memory_pool().free_all_blocks()
     else:
-        beta = X_c.T @ p_c / p_dot_p   # (4096,)
-        result = X_c - np.outer(p_c, beta)
-
-    result = result.astype(np.float32)
+        X_c = acts - acts.mean(axis=0)
+        p_c = product_values.astype(np.float64) - product_values.mean()
+        p_dot_p = p_c @ p_c
+        if p_dot_p < 1e-12:
+            result = X_c.astype(np.float32)
+        else:
+            beta = X_c.T @ p_c / p_dot_p   # (4096,)
+            result = (X_c - np.outer(p_c, beta)).astype(np.float32)
 
     if cache_path is not None:
         cache_path.parent.mkdir(parents=True, exist_ok=True)
-        # Atomic write: write to temp, then rename
         fd, tmp_path = tempfile.mkstemp(dir=cache_path.parent, suffix=".npy")
         os.close(fd)
         np.save(tmp_path, result)
@@ -412,6 +462,9 @@ def find_subspace(centroids, grand_mean):
 def permutation_null(acts, concept_values, n_perms=N_PERMUTATIONS, rng=None):
     """Compute null eigenvalue distribution by shuffling concept labels.
 
+    Uses GPU (CuPy) when available for the one_hot @ acts matmul.
+    SVD stays on CPU (centroid matrices are tiny: m × 4096, m ≤ 27).
+
     Args:
         acts: (N, d) activation matrix (valid rows only)
         concept_values: (N,) concept labels (no NaN)
@@ -436,23 +489,44 @@ def permutation_null(acts, concept_values, n_perms=N_PERMUTATIONS, rng=None):
     null_eigenvalues = np.zeros((n_perms, m - 1))
 
     # Pre-compute integer indices once, then permute those directly
-    # (avoids 4M Python dict lookups: N × n_perms)
     val_to_idx = {v: i for i, v in enumerate(unique_vals)}
     base_indices = np.array([val_to_idx[v] for v in vals_v])
     col_idx = np.arange(n)
 
-    for i in range(n_perms):
-        shuffled_indices = rng.permutation(base_indices)
-        one_hot = np.zeros((m, n), dtype=np.float32)
-        one_hot[shuffled_indices, col_idx] = 1.0
-        counts = one_hot.sum(axis=1, keepdims=True)
-        centroids = (one_hot @ acts_v) / counts
-        grand_mean = centroids.mean(axis=0)
+    if _CUPY_AVAILABLE:
+        acts_v_g = cp.asarray(acts_v)  # stays on GPU for all permutations
+        col_idx_g = cp.arange(n)
+        for i in range(n_perms):
+            shuffled_indices = rng.permutation(base_indices)
+            # Build one_hot directly on GPU (transfers 0.5 MB indices
+            # instead of 20 MB dense matrix per iteration)
+            shuffled_g = cp.asarray(shuffled_indices)
+            one_hot_g = cp.zeros((m, n), dtype=cp.float32)
+            one_hot_g[shuffled_g, col_idx_g] = 1.0
+            counts = cp.asnumpy(one_hot_g.sum(axis=1, keepdims=True))  # (m, 1)
 
-        M_c = (centroids - grand_mean) / np.sqrt(m)
-        S = np.linalg.svd(M_c, compute_uv=False)
-        eigs = S ** 2
-        null_eigenvalues[i] = eigs[:m - 1]
+            centroids = cp.asnumpy(one_hot_g @ acts_v_g) / counts  # back to CPU
+            del one_hot_g, shuffled_g
+
+            grand_mean = centroids.mean(axis=0)
+            M_c = (centroids - grand_mean) / np.sqrt(m)
+            S = np.linalg.svd(M_c, compute_uv=False)
+            null_eigenvalues[i] = (S ** 2)[:m - 1]
+
+        del acts_v_g, col_idx_g
+        cp.get_default_memory_pool().free_all_blocks()
+    else:
+        for i in range(n_perms):
+            shuffled_indices = rng.permutation(base_indices)
+            one_hot = np.zeros((m, n), dtype=np.float32)
+            one_hot[shuffled_indices, col_idx] = 1.0
+            counts = one_hot.sum(axis=1, keepdims=True)
+            centroids = (one_hot @ acts_v) / counts
+            grand_mean = centroids.mean(axis=0)
+
+            M_c = (centroids - grand_mean) / np.sqrt(m)
+            S = np.linalg.svd(M_c, compute_uv=False)
+            null_eigenvalues[i] = (S ** 2)[:m - 1]
 
     return null_eigenvalues
 
@@ -723,7 +797,8 @@ def process_level_layer(level, layer, paths, n_perms, skip_null, max_tier, logge
 
             # Extract and preprocess concept values
             raw_values = pop_df[c_col].values
-            values = preprocess_concept(raw_values, c_pre)
+            values = preprocess_concept(raw_values, c_pre,
+                                        bin_threshold=concept.get("bin_threshold"))
 
             # Choose activations: raw for product, residualized for everything else
             if c_name == "product_binned":
@@ -1172,6 +1247,7 @@ def main():
     logger.info(f"Max tier: {max_tier or 'all'}")
     logger.info(f"Permutations: {n_perms} {'(SKIPPED)' if args.skip_null else ''}")
     logger.info(f"Jobs: {args.n_jobs}")
+    logger.info(f"GPU (CuPy): {'available' if _CUPY_AVAILABLE else 'not available (CPU fallback)'}")
 
     # Pre-flight checks: verify input data exists
     missing = []
