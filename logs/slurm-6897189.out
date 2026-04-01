@@ -1,0 +1,63 @@
+============================================================
+Phase D — LDA Refinement
+============================================================
+Job ID: 6897189
+Node: babel-t9-20
+Start time: Tue Mar 31 11:05:13 EDT 2026
+============================================================
+Activating conda environment...
+
+Running pre-flight checks...
+  Checking Python packages...
+  All packages available
+  Checking config...
+  Checking Phase C outputs...
+  Residualized activations: 45 / 45
+  Phase C subspace metadata: 2844
+  Phase C basis files: 2844
+  Phase C results CSV: 2845 rows
+  Raw activations: 45 .npy files
+  Coloring DFs: 5 .pkl files
+  Creating Phase D output directories...
+  Output directories ready
+
+Pre-flight checks passed!
+
+============================================================
+Running Phase D — LDA Refinement (L5 resume, 4× GPU)
+  S_T denominator (invariant to label permutation)
+  Level: 5 only (L1-L4 complete)
+  Layers: [4, 6, 8, 12, 16, 20, 24, 28, 31]
+  Populations: all, correct, wrong
+  GPUs: 4× A6000 (parallel by layer)
+  Expected runtime: ~5-6 hours
+============================================================
+
+
+============================================================
+Post-Run Validation
+============================================================
+--- Data outputs ---
+  metadata.json: 2844
+  lda_basis.npy: 2844
+  merged_basis.npy: 2844
+  null_lda_eigenvalues.npy: 2844
+
+--- Summary files ---
+  phase_d_results.csv: 1036 rows
+  lda_novelty_summary.csv: 1027 rows
+
+--- Plots ---
+  eigenvalue_spectra: 198 plots
+  novelty_heatmaps: 3 plots
+  n_sig_heatmaps: 3 plots
+  population_comparison: 36 plots
+
+============================================================
+Job Complete
+============================================================
+End time: Wed Apr  1 04:58:03 EDT 2026
+Exit code: 0
+Total runtime: 64370 seconds (1072 minutes)
+
+Phase D completed successfully

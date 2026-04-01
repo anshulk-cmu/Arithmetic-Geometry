@@ -1,0 +1,97 @@
+11:05:30 INFO     ======================================================================
+11:05:30 INFO     Phase D — LDA Refinement
+11:05:30 INFO     ======================================================================
+11:05:30 INFO     Levels: [5]
+11:05:30 INFO     Layers: [4, 6, 8, 12, 16, 20, 24, 28, 31]
+11:05:30 INFO     Max tier: all
+11:05:30 INFO     Permutations: 1000 
+11:05:30 INFO     GPUs: 4 (multi-GPU)
+11:05:30 INFO     GPU (CuPy): available
+11:05:30 INFO     Novelty threshold: 0.5
+11:05:30 INFO     Regularization: 0.0001
+11:05:30 INFO     Denominator: S_T (total scatter — invariant to label permutation)
+11:05:30 INFO     
+11:05:30 INFO     Step 1: LDA Refinement
+11:05:30 INFO     ----------------------------------------
+11:05:30 INFO     Processing 9 (level, layer) pairs across 1 levels, 9 layers
+11:05:30 INFO     Multi-GPU mode: 4 workers
+11:05:30 INFO       Started worker GPU 0 (pid=1261898)
+11:05:30 INFO       Started worker GPU 1 (pid=1261899)
+11:05:30 INFO       Started worker GPU 2 (pid=1261900)
+11:05:30 INFO       Started worker GPU 3 (pid=1261901)
+11:05:34 [GPU3] INFO     Worker GPU 3 started, CuPy: True
+11:05:34 [GPU3] INFO     Processing L5/layer04
+11:05:34 [GPU1] INFO     Worker GPU 1 started, CuPy: True
+11:05:34 [GPU1] INFO     Processing L5/layer06
+11:05:34 [GPU0] INFO     Worker GPU 0 started, CuPy: True
+11:05:34 [GPU0] INFO     Processing L5/layer08
+11:05:34 [GPU2] INFO     Worker GPU 2 started, CuPy: True
+11:05:34 [GPU2] INFO     Processing L5/layer12
+11:05:52 [GPU3] INFO       L5/layer04/all: S_T computed (14.9s, N=122223, alpha=1.08e-03)
+11:06:20 [GPU1] INFO       L5/layer06/all: S_T computed (34.8s, N=122223, alpha=2.38e-03)
+11:06:30 [GPU0] INFO       L5/layer08/all: S_T computed (43.8s, N=122223, alpha=5.37e-03)
+11:06:32 [GPU2] INFO       L5/layer12/all: S_T computed (45.2s, N=122223, alpha=8.78e-03)
+12:40:33 [GPU3] INFO       L5/layer04/correct: S_T computed (13.3s, N=4197, alpha=4.05e-05)
+13:29:16 [GPU3] INFO       L5/layer04/wrong: S_T computed (34.0s, N=118026, alpha=1.04e-03)
+14:56:57 [GPU1] INFO       L5/layer06/correct: S_T computed (12.9s, N=4197, alpha=8.66e-05)
+14:59:44 [GPU2] INFO       L5/layer12/correct: S_T computed (8.9s, N=4197, alpha=3.12e-04)
+15:00:40 [GPU0] INFO       L5/layer08/correct: S_T computed (15.1s, N=4197, alpha=1.91e-04)
+15:39:03 [GPU1] INFO       L5/layer06/wrong: S_T computed (27.7s, N=118026, alpha=2.29e-03)
+15:41:33 [GPU2] INFO       L5/layer12/wrong: S_T computed (27.0s, N=118026, alpha=8.45e-03)
+15:43:39 [GPU0] INFO       L5/layer08/wrong: S_T computed (34.4s, N=118026, alpha=5.17e-03)
+16:47:02 [GPU3] INFO     Processing L5/layer16
+16:47:02 INFO       Collected 1/9 (level,layer) pairs, 115 results so far
+16:47:44 [GPU3] INFO       L5/layer16/all: S_T computed (26.1s, N=122223, alpha=1.30e-02)
+19:17:55 [GPU1] INFO     Processing L5/layer20
+19:17:55 INFO       Collected 2/9 (level,layer) pairs, 230 results so far
+19:18:43 [GPU1] INFO       L5/layer20/all: S_T computed (38.7s, N=122223, alpha=3.12e-02)
+19:30:20 [GPU2] INFO     Processing L5/layer24
+19:30:21 INFO       Collected 3/9 (level,layer) pairs, 345 results so far
+19:30:46 [GPU0] INFO     Processing L5/layer28
+19:30:47 INFO       Collected 4/9 (level,layer) pairs, 460 results so far
+19:30:58 [GPU2] INFO       L5/layer24/all: S_T computed (29.5s, N=122223, alpha=7.31e-02)
+19:31:28 [GPU0] INFO       L5/layer28/all: S_T computed (32.2s, N=122223, alpha=1.46e-01)
+20:53:14 [GPU3] INFO       L5/layer16/correct: S_T computed (12.4s, N=4197, alpha=4.75e-04)
+21:27:28 [GPU3] INFO       L5/layer16/wrong: S_T computed (23.3s, N=118026, alpha=1.25e-02)
+23:00:00 [GPU1] INFO       L5/layer20/correct: S_T computed (18.2s, N=4197, alpha=1.11e-03)
+23:12:16 [GPU0] INFO       L5/layer28/correct: S_T computed (7.2s, N=4197, alpha=4.97e-03)
+23:14:53 [GPU2] INFO       L5/layer24/correct: S_T computed (21.4s, N=4197, alpha=2.57e-03)
+23:45:19 [GPU1] INFO       L5/layer20/wrong: S_T computed (26.6s, N=118026, alpha=3.01e-02)
+23:57:21 [GPU0] INFO       L5/layer28/wrong: S_T computed (26.9s, N=118026, alpha=1.41e-01)
+00:01:06 [GPU2] INFO       L5/layer24/wrong: S_T computed (26.5s, N=118026, alpha=7.04e-02)
+00:55:12 [GPU3] INFO     Processing L5/layer31
+00:55:15 INFO       Collected 5/9 (level,layer) pairs, 575 results so far
+00:56:24 [GPU3] INFO       L5/layer31/all: S_T computed (33.2s, N=122223, alpha=5.82e-01)
+03:38:01 [GPU1] INFO     Worker GPU 1 finished
+03:38:02 INFO       Collected 6/9 (level,layer) pairs, 690 results so far
+03:47:14 [GPU0] INFO     Worker GPU 0 finished
+03:47:14 INFO       Collected 7/9 (level,layer) pairs, 805 results so far
+03:49:15 [GPU2] INFO     Worker GPU 2 finished
+03:49:16 INFO       Collected 8/9 (level,layer) pairs, 920 results so far
+04:04:04 [GPU3] INFO       L5/layer31/correct: S_T computed (2.1s, N=4197, alpha=1.99e-02)
+04:11:45 [GPU3] INFO       L5/layer31/wrong: S_T computed (10.0s, N=118026, alpha=5.61e-01)
+04:57:04 [GPU3] INFO     Worker GPU 3 finished
+04:57:04 INFO       Collected 9/9 (level,layer) pairs, 1035 results so far
+04:57:06 INFO     Multi-GPU complete: 1035 results from 4 workers
+04:57:06 INFO     Step 1 complete: 1035 concept LDA results (64295.3s)
+04:57:06 INFO     
+04:57:06 INFO     Step 2: Plot generation
+04:57:06 INFO     ----------------------------------------
+04:57:06 INFO     Generating LDA eigenvalue spectrum plots...
+04:57:41 INFO     Generating novelty heatmaps...
+04:57:44 INFO     Generating n_sig heatmaps...
+04:57:46 INFO     Generating population comparison plots...
+04:58:00 INFO     Generated 247 plots
+04:58:00 INFO     Step 2 complete (54.7s)
+04:58:00 INFO     
+04:58:00 INFO     Step 3: Summary tables
+04:58:00 INFO     ----------------------------------------
+04:58:00 INFO     Saved phase_d_results.csv (1035 rows)
+04:58:00 INFO     Saved lda_novelty_summary.csv (1026 rows)
+04:58:00 INFO     
+04:58:00 INFO     ======================================================================
+04:58:00 INFO     Phase D complete: 1035 LDA results, 64350s (1072.5 min)
+04:58:00 INFO     ======================================================================
+04:58:00 INFO     Concepts with significant LDA: 1026 / 1035
+04:58:00 INFO     Concepts with novel directions: 1026 / 1035
+04:58:00 INFO     Mean novel directions (where >0): 8.4

@@ -48,7 +48,7 @@ For L5 carry analysis, rare carry values are binned: carry_1 >= 12, carry_2 >= 1
 | Phase A: Visual Reconnaissance | Complete (L1-L5) | `phase_a_embeddings.py`, `phase_a_analysis.py` | 351 UMAP/t-SNE embeddings, interestingness scores |
 | Phase B: Concept Deconfounding | Complete | `phase_b_deconfounding.py` | 2,677 classified pairs, correlation matrices, deconfounding plan |
 | Phase C: Concept Subspaces | Complete (rerun Mar 19) | `phase_c_subspaces.py` | 2,844 subspaces, 2,750 significant (96.7%), GPU-accelerated |
-| Phase D: LDA for Carries | Planned | — | — |
+| Phase D: LDA Refinement | Complete (L1-L5, 18h on 4×A6000) | `phase_d_lda.py`, `run_phase_d.sh` | 1,035 LDA results, 1,026 significant (99.1%), 247 plots |
 | Fourier Screening | Planned | — | — |
 
 ## Key Findings
@@ -104,11 +104,13 @@ arithmetic-geometry/                       (workspace, in git)
 ├── phase_a_analysis.py                    # Phase A summary analysis
 ├── phase_b_deconfounding.py                # label-level correlation diagnostics (CPU, <1 min)
 ├── phase_c_subspaces.py                   # concept subspace identification via cond. covariance + SVD (GPU-accelerated)
+├── phase_d_lda.py                         # LDA refinement of Phase C subspaces (GPU-accelerated)
 ├── config.yaml                            # all parameters, paths, model config
 ├── run.sh                                 # SLURM: main pipeline (GPU, ~14 min)
 ├── run_l5_screen.sh                       # SLURM: L5 screening (GPU, ~50 min)
 ├── run_phase_b.sh                         # SLURM: Phase B deconfounding (CPU, <1 min)
 ├── run_phase_c.sh                         # SLURM: Phase C subspaces (GPU, ~3.5 hours)
+├── run_phase_d.sh                         # SLURM: Phase D LDA refinement (4×GPU, ~18 hours L5)
 ├── labels/                                # per-level labels + analysis summary
 │   ├── level_{1-5}.json                   # L5 is 160 MB (122,223 problems)
 │   └── analysis_summary.json
@@ -177,6 +179,9 @@ sbatch run_phase_b.sh
 # Phase C: concept subspaces (GPU-accelerated, ~3.5 hours)
 sbatch run_phase_c.sh
 
+# Phase D: LDA refinement (4×A6000 GPU, ~18 hours for L5)
+sbatch run_phase_d.sh
+
 # Or run Phase C with pilot mode first (L3/layer16 only, ~2 minutes)
 python phase_c_subspaces.py --config config.yaml --pilot
 ```
@@ -194,6 +199,6 @@ Phase C established the linear baseline — every atomic concept has a clean sub
 
 - **Fourier screening**: do digit centroids sit on circles inside their 9D subspaces? If a_tens values 0-9 trace a periodic curve, that's a Fourier encoding — the same structure Bai et al. found in toy models, now tested in a production LLM. Circles enable rotation-based arithmetic; lines don't
 - **GPLVM / GP metric tensors**: full nonlinear manifold characterization with uncertainty. Discovers intrinsic dimensionality and shape without assuming circles or helices. For correct vs. wrong: does the correct population trace a clean 1D curve while the wrong population scatters? The GP gives uncertainty bars, which matter for rare carry values
-- **Phase D — LDA for carries**: discriminative linear analysis to catch low-variance carry directions Phase C may have missed. Last linear method — completing the linear toolkit before going fully nonlinear
+- **Phase D — LDA refinement** *(complete)*: Fisher LDA with permutation null to catch low-variance carry directions Phase C may have missed. Last linear method — completing the linear toolkit before going fully nonlinear
 - **Manifold interaction**: how do digit manifolds and carry manifolds compose? If carry propagation is a geometric operation (rotation on the carry manifold conditional on the digit manifold), that explains both how computation works and how it fails
 - **Causal validation**: ablation and patching along discovered manifolds. Steer activations along the digit circle and verify the output rotates accordingly. This is the difference between "the model stores X here" and "the model uses X here"

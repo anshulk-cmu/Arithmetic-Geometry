@@ -1,0 +1,107 @@
+21:52:34 INFO     ======================================================================
+21:52:34 INFO     Phase D — LDA Refinement
+21:52:34 INFO     ======================================================================
+21:52:34 INFO     Levels: [1, 2, 3, 4, 5]
+21:52:34 INFO     Layers: [4, 6, 8, 12, 16, 20, 24, 28, 31]
+21:52:34 INFO     Max tier: all
+21:52:34 INFO     Permutations: 1000 
+21:52:34 INFO     GPU (CuPy): available
+21:52:34 INFO     Novelty threshold: 0.5
+21:52:34 INFO     Regularization: 0.0001
+21:52:34 INFO     Denominator: S_T (total scatter — invariant to label permutation)
+21:52:34 INFO     
+21:52:34 INFO     Step 1: LDA Refinement
+21:52:34 INFO     ----------------------------------------
+21:52:34 INFO     Processing 45 (level, layer) pairs across 5 levels, 9 layers
+Phase D:   0%|          | 0/45 [00:00<?, ?it/s]21:52:39 INFO       L1/layer04/all: S_T computed (5.1s, N=64, alpha=4.71e-07)
+21:52:44 INFO       L1/layer04/correct: S_T computed (2.5s, N=64, alpha=4.71e-07)
+Phase D:   2%|▏         | 1/45 [00:12<08:57, 12.21s/it]21:52:48 INFO       L1/layer06/all: S_T computed (2.4s, N=64, alpha=8.89e-07)
+21:52:53 INFO       L1/layer06/correct: S_T computed (2.4s, N=64, alpha=8.89e-07)
+Phase D:   4%|▍         | 2/45 [00:21<07:37, 10.65s/it]21:52:58 INFO       L1/layer08/all: S_T computed (2.1s, N=64, alpha=1.75e-06)
+21:53:02 INFO       L1/layer08/correct: S_T computed (2.0s, N=64, alpha=1.75e-06)
+Phase D:   7%|▋         | 3/45 [00:30<06:44,  9.63s/it]21:53:06 INFO       L1/layer12/all: S_T computed (2.2s, N=64, alpha=2.84e-06)
+21:53:11 INFO       L1/layer12/correct: S_T computed (2.2s, N=64, alpha=2.84e-06)
+Phase D:   9%|▉         | 4/45 [00:39<06:21,  9.31s/it]21:53:15 INFO       L1/layer16/all: S_T computed (2.1s, N=64, alpha=5.72e-06)
+21:53:19 INFO       L1/layer16/correct: S_T computed (2.2s, N=64, alpha=5.72e-06)
+Phase D:  11%|█         | 5/45 [00:47<06:01,  9.03s/it]21:53:23 INFO       L1/layer20/all: S_T computed (2.2s, N=64, alpha=1.39e-05)
+21:53:28 INFO       L1/layer20/correct: S_T computed (2.1s, N=64, alpha=1.39e-05)
+Phase D:  13%|█▎        | 6/45 [00:56<05:45,  8.87s/it]21:53:32 INFO       L1/layer24/all: S_T computed (2.1s, N=64, alpha=3.18e-05)
+21:53:36 INFO       L1/layer24/correct: S_T computed (2.3s, N=64, alpha=3.18e-05)
+Phase D:  16%|█▌        | 7/45 [01:04<05:36,  8.85s/it]21:53:41 INFO       L1/layer28/all: S_T computed (2.3s, N=64, alpha=6.13e-05)
+21:53:45 INFO       L1/layer28/correct: S_T computed (2.3s, N=64, alpha=6.13e-05)
+Phase D:  18%|█▊        | 8/45 [01:13<05:29,  8.91s/it]21:53:50 INFO       L1/layer31/all: S_T computed (2.2s, N=64, alpha=3.81e-04)
+21:53:54 INFO       L1/layer31/correct: S_T computed (2.1s, N=64, alpha=3.81e-04)
+Phase D:  20%|██        | 9/45 [01:22<05:21,  8.93s/it]21:54:00 INFO       L2/layer04/all: S_T computed (2.4s, N=4000, alpha=2.46e-05)
+21:57:47 INFO       L2/layer04/correct: S_T computed (2.6s, N=3993, alpha=2.45e-05)
+Phase D:  22%|██▏       | 10/45 [09:01<1:26:11, 147.77s/it]22:01:38 INFO       L2/layer06/all: S_T computed (2.7s, N=4000, alpha=4.75e-05)
+22:05:31 INFO       L2/layer06/correct: S_T computed (2.8s, N=3993, alpha=4.74e-05)
+Phase D:  24%|██▍       | 11/45 [16:40<2:17:44, 243.07s/it]22:09:17 INFO       L2/layer08/all: S_T computed (2.4s, N=4000, alpha=1.03e-04)
+22:13:13 INFO       L2/layer08/correct: S_T computed (2.6s, N=3993, alpha=1.03e-04)
+Phase D:  27%|██▋       | 12/45 [24:35<2:52:31, 313.69s/it]22:17:13 INFO       L2/layer12/all: S_T computed (2.6s, N=4000, alpha=1.82e-04)
+22:21:08 INFO       L2/layer12/correct: S_T computed (2.6s, N=3993, alpha=1.82e-04)
+Phase D:  29%|██▉       | 13/45 [32:28<3:12:54, 361.70s/it]22:25:06 INFO       L2/layer16/all: S_T computed (3.7s, N=4000, alpha=3.09e-04)
+22:29:07 INFO       L2/layer16/correct: S_T computed (2.9s, N=3993, alpha=3.08e-04)
+Phase D:  31%|███       | 14/45 [40:25<3:24:53, 396.57s/it]22:33:02 INFO       L2/layer20/all: S_T computed (2.3s, N=4000, alpha=6.15e-04)
+22:36:57 INFO       L2/layer20/correct: S_T computed (2.7s, N=3993, alpha=6.14e-04)
+Phase D:  33%|███▎      | 15/45 [48:13<3:29:02, 418.09s/it]22:40:50 INFO       L2/layer24/all: S_T computed (2.8s, N=4000, alpha=1.40e-03)
+22:44:48 INFO       L2/layer24/correct: S_T computed (2.6s, N=3993, alpha=1.40e-03)
+Phase D:  36%|███▌      | 16/45 [56:14<3:31:14, 437.04s/it]22:48:51 INFO       L2/layer28/all: S_T computed (2.6s, N=4000, alpha=2.64e-03)
+22:52:50 INFO       L2/layer28/correct: S_T computed (2.7s, N=3993, alpha=2.64e-03)
+Phase D:  38%|███▊      | 17/45 [1:04:20<3:30:48, 451.72s/it]22:56:57 INFO       L2/layer31/all: S_T computed (3.0s, N=4000, alpha=1.46e-02)
+23:01:03 INFO       L2/layer31/correct: S_T computed (2.7s, N=3993, alpha=1.45e-02)
+Phase D:  40%|████      | 18/45 [1:12:20<3:27:11, 460.42s/it]23:04:59 INFO       L3/layer04/all: S_T computed (3.2s, N=10000, alpha=7.66e-05)
+23:11:47 INFO       L3/layer04/correct: S_T computed (3.0s, N=6720, alpha=5.44e-05)
+23:17:54 INFO       L3/layer04/wrong: S_T computed (2.6s, N=3280, alpha=2.14e-05)
+Phase D:  42%|████▏     | 19/45 [1:30:47<4:43:36, 654.50s/it]23:23:25 INFO       L3/layer06/all: S_T computed (3.1s, N=10000, alpha=1.56e-04)
+23:30:13 INFO       L3/layer06/correct: S_T computed (2.6s, N=6720, alpha=1.11e-04)
+23:36:00 INFO       L3/layer06/wrong: S_T computed (2.5s, N=3280, alpha=4.37e-05)
+Phase D:  44%|████▍     | 20/45 [1:48:45<5:25:41, 781.65s/it]23:41:23 INFO       L3/layer08/all: S_T computed (3.2s, N=10000, alpha=3.52e-04)
+23:47:59 INFO       L3/layer08/correct: S_T computed (2.7s, N=6720, alpha=2.48e-04)
+23:53:50 INFO       L3/layer08/wrong: S_T computed (2.4s, N=3280, alpha=9.94e-05)
+Phase D:  47%|████▋     | 21/45 [2:06:37<5:47:32, 868.87s/it]23:59:15 INFO       L3/layer12/all: S_T computed (3.1s, N=10000, alpha=5.79e-04)
+00:06:12 INFO       L3/layer12/correct: S_T computed (2.7s, N=6720, alpha=4.08e-04)
+00:12:19 INFO       L3/layer12/wrong: S_T computed (2.5s, N=3280, alpha=1.64e-04)
+Phase D:  49%|████▉     | 22/45 [2:25:11<6:01:16, 942.45s/it]00:17:49 INFO       L3/layer16/all: S_T computed (3.0s, N=10000, alpha=8.58e-04)
+00:24:45 INFO       L3/layer16/correct: S_T computed (2.6s, N=6720, alpha=6.09e-04)
+00:31:05 INFO       L3/layer16/wrong: S_T computed (2.5s, N=3280, alpha=2.39e-04)
+Phase D:  51%|█████     | 23/45 [2:43:59<6:05:58, 998.10s/it]00:36:37 INFO       L3/layer20/all: S_T computed (2.7s, N=10000, alpha=1.74e-03)
+00:43:36 INFO       L3/layer20/correct: S_T computed (2.6s, N=6720, alpha=1.24e-03)
+00:49:52 INFO       L3/layer20/wrong: S_T computed (3.1s, N=3280, alpha=4.87e-04)
+Phase D:  53%|█████▎    | 24/45 [3:02:51<6:03:25, 1038.35s/it]00:55:29 INFO       L3/layer24/all: S_T computed (3.0s, N=10000, alpha=3.96e-03)
+01:02:43 INFO       L3/layer24/correct: S_T computed (2.6s, N=6720, alpha=2.82e-03)
+01:08:55 INFO       L3/layer24/wrong: S_T computed (2.9s, N=3280, alpha=1.10e-03)
+Phase D:  56%|█████▌    | 25/45 [3:21:46<5:55:43, 1067.17s/it]01:14:24 INFO       L3/layer28/all: S_T computed (2.8s, N=10000, alpha=7.51e-03)
+01:21:14 INFO       L3/layer28/correct: S_T computed (2.6s, N=6720, alpha=5.31e-03)
+01:27:21 INFO       L3/layer28/wrong: S_T computed (2.5s, N=3280, alpha=2.12e-03)
+Phase D:  58%|█████▊    | 26/45 [3:40:25<5:42:53, 1082.81s/it]01:33:03 INFO       L3/layer31/all: S_T computed (3.2s, N=10000, alpha=3.26e-02)
+01:40:06 INFO       L3/layer31/correct: S_T computed (2.6s, N=6720, alpha=2.33e-02)
+01:46:19 INFO       L3/layer31/wrong: S_T computed (2.4s, N=3280, alpha=8.99e-03)
+Phase D:  60%|██████    | 27/45 [3:59:14<5:28:58, 1096.57s/it]01:51:52 INFO       L4/layer04/all: S_T computed (3.1s, N=10000, alpha=7.78e-05)
+02:00:25 INFO       L4/layer04/correct: S_T computed (2.6s, N=2897, alpha=2.46e-05)
+02:06:46 INFO       L4/layer04/wrong: S_T computed (2.7s, N=7103, alpha=5.20e-05)
+Phase D:  62%|██████▏   | 28/45 [4:21:52<5:32:55, 1175.05s/it]02:14:30 INFO       L4/layer06/all: S_T computed (3.1s, N=10000, alpha=1.52e-04)
+02:22:54 INFO       L4/layer06/correct: S_T computed (2.6s, N=2897, alpha=4.75e-05)
+02:29:43 INFO       L4/layer06/wrong: S_T computed (3.0s, N=7103, alpha=1.01e-04)
+Phase D:  64%|██████▍   | 29/45 [4:45:21<5:32:03, 1245.19s/it]02:37:59 INFO       L4/layer08/all: S_T computed (3.0s, N=10000, alpha=3.50e-04)
+02:46:49 INFO       L4/layer08/correct: S_T computed (2.6s, N=2897, alpha=1.08e-04)
+02:53:33 INFO       L4/layer08/wrong: S_T computed (2.6s, N=7103, alpha=2.33e-04)
+Phase D:  67%|██████▋   | 30/45 [5:09:12<5:25:17, 1301.14s/it]03:01:51 INFO       L4/layer12/all: S_T computed (3.2s, N=10000, alpha=5.99e-04)
+03:11:00 INFO       L4/layer12/correct: S_T computed (3.0s, N=2897, alpha=1.88e-04)
+03:17:18 INFO       L4/layer12/wrong: S_T computed (2.8s, N=7103, alpha=3.98e-04)
+Phase D:  69%|██████▉   | 31/45 [5:32:12<5:09:06, 1324.73s/it]03:24:50 INFO       L4/layer16/all: S_T computed (2.8s, N=10000, alpha=9.21e-04)
+03:33:17 INFO       L4/layer16/correct: S_T computed (2.4s, N=2897, alpha=2.94e-04)
+03:39:42 INFO       L4/layer16/wrong: S_T computed (2.7s, N=7103, alpha=6.09e-04)
+Phase D:  71%|███████   | 32/45 [5:54:49<4:49:07, 1334.42s/it]03:47:27 INFO       L4/layer20/all: S_T computed (2.8s, N=10000, alpha=2.20e-03)
+03:56:33 INFO       L4/layer20/correct: S_T computed (2.4s, N=2897, alpha=6.81e-04)
+04:03:17 INFO       L4/layer20/wrong: S_T computed (2.6s, N=7103, alpha=1.49e-03)
+Phase D:  73%|███████▎  | 33/45 [6:18:40<4:32:40, 1363.35s/it]04:11:18 INFO       L4/layer24/all: S_T computed (2.8s, N=10000, alpha=5.08e-03)
+04:19:59 INFO       L4/layer24/correct: S_T computed (2.5s, N=2897, alpha=1.54e-03)
+04:26:38 INFO       L4/layer24/wrong: S_T computed (3.3s, N=7103, alpha=3.47e-03)
+Phase D:  76%|███████▌  | 34/45 [6:41:38<4:10:45, 1367.76s/it]04:34:16 INFO       L4/layer28/all: S_T computed (2.9s, N=10000, alpha=9.73e-03)
+04:42:45 INFO       L4/layer28/correct: S_T computed (2.3s, N=2897, alpha=2.88e-03)
+04:49:20 INFO       L4/layer28/wrong: S_T computed (2.6s, N=7103, alpha=6.69e-03)
+Phase D:  78%|███████▊  | 35/45 [7:04:47<3:49:00, 1374.05s/it]04:57:25 INFO       L4/layer31/all: S_T computed (3.0s, N=10000, alpha=3.84e-02)
+05:05:49 INFO       L4/layer31/correct: S_T computed (2.6s, N=2897, alpha=1.14e-02)
+05:12:38 INFO       L4/layer31/wrong: S_T computed (3.0s, N=7103, alpha=2.65e-02)
+Phase D:  80%|████████  | 36/45 [7:28:08<3:27:20, 1382.29s/it]05:21:05 INFO       L5/layer04/all: S_T computed (13.1s, N=122223, alpha=1.08e-03)
+slurmstepd: error: *** JOB 6893354 ON babel-u9-28 CANCELLED AT 2026-03-31T05:52:16 DUE TO TIME LIMIT ***
