@@ -1,0 +1,1153 @@
+23:31:54 INFO     ======================================================================
+23:31:54 INFO     Phase E — Residual Hunting
+23:31:54 INFO     ======================================================================
+23:31:54 INFO     Levels: [2, 3, 4, 5]
+23:31:54 INFO     Layers: [4, 6, 8, 12, 16, 20, 24, 28, 31]
+23:31:54 INFO     Populations: all viable
+23:31:54 INFO     PCA components: 500
+23:31:54 INFO     GPU (CuPy): available
+23:31:55 INFO     Phase D metadata files found: 2844
+23:31:55 INFO     
+23:31:55 INFO     Step 1: Per-slice residual analysis
+23:31:55 INFO     ----------------------------------------
+23:31:55 INFO       [L2/layer04/all] N=4000
+23:31:58 DEBUG        Union: 252 stacked → rank 244 (17 concepts + β, 4 empty)
+23:31:58 DEBUG        total_carry_sum diagnostic: k=244 → k_without_tcs=217 (Δ=27)
+23:32:00 INFO         var_explained=0.9659 (k=244, d_resid=3852)
+23:32:06 DEBUG        PCA: 500 components, σ²=0.000002, γ=0.9630, λ_max_MP=0.000009, n_above=106, top_eig=0.000372
+23:32:06 INFO         106 eigenvalue(s) above MP edge — running correlation sweep
+23:32:10 INFO         n_correlation_tests=2756 (106 dirs × 26 cols)
+23:32:10 INFO         Top correlation: a_units (ρ_s=0.0819, r_p=-0.0000)
+23:32:10 INFO       [L2/layer06/all] N=4000
+23:32:11 DEBUG        Union: 255 stacked → rank 247 (17 concepts + β, 4 empty)
+23:32:11 DEBUG        total_carry_sum diagnostic: k=247 → k_without_tcs=220 (Δ=27)
+23:32:11 INFO         var_explained=0.9463 (k=247, d_resid=3849)
+23:32:17 DEBUG        PCA: 500 components, σ²=0.000007, γ=0.9623, λ_max_MP=0.000027, n_above=131, top_eig=0.000949
+23:32:18 INFO         131 eigenvalue(s) above MP edge — running correlation sweep
+23:32:23 INFO         n_correlation_tests=3406 (131 dirs × 26 cols)
+23:32:23 INFO         Top correlation: a_tens (ρ_s=-0.0757, r_p=-0.0000)
+23:32:24 INFO       [L2/layer08/all] N=4000
+23:32:24 DEBUG        Union: 251 stacked → rank 243 (17 concepts + β, 4 empty)
+23:32:25 DEBUG        total_carry_sum diagnostic: k=243 → k_without_tcs=216 (Δ=27)
+23:32:25 INFO         var_explained=0.9427 (k=243, d_resid=3853)
+23:32:38 DEBUG        PCA: 500 components, σ²=0.000016, γ=0.9633, λ_max_MP=0.000062, n_above=146, top_eig=0.001954
+23:32:38 INFO         146 eigenvalue(s) above MP edge — running correlation sweep
+23:32:44 INFO         n_correlation_tests=3796 (146 dirs × 26 cols)
+23:32:44 INFO         Top correlation: a_tens (ρ_s=-0.0528, r_p=-0.0000)
+23:32:44 INFO       [L2/layer12/all] N=4000
+23:32:44 DEBUG        Union: 251 stacked → rank 243 (17 concepts + β, 4 empty)
+23:32:45 DEBUG        total_carry_sum diagnostic: k=243 → k_without_tcs=216 (Δ=27)
+23:32:45 INFO         var_explained=0.9451 (k=243, d_resid=3853)
+23:33:02 DEBUG        PCA: 500 components, σ²=0.000027, γ=0.9633, λ_max_MP=0.000104, n_above=153, top_eig=0.003053
+23:33:02 INFO         153 eigenvalue(s) above MP edge — running correlation sweep
+23:33:08 INFO         n_correlation_tests=3978 (153 dirs × 26 cols)
+23:33:08 INFO         Top correlation: ans_digit_2_msf (ρ_s=-0.0563, r_p=0.0000)
+23:33:08 INFO       [L2/layer16/all] N=4000
+23:33:08 DEBUG        Union: 246 stacked → rank 238 (17 concepts + β, 4 empty)
+23:33:09 DEBUG        total_carry_sum diagnostic: k=238 → k_without_tcs=211 (Δ=27)
+23:33:09 INFO         var_explained=0.9479 (k=238, d_resid=3858)
+23:33:22 DEBUG        PCA: 500 components, σ²=0.000043, γ=0.9645, λ_max_MP=0.000168, n_above=154, top_eig=0.005065
+23:33:22 INFO         154 eigenvalue(s) above MP edge — running correlation sweep
+23:33:28 INFO         n_correlation_tests=4004 (154 dirs × 26 cols)
+23:33:28 INFO         Top correlation: carry_0 (ρ_s=0.0580, r_p=0.0000)
+23:33:28 INFO       [L2/layer20/all] N=4000
+23:33:29 DEBUG        Union: 246 stacked → rank 238 (17 concepts + β, 4 empty)
+23:33:29 DEBUG        total_carry_sum diagnostic: k=238 → k_without_tcs=211 (Δ=27)
+23:33:29 INFO         var_explained=0.9510 (k=238, d_resid=3858)
+23:33:40 DEBUG        PCA: 500 components, σ²=0.000080, γ=0.9645, λ_max_MP=0.000315, n_above=152, top_eig=0.009779
+23:33:40 INFO         152 eigenvalue(s) above MP edge — running correlation sweep
+23:33:46 INFO         n_correlation_tests=3952 (152 dirs × 26 cols)
+23:33:46 INFO         Top correlation: ans_digit_2_msf (ρ_s=-0.0672, r_p=-0.0014)
+23:33:46 INFO       [L2/layer24/all] N=4000
+23:33:48 DEBUG        Union: 250 stacked → rank 242 (17 concepts + β, 4 empty)
+23:33:48 DEBUG        total_carry_sum diagnostic: k=242 → k_without_tcs=215 (Δ=27)
+23:33:48 INFO         var_explained=0.9531 (k=242, d_resid=3854)
+23:33:57 DEBUG        PCA: 500 components, σ²=0.000175, γ=0.9635, λ_max_MP=0.000686, n_above=145, top_eig=0.028585
+23:33:57 INFO         145 eigenvalue(s) above MP edge — running correlation sweep
+23:34:02 INFO         n_correlation_tests=3770 (145 dirs × 26 cols)
+23:34:02 INFO         Top correlation: ans_digit_2_msf (ρ_s=-0.0668, r_p=0.0012)
+23:34:02 INFO       [L2/layer28/all] N=4000
+23:34:03 DEBUG        Union: 246 stacked → rank 238 (17 concepts + β, 4 empty)
+23:34:03 DEBUG        total_carry_sum diagnostic: k=238 → k_without_tcs=211 (Δ=27)
+23:34:04 INFO         var_explained=0.9471 (k=238, d_resid=3858)
+23:34:11 DEBUG        PCA: 500 components, σ²=0.000371, γ=0.9645, λ_max_MP=0.001458, n_above=144, top_eig=0.056073
+23:34:11 INFO         144 eigenvalue(s) above MP edge — running correlation sweep
+23:34:16 INFO         n_correlation_tests=3744 (144 dirs × 26 cols)
+23:34:16 INFO         Top correlation: a (ρ_s=-0.0599, r_p=-0.0000)
+23:34:16 INFO       [L2/layer31/all] N=4000
+23:34:17 DEBUG        Union: 225 stacked → rank 217 (17 concepts + β, 4 empty)
+23:34:17 DEBUG        total_carry_sum diagnostic: k=217 → k_without_tcs=198 (Δ=19)
+23:34:17 INFO         var_explained=0.9593 (k=217, d_resid=3879)
+23:34:26 DEBUG        PCA: 500 components, σ²=0.001565, γ=0.9698, λ_max_MP=0.006166, n_above=132, top_eig=0.280143
+23:34:26 INFO         132 eigenvalue(s) above MP edge — running correlation sweep
+23:34:31 INFO         n_correlation_tests=3432 (132 dirs × 26 cols)
+23:34:31 INFO         Top correlation: ans_digit_2_msf (ρ_s=-0.0748, r_p=-0.0562)
+23:34:31 INFO       [L2/layer04/correct] N=3993
+23:34:33 DEBUG        Union: 253 stacked → rank 243 (17 concepts + β, 0 empty)
+23:34:33 DEBUG        total_carry_sum diagnostic: k=243 → k_without_tcs=216 (Δ=27)
+23:34:34 INFO         var_explained=0.9659 (k=243, d_resid=3853)
+23:34:45 DEBUG        PCA: 500 components, σ²=0.000002, γ=0.9649, λ_max_MP=0.000009, n_above=107, top_eig=0.000385
+23:34:45 INFO         107 eigenvalue(s) above MP edge — running correlation sweep
+23:34:49 INFO         n_correlation_tests=2782 (107 dirs × 26 cols)
+23:34:49 INFO         Top correlation: a_units (ρ_s=0.0725, r_p=0.0000)
+23:34:49 INFO       [L2/layer06/correct] N=3993
+23:34:49 DEBUG        Union: 258 stacked → rank 248 (17 concepts + β, 0 empty)
+23:34:49 DEBUG        total_carry_sum diagnostic: k=248 → k_without_tcs=221 (Δ=27)
+23:34:50 INFO         var_explained=0.9466 (k=248, d_resid=3848)
+23:35:03 DEBUG        PCA: 500 components, σ²=0.000007, γ=0.9637, λ_max_MP=0.000026, n_above=131, top_eig=0.000960
+23:35:03 INFO         131 eigenvalue(s) above MP edge — running correlation sweep
+23:35:08 INFO         n_correlation_tests=3406 (131 dirs × 26 cols)
+23:35:08 INFO         Top correlation: ans_digit_2_msf (ρ_s=0.0621, r_p=-0.0000)
+23:35:08 INFO       [L2/layer08/correct] N=3993
+23:35:09 DEBUG        Union: 255 stacked → rank 245 (17 concepts + β, 0 empty)
+23:35:09 DEBUG        total_carry_sum diagnostic: k=245 → k_without_tcs=218 (Δ=27)
+23:35:09 INFO         var_explained=0.9435 (k=245, d_resid=3851)
+23:35:16 DEBUG        PCA: 500 components, σ²=0.000016, γ=0.9644, λ_max_MP=0.000061, n_above=146, top_eig=0.001915
+23:35:16 INFO         146 eigenvalue(s) above MP edge — running correlation sweep
+23:35:22 INFO         n_correlation_tests=3796 (146 dirs × 26 cols)
+23:35:22 INFO         Top correlation: a_tens (ρ_s=0.0576, r_p=-0.0000)
+23:35:22 INFO       [L2/layer12/correct] N=3993
+23:35:22 DEBUG        Union: 255 stacked → rank 245 (17 concepts + β, 0 empty)
+23:35:22 DEBUG        total_carry_sum diagnostic: k=245 → k_without_tcs=218 (Δ=27)
+23:35:23 INFO         var_explained=0.9458 (k=245, d_resid=3851)
+23:35:29 DEBUG        PCA: 500 components, σ²=0.000026, γ=0.9644, λ_max_MP=0.000103, n_above=153, top_eig=0.002986
+23:35:29 INFO         153 eigenvalue(s) above MP edge — running correlation sweep
+23:35:35 INFO         n_correlation_tests=3978 (153 dirs × 26 cols)
+23:35:35 INFO         Top correlation: a_units (ρ_s=-0.0550, r_p=0.0000)
+23:35:35 INFO       [L2/layer16/correct] N=3993
+23:35:35 DEBUG        Union: 250 stacked → rank 240 (17 concepts + β, 0 empty)
+23:35:35 DEBUG        total_carry_sum diagnostic: k=240 → k_without_tcs=213 (Δ=27)
+23:35:36 INFO         var_explained=0.9479 (k=240, d_resid=3856)
+23:35:42 DEBUG        PCA: 500 components, σ²=0.000043, γ=0.9657, λ_max_MP=0.000168, n_above=154, top_eig=0.005069
+23:35:42 INFO         154 eigenvalue(s) above MP edge — running correlation sweep
+23:35:48 INFO         n_correlation_tests=4004 (154 dirs × 26 cols)
+23:35:48 INFO         Top correlation: ans_digit_2_msf (ρ_s=-0.0505, r_p=-0.0162)
+23:35:48 INFO       [L2/layer20/correct] N=3993
+23:35:48 DEBUG        Union: 248 stacked → rank 238 (17 concepts + β, 0 empty)
+23:35:49 DEBUG        total_carry_sum diagnostic: k=238 → k_without_tcs=211 (Δ=27)
+23:35:49 INFO         var_explained=0.9505 (k=238, d_resid=3858)
+23:35:55 DEBUG        PCA: 500 components, σ²=0.000081, γ=0.9662, λ_max_MP=0.000318, n_above=152, top_eig=0.010266
+23:35:55 INFO         152 eigenvalue(s) above MP edge — running correlation sweep
+23:36:01 INFO         n_correlation_tests=3952 (152 dirs × 26 cols)
+23:36:01 INFO         Top correlation: last_digit_predicted (ρ_s=-0.0581, r_p=-0.0261)
+23:36:01 INFO       [L2/layer24/correct] N=3993
+23:36:01 DEBUG        Union: 253 stacked → rank 243 (17 concepts + β, 0 empty)
+23:36:01 DEBUG        total_carry_sum diagnostic: k=243 → k_without_tcs=216 (Δ=27)
+23:36:01 INFO         var_explained=0.9532 (k=243, d_resid=3853)
+23:36:07 DEBUG        PCA: 500 components, σ²=0.000174, γ=0.9649, λ_max_MP=0.000685, n_above=145, top_eig=0.028481
+23:36:07 INFO         145 eigenvalue(s) above MP edge — running correlation sweep
+23:36:14 INFO         n_correlation_tests=3770 (145 dirs × 26 cols)
+23:36:14 INFO         Top correlation: pp_a1_x_b0 (ρ_s=0.0552, r_p=0.0015)
+23:36:14 INFO       [L2/layer28/correct] N=3993
+23:36:14 DEBUG        Union: 249 stacked → rank 239 (17 concepts + β, 0 empty)
+23:36:15 DEBUG        total_carry_sum diagnostic: k=239 → k_without_tcs=212 (Δ=27)
+23:36:15 INFO         var_explained=0.9473 (k=239, d_resid=3857)
+23:36:29 DEBUG        PCA: 500 components, σ²=0.000370, γ=0.9659, λ_max_MP=0.001455, n_above=145, top_eig=0.054752
+23:36:29 INFO         145 eigenvalue(s) above MP edge — running correlation sweep
+23:36:35 INFO         n_correlation_tests=3770 (145 dirs × 26 cols)
+23:36:35 INFO         Top correlation: a (ρ_s=0.0471, r_p=-0.0000)
+23:36:35 INFO       [L2/layer31/correct] N=3993
+23:36:35 DEBUG        Union: 228 stacked → rank 218 (17 concepts + β, 0 empty)
+23:36:35 DEBUG        total_carry_sum diagnostic: k=218 → k_without_tcs=199 (Δ=19)
+23:36:36 INFO         var_explained=0.9594 (k=218, d_resid=3878)
+23:36:46 DEBUG        PCA: 500 components, σ²=0.001562, γ=0.9712, λ_max_MP=0.006159, n_above=133, top_eig=0.277758
+23:36:46 INFO         133 eigenvalue(s) above MP edge — running correlation sweep
+23:36:51 INFO         n_correlation_tests=3458 (133 dirs × 26 cols)
+23:36:51 INFO         Top correlation: a_tens (ρ_s=-0.0529, r_p=-0.0000)
+23:36:51 INFO       [L3/layer04/all] N=10000
+23:36:52 DEBUG        Union: 381 stacked → rank 368 (28 concepts + β, 0 empty)
+23:36:53 DEBUG        total_carry_sum diagnostic: k=368 → k_without_tcs=315 (Δ=53)
+23:36:53 INFO         var_explained=0.9353 (k=368, d_resid=3728)
+23:37:03 DEBUG        PCA: 500 components, σ²=0.000005, γ=0.3728, λ_max_MP=0.000014, n_above=183, top_eig=0.000481
+23:37:03 INFO         183 eigenvalue(s) above MP edge — running correlation sweep
+23:37:20 INFO         n_correlation_tests=6771 (183 dirs × 37 cols)
+23:37:20 INFO         Top correlation: signed_error (ρ_s=-0.1240, r_p=0.0107)
+23:37:20 INFO       [L3/layer06/all] N=10000
+23:37:21 DEBUG        Union: 393 stacked → rank 380 (28 concepts + β, 0 empty)
+23:37:21 DEBUG        total_carry_sum diagnostic: k=380 → k_without_tcs=327 (Δ=53)
+23:37:22 INFO         var_explained=0.9042 (k=380, d_resid=3716)
+23:37:36 DEBUG        PCA: 500 components, σ²=0.000017, γ=0.3716, λ_max_MP=0.000043, n_above=224, top_eig=0.001481
+23:37:36 INFO         224 eigenvalue(s) above MP edge — running correlation sweep
+23:37:57 INFO         n_correlation_tests=8288 (224 dirs × 37 cols)
+23:37:57 INFO         Top correlation: signed_error (ρ_s=0.1258, r_p=0.0010)
+23:37:57 INFO       [L3/layer08/all] N=10000
+23:37:58 DEBUG        Union: 401 stacked → rank 388 (28 concepts + β, 0 empty)
+23:37:58 DEBUG        total_carry_sum diagnostic: k=388 → k_without_tcs=335 (Δ=53)
+23:37:59 INFO         var_explained=0.8956 (k=388, d_resid=3708)
+23:38:15 DEBUG        PCA: 500 components, σ²=0.000041, γ=0.3708, λ_max_MP=0.000105, n_above=253, top_eig=0.002957
+23:38:15 INFO         253 eigenvalue(s) above MP edge — running correlation sweep
+23:38:39 INFO         n_correlation_tests=9361 (253 dirs × 37 cols)
+23:38:39 INFO         Top correlation: signed_error (ρ_s=0.1209, r_p=-0.0086)
+23:38:39 INFO       [L3/layer12/all] N=10000
+23:38:40 DEBUG        Union: 398 stacked → rank 385 (28 concepts + β, 0 empty)
+23:38:40 DEBUG        total_carry_sum diagnostic: k=385 → k_without_tcs=332 (Δ=53)
+23:38:41 INFO         var_explained=0.8972 (k=385, d_resid=3711)
+23:38:51 DEBUG        PCA: 500 components, σ²=0.000066, γ=0.3711, λ_max_MP=0.000170, n_above=261, top_eig=0.005149
+23:38:51 INFO         261 eigenvalue(s) above MP edge — running correlation sweep
+23:39:16 INFO         n_correlation_tests=9657 (261 dirs × 37 cols)
+23:39:16 INFO         Top correlation: signed_error (ρ_s=-0.1298, r_p=-0.0693)
+23:39:16 INFO       [L3/layer16/all] N=10000
+23:39:22 DEBUG        Union: 406 stacked → rank 393 (28 concepts + β, 0 empty)
+23:39:22 DEBUG        total_carry_sum diagnostic: k=393 → k_without_tcs=340 (Δ=53)
+23:39:23 INFO         var_explained=0.9153 (k=393, d_resid=3703)
+23:39:37 DEBUG        PCA: 500 components, σ²=0.000080, γ=0.3703, λ_max_MP=0.000208, n_above=261, top_eig=0.005370
+23:39:37 INFO         261 eigenvalue(s) above MP edge — running correlation sweep
+23:40:02 INFO         n_correlation_tests=9657 (261 dirs × 37 cols)
+23:40:02 INFO         Top correlation: rel_error (ρ_s=-0.1210, r_p=-0.0196)
+23:40:02 INFO       [L3/layer20/all] N=10000
+23:40:03 DEBUG        Union: 398 stacked → rank 385 (28 concepts + β, 0 empty)
+23:40:04 DEBUG        total_carry_sum diagnostic: k=385 → k_without_tcs=332 (Δ=53)
+23:40:04 INFO         var_explained=0.9272 (k=385, d_resid=3711)
+23:40:17 DEBUG        PCA: 500 components, σ²=0.000140, γ=0.3711, λ_max_MP=0.000363, n_above=256, top_eig=0.009582
+23:40:17 INFO         256 eigenvalue(s) above MP edge — running correlation sweep
+23:40:41 INFO         n_correlation_tests=9472 (256 dirs × 37 cols)
+23:40:41 INFO         Top correlation: signed_error (ρ_s=0.1296, r_p=0.0184)
+23:40:41 INFO       [L3/layer24/all] N=10000
+23:40:42 DEBUG        Union: 399 stacked → rank 386 (28 concepts + β, 0 empty)
+23:40:43 DEBUG        total_carry_sum diagnostic: k=386 → k_without_tcs=333 (Δ=53)
+23:40:43 INFO         var_explained=0.9306 (k=386, d_resid=3710)
+23:40:54 DEBUG        PCA: 500 components, σ²=0.000304, γ=0.3710, λ_max_MP=0.000786, n_above=252, top_eig=0.022013
+23:40:54 INFO         252 eigenvalue(s) above MP edge — running correlation sweep
+23:41:18 INFO         n_correlation_tests=9324 (252 dirs × 37 cols)
+23:41:18 INFO         Top correlation: signed_error (ρ_s=-0.1114, r_p=-0.0491)
+23:41:18 INFO       [L3/layer28/all] N=10000
+23:41:19 DEBUG        Union: 400 stacked → rank 387 (28 concepts + β, 0 empty)
+23:41:20 DEBUG        total_carry_sum diagnostic: k=387 → k_without_tcs=334 (Δ=53)
+23:41:20 INFO         var_explained=0.9198 (k=387, d_resid=3709)
+23:41:31 DEBUG        PCA: 500 components, σ²=0.000665, γ=0.3709, λ_max_MP=0.001722, n_above=250, top_eig=0.046343
+23:41:31 INFO         250 eigenvalue(s) above MP edge — running correlation sweep
+23:41:55 INFO         n_correlation_tests=9250 (250 dirs × 37 cols)
+23:41:55 INFO         Top correlation: rel_error (ρ_s=-0.1182, r_p=-0.0353)
+23:41:55 INFO       [L3/layer31/all] N=10000
+23:41:56 DEBUG        Union: 396 stacked → rank 383 (28 concepts + β, 0 empty)
+23:41:56 DEBUG        total_carry_sum diagnostic: k=383 → k_without_tcs=330 (Δ=53)
+23:41:56 INFO         var_explained=0.9400 (k=383, d_resid=3713)
+23:42:13 DEBUG        PCA: 500 components, σ²=0.002160, γ=0.3713, λ_max_MP=0.005595, n_above=239, top_eig=0.169613
+23:42:14 INFO         239 eigenvalue(s) above MP edge — running correlation sweep
+23:42:36 INFO         n_correlation_tests=8843 (239 dirs × 37 cols)
+23:42:36 INFO         Top correlation: signed_error (ρ_s=-0.1306, r_p=-0.0105)
+23:42:36 INFO       [L3/layer04/correct] N=6720
+23:42:37 DEBUG        Union: 382 stacked → rank 371 (23 concepts + β, 0 empty)
+23:42:37 DEBUG        total_carry_sum diagnostic: k=371 → k_without_tcs=325 (Δ=46)
+23:42:38 INFO         var_explained=0.9462 (k=371, d_resid=3725)
+23:43:10 DEBUG        PCA: 500 components, σ²=0.000005, γ=0.5543, λ_max_MP=0.000015, n_above=177, top_eig=0.000519
+23:43:10 INFO         177 eigenvalue(s) above MP edge — running correlation sweep
+23:43:23 INFO         n_correlation_tests=6018 (177 dirs × 34 cols)
+23:43:23 INFO         Top correlation: ans_digit_3_msf (ρ_s=0.0417, r_p=0.0000)
+23:43:23 INFO       [L3/layer06/correct] N=6720
+23:43:24 DEBUG        Union: 377 stacked → rank 366 (23 concepts + β, 0 empty)
+23:43:24 DEBUG        total_carry_sum diagnostic: k=366 → k_without_tcs=320 (Δ=46)
+23:43:24 INFO         var_explained=0.9138 (k=366, d_resid=3730)
+23:43:37 DEBUG        PCA: 500 components, σ²=0.000016, γ=0.5551, λ_max_MP=0.000048, n_above=208, top_eig=0.001483
+23:43:37 INFO         208 eigenvalue(s) above MP edge — running correlation sweep
+23:43:51 INFO         n_correlation_tests=7072 (208 dirs × 34 cols)
+23:43:51 INFO         Top correlation: b_tens (ρ_s=-0.0545, r_p=0.0000)
+23:43:51 INFO       [L3/layer08/correct] N=6720
+23:43:52 DEBUG        Union: 382 stacked → rank 371 (23 concepts + β, 0 empty)
+23:43:52 DEBUG        total_carry_sum diagnostic: k=371 → k_without_tcs=325 (Δ=46)
+23:43:52 INFO         var_explained=0.9053 (k=371, d_resid=3725)
+23:44:12 DEBUG        PCA: 500 components, σ²=0.000039, γ=0.5543, λ_max_MP=0.000117, n_above=229, top_eig=0.003371
+23:44:12 INFO         229 eigenvalue(s) above MP edge — running correlation sweep
+23:44:28 INFO         n_correlation_tests=7786 (229 dirs × 34 cols)
+23:44:28 INFO         Top correlation: b (ρ_s=-0.0306, r_p=0.0000)
+23:44:28 INFO       [L3/layer12/correct] N=6720
+23:44:28 DEBUG        Union: 373 stacked → rank 362 (23 concepts + β, 0 empty)
+23:44:29 DEBUG        total_carry_sum diagnostic: k=362 → k_without_tcs=316 (Δ=46)
+23:44:29 INFO         var_explained=0.9012 (k=362, d_resid=3734)
+23:44:46 DEBUG        PCA: 500 components, σ²=0.000066, γ=0.5557, λ_max_MP=0.000202, n_above=233, top_eig=0.005789
+23:44:46 INFO         233 eigenvalue(s) above MP edge — running correlation sweep
+23:45:01 INFO         n_correlation_tests=7922 (233 dirs × 34 cols)
+23:45:01 INFO         Top correlation: ans_digit_2_msf (ρ_s=-0.0338, r_p=-0.0247)
+23:45:01 INFO       [L3/layer16/correct] N=6720
+23:45:02 DEBUG        Union: 378 stacked → rank 367 (23 concepts + β, 0 empty)
+23:45:03 DEBUG        total_carry_sum diagnostic: k=367 → k_without_tcs=321 (Δ=46)
+23:45:03 INFO         var_explained=0.9176 (k=367, d_resid=3729)
+23:45:17 DEBUG        PCA: 500 components, σ²=0.000082, γ=0.5549, λ_max_MP=0.000251, n_above=232, top_eig=0.006758
+23:45:17 INFO         232 eigenvalue(s) above MP edge — running correlation sweep
+23:45:34 INFO         n_correlation_tests=7888 (232 dirs × 34 cols)
+23:45:34 INFO         Top correlation: a_tens (ρ_s=0.0461, r_p=-0.0000)
+23:45:34 INFO       [L3/layer20/correct] N=6720
+23:45:34 DEBUG        Union: 383 stacked → rank 372 (23 concepts + β, 0 empty)
+23:45:35 DEBUG        total_carry_sum diagnostic: k=372 → k_without_tcs=326 (Δ=46)
+23:45:35 INFO         var_explained=0.9341 (k=372, d_resid=3724)
+23:45:45 DEBUG        PCA: 500 components, σ²=0.000134, γ=0.5542, λ_max_MP=0.000408, n_above=231, top_eig=0.011187
+23:45:45 INFO         231 eigenvalue(s) above MP edge — running correlation sweep
+23:46:01 INFO         n_correlation_tests=7854 (231 dirs × 34 cols)
+23:46:01 INFO         Top correlation: a_units (ρ_s=0.0486, r_p=0.0000)
+23:46:01 INFO       [L3/layer24/correct] N=6720
+23:46:02 DEBUG        Union: 383 stacked → rank 372 (23 concepts + β, 0 empty)
+23:46:02 DEBUG        total_carry_sum diagnostic: k=372 → k_without_tcs=326 (Δ=46)
+23:46:02 INFO         var_explained=0.9372 (k=372, d_resid=3724)
+23:46:21 DEBUG        PCA: 500 components, σ²=0.000291, γ=0.5542, λ_max_MP=0.000887, n_above=228, top_eig=0.026552
+23:46:21 INFO         228 eigenvalue(s) above MP edge — running correlation sweep
+23:46:38 INFO         n_correlation_tests=7752 (228 dirs × 34 cols)
+23:46:38 INFO         Top correlation: b_tens (ρ_s=0.0403, r_p=-0.0000)
+23:46:38 INFO       [L3/layer28/correct] N=6720
+23:46:39 DEBUG        Union: 383 stacked → rank 372 (23 concepts + β, 0 empty)
+23:46:39 DEBUG        total_carry_sum diagnostic: k=372 → k_without_tcs=326 (Δ=46)
+23:46:39 INFO         var_explained=0.9273 (k=372, d_resid=3724)
+23:47:32 DEBUG        PCA: 500 components, σ²=0.000635, γ=0.5542, λ_max_MP=0.001933, n_above=227, top_eig=0.054239
+23:47:32 INFO         227 eigenvalue(s) above MP edge — running correlation sweep
+23:47:47 INFO         n_correlation_tests=7718 (227 dirs × 34 cols)
+23:47:47 INFO         Top correlation: b (ρ_s=-0.0535, r_p=0.0000)
+23:47:47 INFO       [L3/layer31/correct] N=6720
+23:47:48 DEBUG        Union: 380 stacked → rank 369 (23 concepts + β, 0 empty)
+23:47:48 DEBUG        total_carry_sum diagnostic: k=369 → k_without_tcs=323 (Δ=46)
+23:47:49 INFO         var_explained=0.9440 (k=369, d_resid=3727)
+23:48:00 DEBUG        PCA: 500 components, σ²=0.002140, γ=0.5546, λ_max_MP=0.006515, n_above=215, top_eig=0.199724
+23:48:00 INFO         215 eigenvalue(s) above MP edge — running correlation sweep
+23:48:15 INFO         n_correlation_tests=7310 (215 dirs × 34 cols)
+23:48:15 INFO         Top correlation: b_units (ρ_s=0.0313, r_p=-0.0000)
+23:48:15 INFO       [L3/layer04/wrong] N=3280
+23:48:15 DEBUG        Union: 393 stacked → rank 378 (23 concepts + β, 0 empty)
+23:48:16 DEBUG        total_carry_sum diagnostic: k=378 → k_without_tcs=328 (Δ=50)
+23:48:16 INFO         var_explained=0.9603 (k=378, d_resid=3718)
+23:48:28 DEBUG        PCA: 500 components, σ²=0.000003, γ=1.1335, λ_max_MP=0.000012, n_above=138, top_eig=0.000295
+23:48:28 INFO         138 eigenvalue(s) above MP edge — running correlation sweep
+23:48:37 INFO         n_correlation_tests=5106 (138 dirs × 37 cols)
+23:48:37 INFO         Top correlation: rel_error (ρ_s=-0.0998, r_p=-0.0112)
+23:48:37 INFO       [L3/layer06/wrong] N=3280
+23:48:38 DEBUG        Union: 382 stacked → rank 367 (23 concepts + β, 0 empty)
+23:48:38 DEBUG        total_carry_sum diagnostic: k=367 → k_without_tcs=317 (Δ=50)
+23:48:39 INFO         var_explained=0.9294 (k=367, d_resid=3729)
+23:48:51 DEBUG        PCA: 500 components, σ²=0.000011, γ=1.1369, λ_max_MP=0.000045, n_above=159, top_eig=0.000980
+23:48:51 INFO         159 eigenvalue(s) above MP edge — running correlation sweep
+23:48:58 INFO         n_correlation_tests=5883 (159 dirs × 37 cols)
+23:48:58 INFO         Top correlation: signed_error (ρ_s=-0.1170, r_p=-0.0030)
+23:48:58 INFO       [L3/layer08/wrong] N=3280
+23:48:59 DEBUG        Union: 387 stacked → rank 372 (23 concepts + β, 0 empty)
+23:48:59 DEBUG        total_carry_sum diagnostic: k=372 → k_without_tcs=322 (Δ=50)
+23:49:00 INFO         var_explained=0.9188 (k=372, d_resid=3724)
+23:49:11 DEBUG        PCA: 500 components, σ²=0.000028, γ=1.1354, λ_max_MP=0.000118, n_above=177, top_eig=0.002200
+23:49:11 INFO         177 eigenvalue(s) above MP edge — running correlation sweep
+23:49:20 INFO         n_correlation_tests=6549 (177 dirs × 37 cols)
+23:49:20 INFO         Top correlation: signed_error (ρ_s=-0.1068, r_p=0.0131)
+23:49:20 INFO       [L3/layer12/wrong] N=3280
+23:49:21 DEBUG        Union: 395 stacked → rank 380 (23 concepts + β, 0 empty)
+23:49:21 DEBUG        total_carry_sum diagnostic: k=380 → k_without_tcs=330 (Δ=50)
+23:49:22 INFO         var_explained=0.9242 (k=380, d_resid=3716)
+23:49:31 DEBUG        PCA: 500 components, σ²=0.000043, γ=1.1329, λ_max_MP=0.000182, n_above=184, top_eig=0.003080
+23:49:32 INFO         184 eigenvalue(s) above MP edge — running correlation sweep
+23:49:42 INFO         n_correlation_tests=6808 (184 dirs × 37 cols)
+23:49:42 INFO         Top correlation: signed_error (ρ_s=-0.1463, r_p=-0.0253)
+23:49:42 INFO       [L3/layer16/wrong] N=3280
+23:49:43 DEBUG        Union: 394 stacked → rank 379 (23 concepts + β, 0 empty)
+23:49:43 DEBUG        total_carry_sum diagnostic: k=379 → k_without_tcs=329 (Δ=50)
+23:49:43 INFO         var_explained=0.9354 (k=379, d_resid=3717)
+23:50:06 DEBUG        PCA: 500 components, σ²=0.000053, γ=1.1332, λ_max_MP=0.000225, n_above=182, top_eig=0.003925
+23:50:06 INFO         182 eigenvalue(s) above MP edge — running correlation sweep
+23:50:15 INFO         n_correlation_tests=6734 (182 dirs × 37 cols)
+23:50:15 INFO         Top correlation: signed_error (ρ_s=0.1191, r_p=0.0131)
+23:50:15 INFO       [L3/layer20/wrong] N=3280
+23:50:16 DEBUG        Union: 379 stacked → rank 364 (23 concepts + β, 0 empty)
+23:50:16 DEBUG        total_carry_sum diagnostic: k=364 → k_without_tcs=314 (Δ=50)
+23:50:16 INFO         var_explained=0.9435 (k=364, d_resid=3732)
+23:50:28 DEBUG        PCA: 500 components, σ²=0.000093, γ=1.1378, λ_max_MP=0.000399, n_above=179, top_eig=0.007592
+23:50:28 INFO         179 eigenvalue(s) above MP edge — running correlation sweep
+23:50:37 INFO         n_correlation_tests=6623 (179 dirs × 37 cols)
+23:50:37 INFO         Top correlation: signed_error (ρ_s=0.1010, r_p=0.0229)
+23:50:37 INFO       [L3/layer24/wrong] N=3280
+23:50:37 DEBUG        Union: 380 stacked → rank 365 (23 concepts + β, 0 empty)
+23:50:37 DEBUG        total_carry_sum diagnostic: k=365 → k_without_tcs=315 (Δ=50)
+23:50:38 INFO         var_explained=0.9467 (k=365, d_resid=3731)
+23:50:46 DEBUG        PCA: 500 components, σ²=0.000200, γ=1.1375, λ_max_MP=0.000853, n_above=179, top_eig=0.016367
+23:50:46 INFO         179 eigenvalue(s) above MP edge — running correlation sweep
+23:50:55 INFO         n_correlation_tests=6623 (179 dirs × 37 cols)
+23:50:55 INFO         Top correlation: signed_error (ρ_s=-0.1180, r_p=0.0134)
+23:50:55 INFO       [L3/layer28/wrong] N=3280
+23:50:56 DEBUG        Union: 380 stacked → rank 365 (23 concepts + β, 0 empty)
+23:50:56 DEBUG        total_carry_sum diagnostic: k=365 → k_without_tcs=315 (Δ=50)
+23:50:56 INFO         var_explained=0.9381 (k=365, d_resid=3731)
+23:51:07 DEBUG        PCA: 500 components, σ²=0.000447, γ=1.1375, λ_max_MP=0.001907, n_above=177, top_eig=0.036379
+23:51:07 INFO         177 eigenvalue(s) above MP edge — running correlation sweep
+23:51:16 INFO         n_correlation_tests=6549 (177 dirs × 37 cols)
+23:51:16 INFO         Top correlation: signed_error (ρ_s=-0.1373, r_p=-0.0162)
+23:51:16 INFO       [L3/layer31/wrong] N=3280
+23:51:17 DEBUG        Union: 392 stacked → rank 377 (23 concepts + β, 0 empty)
+23:51:17 DEBUG        total_carry_sum diagnostic: k=377 → k_without_tcs=327 (Δ=50)
+23:51:18 INFO         var_explained=0.9525 (k=377, d_resid=3719)
+23:51:25 DEBUG        PCA: 500 components, σ²=0.001460, γ=1.1338, λ_max_MP=0.006224, n_above=171, top_eig=0.131567
+23:51:25 INFO         171 eigenvalue(s) above MP edge — running correlation sweep
+23:51:33 INFO         n_correlation_tests=6327 (171 dirs × 37 cols)
+23:51:33 INFO         Top correlation: signed_error (ρ_s=-0.1357, r_p=-0.0160)
+23:51:33 INFO       [L4/layer04/all] N=10000
+23:51:35 DEBUG        Union: 497 stacked → rank 492 (35 concepts + β, 0 empty)
+23:51:35 DEBUG        total_carry_sum diagnostic: k=492 → k_without_tcs=425 (Δ=67)
+23:51:36 INFO         var_explained=0.8841 (k=492, d_resid=3604)
+23:51:52 DEBUG        PCA: 500 components, σ²=0.000010, γ=0.3604, λ_max_MP=0.000026, n_above=297, top_eig=0.000531
+23:51:52 INFO         297 eigenvalue(s) above MP edge — running correlation sweep
+23:52:29 INFO         n_correlation_tests=13662 (297 dirs × 46 cols)
+23:52:29 INFO         Top correlation: signed_error (ρ_s=0.0894, r_p=0.0047)
+23:52:29 INFO       [L4/layer06/all] N=10000
+23:52:31 DEBUG        Union: 485 stacked → rank 480 (34 concepts + β, 1 empty)
+23:52:32 DEBUG        total_carry_sum diagnostic: k=480 → k_without_tcs=420 (Δ=60)
+23:52:32 INFO         var_explained=0.8531 (k=480, d_resid=3616)
+23:53:07 DEBUG        PCA: 500 components, σ²=0.000025, γ=0.3616, λ_max_MP=0.000065, n_above=299, top_eig=0.001326
+23:53:07 INFO         299 eigenvalue(s) above MP edge — running correlation sweep
+23:53:46 INFO         n_correlation_tests=13754 (299 dirs × 46 cols)
+23:53:46 INFO         Top correlation: signed_error (ρ_s=-0.1027, r_p=0.0077)
+23:53:46 INFO       [L4/layer08/all] N=10000
+23:53:48 DEBUG        Union: 485 stacked → rank 480 (34 concepts + β, 1 empty)
+23:53:48 DEBUG        total_carry_sum diagnostic: k=480 → k_without_tcs=414 (Δ=66)
+23:53:49 INFO         var_explained=0.8614 (k=480, d_resid=3616)
+23:54:02 DEBUG        PCA: 500 components, σ²=0.000055, γ=0.3616, λ_max_MP=0.000141, n_above=296, top_eig=0.002852
+23:54:02 INFO         296 eigenvalue(s) above MP edge — running correlation sweep
+23:54:44 INFO         n_correlation_tests=13616 (296 dirs × 46 cols)
+23:54:44 INFO         Top correlation: signed_error (ρ_s=0.0886, r_p=-0.0090)
+23:54:44 INFO       [L4/layer12/all] N=10000
+23:54:47 DEBUG        Union: 520 stacked → rank 515 (35 concepts + β, 0 empty)
+23:54:48 DEBUG        total_carry_sum diagnostic: k=515 → k_without_tcs=450 (Δ=65)
+23:54:49 INFO         var_explained=0.8846 (k=515, d_resid=3581)
+23:55:03 DEBUG        PCA: 500 components, σ²=0.000079, γ=0.3581, λ_max_MP=0.000202, n_above=305, top_eig=0.003694
+23:55:03 INFO         305 eigenvalue(s) above MP edge — running correlation sweep
+23:55:42 INFO         n_correlation_tests=14030 (305 dirs × 46 cols)
+23:55:42 INFO         Top correlation: signed_error (ρ_s=0.0811, r_p=0.0102)
+23:55:42 INFO       [L4/layer16/all] N=10000
+23:55:44 DEBUG        Union: 512 stacked → rank 507 (34 concepts + β, 1 empty)
+23:55:45 DEBUG        total_carry_sum diagnostic: k=507 → k_without_tcs=446 (Δ=61)
+23:55:45 INFO         var_explained=0.9089 (k=507, d_resid=3589)
+23:56:00 DEBUG        PCA: 500 components, σ²=0.000096, γ=0.3589, λ_max_MP=0.000245, n_above=298, top_eig=0.004504
+23:56:00 INFO         298 eigenvalue(s) above MP edge — running correlation sweep
+23:56:37 INFO         n_correlation_tests=13708 (298 dirs × 46 cols)
+23:56:37 INFO         Top correlation: signed_error (ρ_s=-0.0935, r_p=-0.0053)
+23:56:37 INFO       [L4/layer20/all] N=10000
+23:56:39 DEBUG        Union: 489 stacked → rank 484 (34 concepts + β, 1 empty)
+23:56:39 DEBUG        total_carry_sum diagnostic: k=484 → k_without_tcs=427 (Δ=57)
+23:56:40 INFO         var_explained=0.9263 (k=484, d_resid=3612)
+23:56:53 DEBUG        PCA: 500 components, σ²=0.000184, γ=0.3612, λ_max_MP=0.000471, n_above=289, top_eig=0.009284
+23:56:53 INFO         289 eigenvalue(s) above MP edge — running correlation sweep
+23:57:31 INFO         n_correlation_tests=13294 (289 dirs × 46 cols)
+23:57:31 INFO         Top correlation: signed_error (ρ_s=0.0845, r_p=0.0317)
+23:57:31 INFO       [L4/layer24/all] N=10000
+23:57:36 DEBUG        Union: 493 stacked → rank 488 (34 concepts + β, 1 empty)
+23:57:36 DEBUG        total_carry_sum diagnostic: k=488 → k_without_tcs=423 (Δ=65)
+23:57:37 INFO         var_explained=0.9236 (k=488, d_resid=3608)
+23:57:59 DEBUG        PCA: 500 components, σ²=0.000441, γ=0.3608, λ_max_MP=0.001130, n_above=297, top_eig=0.021214
+23:57:59 INFO         297 eigenvalue(s) above MP edge — running correlation sweep
+23:58:37 INFO         n_correlation_tests=13662 (297 dirs × 46 cols)
+23:58:37 INFO         Top correlation: signed_error (ρ_s=0.0846, r_p=-0.0132)
+23:58:37 INFO       [L4/layer28/all] N=10000
+23:58:39 DEBUG        Union: 512 stacked → rank 507 (35 concepts + β, 0 empty)
+23:58:40 DEBUG        total_carry_sum diagnostic: k=507 → k_without_tcs=444 (Δ=63)
+23:58:40 INFO         var_explained=0.9046 (k=507, d_resid=3589)
+23:59:15 DEBUG        PCA: 500 components, σ²=0.001059, γ=0.3589, λ_max_MP=0.002708, n_above=317, top_eig=0.044625
+23:59:16 INFO         317 eigenvalue(s) above MP edge — running correlation sweep
+23:59:58 INFO         n_correlation_tests=14582 (317 dirs × 46 cols)
+23:59:58 INFO         Top correlation: signed_error (ρ_s=0.0719, r_p=0.0033)
+23:59:58 INFO       [L4/layer31/all] N=10000
+23:59:59 DEBUG        Union: 527 stacked → rank 522 (35 concepts + β, 0 empty)
+00:00:00 DEBUG        total_carry_sum diagnostic: k=522 → k_without_tcs=455 (Δ=67)
+00:00:00 INFO         var_explained=0.9172 (k=522, d_resid=3574)
+00:00:11 DEBUG        PCA: 500 components, σ²=0.003644, γ=0.3574, λ_max_MP=0.009305, n_above=307, top_eig=0.154940
+00:00:11 INFO         307 eigenvalue(s) above MP edge — running correlation sweep
+00:00:51 INFO         n_correlation_tests=14122 (307 dirs × 46 cols)
+00:00:51 INFO         Top correlation: signed_error (ρ_s=0.0827, r_p=-0.0042)
+00:00:51 INFO       [L4/layer04/correct] N=2897
+00:00:52 DEBUG        Union: 444 stacked → rank 443 (29 concepts + β, 0 empty)
+00:00:52 DEBUG        total_carry_sum diagnostic: k=443 → k_without_tcs=396 (Δ=47)
+00:00:53 INFO         var_explained=0.9074 (k=443, d_resid=3653)
+00:01:11 DEBUG        PCA: 500 components, σ²=0.000009, γ=1.2610, λ_max_MP=0.000041, n_above=202, top_eig=0.000538
+00:01:11 INFO         202 eigenvalue(s) above MP edge — running correlation sweep
+00:01:22 INFO         n_correlation_tests=8686 (202 dirs × 43 cols)
+00:01:22 INFO         Top correlation: ans_digit_2_msf (ρ_s=0.0473, r_p=0.0518)
+00:01:22 INFO       [L4/layer06/correct] N=2897
+00:01:23 DEBUG        Union: 439 stacked → rank 438 (29 concepts + β, 0 empty)
+00:01:23 DEBUG        total_carry_sum diagnostic: k=438 → k_without_tcs=391 (Δ=47)
+00:01:23 INFO         var_explained=0.8855 (k=438, d_resid=3658)
+00:01:45 DEBUG        PCA: 500 components, σ²=0.000022, γ=1.2627, λ_max_MP=0.000099, n_above=199, top_eig=0.001314
+00:01:45 INFO         199 eigenvalue(s) above MP edge — running correlation sweep
+00:01:56 INFO         n_correlation_tests=8557 (199 dirs × 43 cols)
+00:01:56 INFO         Top correlation: ans_digit_2_msf (ρ_s=-0.0542, r_p=-0.0477)
+00:01:56 INFO       [L4/layer08/correct] N=2897
+00:01:57 DEBUG        Union: 447 stacked → rank 446 (29 concepts + β, 0 empty)
+00:01:57 DEBUG        total_carry_sum diagnostic: k=446 → k_without_tcs=399 (Δ=47)
+00:01:57 INFO         var_explained=0.8962 (k=446, d_resid=3650)
+00:02:06 DEBUG        PCA: 500 components, σ²=0.000046, γ=1.2599, λ_max_MP=0.000206, n_above=198, top_eig=0.002430
+00:02:06 INFO         198 eigenvalue(s) above MP edge — running correlation sweep
+00:02:17 INFO         n_correlation_tests=8514 (198 dirs × 43 cols)
+00:02:17 INFO         Top correlation: ans_digit_3_msf (ρ_s=0.0333, r_p=0.0230)
+00:02:17 INFO       [L4/layer12/correct] N=2897
+00:02:18 DEBUG        Union: 433 stacked → rank 432 (29 concepts + β, 0 empty)
+00:02:19 DEBUG        total_carry_sum diagnostic: k=432 → k_without_tcs=385 (Δ=47)
+00:02:19 INFO         var_explained=0.8947 (k=432, d_resid=3664)
+00:02:29 DEBUG        PCA: 500 components, σ²=0.000080, γ=1.2648, λ_max_MP=0.000361, n_above=198, top_eig=0.004309
+00:02:29 INFO         198 eigenvalue(s) above MP edge — running correlation sweep
+00:02:40 INFO         n_correlation_tests=8514 (198 dirs × 43 cols)
+00:02:40 INFO         Top correlation: pp_a0_x_b1 (ρ_s=0.0367, r_p=0.0106)
+00:02:40 INFO       [L4/layer16/correct] N=2897
+00:02:41 DEBUG        Union: 426 stacked → rank 425 (29 concepts + β, 0 empty)
+00:02:41 DEBUG        total_carry_sum diagnostic: k=425 → k_without_tcs=392 (Δ=33)
+00:02:41 INFO         var_explained=0.9121 (k=425, d_resid=3671)
+00:03:04 DEBUG        PCA: 500 components, σ²=0.000104, γ=1.2672, λ_max_MP=0.000468, n_above=192, top_eig=0.006148
+00:03:05 INFO         192 eigenvalue(s) above MP edge — running correlation sweep
+00:03:15 INFO         n_correlation_tests=8256 (192 dirs × 43 cols)
+00:03:15 INFO         Top correlation: a (ρ_s=0.0444, r_p=-0.0000)
+00:03:15 INFO       [L4/layer20/correct] N=2897
+00:03:16 DEBUG        Union: 411 stacked → rank 410 (29 concepts + β, 0 empty)
+00:03:16 DEBUG        total_carry_sum diagnostic: k=410 → k_without_tcs=378 (Δ=32)
+00:03:16 INFO         var_explained=0.9269 (k=410, d_resid=3686)
+00:03:38 DEBUG        PCA: 500 components, σ²=0.000197, γ=1.2724, λ_max_MP=0.000891, n_above=187, top_eig=0.014216
+00:03:38 INFO         187 eigenvalue(s) above MP edge — running correlation sweep
+00:03:48 INFO         n_correlation_tests=8041 (187 dirs × 43 cols)
+00:03:48 INFO         Top correlation: carry_1_x_carry_2 (ρ_s=0.0635, r_p=0.0091)
+00:03:48 INFO       [L4/layer24/correct] N=2897
+00:03:49 DEBUG        Union: 409 stacked → rank 408 (29 concepts + β, 0 empty)
+00:03:49 DEBUG        total_carry_sum diagnostic: k=408 → k_without_tcs=375 (Δ=33)
+00:03:50 INFO         var_explained=0.9218 (k=408, d_resid=3688)
+00:04:02 DEBUG        PCA: 500 components, σ²=0.000476, γ=1.2730, λ_max_MP=0.002158, n_above=186, top_eig=0.034487
+00:04:02 INFO         186 eigenvalue(s) above MP edge — running correlation sweep
+00:04:13 INFO         n_correlation_tests=7998 (186 dirs × 43 cols)
+00:04:13 INFO         Top correlation: ans_digit_2_msf (ρ_s=-0.0529, r_p=-0.0579)
+00:04:13 INFO       [L4/layer28/correct] N=2897
+00:04:14 DEBUG        Union: 441 stacked → rank 440 (29 concepts + β, 0 empty)
+00:04:14 DEBUG        total_carry_sum diagnostic: k=440 → k_without_tcs=397 (Δ=43)
+00:04:14 INFO         var_explained=0.9100 (k=440, d_resid=3656)
+00:04:27 DEBUG        PCA: 500 components, σ²=0.001038, γ=1.2620, λ_max_MP=0.004681, n_above=201, top_eig=0.056063
+00:04:27 INFO         201 eigenvalue(s) above MP edge — running correlation sweep
+00:04:37 INFO         n_correlation_tests=8643 (201 dirs × 43 cols)
+00:04:37 INFO         Top correlation: ans_digit_1_msf (ρ_s=0.0467, r_p=0.0479)
+00:04:37 INFO       [L4/layer31/correct] N=2897
+00:04:38 DEBUG        Union: 455 stacked → rank 454 (29 concepts + β, 0 empty)
+00:04:39 DEBUG        total_carry_sum diagnostic: k=454 → k_without_tcs=407 (Δ=47)
+00:04:39 INFO         var_explained=0.9216 (k=454, d_resid=3642)
+00:04:50 DEBUG        PCA: 500 components, σ²=0.003587, γ=1.2572, λ_max_MP=0.016139, n_above=197, top_eig=0.202715
+00:04:50 INFO         197 eigenvalue(s) above MP edge — running correlation sweep
+00:05:02 INFO         n_correlation_tests=8471 (197 dirs × 43 cols)
+00:05:02 INFO         Top correlation: a_hundreds (ρ_s=-0.0370, r_p=0.0000)
+00:05:02 INFO       [L4/layer04/wrong] N=7103
+00:05:07 DEBUG        Union: 498 stacked → rank 492 (29 concepts + β, 0 empty)
+00:05:07 DEBUG        total_carry_sum diagnostic: k=492 → k_without_tcs=426 (Δ=66)
+00:05:08 INFO         var_explained=0.8844 (k=492, d_resid=3604)
+00:05:22 DEBUG        PCA: 500 components, σ²=0.000010, γ=0.5074, λ_max_MP=0.000028, n_above=271, top_eig=0.000494
+00:05:22 INFO         271 eigenvalue(s) above MP edge — running correlation sweep
+00:05:47 INFO         n_correlation_tests=12466 (271 dirs × 46 cols)
+00:05:47 INFO         Top correlation: signed_error (ρ_s=-0.0757, r_p=-0.0115)
+00:05:47 INFO       [L4/layer06/wrong] N=7103
+00:05:48 DEBUG        Union: 484 stacked → rank 478 (29 concepts + β, 0 empty)
+00:05:49 DEBUG        total_carry_sum diagnostic: k=478 → k_without_tcs=415 (Δ=63)
+00:05:49 INFO         var_explained=0.8514 (k=478, d_resid=3618)
+00:05:59 DEBUG        PCA: 500 components, σ²=0.000024, γ=0.5094, λ_max_MP=0.000071, n_above=271, top_eig=0.001234
+00:05:59 INFO         271 eigenvalue(s) above MP edge — running correlation sweep
+00:06:24 INFO         n_correlation_tests=12466 (271 dirs × 46 cols)
+00:06:24 INFO         Top correlation: signed_error (ρ_s=-0.0783, r_p=0.0103)
+00:06:24 INFO       [L4/layer08/wrong] N=7103
+00:06:25 DEBUG        Union: 492 stacked → rank 486 (29 concepts + β, 0 empty)
+00:06:26 DEBUG        total_carry_sum diagnostic: k=486 → k_without_tcs=420 (Δ=66)
+00:06:26 INFO         var_explained=0.8641 (k=486, d_resid=3610)
+00:06:46 DEBUG        PCA: 500 components, σ²=0.000051, γ=0.5082, λ_max_MP=0.000150, n_above=271, top_eig=0.002533
+00:06:46 INFO         271 eigenvalue(s) above MP edge — running correlation sweep
+00:07:11 INFO         n_correlation_tests=12466 (271 dirs × 46 cols)
+00:07:11 INFO         Top correlation: signed_error (ρ_s=-0.0779, r_p=-0.0043)
+00:07:11 INFO       [L4/layer12/wrong] N=7103
+00:07:13 DEBUG        Union: 497 stacked → rank 491 (29 concepts + β, 0 empty)
+00:07:14 DEBUG        total_carry_sum diagnostic: k=491 → k_without_tcs=427 (Δ=64)
+00:07:14 INFO         var_explained=0.8749 (k=491, d_resid=3605)
+00:07:31 DEBUG        PCA: 500 components, σ²=0.000080, γ=0.5075, λ_max_MP=0.000236, n_above=271, top_eig=0.003840
+00:07:31 INFO         271 eigenvalue(s) above MP edge — running correlation sweep
+00:07:57 INFO         n_correlation_tests=12466 (271 dirs × 46 cols)
+00:07:57 INFO         Top correlation: signed_error (ρ_s=-0.0885, r_p=-0.0110)
+00:07:57 INFO       [L4/layer16/wrong] N=7103
+00:07:58 DEBUG        Union: 496 stacked → rank 490 (29 concepts + β, 0 empty)
+00:07:58 DEBUG        total_carry_sum diagnostic: k=490 → k_without_tcs=422 (Δ=68)
+00:07:58 INFO         var_explained=0.9046 (k=490, d_resid=3606)
+00:08:08 DEBUG        PCA: 500 components, σ²=0.000094, γ=0.5077, λ_max_MP=0.000275, n_above=266, top_eig=0.004723
+00:08:08 INFO         266 eigenvalue(s) above MP edge — running correlation sweep
+00:08:33 INFO         n_correlation_tests=12236 (266 dirs × 46 cols)
+00:08:33 INFO         Top correlation: signed_error (ρ_s=-0.0876, r_p=-0.0098)
+00:08:33 INFO       [L4/layer20/wrong] N=7103
+00:08:34 DEBUG        Union: 463 stacked → rank 457 (29 concepts + β, 0 empty)
+00:08:35 DEBUG        total_carry_sum diagnostic: k=457 → k_without_tcs=390 (Δ=67)
+00:08:35 INFO         var_explained=0.9201 (k=457, d_resid=3639)
+00:08:54 DEBUG        PCA: 500 components, σ²=0.000189, γ=0.5123, λ_max_MP=0.000557, n_above=255, top_eig=0.010898
+00:08:54 INFO         255 eigenvalue(s) above MP edge — running correlation sweep
+00:09:18 INFO         n_correlation_tests=11730 (255 dirs × 46 cols)
+00:09:18 INFO         Top correlation: signed_error (ρ_s=0.0887, r_p=-0.0062)
+00:09:18 INFO       [L4/layer24/wrong] N=7103
+00:09:19 DEBUG        Union: 448 stacked → rank 442 (29 concepts + β, 0 empty)
+00:09:19 DEBUG        total_carry_sum diagnostic: k=442 → k_without_tcs=397 (Δ=45)
+00:09:20 INFO         var_explained=0.9116 (k=442, d_resid=3654)
+00:09:53 DEBUG        PCA: 500 components, σ²=0.000487, γ=0.5144, λ_max_MP=0.001436, n_above=256, top_eig=0.028358
+00:09:53 INFO         256 eigenvalue(s) above MP edge — running correlation sweep
+00:10:17 INFO         n_correlation_tests=11776 (256 dirs × 46 cols)
+00:10:17 INFO         Top correlation: signed_error (ρ_s=-0.0915, r_p=0.0201)
+00:10:17 INFO       [L4/layer28/wrong] N=7103
+00:10:18 DEBUG        Union: 465 stacked → rank 459 (29 concepts + β, 0 empty)
+00:10:21 DEBUG        total_carry_sum diagnostic: k=459 → k_without_tcs=413 (Δ=46)
+00:10:21 INFO         var_explained=0.8917 (k=459, d_resid=3637)
+00:10:30 DEBUG        PCA: 500 components, σ²=0.001156, γ=0.5120, λ_max_MP=0.003403, n_above=274, top_eig=0.058755
+00:10:30 INFO         274 eigenvalue(s) above MP edge — running correlation sweep
+00:10:56 INFO         n_correlation_tests=12604 (274 dirs × 46 cols)
+00:10:56 INFO         Top correlation: signed_error (ρ_s=0.0842, r_p=0.0003)
+00:10:56 INFO       [L4/layer31/wrong] N=7103
+00:10:57 DEBUG        Union: 497 stacked → rank 491 (29 concepts + β, 0 empty)
+00:10:57 DEBUG        total_carry_sum diagnostic: k=491 → k_without_tcs=444 (Δ=47)
+00:10:57 INFO         var_explained=0.9128 (k=491, d_resid=3605)
+00:11:09 DEBUG        PCA: 500 components, σ²=0.003711, γ=0.5075, λ_max_MP=0.010883, n_above=273, top_eig=0.176295
+00:11:09 INFO         273 eigenvalue(s) above MP edge — running correlation sweep
+00:11:34 INFO         n_correlation_tests=12558 (273 dirs × 46 cols)
+00:11:34 INFO         Top correlation: signed_error (ρ_s=0.0710, r_p=0.0105)
+00:11:34 INFO       [L5/layer04/all] N=122223
+00:11:41 DEBUG        Union: 547 stacked → rank 539 (43 concepts + β, 0 empty)
+00:11:42 DEBUG        total_carry_sum diagnostic: k=539 → k_without_tcs=494 (Δ=45)
+00:11:48 INFO         var_explained=0.8398 (k=539, d_resid=3557)
+00:12:15 DEBUG        PCA: 500 components, σ²=0.000016, γ=0.0291, λ_max_MP=0.000022, n_above=447, top_eig=0.000939
+00:12:15 INFO         447 eigenvalue(s) above MP edge — running correlation sweep
+00:22:43 INFO         n_correlation_tests=25479 (447 dirs × 57 cols)
+00:22:43 INFO         Top correlation: a_tens (ρ_s=-0.0803, r_p=0.0000)
+00:22:43 INFO       [L5/layer06/all] N=122223
+00:22:50 DEBUG        Union: 546 stacked → rank 538 (43 concepts + β, 0 empty)
+00:22:50 DEBUG        total_carry_sum diagnostic: k=538 → k_without_tcs=476 (Δ=62)
+00:22:55 INFO         var_explained=0.8083 (k=538, d_resid=3558)
+00:23:17 DEBUG        PCA: 500 components, σ²=0.000043, γ=0.0291, λ_max_MP=0.000059, n_above=442, top_eig=0.002310
+00:23:17 INFO         442 eigenvalue(s) above MP edge — running correlation sweep
+00:33:46 INFO         n_correlation_tests=25194 (442 dirs × 57 cols)
+00:33:46 INFO         Top correlation: pp_a2_x_b1 (ρ_s=0.0791, r_p=-0.0002)
+00:33:46 INFO       [L5/layer08/all] N=122223
+00:33:53 DEBUG        Union: 576 stacked → rank 568 (43 concepts + β, 0 empty)
+00:33:54 DEBUG        total_carry_sum diagnostic: k=568 → k_without_tcs=489 (Δ=79)
+00:33:59 INFO         var_explained=0.8340 (k=568, d_resid=3528)
+00:34:36 DEBUG        PCA: 500 components, σ²=0.000085, γ=0.0289, λ_max_MP=0.000116, n_above=454, top_eig=0.004099
+00:34:36 INFO         454 eigenvalue(s) above MP edge — running correlation sweep
+00:45:21 INFO         n_correlation_tests=25878 (454 dirs × 57 cols)
+00:45:21 INFO         Top correlation: pp_a2_x_b1 (ρ_s=0.0599, r_p=-0.0005)
+00:45:21 INFO       [L5/layer12/all] N=122223
+00:45:28 DEBUG        Union: 575 stacked → rank 567 (43 concepts + β, 0 empty)
+00:45:29 DEBUG        total_carry_sum diagnostic: k=567 → k_without_tcs=489 (Δ=78)
+00:45:34 INFO         var_explained=0.8468 (k=567, d_resid=3529)
+00:46:09 DEBUG        PCA: 500 components, σ²=0.000128, γ=0.0289, λ_max_MP=0.000175, n_above=455, top_eig=0.005898
+00:46:09 INFO         455 eigenvalue(s) above MP edge — running correlation sweep
+00:56:46 INFO         n_correlation_tests=25935 (455 dirs × 57 cols)
+00:56:46 INFO         Top correlation: signed_error (ρ_s=-0.0540, r_p=0.0072)
+00:56:46 INFO       [L5/layer16/all] N=122223
+00:56:53 DEBUG        Union: 568 stacked → rank 560 (43 concepts + β, 0 empty)
+00:56:53 DEBUG        total_carry_sum diagnostic: k=560 → k_without_tcs=485 (Δ=75)
+00:56:58 INFO         var_explained=0.8759 (k=560, d_resid=3536)
+00:57:25 DEBUG        PCA: 500 components, σ²=0.000152, γ=0.0289, λ_max_MP=0.000209, n_above=444, top_eig=0.008017
+00:57:25 INFO         444 eigenvalue(s) above MP edge — running correlation sweep
+01:07:33 INFO         n_correlation_tests=25308 (444 dirs × 57 cols)
+01:07:33 INFO         Top correlation: rel_error (ρ_s=-0.0467, r_p=0.0139)
+01:07:34 INFO       [L5/layer20/all] N=122223
+01:07:42 DEBUG        Union: 543 stacked → rank 535 (43 concepts + β, 0 empty)
+01:07:42 DEBUG        total_carry_sum diagnostic: k=535 → k_without_tcs=488 (Δ=47)
+01:07:47 INFO         var_explained=0.8992 (k=535, d_resid=3561)
+01:08:15 DEBUG        PCA: 500 components, σ²=0.000296, γ=0.0291, λ_max_MP=0.000406, n_above=433, top_eig=0.015828
+01:08:15 INFO         433 eigenvalue(s) above MP edge — running correlation sweep
+01:21:41 INFO     ======================================================================
+01:21:41 INFO     Phase E — Residual Hunting
+01:21:41 INFO     ======================================================================
+01:21:41 INFO     Levels: [2, 3, 4, 5]
+01:21:41 INFO     Layers: [4, 6, 8, 12, 16, 20, 24, 28, 31]
+01:21:41 INFO     Populations: all viable
+01:21:41 INFO     PCA components: 500
+01:21:41 INFO     GPU (CuPy): available
+01:21:41 INFO     Phase D metadata files found: 2844
+01:21:41 INFO     
+01:21:41 INFO     Step 1: Per-slice residual analysis
+01:21:41 INFO     ----------------------------------------
+01:21:41 DEBUG      [L2/layer04/all] cached — skipping
+01:21:41 DEBUG      [L2/layer06/all] cached — skipping
+01:21:41 DEBUG      [L2/layer08/all] cached — skipping
+01:21:41 DEBUG      [L2/layer12/all] cached — skipping
+01:21:41 DEBUG      [L2/layer16/all] cached — skipping
+01:21:41 DEBUG      [L2/layer20/all] cached — skipping
+01:21:41 DEBUG      [L2/layer24/all] cached — skipping
+01:21:41 DEBUG      [L2/layer28/all] cached — skipping
+01:21:41 DEBUG      [L2/layer31/all] cached — skipping
+01:21:41 DEBUG      [L2/layer04/correct] cached — skipping
+01:21:41 DEBUG      [L2/layer06/correct] cached — skipping
+01:21:41 DEBUG      [L2/layer08/correct] cached — skipping
+01:21:41 DEBUG      [L2/layer12/correct] cached — skipping
+01:21:41 DEBUG      [L2/layer16/correct] cached — skipping
+01:21:41 DEBUG      [L2/layer20/correct] cached — skipping
+01:21:41 DEBUG      [L2/layer24/correct] cached — skipping
+01:21:41 DEBUG      [L2/layer28/correct] cached — skipping
+01:21:41 DEBUG      [L2/layer31/correct] cached — skipping
+01:21:41 DEBUG      [L3/layer04/all] cached — skipping
+01:21:41 DEBUG      [L3/layer06/all] cached — skipping
+01:21:41 DEBUG      [L3/layer08/all] cached — skipping
+01:21:41 DEBUG      [L3/layer12/all] cached — skipping
+01:21:41 DEBUG      [L3/layer16/all] cached — skipping
+01:21:41 DEBUG      [L3/layer20/all] cached — skipping
+01:21:41 DEBUG      [L3/layer24/all] cached — skipping
+01:21:41 DEBUG      [L3/layer28/all] cached — skipping
+01:21:41 DEBUG      [L3/layer31/all] cached — skipping
+01:21:41 DEBUG      [L3/layer04/correct] cached — skipping
+01:21:41 DEBUG      [L3/layer06/correct] cached — skipping
+01:21:41 DEBUG      [L3/layer08/correct] cached — skipping
+01:21:41 DEBUG      [L3/layer12/correct] cached — skipping
+01:21:41 DEBUG      [L3/layer16/correct] cached — skipping
+01:21:41 DEBUG      [L3/layer20/correct] cached — skipping
+01:21:41 DEBUG      [L3/layer24/correct] cached — skipping
+01:21:41 DEBUG      [L3/layer28/correct] cached — skipping
+01:21:41 DEBUG      [L3/layer31/correct] cached — skipping
+01:21:41 DEBUG      [L3/layer04/wrong] cached — skipping
+01:21:41 DEBUG      [L3/layer06/wrong] cached — skipping
+01:21:41 DEBUG      [L3/layer08/wrong] cached — skipping
+01:21:41 DEBUG      [L3/layer12/wrong] cached — skipping
+01:21:41 DEBUG      [L3/layer16/wrong] cached — skipping
+01:21:41 DEBUG      [L3/layer20/wrong] cached — skipping
+01:21:41 DEBUG      [L3/layer24/wrong] cached — skipping
+01:21:41 DEBUG      [L3/layer28/wrong] cached — skipping
+01:21:41 DEBUG      [L3/layer31/wrong] cached — skipping
+01:21:41 DEBUG      [L4/layer04/all] cached — skipping
+01:21:41 DEBUG      [L4/layer06/all] cached — skipping
+01:21:41 DEBUG      [L4/layer08/all] cached — skipping
+01:21:41 DEBUG      [L4/layer12/all] cached — skipping
+01:21:41 DEBUG      [L4/layer16/all] cached — skipping
+01:21:41 DEBUG      [L4/layer20/all] cached — skipping
+01:21:41 DEBUG      [L4/layer24/all] cached — skipping
+01:21:41 DEBUG      [L4/layer28/all] cached — skipping
+01:21:41 DEBUG      [L4/layer31/all] cached — skipping
+01:21:41 DEBUG      [L4/layer04/correct] cached — skipping
+01:21:41 DEBUG      [L4/layer06/correct] cached — skipping
+01:21:41 DEBUG      [L4/layer08/correct] cached — skipping
+01:21:41 DEBUG      [L4/layer12/correct] cached — skipping
+01:21:41 DEBUG      [L4/layer16/correct] cached — skipping
+01:21:41 DEBUG      [L4/layer20/correct] cached — skipping
+01:21:41 DEBUG      [L4/layer24/correct] cached — skipping
+01:21:41 DEBUG      [L4/layer28/correct] cached — skipping
+01:21:41 DEBUG      [L4/layer31/correct] cached — skipping
+01:21:41 DEBUG      [L4/layer04/wrong] cached — skipping
+01:21:41 DEBUG      [L4/layer06/wrong] cached — skipping
+01:21:41 DEBUG      [L4/layer08/wrong] cached — skipping
+01:21:41 DEBUG      [L4/layer12/wrong] cached — skipping
+01:21:41 DEBUG      [L4/layer16/wrong] cached — skipping
+01:21:41 DEBUG      [L4/layer20/wrong] cached — skipping
+01:21:41 DEBUG      [L4/layer24/wrong] cached — skipping
+01:21:41 DEBUG      [L4/layer28/wrong] cached — skipping
+01:21:41 DEBUG      [L4/layer31/wrong] cached — skipping
+01:21:41 DEBUG      [L5/layer04/all] cached — skipping
+01:21:41 DEBUG      [L5/layer06/all] cached — skipping
+01:21:41 DEBUG      [L5/layer08/all] cached — skipping
+01:21:41 DEBUG      [L5/layer12/all] cached — skipping
+01:21:41 DEBUG      [L5/layer16/all] cached — skipping
+01:21:41 INFO       [L5/layer20/all] N=122223
+01:21:47 DEBUG        Union: 543 stacked → rank 535 (43 concepts + β, 0 empty)
+01:21:48 DEBUG        total_carry_sum diagnostic: k=535 → k_without_tcs=488 (Δ=47)
+01:21:54 INFO         var_explained=0.8992 (k=535, d_resid=3561)
+01:22:23 DEBUG        PCA: 500 components, σ²=0.000296, γ=0.0291, λ_max_MP=0.000406, n_above=433, top_eig=0.015828
+01:22:23 INFO         433 eigenvalue(s) above MP edge — running correlation sweep
+01:31:38 INFO         n_correlation_tests=24681 (433 dirs × 57 cols)
+01:31:38 INFO         Top correlation: signed_error (ρ_s=0.0516, r_p=0.0026)
+01:31:38 INFO       [L5/layer24/all] N=122223
+01:31:44 DEBUG        Union: 514 stacked → rank 506 (43 concepts + β, 0 empty)
+01:31:44 DEBUG        total_carry_sum diagnostic: k=506 → k_without_tcs=460 (Δ=46)
+01:31:49 INFO         var_explained=0.8944 (k=506, d_resid=3590)
+01:32:23 DEBUG        PCA: 500 components, σ²=0.000720, γ=0.0294, λ_max_MP=0.000988, n_above=429, top_eig=0.041591
+01:32:23 INFO         429 eigenvalue(s) above MP edge — running correlation sweep
+01:41:40 INFO         n_correlation_tests=24453 (429 dirs × 57 cols)
+01:41:40 INFO         Top correlation: a_hundreds (ρ_s=-0.0553, r_p=-0.0000)
+01:41:40 INFO       [L5/layer28/all] N=122223
+01:41:46 DEBUG        Union: 523 stacked → rank 515 (43 concepts + β, 0 empty)
+01:41:46 DEBUG        total_carry_sum diagnostic: k=515 → k_without_tcs=468 (Δ=47)
+01:41:50 INFO         var_explained=0.8711 (k=515, d_resid=3581)
+01:42:32 DEBUG        PCA: 500 components, σ²=0.001767, γ=0.0293, λ_max_MP=0.002424, n_above=452, top_eig=0.097371
+01:42:32 INFO         452 eigenvalue(s) above MP edge — running correlation sweep
+01:57:22 INFO     ======================================================================
+01:57:22 INFO     Phase E — Residual Hunting
+01:57:22 INFO     ======================================================================
+01:57:22 INFO     Levels: [2, 3, 4, 5]
+01:57:22 INFO     Layers: [4, 6, 8, 12, 16, 20, 24, 28, 31]
+01:57:22 INFO     Populations: all viable
+01:57:22 INFO     PCA components: 500
+01:57:22 INFO     GPU (CuPy): available
+01:57:22 INFO     Phase D metadata files found: 2844
+01:57:22 INFO     
+01:57:22 INFO     Step 1: Per-slice residual analysis
+01:57:22 INFO     ----------------------------------------
+01:57:22 DEBUG      [L2/layer04/all] cached — skipping
+01:57:22 DEBUG      [L2/layer06/all] cached — skipping
+01:57:22 DEBUG      [L2/layer08/all] cached — skipping
+01:57:22 DEBUG      [L2/layer12/all] cached — skipping
+01:57:22 DEBUG      [L2/layer16/all] cached — skipping
+01:57:22 DEBUG      [L2/layer20/all] cached — skipping
+01:57:22 DEBUG      [L2/layer24/all] cached — skipping
+01:57:22 DEBUG      [L2/layer28/all] cached — skipping
+01:57:22 DEBUG      [L2/layer31/all] cached — skipping
+01:57:22 DEBUG      [L2/layer04/correct] cached — skipping
+01:57:22 DEBUG      [L2/layer06/correct] cached — skipping
+01:57:22 DEBUG      [L2/layer08/correct] cached — skipping
+01:57:22 DEBUG      [L2/layer12/correct] cached — skipping
+01:57:22 DEBUG      [L2/layer16/correct] cached — skipping
+01:57:22 DEBUG      [L2/layer20/correct] cached — skipping
+01:57:22 DEBUG      [L2/layer24/correct] cached — skipping
+01:57:22 DEBUG      [L2/layer28/correct] cached — skipping
+01:57:22 DEBUG      [L2/layer31/correct] cached — skipping
+01:57:22 DEBUG      [L3/layer04/all] cached — skipping
+01:57:22 DEBUG      [L3/layer06/all] cached — skipping
+01:57:22 DEBUG      [L3/layer08/all] cached — skipping
+01:57:22 DEBUG      [L3/layer12/all] cached — skipping
+01:57:22 DEBUG      [L3/layer16/all] cached — skipping
+01:57:22 DEBUG      [L3/layer20/all] cached — skipping
+01:57:22 DEBUG      [L3/layer24/all] cached — skipping
+01:57:22 DEBUG      [L3/layer28/all] cached — skipping
+01:57:22 DEBUG      [L3/layer31/all] cached — skipping
+01:57:22 DEBUG      [L3/layer04/correct] cached — skipping
+01:57:22 DEBUG      [L3/layer06/correct] cached — skipping
+01:57:22 DEBUG      [L3/layer08/correct] cached — skipping
+01:57:22 DEBUG      [L3/layer12/correct] cached — skipping
+01:57:22 DEBUG      [L3/layer16/correct] cached — skipping
+01:57:22 DEBUG      [L3/layer20/correct] cached — skipping
+01:57:22 DEBUG      [L3/layer24/correct] cached — skipping
+01:57:22 DEBUG      [L3/layer28/correct] cached — skipping
+01:57:22 DEBUG      [L3/layer31/correct] cached — skipping
+01:57:22 DEBUG      [L3/layer04/wrong] cached — skipping
+01:57:22 DEBUG      [L3/layer06/wrong] cached — skipping
+01:57:22 DEBUG      [L3/layer08/wrong] cached — skipping
+01:57:22 DEBUG      [L3/layer12/wrong] cached — skipping
+01:57:22 DEBUG      [L3/layer16/wrong] cached — skipping
+01:57:22 DEBUG      [L3/layer20/wrong] cached — skipping
+01:57:22 DEBUG      [L3/layer24/wrong] cached — skipping
+01:57:22 DEBUG      [L3/layer28/wrong] cached — skipping
+01:57:22 DEBUG      [L3/layer31/wrong] cached — skipping
+01:57:22 DEBUG      [L4/layer04/all] cached — skipping
+01:57:22 DEBUG      [L4/layer06/all] cached — skipping
+01:57:22 DEBUG      [L4/layer08/all] cached — skipping
+01:57:22 DEBUG      [L4/layer12/all] cached — skipping
+01:57:22 DEBUG      [L4/layer16/all] cached — skipping
+01:57:22 DEBUG      [L4/layer20/all] cached — skipping
+01:57:22 DEBUG      [L4/layer24/all] cached — skipping
+01:57:22 DEBUG      [L4/layer28/all] cached — skipping
+01:57:22 DEBUG      [L4/layer31/all] cached — skipping
+01:57:22 DEBUG      [L4/layer04/correct] cached — skipping
+01:57:22 DEBUG      [L4/layer06/correct] cached — skipping
+01:57:22 DEBUG      [L4/layer08/correct] cached — skipping
+01:57:22 DEBUG      [L4/layer12/correct] cached — skipping
+01:57:22 DEBUG      [L4/layer16/correct] cached — skipping
+01:57:22 DEBUG      [L4/layer20/correct] cached — skipping
+01:57:22 DEBUG      [L4/layer24/correct] cached — skipping
+01:57:22 DEBUG      [L4/layer28/correct] cached — skipping
+01:57:22 DEBUG      [L4/layer31/correct] cached — skipping
+01:57:22 DEBUG      [L4/layer04/wrong] cached — skipping
+01:57:22 DEBUG      [L4/layer06/wrong] cached — skipping
+01:57:22 DEBUG      [L4/layer08/wrong] cached — skipping
+01:57:22 DEBUG      [L4/layer12/wrong] cached — skipping
+01:57:22 DEBUG      [L4/layer16/wrong] cached — skipping
+01:57:22 DEBUG      [L4/layer20/wrong] cached — skipping
+01:57:22 DEBUG      [L4/layer24/wrong] cached — skipping
+01:57:22 DEBUG      [L4/layer28/wrong] cached — skipping
+01:57:22 DEBUG      [L4/layer31/wrong] cached — skipping
+01:57:23 DEBUG      [L5/layer04/all] cached — skipping
+01:57:23 DEBUG      [L5/layer06/all] cached — skipping
+01:57:23 DEBUG      [L5/layer08/all] cached — skipping
+01:57:23 DEBUG      [L5/layer12/all] cached — skipping
+01:57:23 DEBUG      [L5/layer16/all] cached — skipping
+01:57:23 DEBUG      [L5/layer20/all] cached — skipping
+01:57:23 DEBUG      [L5/layer24/all] cached — skipping
+01:57:23 INFO       [L5/layer28/all] N=122223
+01:57:30 DEBUG        Union: 523 stacked → rank 515 (43 concepts + β, 0 empty)
+01:57:30 DEBUG        total_carry_sum diagnostic: k=515 → k_without_tcs=468 (Δ=47)
+01:57:36 INFO         var_explained=0.8711 (k=515, d_resid=3581)
+01:57:58 DEBUG        PCA: 500 components, σ²=0.001767, γ=0.0293, λ_max_MP=0.002424, n_above=452, top_eig=0.097371
+01:57:58 INFO         452 eigenvalue(s) above MP edge — running correlation sweep
+02:07:55 INFO         n_correlation_tests=25764 (452 dirs × 57 cols)
+02:07:55 INFO         Top correlation: signed_error (ρ_s=0.0579, r_p=-0.0277)
+02:07:55 INFO       [L5/layer31/all] N=122223
+02:08:02 DEBUG        Union: 533 stacked → rank 525 (43 concepts + β, 0 empty)
+02:08:02 DEBUG        total_carry_sum diagnostic: k=525 → k_without_tcs=479 (Δ=46)
+02:08:06 INFO         var_explained=0.8895 (k=525, d_resid=3571)
+02:08:44 DEBUG        PCA: 500 components, σ²=0.006033, γ=0.0292, λ_max_MP=0.008272, n_above=436, top_eig=0.350533
+02:08:44 INFO         436 eigenvalue(s) above MP edge — running correlation sweep
+02:18:16 INFO         n_correlation_tests=24852 (436 dirs × 57 cols)
+02:18:16 INFO         Top correlation: signed_error (ρ_s=0.0698, r_p=-0.0130)
+02:18:16 INFO       [L5/layer04/correct] N=4197
+02:18:20 DEBUG        Union: 514 stacked → rank 507 (35 concepts + β, 1 empty)
+02:18:20 DEBUG        total_carry_sum diagnostic: k=507 → k_without_tcs=469 (Δ=38)
+02:18:22 INFO         var_explained=0.8945 (k=507, d_resid=3589)
+02:18:46 DEBUG        PCA: 500 components, σ²=0.000012, γ=0.8551, λ_max_MP=0.000045, n_above=243, top_eig=0.000578
+02:18:47 INFO         243 eigenvalue(s) above MP edge — running correlation sweep
+02:19:02 INFO         n_correlation_tests=13122 (243 dirs × 54 cols)
+02:19:02 INFO         Top correlation: ans_digit_2_msf (ρ_s=-0.0377, r_p=-0.0375)
+02:19:02 INFO       [L5/layer06/correct] N=4197
+02:19:05 DEBUG        Union: 502 stacked → rank 495 (35 concepts + β, 1 empty)
+02:19:06 DEBUG        total_carry_sum diagnostic: k=495 → k_without_tcs=454 (Δ=41)
+02:19:07 INFO         var_explained=0.8645 (k=495, d_resid=3601)
+02:19:12 DEBUG        PCA: 500 components, σ²=0.000033, γ=0.8580, λ_max_MP=0.000123, n_above=237, top_eig=0.001555
+02:19:12 INFO         237 eigenvalue(s) above MP edge — running correlation sweep
+02:19:27 INFO         n_correlation_tests=12798 (237 dirs × 54 cols)
+02:19:27 INFO         Top correlation: ans_digit_2_msf (ρ_s=0.0391, r_p=0.0385)
+02:19:27 INFO       [L5/layer08/correct] N=4197
+02:19:31 DEBUG        Union: 496 stacked → rank 489 (35 concepts + β, 1 empty)
+02:19:31 DEBUG        total_carry_sum diagnostic: k=489 → k_without_tcs=454 (Δ=35)
+02:19:33 INFO         var_explained=0.8648 (k=489, d_resid=3607)
+02:19:47 DEBUG        PCA: 500 components, σ²=0.000073, γ=0.8594, λ_max_MP=0.000271, n_above=235, top_eig=0.003314
+02:19:47 INFO         235 eigenvalue(s) above MP edge — running correlation sweep
+02:20:02 INFO         n_correlation_tests=12690 (235 dirs × 54 cols)
+02:20:02 INFO         Top correlation: ans_digit_2_msf (ρ_s=-0.0429, r_p=-0.0372)
+02:20:02 INFO       [L5/layer12/correct] N=4197
+02:20:06 DEBUG        Union: 528 stacked → rank 521 (35 concepts + β, 1 empty)
+02:20:06 DEBUG        total_carry_sum diagnostic: k=521 → k_without_tcs=481 (Δ=40)
+02:20:07 INFO         var_explained=0.8827 (k=521, d_resid=3575)
+02:20:49 DEBUG        PCA: 500 components, σ²=0.000103, γ=0.8518, λ_max_MP=0.000383, n_above=236, top_eig=0.004321
+02:20:49 INFO         236 eigenvalue(s) above MP edge — running correlation sweep
+02:21:03 INFO         n_correlation_tests=12744 (236 dirs × 54 cols)
+02:21:03 INFO         Top correlation: ans_digit_2_msf (ρ_s=-0.0383, r_p=-0.0413)
+02:21:03 INFO       [L5/layer16/correct] N=4197
+02:21:21 DEBUG        Union: 499 stacked → rank 492 (35 concepts + β, 1 empty)
+02:21:22 DEBUG        total_carry_sum diagnostic: k=492 → k_without_tcs=449 (Δ=43)
+02:21:23 INFO         var_explained=0.8928 (k=492, d_resid=3604)
+02:21:49 DEBUG        PCA: 500 components, σ²=0.000142, γ=0.8587, λ_max_MP=0.000528, n_above=225, top_eig=0.007250
+02:21:49 INFO         225 eigenvalue(s) above MP edge — running correlation sweep
+02:22:03 INFO         n_correlation_tests=12150 (225 dirs × 54 cols)
+02:22:03 INFO         Top correlation: ans_digit_2_msf (ρ_s=0.0542, r_p=0.0502)
+02:22:03 INFO       [L5/layer20/correct] N=4197
+02:22:06 DEBUG        Union: 518 stacked → rank 511 (35 concepts + β, 1 empty)
+02:22:06 DEBUG        total_carry_sum diagnostic: k=511 → k_without_tcs=468 (Δ=43)
+02:22:06 INFO         var_explained=0.9214 (k=511, d_resid=3585)
+02:22:36 DEBUG        PCA: 500 components, σ²=0.000243, γ=0.8542, λ_max_MP=0.000898, n_above=225, top_eig=0.012850
+02:22:36 INFO         225 eigenvalue(s) above MP edge — running correlation sweep
+02:22:50 INFO         n_correlation_tests=12150 (225 dirs × 54 cols)
+02:22:50 INFO         Top correlation: ans_digit_2_msf (ρ_s=-0.0478, r_p=-0.0471)
+02:22:50 INFO       [L5/layer24/correct] N=4197
+02:22:53 DEBUG        Union: 492 stacked → rank 485 (35 concepts + β, 1 empty)
+02:22:53 DEBUG        total_carry_sum diagnostic: k=485 → k_without_tcs=442 (Δ=43)
+02:22:53 INFO         var_explained=0.9197 (k=485, d_resid=3611)
+02:23:33 DEBUG        PCA: 500 components, σ²=0.000570, γ=0.8604, λ_max_MP=0.002119, n_above=223, top_eig=0.032402
+02:23:33 INFO         223 eigenvalue(s) above MP edge — running correlation sweep
+02:23:47 INFO         n_correlation_tests=12042 (223 dirs × 54 cols)
+02:23:47 INFO         Top correlation: ans_digit_2_msf (ρ_s=-0.0413, r_p=-0.0450)
+02:23:47 INFO       [L5/layer28/correct] N=4197
+02:23:49 DEBUG        Union: 499 stacked → rank 492 (35 concepts + β, 1 empty)
+02:23:50 DEBUG        total_carry_sum diagnostic: k=492 → k_without_tcs=448 (Δ=44)
+02:23:50 INFO         var_explained=0.8991 (k=492, d_resid=3604)
+02:24:07 DEBUG        PCA: 500 components, σ²=0.001392, γ=0.8587, λ_max_MP=0.005166, n_above=234, top_eig=0.070689
+02:24:07 INFO         234 eigenvalue(s) above MP edge — running correlation sweep
+02:24:21 INFO         n_correlation_tests=12636 (234 dirs × 54 cols)
+02:24:21 INFO         Top correlation: ans_digit_2_msf (ρ_s=0.0469, r_p=0.0387)
+02:24:21 INFO       [L5/layer31/correct] N=4197
+02:24:24 DEBUG        Union: 519 stacked → rank 512 (35 concepts + β, 1 empty)
+02:24:24 DEBUG        total_carry_sum diagnostic: k=512 → k_without_tcs=467 (Δ=45)
+02:24:24 INFO         var_explained=0.9130 (k=512, d_resid=3584)
+02:24:31 DEBUG        PCA: 500 components, σ²=0.004851, γ=0.8539, λ_max_MP=0.017960, n_above=229, top_eig=0.269570
+02:24:31 INFO         229 eigenvalue(s) above MP edge — running correlation sweep
+02:24:46 INFO         n_correlation_tests=12366 (229 dirs × 54 cols)
+02:24:46 INFO         Top correlation: ans_digit_2_msf (ρ_s=0.0481, r_p=0.0473)
+02:24:46 INFO       [L5/layer04/wrong] N=118026
+02:25:10 DEBUG        Union: 553 stacked → rank 544 (36 concepts + β, 0 empty)
+02:25:10 DEBUG        total_carry_sum diagnostic: k=544 → k_without_tcs=486 (Δ=58)
+02:25:14 INFO         var_explained=0.8465 (k=544, d_resid=3552)
+02:26:00 DEBUG        PCA: 500 components, σ²=0.000016, γ=0.0301, λ_max_MP=0.000022, n_above=449, top_eig=0.000860
+02:26:00 INFO         449 eigenvalue(s) above MP edge — running correlation sweep
+02:35:22 INFO         n_correlation_tests=25593 (449 dirs × 57 cols)
+02:35:22 INFO         Top correlation: pp_a2_x_b1 (ρ_s=-0.0707, r_p=0.0000)
+02:35:22 INFO       [L5/layer06/wrong] N=118026
+02:35:24 DEBUG        Union: 560 stacked → rank 551 (36 concepts + β, 0 empty)
+02:35:25 DEBUG        total_carry_sum diagnostic: k=551 → k_without_tcs=483 (Δ=68)
+02:35:28 INFO         var_explained=0.8198 (k=551, d_resid=3545)
+02:36:13 DEBUG        PCA: 500 components, σ²=0.000040, γ=0.0300, λ_max_MP=0.000056, n_above=445, top_eig=0.002060
+02:36:13 INFO         445 eigenvalue(s) above MP edge — running correlation sweep
+02:45:36 INFO         n_correlation_tests=25365 (445 dirs × 57 cols)
+02:45:36 INFO         Top correlation: pp_a2_x_b1 (ρ_s=-0.0880, r_p=0.0003)
+02:45:36 INFO       [L5/layer08/wrong] N=118026
+02:45:39 DEBUG        Union: 582 stacked → rank 573 (36 concepts + β, 0 empty)
+02:45:40 DEBUG        total_carry_sum diagnostic: k=573 → k_without_tcs=495 (Δ=78)
+02:45:43 INFO         var_explained=0.8386 (k=573, d_resid=3523)
+02:47:15 DEBUG        PCA: 500 components, σ²=0.000082, γ=0.0298, λ_max_MP=0.000113, n_above=456, top_eig=0.004089
+02:47:15 INFO         456 eigenvalue(s) above MP edge — running correlation sweep
+02:56:48 INFO         n_correlation_tests=25992 (456 dirs × 57 cols)
+02:56:48 INFO         Top correlation: pp_a2_x_b1 (ρ_s=-0.0790, r_p=0.0007)
+02:56:48 INFO       [L5/layer12/wrong] N=118026
+02:57:09 DEBUG        Union: 592 stacked → rank 583 (36 concepts + β, 0 empty)
+02:57:10 DEBUG        total_carry_sum diagnostic: k=583 → k_without_tcs=503 (Δ=80)
+02:57:14 INFO         var_explained=0.8549 (k=583, d_resid=3513)
+02:57:45 DEBUG        PCA: 500 components, σ²=0.000121, γ=0.0298, λ_max_MP=0.000167, n_above=458, top_eig=0.005589
+02:57:45 INFO         458 eigenvalue(s) above MP edge — running correlation sweep
+03:07:18 INFO         n_correlation_tests=26106 (458 dirs × 57 cols)
+03:07:18 INFO         Top correlation: pp_a2_x_b1 (ρ_s=-0.0876, r_p=0.0009)
+03:07:18 INFO       [L5/layer16/wrong] N=118026
+03:07:21 DEBUG        Union: 585 stacked → rank 576 (36 concepts + β, 0 empty)
+03:07:21 DEBUG        total_carry_sum diagnostic: k=576 → k_without_tcs=495 (Δ=81)
+03:07:25 INFO         var_explained=0.8837 (k=576, d_resid=3520)
+03:08:31 DEBUG        PCA: 500 components, σ²=0.000143, γ=0.0298, λ_max_MP=0.000197, n_above=449, top_eig=0.007310
+03:08:31 INFO         449 eigenvalue(s) above MP edge — running correlation sweep
+03:18:01 INFO         n_correlation_tests=25593 (449 dirs × 57 cols)
+03:18:01 INFO         Top correlation: pp_a2_x_b1 (ρ_s=-0.0839, r_p=0.0003)
+03:18:01 INFO       [L5/layer20/wrong] N=118026
+03:18:06 DEBUG        Union: 560 stacked → rank 551 (36 concepts + β, 0 empty)
+03:18:06 DEBUG        total_carry_sum diagnostic: k=551 → k_without_tcs=466 (Δ=85)
+03:18:09 INFO         var_explained=0.9067 (k=551, d_resid=3545)
+03:18:47 DEBUG        PCA: 500 components, σ²=0.000275, γ=0.0300, λ_max_MP=0.000378, n_above=439, top_eig=0.015147
+03:18:47 INFO         439 eigenvalue(s) above MP edge — running correlation sweep
+03:28:26 INFO         n_correlation_tests=25023 (439 dirs × 57 cols)
+03:28:26 INFO         Top correlation: pp_a1_x_b2 (ρ_s=0.0610, r_p=-0.0009)
+03:28:26 INFO       [L5/layer24/wrong] N=118026
+03:28:28 DEBUG        Union: 501 stacked → rank 492 (36 concepts + β, 0 empty)
+03:28:28 DEBUG        total_carry_sum diagnostic: k=492 → k_without_tcs=446 (Δ=46)
+03:28:32 INFO         var_explained=0.8897 (k=492, d_resid=3604)
+03:29:20 DEBUG        PCA: 500 components, σ²=0.000748, γ=0.0305, λ_max_MP=0.001032, n_above=421, top_eig=0.049080
+03:29:20 INFO         421 eigenvalue(s) above MP edge — running correlation sweep
+03:38:19 INFO         n_correlation_tests=23997 (421 dirs × 57 cols)
+03:38:19 INFO         Top correlation: a (ρ_s=-0.0787, r_p=0.0000)
+03:38:19 INFO       [L5/layer28/wrong] N=118026
+03:38:21 DEBUG        Union: 511 stacked → rank 502 (36 concepts + β, 0 empty)
+03:38:21 DEBUG        total_carry_sum diagnostic: k=502 → k_without_tcs=454 (Δ=48)
+03:38:25 INFO         var_explained=0.8663 (k=502, d_resid=3594)
+03:39:03 DEBUG        PCA: 500 components, σ²=0.001826, γ=0.0305, λ_max_MP=0.002518, n_above=444, top_eig=0.112697
+03:39:03 INFO         444 eigenvalue(s) above MP edge — running correlation sweep
+03:48:31 INFO         n_correlation_tests=25308 (444 dirs × 57 cols)
+03:48:31 INFO         Top correlation: a (ρ_s=-0.0952, r_p=-0.0000)
+03:48:31 INFO       [L5/layer31/wrong] N=118026
+03:48:34 DEBUG        Union: 526 stacked → rank 517 (36 concepts + β, 0 empty)
+03:48:34 DEBUG        total_carry_sum diagnostic: k=517 → k_without_tcs=470 (Δ=47)
+03:48:37 INFO         var_explained=0.8865 (k=517, d_resid=3579)
+03:49:23 DEBUG        PCA: 500 components, σ²=0.006174, γ=0.0303, λ_max_MP=0.008511, n_above=431, top_eig=0.360970
+03:49:23 INFO         431 eigenvalue(s) above MP edge — running correlation sweep
+03:59:52 INFO         n_correlation_tests=24567 (431 dirs × 57 cols)
+03:59:52 INFO         Top correlation: a (ρ_s=-0.0705, r_p=-0.0000)
+03:59:52 INFO     Step 1 complete: 99 slices processed
+03:59:52 INFO     
+03:59:52 INFO     Step 2: Summary tables
+03:59:52 INFO     ----------------------------------------
+03:59:52 INFO       Saved phase_e_results.csv (99 rows)
+03:59:52 INFO       Saved eigenvalue_cliff_summary.csv (99 rows)
+03:59:52 INFO       Saved union_rank_by_layer.csv
+03:59:52 INFO       Saved variance_explained.csv
+03:59:52 INFO       Saved total_carry_sum_diagnostic.csv
+03:59:52 INFO       Saved top_eigenvalues_all_slices.csv (1980 rows)
+03:59:52 INFO     
+03:59:52 INFO     Step 3: Plot generation
+03:59:52 INFO     ----------------------------------------
+03:59:52 INFO     Generating plots...
+04:03:04 INFO     ======================================================================
+04:03:04 INFO     Phase E — Residual Hunting
+04:03:04 INFO     ======================================================================
+04:03:04 INFO     Levels: [2, 3, 4, 5]
+04:03:04 INFO     Layers: [4, 6, 8, 12, 16, 20, 24, 28, 31]
+04:03:04 INFO     Populations: all viable
+04:03:04 INFO     PCA components: 500
+04:03:04 INFO     GPU (CuPy): available
+04:03:04 INFO     Phase D metadata files found: 2844
+04:03:04 INFO     
+04:03:04 INFO     Step 1: Per-slice residual analysis
+04:03:04 INFO     ----------------------------------------
+04:03:04 DEBUG      [L2/layer04/all] cached — skipping
+04:03:04 DEBUG      [L2/layer06/all] cached — skipping
+04:03:04 DEBUG      [L2/layer08/all] cached — skipping
+04:03:04 DEBUG      [L2/layer12/all] cached — skipping
+04:03:05 DEBUG      [L2/layer16/all] cached — skipping
+04:03:05 DEBUG      [L2/layer20/all] cached — skipping
+04:03:05 DEBUG      [L2/layer24/all] cached — skipping
+04:03:05 DEBUG      [L2/layer28/all] cached — skipping
+04:03:05 DEBUG      [L2/layer31/all] cached — skipping
+04:03:05 DEBUG      [L2/layer04/correct] cached — skipping
+04:03:05 DEBUG      [L2/layer06/correct] cached — skipping
+04:03:05 DEBUG      [L2/layer08/correct] cached — skipping
+04:03:05 DEBUG      [L2/layer12/correct] cached — skipping
+04:03:05 DEBUG      [L2/layer16/correct] cached — skipping
+04:03:05 DEBUG      [L2/layer20/correct] cached — skipping
+04:03:05 DEBUG      [L2/layer24/correct] cached — skipping
+04:03:05 DEBUG      [L2/layer28/correct] cached — skipping
+04:03:05 DEBUG      [L2/layer31/correct] cached — skipping
+04:03:05 DEBUG      [L3/layer04/all] cached — skipping
+04:03:05 DEBUG      [L3/layer06/all] cached — skipping
+04:03:05 DEBUG      [L3/layer08/all] cached — skipping
+04:03:05 DEBUG      [L3/layer12/all] cached — skipping
+04:03:05 DEBUG      [L3/layer16/all] cached — skipping
+04:03:05 DEBUG      [L3/layer20/all] cached — skipping
+04:03:05 DEBUG      [L3/layer24/all] cached — skipping
+04:03:05 DEBUG      [L3/layer28/all] cached — skipping
+04:03:05 DEBUG      [L3/layer31/all] cached — skipping
+04:03:05 DEBUG      [L3/layer04/correct] cached — skipping
+04:03:05 DEBUG      [L3/layer06/correct] cached — skipping
+04:03:05 DEBUG      [L3/layer08/correct] cached — skipping
+04:03:05 DEBUG      [L3/layer12/correct] cached — skipping
+04:03:05 DEBUG      [L3/layer16/correct] cached — skipping
+04:03:05 DEBUG      [L3/layer20/correct] cached — skipping
+04:03:05 DEBUG      [L3/layer24/correct] cached — skipping
+04:03:05 DEBUG      [L3/layer28/correct] cached — skipping
+04:03:05 DEBUG      [L3/layer31/correct] cached — skipping
+04:03:05 DEBUG      [L3/layer04/wrong] cached — skipping
+04:03:05 DEBUG      [L3/layer06/wrong] cached — skipping
+04:03:05 DEBUG      [L3/layer08/wrong] cached — skipping
+04:03:05 DEBUG      [L3/layer12/wrong] cached — skipping
+04:03:05 DEBUG      [L3/layer16/wrong] cached — skipping
+04:03:05 DEBUG      [L3/layer20/wrong] cached — skipping
+04:03:05 DEBUG      [L3/layer24/wrong] cached — skipping
+04:03:05 DEBUG      [L3/layer28/wrong] cached — skipping
+04:03:05 DEBUG      [L3/layer31/wrong] cached — skipping
+04:03:05 DEBUG      [L4/layer04/all] cached — skipping
+04:03:05 DEBUG      [L4/layer06/all] cached — skipping
+04:03:05 DEBUG      [L4/layer08/all] cached — skipping
+04:03:05 DEBUG      [L4/layer12/all] cached — skipping
+04:03:05 DEBUG      [L4/layer16/all] cached — skipping
+04:03:05 DEBUG      [L4/layer20/all] cached — skipping
+04:03:05 DEBUG      [L4/layer24/all] cached — skipping
+04:03:05 DEBUG      [L4/layer28/all] cached — skipping
+04:03:05 DEBUG      [L4/layer31/all] cached — skipping
+04:03:05 DEBUG      [L4/layer04/correct] cached — skipping
+04:03:05 DEBUG      [L4/layer06/correct] cached — skipping
+04:03:05 DEBUG      [L4/layer08/correct] cached — skipping
+04:03:05 DEBUG      [L4/layer12/correct] cached — skipping
+04:03:05 DEBUG      [L4/layer16/correct] cached — skipping
+04:03:05 DEBUG      [L4/layer20/correct] cached — skipping
+04:03:05 DEBUG      [L4/layer24/correct] cached — skipping
+04:03:05 DEBUG      [L4/layer28/correct] cached — skipping
+04:03:05 DEBUG      [L4/layer31/correct] cached — skipping
+04:03:05 DEBUG      [L4/layer04/wrong] cached — skipping
+04:03:05 DEBUG      [L4/layer06/wrong] cached — skipping
+04:03:05 DEBUG      [L4/layer08/wrong] cached — skipping
+04:03:05 DEBUG      [L4/layer12/wrong] cached — skipping
+04:03:05 DEBUG      [L4/layer16/wrong] cached — skipping
+04:03:05 DEBUG      [L4/layer20/wrong] cached — skipping
+04:03:05 DEBUG      [L4/layer24/wrong] cached — skipping
+04:03:05 DEBUG      [L4/layer28/wrong] cached — skipping
+04:03:05 DEBUG      [L4/layer31/wrong] cached — skipping
+04:03:05 DEBUG      [L5/layer04/all] cached — skipping
+04:03:05 DEBUG      [L5/layer06/all] cached — skipping
+04:03:05 DEBUG      [L5/layer08/all] cached — skipping
+04:03:05 DEBUG      [L5/layer12/all] cached — skipping
+04:03:05 DEBUG      [L5/layer16/all] cached — skipping
+04:03:05 DEBUG      [L5/layer20/all] cached — skipping
+04:03:05 DEBUG      [L5/layer24/all] cached — skipping
+04:03:05 DEBUG      [L5/layer28/all] cached — skipping
+04:03:05 DEBUG      [L5/layer31/all] cached — skipping
+04:03:05 DEBUG      [L5/layer04/correct] cached — skipping
+04:03:05 DEBUG      [L5/layer06/correct] cached — skipping
+04:03:05 DEBUG      [L5/layer08/correct] cached — skipping
+04:03:05 DEBUG      [L5/layer12/correct] cached — skipping
+04:03:05 DEBUG      [L5/layer16/correct] cached — skipping
+04:03:05 DEBUG      [L5/layer20/correct] cached — skipping
+04:03:05 DEBUG      [L5/layer24/correct] cached — skipping
+04:03:05 DEBUG      [L5/layer28/correct] cached — skipping
+04:03:05 DEBUG      [L5/layer31/correct] cached — skipping
+04:03:05 DEBUG      [L5/layer04/wrong] cached — skipping
+04:03:05 DEBUG      [L5/layer06/wrong] cached — skipping
+04:03:05 DEBUG      [L5/layer08/wrong] cached — skipping
+04:03:05 DEBUG      [L5/layer12/wrong] cached — skipping
+04:03:05 DEBUG      [L5/layer16/wrong] cached — skipping
+04:03:05 DEBUG      [L5/layer20/wrong] cached — skipping
+04:03:05 DEBUG      [L5/layer24/wrong] cached — skipping
+04:03:05 DEBUG      [L5/layer28/wrong] cached — skipping
+04:03:05 DEBUG      [L5/layer31/wrong] cached — skipping
+04:03:05 INFO     Step 1 complete: 99 slices processed
+04:03:05 INFO     
+04:03:05 INFO     Step 2: Summary tables
+04:03:05 INFO     ----------------------------------------
+04:03:05 INFO       Saved phase_e_results.csv (99 rows)
+04:03:05 INFO       Saved eigenvalue_cliff_summary.csv (99 rows)
+04:03:05 INFO       Saved union_rank_by_layer.csv
+04:03:05 INFO       Saved variance_explained.csv
+04:03:05 INFO       Saved total_carry_sum_diagnostic.csv
+04:03:05 INFO       Saved top_eigenvalues_all_slices.csv (1980 rows)
+04:03:05 INFO     
+04:03:05 INFO     Step 3: Plot generation
+04:03:05 INFO     ----------------------------------------
+04:03:05 INFO     Generating plots...
+13:52:59 INFO     ======================================================================
+13:52:59 INFO     Phase E — Residual Hunting
+13:52:59 INFO     ======================================================================
+13:52:59 INFO     Levels: [2, 3, 4, 5]
+13:52:59 INFO     Layers: [4, 6, 8, 12, 16, 20, 24, 28, 31]
+13:52:59 INFO     Populations: all viable
+13:52:59 INFO     PCA components: 500
+13:52:59 INFO     GPU (CuPy): CPU fallback
+13:53:00 INFO     Phase D metadata files found: 2844
+13:53:00 INFO     PLOTS-ONLY MODE: loading from saved outputs
+13:53:00 INFO       Loaded 99 rows from phase_e_results.csv
+13:53:00 INFO       Loaded eigenvalues for 99 slices
+13:53:00 INFO     
+13:53:00 INFO     Step 3: Plot generation (plots-only)
+13:53:00 INFO     ----------------------------------------
+13:53:00 INFO     Generating plots...
+13:53:07 INFO       Generated 27 eigenvalue spectra + heatmaps
+13:53:07 INFO     Plots-only complete: 9s

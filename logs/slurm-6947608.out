@@ -1,0 +1,69 @@
+============================================================
+Phase E — Residual Hunting
+============================================================
+Job ID: 6947608
+Node: babel-s9-20
+Start time: Sat Apr  4 04:03:00 EDT 2026
+============================================================
+Activating conda environment...
+
+Running pre-flight checks...
+  Checking Python packages...
+  All packages available
+  Checking config...
+  Checking Phase C outputs...
+  Residualized activations: 45 / 45
+  Checking Phase D outputs...
+  Phase D metadata files: 2844
+  Phase D merged basis files: 2844
+  Phase D results CSV: 1036 rows
+  Raw activations: 45 .npy files
+  Coloring DFs: 5 .pkl files
+  Creating Phase E output directories...
+  Output directories ready
+
+Pre-flight checks passed!
+
+============================================================
+Running Phase E — Residual Hunting
+  Levels: 2, 3, 4, 5
+  Layers: [4, 6, 8, 12, 16, 20, 24, 28, 31]
+  Populations: all, correct, wrong
+  GPU: 1× A6000
+  Expected: 99 slices, ~1–2 hours total
+============================================================
+
+
+============================================================
+Post-Run Validation
+============================================================
+--- Data outputs ---
+  Union basis metadata.json: 99 / 99
+  Union union_basis.npy: 99 / 99
+  PCA metadata.json: 99 / 99
+  PCA eigenvalues.npy: 99 / 99
+  Correlation sweep CSVs: 99
+
+--- Summary files ---
+  phase_e_results.csv: 100 rows
+  eigenvalue_cliff_summary.csv: 100 rows
+  union_rank_by_layer.csv: 100 rows
+  variance_explained.csv: 100 rows
+  total_carry_sum_diagnostic.csv: 100 rows
+  top_eigenvalues_all_slices.csv: 1981 rows
+
+--- Plots ---
+  eigenvalue_spectra: 0 plots
+  mp_heatmaps: 0 plots
+  variance_explained_heatmaps: 0 plots
+  union_rank_trajectories: 0 plots
+  correlation_heatmaps: 0 plots
+
+============================================================
+Job Complete
+============================================================
+End time: Sat Apr  4 04:03:05 EDT 2026
+Exit code: 1
+Total runtime: 5 seconds (0 minutes)
+
+PHASE E FAILED — check logs/phase_e_residual_hunting.log

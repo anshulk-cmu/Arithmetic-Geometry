@@ -1,0 +1,52 @@
+04:03:04 INFO     ======================================================================
+04:03:04 INFO     Phase E — Residual Hunting
+04:03:04 INFO     ======================================================================
+04:03:04 INFO     Levels: [2, 3, 4, 5]
+04:03:04 INFO     Layers: [4, 6, 8, 12, 16, 20, 24, 28, 31]
+04:03:04 INFO     Populations: all viable
+04:03:04 INFO     PCA components: 500
+04:03:04 INFO     GPU (CuPy): available
+04:03:04 INFO     Phase D metadata files found: 2844
+04:03:04 INFO     
+04:03:04 INFO     Step 1: Per-slice residual analysis
+04:03:04 INFO     ----------------------------------------
+L2/all:   0%|          | 0/9 [00:00<?, ?it/s]                                             L2/correct:   0%|          | 0/9 [00:00<?, ?it/s]                                                 L3/all:   0%|          | 0/9 [00:00<?, ?it/s]                                             L3/correct:   0%|          | 0/9 [00:00<?, ?it/s]                                                 L3/wrong:   0%|          | 0/9 [00:00<?, ?it/s]                                               L4/all:   0%|          | 0/9 [00:00<?, ?it/s]                                             L4/correct:   0%|          | 0/9 [00:00<?, ?it/s]                                                 L4/wrong:   0%|          | 0/9 [00:00<?, ?it/s]                                               L5/all:   0%|          | 0/9 [00:00<?, ?it/s]                                             L5/correct:   0%|          | 0/9 [00:00<?, ?it/s]                                                 L5/wrong:   0%|          | 0/9 [00:00<?, ?it/s]                                               04:03:05 INFO     Step 1 complete: 99 slices processed
+04:03:05 INFO     
+04:03:05 INFO     Step 2: Summary tables
+04:03:05 INFO     ----------------------------------------
+04:03:05 INFO       Saved phase_e_results.csv (99 rows)
+04:03:05 INFO       Saved eigenvalue_cliff_summary.csv (99 rows)
+04:03:05 INFO       Saved union_rank_by_layer.csv
+04:03:05 INFO       Saved variance_explained.csv
+04:03:05 INFO       Saved total_carry_sum_diagnostic.csv
+04:03:05 INFO       Saved top_eigenvalues_all_slices.csv (1980 rows)
+04:03:05 INFO     
+04:03:05 INFO     Step 3: Plot generation
+04:03:05 INFO     ----------------------------------------
+04:03:05 INFO     Generating plots...
+Traceback (most recent call last):
+  File "/home/anshulk/arithmetic-geometry/phase_e_residual_hunting.py", line 1135, in <module>
+    main()
+  File "/home/anshulk/arithmetic-geometry/phase_e_residual_hunting.py", line 1092, in main
+    generate_plots(results_df, all_eigenvalues, paths, logger)
+  File "/home/anshulk/arithmetic-geometry/phase_e_residual_hunting.py", line 859, in generate_plots
+    plot_eigenvalue_spectrum(eigenvalues, mp_info, level, layer,
+  File "/home/anshulk/arithmetic-geometry/phase_e_residual_hunting.py", line 777, in plot_eigenvalue_spectrum
+    ax.fill_between(x[:n_above], eigenvalues[:n_above],
+  File "/home/anshulk/miniconda3/envs/geometry/lib/python3.11/site-packages/matplotlib/__init__.py", line 1524, in inner
+    return func(
+           ^^^^^
+  File "/home/anshulk/miniconda3/envs/geometry/lib/python3.11/site-packages/matplotlib/axes/_axes.py", line 5722, in fill_between
+    return self._fill_between_x_or_y(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/anshulk/miniconda3/envs/geometry/lib/python3.11/site-packages/matplotlib/axes/_axes.py", line 5707, in _fill_between_x_or_y
+    collection = mcoll.FillBetweenPolyCollection(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/anshulk/miniconda3/envs/geometry/lib/python3.11/site-packages/matplotlib/collections.py", line 1331, in __init__
+    verts = self._make_verts(t, f1, f2, where)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/anshulk/miniconda3/envs/geometry/lib/python3.11/site-packages/matplotlib/collections.py", line 1395, in _make_verts
+    self._validate_shapes(self.t_direction, self._f_direction, t, f1, f2)
+  File "/home/anshulk/miniconda3/envs/geometry/lib/python3.11/site-packages/matplotlib/collections.py", line 1437, in _validate_shapes
+    raise ValueError(msg)
+ValueError: 'x' has size 100, but 'y1' has an unequal size of 183

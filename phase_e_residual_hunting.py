@@ -773,8 +773,9 @@ def plot_eigenvalue_spectrum(eigenvalues, mp_info, level, layer, pop,
                alpha=0.5, label=f"σ² (trace) = {mp_info['sigma_sq_trace']:.5f}")
 
     n_above = mp_info["n_above_mp"]
-    if n_above > 0:
-        ax.fill_between(x[:n_above], eigenvalues[:n_above],
+    n_fill = min(n_above, n_plot)
+    if n_fill > 0:
+        ax.fill_between(x[:n_fill], eigenvalues[:n_fill],
                         mp_info["lambda_max_mp"],
                         alpha=0.3, color="red",
                         label=f"{n_above} above MP")
@@ -952,6 +953,8 @@ def parse_args():
                         help="Specific populations (default: all)")
     parser.add_argument("--skip-plots", action="store_true",
                         help="Skip plot generation")
+    parser.add_argument("--plots-only", action="store_true",
+                        help="Skip Steps 1-2, regenerate plots from saved CSVs")
     parser.add_argument("--n-pca-components", type=int,
                         default=N_PCA_COMPONENTS,
                         help=f"Max PCA components (default: {N_PCA_COMPONENTS})")
@@ -1020,6 +1023,47 @@ def main():
     for key in ["phase_e_data", "union_bases_dir", "pca_dir",
                 "correlations_dir", "summary_dir", "phase_e_plots"]:
         paths[key].mkdir(parents=True, exist_ok=True)
+
+    # --plots-only: reload from saved CSVs and eigenvalue files, skip Steps 1-2
+    if args.plots_only:
+        logger.info("PLOTS-ONLY MODE: loading from saved outputs")
+        csv_path = paths["summary_dir"] / "phase_e_results.csv"
+        if not csv_path.exists():
+            logger.error(f"Cannot find {csv_path} — run full pipeline first")
+            return
+        results_df = pd.read_csv(csv_path)
+        logger.info(f"  Loaded {len(results_df)} rows from phase_e_results.csv")
+
+        all_eigenvalues = {}
+        for _, row in results_df.iterrows():
+            lv, ly, pop = int(row["level"]), int(row["layer"]), row["population"]
+            eig_path = (paths["pca_dir"] / f"L{lv}" /
+                        f"layer_{ly:02d}" / pop / "eigenvalues.npy")
+            meta_path = (paths["pca_dir"] / f"L{lv}" /
+                         f"layer_{ly:02d}" / pop / "metadata.json")
+            if eig_path.exists() and meta_path.exists():
+                eigs = np.load(eig_path)
+                with open(meta_path) as f:
+                    meta = json.load(f)
+                all_eigenvalues[(lv, ly, pop)] = (
+                    eigs, {
+                        "lambda_max_mp": meta.get("lambda_max_mp", 0),
+                        "sigma_sq_trace": meta.get("sigma_sq_trace", 0),
+                        "gamma": meta.get("gamma", 0),
+                        "n_above_mp": meta.get("n_above_mp", 0),
+                        "d_residual_pca": meta.get("d_residual", 0),
+                        "N": meta.get("N", 0),
+                    })
+        logger.info(f"  Loaded eigenvalues for {len(all_eigenvalues)} slices")
+
+        logger.info("")
+        logger.info("Step 3: Plot generation (plots-only)")
+        logger.info("-" * 40)
+        generate_plots(results_df, all_eigenvalues, paths, logger)
+
+        elapsed = time.time() - t0
+        logger.info(f"Plots-only complete: {elapsed:.0f}s")
+        return
 
     # Main loop
     logger.info("")
