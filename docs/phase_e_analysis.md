@@ -1480,7 +1480,7 @@ correlation analysis.
 Prediction                             Actual                              Verdict
 -------------------------------------  ----------------------------------  -------
 gamma ≈ 0.029 for L5/all              0.029 (exact)                       CORRECT
-var_explained ~80-85%                  80.8-89.9% (mean 86.1%)            CORRECT (slightly higher)
+var_explained ~80-85%                  80.8-89.9% (mean 86.2%)            CORRECT (slightly higher)
 k = 300-550                            506-568 (mean 539)                  CORRECT (upper range)
 n_above_mp = 0 (flat spectrum)         429-455 (massive signal!)           WRONG (dramatically)
 signed_error as top corr              4/9 layers; NOT dominant             PARTIALLY WRONG
@@ -1516,8 +1516,8 @@ exceeding this threshold has genuine organized structure with near-certainty. Th
 residual contains ~440 dimensions of organized variance that our 43 concepts don't
 capture. Out of 500 PCA components computed, only ~60 fall below the MP edge.
 
-**var_explained at L5.** Ranges from 80.8% (layer 6) to 89.9% (layer 20), mean 86.1%.
-This continues the downward trend (L2: 95.1%, L3: 91.7%, L4: 89.3%, L5: 86.1%) but
+**var_explained at L5.** Ranges from 80.8% (layer 6) to 89.9% (layer 20), mean 86.2%.
+This continues the downward trend (L2: 95.1%, L3: 91.8%, L4: 89.6%, L5: 86.2%) but
 the decline is remarkably gentle. Even at L5 where the model fails 96.6% of the time,
 the 43 concepts still capture 86% of the residualized variance. The U-shape is present:
 low at layers 4-8 (80-84%), rising to a peak at layers 16-20 (88-90%), then dipping
@@ -1574,7 +1574,7 @@ was never projected out (1 empty concept noted in the union basis metadata). Fin
 as the dominant residual correlation at every layer is a remarkable result — though one
 that requires careful interpretation (see Section 7l).
 
-**var_explained at L5/correct** ranges from 86.5% (layers 6-8) to 92.1% (layer 20).
+**var_explained at L5/correct** ranges from 86.4% (layer 6) to 92.1% (layer 20).
 The peak at layer 20 is the highest var_explained seen at L5 for any population. The
 correct population's representations are more concept-concentrated than the all or wrong
 populations — which makes sense: the model that gets 3x3 multiplication right is the
@@ -1807,13 +1807,13 @@ performed as a follow-up analysis before claiming nonlinear encoding in the pape
 Level   Mean var_explained (all pop)    Range across layers        N
 ------  ----------------------------    -------------------        ------
 L2      0.951 (95.1%)                   0.943 — 0.966              4,000
-L3      0.917 (91.7%)                   0.896 — 0.940              10,000
-L4      0.893 (89.3%)                   0.853 — 0.926              10,000
-L5      0.861 (86.1%)                   0.808 — 0.899              122,223
+L3      0.918 (91.8%)                   0.896 — 0.940              10,000
+L4      0.896 (89.6%)                   0.853 — 0.926              10,000
+L5      0.862 (86.2%)                   0.808 — 0.899              122,223
 ```
 
 The trend is monotonically decreasing: harder problems have lower var_explained. The
-decline from L2 to L5 is 9 percentage points (95.1% → 86.1%) — a gentle gradient. Even
+decline from L2 to L5 is 9 percentage points (95.1% → 86.2%) — a gentle gradient. Even
 at L5 where the model fails 96.6% of the time, the 43 concepts still capture 86% of
 the residualized variance. The model dedicates most of its representational capacity
 to arithmetic concepts at all difficulty levels.
@@ -1894,9 +1894,9 @@ Key observations:
 - **var_explained is higher for correct than wrong at L3-L4** but this is confounded by
   gamma (wrong populations have fewer samples and higher gamma). At L5, where both
   all (N=122K) and wrong (N=118K) have excellent gamma, their var_explained is nearly
-  identical (86.1% vs 86.5%), confirming the gamma confound.
-- **L5/correct has notably higher var_explained** (89.2% mean) than L5/all (86.1%) or
-  L5/wrong (86.5%). With gamma ≈ 0.86, this could be gamma-inflated — but the
+  identical (86.2% vs 86.6%), confirming the gamma confound.
+- **L5/correct has notably higher var_explained** (89.5% mean) than L5/all (86.2%) or
+  L5/wrong (86.6%). With gamma ≈ 0.86, this could be gamma-inflated — but the
   direction is as expected (correct problems have more concept-concentrated
   representations).
 
@@ -2234,8 +2234,8 @@ operations." This is a *richer* finding than completeness — it tells us *what*
 linear method missed and *why*.
 
 **The carries-strong / answers-weak pattern in Phase E terms.** Phase E projects out
-*all* concepts simultaneously. var_explained at L5/correct (89.2% mean) is higher than
-at L5/wrong (86.5% mean), confirming that the correct population's representations are
+*all* concepts simultaneously. var_explained at L5/correct (89.5% mean) is higher than
+at L5/wrong (86.6% mean), confirming that the correct population's representations are
 more concept-concentrated. The missing answer digit subspaces at L5/correct
 (ans_digit_2_msf merged_dim=0) contribute nothing to the union — yet the correct
 population still has higher var_explained. This means the *non-answer concepts* (inputs,
