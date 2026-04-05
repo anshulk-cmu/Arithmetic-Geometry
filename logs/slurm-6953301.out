@@ -1,0 +1,38 @@
+============================================================
+Phase F/JL — Between-Concept Angles & JL Distance Check
+============================================================
+Job ID: 6953301
+Node: babel-v9-32
+Start time: Sat Apr  4 19:31:13 EDT 2026
+============================================================
+Activating conda environment...
+
+Running pre-flight checks...
+  Checking Python packages...
+  All packages available
+  Checking config...
+  Checking Phase C outputs...
+  Residualized activations: 45 / 45
+  Checking Phase D outputs...
+  Phase D metadata files: 2844
+  Phase D merged basis files: 2844
+  Checking Phase E outputs...
+  Phase E union metadata.json: 99 / 99
+  Phase E union_basis.npy: 99 / 99
+  Spot-checking Phase E union basis shape...
+  Phase E spot-check OK: shape (393, 4096)
+  Coloring DFs: 5 .pkl files
+  Creating Phase F output directories...
+  Output directories ready
+
+Pre-flight checks passed!
+
+============================================================
+Running Phase F/JL
+  Phase F levels: 1, 2, 3, 4, 5  (108 slices)
+  JL levels: 2, 3, 4, 5          (99 slices)
+  Layers: [4, 6, 8, 12, 16, 20, 24, 28, 31]
+  Populations: all, correct, wrong
+  GPU: 1× A6000
+============================================================
+

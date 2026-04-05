@@ -1,0 +1,760 @@
+16:05:10 INFO     ======================================================================
+16:05:10 INFO     Phase F/JL — Between-Concept Angles & JL Distance Check
+16:05:10 INFO     ======================================================================
+16:05:10 INFO     PILOT MODE: L3, layer 16, all population
+16:05:10 INFO     Phase F levels: [3]
+16:05:10 INFO     JL levels: [3]
+16:05:10 INFO     Layers: [16]
+16:05:10 INFO     Populations: ['all']
+16:05:10 INFO     GPU (CuPy): CPU fallback
+16:05:10 INFO     Phase F only: False
+16:05:10 INFO     JL only: False
+16:05:10 INFO     Phase E spot-check OK: union_basis.npy shape (393, 4096)
+16:05:11 INFO     Phase D metadata files: 2844
+16:05:11 INFO     L3: N=10000, populations=['all', 'correct', 'wrong']
+16:05:12 DEBUG      [F L3/layer16/all] 28/28 concepts with bases
+16:06:58 INFO       [F L3/layer16/all] 378 pairs from 28 concepts, 369 superposition flags, 106.7s
+16:06:59 INFO       [JL L3/layer16/all] N=10000, k=393, all_pairs, 49995000 pairs
+17:04:52 INFO       [JL L3/layer16/all] Spearman=0.9986, Pearson=0.9984, mean_rel_err=0.0479, dist_var_expl=0.9947, pyth_err=3.64e-07, 3473.6s
+17:05:06 INFO     
+17:05:06 INFO     Computation complete: 1 Phase F slices, 1 JL slices
+17:05:06 INFO     
+17:05:06 INFO     Generating summary CSVs...
+17:05:06 INFO       Saved phase_f_principal_angles.csv (378 rows)
+17:05:06 INFO       Saved superposition_summary.csv (369 rows)
+17:05:06 INFO       Saved redundancy_decomposition.csv (376 rows)
+17:05:06 INFO       Saved jl_distance_preservation.csv (1 rows)
+17:05:06 INFO     
+17:05:06 INFO     Generating plots...
+17:05:11 INFO       Generated up to 53 plots in /home/anshulk/arithmetic-geometry/plots/phase_f
+17:05:11 INFO     
+17:05:11 INFO     ======================================================================
+17:05:11 INFO     Phase F/JL complete: 3600s (60.0 min)
+17:05:11 INFO     ======================================================================
+17:39:55 INFO     ======================================================================
+17:39:55 INFO     Phase F/JL — Between-Concept Angles & JL Distance Check
+17:39:55 INFO     ======================================================================
+17:39:55 INFO     PILOT MODE: L3, layer 16, all population
+17:39:55 INFO     Phase F levels: [3]
+17:39:55 INFO     JL levels: [3]
+17:39:55 INFO     Layers: [16]
+17:39:55 INFO     Populations: ['all']
+17:39:55 INFO     GPU (CuPy): CPU fallback
+17:39:55 INFO     Phase F only: False
+17:39:55 INFO     JL only: False
+17:39:55 INFO     Phase E spot-check OK: union_basis.npy shape (393, 4096)
+17:39:55 INFO     Phase D metadata files: 2844
+17:39:55 INFO     L3: N=10000, populations=['all', 'correct', 'wrong']
+17:39:55 DEBUG      [F L3/layer16/all] 28/28 concepts with bases
+17:41:33 INFO       [F L3/layer16/all] 378 pairs from 28 concepts, 369 superposition flags, 97.5s
+17:41:34 INFO       [JL L3/layer16/all] N=10000, k=393, all_pairs, 49,995,000 pairs
+18:02:42 INFO     ======================================================================
+18:02:42 INFO     Phase F/JL — Between-Concept Angles & JL Distance Check
+18:02:42 INFO     ======================================================================
+18:02:42 INFO     Phase F levels: [1, 2, 3, 4, 5]
+18:02:42 INFO     JL levels: [2, 3, 4, 5]
+18:02:42 INFO     Layers: [4, 6, 8, 12, 16, 20, 24, 28, 31]
+18:02:42 INFO     Populations: all viable
+18:02:42 INFO     GPU (CuPy): available
+18:02:42 INFO     Phase F only: False
+18:02:42 INFO     JL only: False
+18:02:42 INFO     Phase E spot-check OK: union_basis.npy shape (393, 4096)
+18:02:42 INFO     Phase D metadata files: 2844
+18:02:42 INFO     L1: N=64, populations=['all']
+18:02:42 WARNING    [F L1/layer04/all] Only 0 concepts with bases (of 15) — skipping
+18:02:42 INFO       [F L1/layer04/all] 0 pairs from 0 concepts, 0 superposition flags, 0.0s
+18:02:42 WARNING    [F L1/layer06/all] Only 0 concepts with bases (of 15) — skipping
+18:02:42 INFO       [F L1/layer06/all] 0 pairs from 0 concepts, 0 superposition flags, 0.0s
+18:02:42 WARNING    [F L1/layer08/all] Only 0 concepts with bases (of 15) — skipping
+18:02:42 INFO       [F L1/layer08/all] 0 pairs from 0 concepts, 0 superposition flags, 0.0s
+18:02:42 WARNING    [F L1/layer12/all] Only 0 concepts with bases (of 15) — skipping
+18:02:42 INFO       [F L1/layer12/all] 0 pairs from 0 concepts, 0 superposition flags, 0.0s
+18:02:42 WARNING    [F L1/layer16/all] Only 0 concepts with bases (of 15) — skipping
+18:02:42 INFO       [F L1/layer16/all] 0 pairs from 0 concepts, 0 superposition flags, 0.0s
+18:02:42 WARNING    [F L1/layer20/all] Only 0 concepts with bases (of 15) — skipping
+18:02:42 INFO       [F L1/layer20/all] 0 pairs from 0 concepts, 0 superposition flags, 0.0s
+18:02:42 WARNING    [F L1/layer24/all] Only 0 concepts with bases (of 15) — skipping
+18:02:42 INFO       [F L1/layer24/all] 0 pairs from 0 concepts, 0 superposition flags, 0.0s
+18:02:42 WARNING    [F L1/layer28/all] Only 0 concepts with bases (of 15) — skipping
+18:02:42 INFO       [F L1/layer28/all] 0 pairs from 0 concepts, 0 superposition flags, 0.0s
+18:02:42 WARNING    [F L1/layer31/all] Only 0 concepts with bases (of 15) — skipping
+18:02:42 INFO       [F L1/layer31/all] 0 pairs from 0 concepts, 0 superposition flags, 0.0s
+18:02:42 INFO     L2: N=4000, populations=['all', 'correct']
+18:02:43 DEBUG      [F L2/layer04/all] 17/21 concepts with bases
+18:03:42 INFO       [F L2/layer04/all] 136 pairs from 17 concepts, 136 superposition flags, 59.7s
+18:03:43 INFO       [JL L2/layer04/all] N=4000, k=244, all_pairs, 7,998,000 pairs
+18:03:51 INFO       [JL L2/layer04/all] Spearman=0.9995, Pearson=0.9996, mean_rel_err=0.0202, dist_var_expl=0.9993, pyth_err=3.29e-15, 8.3s
+18:03:53 DEBUG      [F L2/layer04/correct] 17/17 concepts with bases
+18:03:53 INFO       [F L2/layer04/correct] 136 pairs from 17 concepts, 136 superposition flags, 0.1s
+18:03:53 INFO       [JL L2/layer04/correct] N=3993, k=243, all_pairs, 7,970,028 pairs
+18:03:59 INFO       [JL L2/layer04/correct] Spearman=0.9995, Pearson=0.9996, mean_rel_err=0.0201, dist_var_expl=0.9993, pyth_err=2.97e-15, 6.1s
+18:04:02 DEBUG      [F L2/layer06/all] 17/21 concepts with bases
+18:04:09 INFO       [F L2/layer06/all] 136 pairs from 17 concepts, 136 superposition flags, 7.0s
+18:04:09 INFO       [JL L2/layer06/all] N=4000, k=247, all_pairs, 7,998,000 pairs
+18:04:15 INFO       [JL L2/layer06/all] Spearman=0.9991, Pearson=0.9993, mean_rel_err=0.0321, dist_var_expl=0.9989, pyth_err=2.44e-15, 5.9s
+18:04:18 DEBUG      [F L2/layer06/correct] 17/17 concepts with bases
+18:04:19 INFO       [F L2/layer06/correct] 136 pairs from 17 concepts, 136 superposition flags, 1.2s
+18:04:19 INFO       [JL L2/layer06/correct] N=3993, k=248, all_pairs, 7,970,028 pairs
+18:04:25 INFO       [JL L2/layer06/correct] Spearman=0.9991, Pearson=0.9993, mean_rel_err=0.0318, dist_var_expl=0.9989, pyth_err=2.06e-15, 5.9s
+18:04:27 DEBUG      [F L2/layer08/all] 17/21 concepts with bases
+18:04:29 INFO       [F L2/layer08/all] 136 pairs from 17 concepts, 136 superposition flags, 1.7s
+18:04:29 INFO       [JL L2/layer08/all] N=4000, k=243, all_pairs, 7,998,000 pairs
+18:04:35 INFO       [JL L2/layer08/all] Spearman=0.9989, Pearson=0.9992, mean_rel_err=0.0343, dist_var_expl=0.9988, pyth_err=3.23e-15, 6.0s
+18:04:38 DEBUG      [F L2/layer08/correct] 17/17 concepts with bases
+18:04:38 INFO       [F L2/layer08/correct] 136 pairs from 17 concepts, 136 superposition flags, 0.9s
+18:04:38 INFO       [JL L2/layer08/correct] N=3993, k=245, all_pairs, 7,970,028 pairs
+18:04:45 INFO       [JL L2/layer08/correct] Spearman=0.9989, Pearson=0.9992, mean_rel_err=0.0337, dist_var_expl=0.9988, pyth_err=2.48e-15, 6.1s
+18:04:47 DEBUG      [F L2/layer12/all] 17/21 concepts with bases
+18:04:47 INFO       [F L2/layer12/all] 136 pairs from 17 concepts, 136 superposition flags, 0.1s
+18:04:47 INFO       [JL L2/layer12/all] N=4000, k=243, all_pairs, 7,998,000 pairs
+18:04:53 INFO       [JL L2/layer12/all] Spearman=0.9990, Pearson=0.9993, mean_rel_err=0.0332, dist_var_expl=0.9991, pyth_err=2.30e-15, 5.8s
+18:04:56 DEBUG      [F L2/layer12/correct] 17/17 concepts with bases
+18:04:56 INFO       [F L2/layer12/correct] 136 pairs from 17 concepts, 136 superposition flags, 0.1s
+18:04:56 INFO       [JL L2/layer12/correct] N=3993, k=245, all_pairs, 7,970,028 pairs
+18:05:02 INFO       [JL L2/layer12/correct] Spearman=0.9990, Pearson=0.9993, mean_rel_err=0.0327, dist_var_expl=0.9991, pyth_err=1.77e-15, 6.0s
+18:05:04 DEBUG      [F L2/layer16/all] 17/21 concepts with bases
+18:05:05 INFO       [F L2/layer16/all] 136 pairs from 17 concepts, 136 superposition flags, 1.0s
+18:05:05 INFO       [JL L2/layer16/all] N=4000, k=238, all_pairs, 7,998,000 pairs
+18:05:11 INFO       [JL L2/layer16/all] Spearman=0.9991, Pearson=0.9994, mean_rel_err=0.0311, dist_var_expl=0.9991, pyth_err=1.84e-15, 6.3s
+18:05:14 DEBUG      [F L2/layer16/correct] 17/17 concepts with bases
+18:05:15 INFO       [F L2/layer16/correct] 136 pairs from 17 concepts, 136 superposition flags, 0.9s
+18:05:15 INFO       [JL L2/layer16/correct] N=3993, k=240, all_pairs, 7,970,028 pairs
+18:05:20 INFO       [JL L2/layer16/correct] Spearman=0.9991, Pearson=0.9994, mean_rel_err=0.0311, dist_var_expl=0.9991, pyth_err=2.94e-15, 5.8s
+18:05:23 DEBUG      [F L2/layer20/all] 17/21 concepts with bases
+18:05:23 INFO       [F L2/layer20/all] 136 pairs from 17 concepts, 136 superposition flags, 0.3s
+18:05:23 INFO       [JL L2/layer20/all] N=4000, k=238, all_pairs, 7,998,000 pairs
+18:05:30 INFO       [JL L2/layer20/all] Spearman=0.9992, Pearson=0.9995, mean_rel_err=0.0296, dist_var_expl=0.9992, pyth_err=4.08e-15, 6.1s
+18:05:32 DEBUG      [F L2/layer20/correct] 17/17 concepts with bases
+18:05:32 INFO       [F L2/layer20/correct] 136 pairs from 17 concepts, 136 superposition flags, 0.1s
+18:05:32 INFO       [JL L2/layer20/correct] N=3993, k=238, all_pairs, 7,970,028 pairs
+18:05:38 INFO       [JL L2/layer20/correct] Spearman=0.9992, Pearson=0.9995, mean_rel_err=0.0298, dist_var_expl=0.9992, pyth_err=2.82e-15, 6.3s
+18:05:41 DEBUG      [F L2/layer24/all] 17/21 concepts with bases
+18:05:41 INFO       [F L2/layer24/all] 136 pairs from 17 concepts, 136 superposition flags, 0.1s
+18:05:41 INFO       [JL L2/layer24/all] N=4000, k=242, all_pairs, 7,998,000 pairs
+18:05:47 INFO       [JL L2/layer24/all] Spearman=0.9992, Pearson=0.9995, mean_rel_err=0.0273, dist_var_expl=0.9992, pyth_err=4.68e-15, 6.2s
+18:05:50 DEBUG      [F L2/layer24/correct] 17/17 concepts with bases
+18:05:50 INFO       [F L2/layer24/correct] 136 pairs from 17 concepts, 136 superposition flags, 0.2s
+18:05:50 INFO       [JL L2/layer24/correct] N=3993, k=243, all_pairs, 7,970,028 pairs
+18:05:55 INFO       [JL L2/layer24/correct] Spearman=0.9992, Pearson=0.9995, mean_rel_err=0.0272, dist_var_expl=0.9992, pyth_err=2.55e-15, 5.7s
+18:05:58 DEBUG      [F L2/layer28/all] 17/21 concepts with bases
+18:05:58 INFO       [F L2/layer28/all] 136 pairs from 17 concepts, 136 superposition flags, 0.1s
+18:05:58 INFO       [JL L2/layer28/all] N=4000, k=238, all_pairs, 7,998,000 pairs
+18:06:04 INFO       [JL L2/layer28/all] Spearman=0.9990, Pearson=0.9994, mean_rel_err=0.0307, dist_var_expl=0.9989, pyth_err=2.90e-15, 5.9s
+18:06:07 DEBUG      [F L2/layer28/correct] 17/17 concepts with bases
+18:06:07 INFO       [F L2/layer28/correct] 136 pairs from 17 concepts, 136 superposition flags, 0.1s
+18:06:07 INFO       [JL L2/layer28/correct] N=3993, k=239, all_pairs, 7,970,028 pairs
+18:06:13 INFO       [JL L2/layer28/correct] Spearman=0.9990, Pearson=0.9994, mean_rel_err=0.0305, dist_var_expl=0.9989, pyth_err=2.10e-15, 6.0s
+18:06:15 DEBUG      [F L2/layer31/all] 17/21 concepts with bases
+18:06:32 INFO       [F L2/layer31/all] 136 pairs from 17 concepts, 136 superposition flags, 16.8s
+18:06:32 INFO       [JL L2/layer31/all] N=4000, k=217, all_pairs, 7,998,000 pairs
+18:06:38 INFO       [JL L2/layer31/all] Spearman=0.9995, Pearson=0.9998, mean_rel_err=0.0287, dist_var_expl=0.9998, pyth_err=2.36e-15, 5.9s
+18:06:40 DEBUG      [F L2/layer31/correct] 17/17 concepts with bases
+18:06:40 INFO       [F L2/layer31/correct] 136 pairs from 17 concepts, 136 superposition flags, 0.1s
+18:06:41 INFO       [JL L2/layer31/correct] N=3993, k=218, all_pairs, 7,970,028 pairs
+18:06:47 INFO       [JL L2/layer31/correct] Spearman=0.9995, Pearson=0.9998, mean_rel_err=0.0286, dist_var_expl=0.9998, pyth_err=2.65e-15, 6.1s
+18:06:49 INFO     L3: N=10000, populations=['all', 'correct', 'wrong']
+18:06:50 DEBUG      [F L3/layer04/all] 28/28 concepts with bases
+18:08:36 INFO       [F L3/layer04/all] 378 pairs from 28 concepts, 340 superposition flags, 106.5s
+18:08:36 INFO       [JL L3/layer04/all] N=10000, k=368, all_pairs, 49,995,000 pairs
+18:09:20 INFO       [JL L3/layer04/all] Spearman=0.9992, Pearson=0.9992, mean_rel_err=0.0359, dist_var_expl=0.9982, pyth_err=2.24e-15, 43.6s
+18:09:42 DEBUG      [F L3/layer04/correct] 23/23 concepts with bases
+18:10:27 INFO       [F L3/layer04/correct] 253 pairs from 23 concepts, 247 superposition flags, 45.0s
+18:10:27 INFO       [JL L3/layer04/correct] N=6720, k=371, all_pairs, 22,575,840 pairs
+18:10:46 INFO       [JL L3/layer04/correct] Spearman=0.9994, Pearson=0.9994, mean_rel_err=0.0302, dist_var_expl=0.9987, pyth_err=3.01e-15, 19.3s
+18:10:56 DEBUG      [F L3/layer04/wrong] 23/23 concepts with bases
+18:11:54 INFO       [F L3/layer04/wrong] 253 pairs from 23 concepts, 237 superposition flags, 58.4s
+18:11:54 INFO       [JL L3/layer04/wrong] N=3280, k=378, all_pairs, 5,377,560 pairs
+18:11:58 INFO       [JL L3/layer04/wrong] Spearman=0.9993, Pearson=0.9994, mean_rel_err=0.0221, dist_var_expl=0.9986, pyth_err=2.36e-15, 4.4s
+18:12:01 DEBUG      [F L3/layer06/all] 28/28 concepts with bases
+18:12:08 INFO       [F L3/layer06/all] 378 pairs from 28 concepts, 349 superposition flags, 7.4s
+18:12:09 INFO       [JL L3/layer06/all] N=10000, k=380, all_pairs, 49,995,000 pairs
+18:12:51 INFO       [JL L3/layer06/all] Spearman=0.9984, Pearson=0.9984, mean_rel_err=0.0551, dist_var_expl=0.9959, pyth_err=3.89e-15, 43.0s
+18:13:12 DEBUG      [F L3/layer06/correct] 23/23 concepts with bases
+18:13:12 INFO       [F L3/layer06/correct] 253 pairs from 23 concepts, 250 superposition flags, 0.1s
+18:13:12 INFO       [JL L3/layer06/correct] N=6720, k=366, all_pairs, 22,575,840 pairs
+18:13:31 INFO       [JL L3/layer06/correct] Spearman=0.9986, Pearson=0.9986, mean_rel_err=0.0501, dist_var_expl=0.9968, pyth_err=2.32e-15, 19.1s
+18:13:41 DEBUG      [F L3/layer06/wrong] 23/23 concepts with bases
+18:13:41 INFO       [F L3/layer06/wrong] 253 pairs from 23 concepts, 220 superposition flags, 0.7s
+18:13:41 INFO       [JL L3/layer06/wrong] N=3280, k=367, all_pairs, 5,377,560 pairs
+18:13:46 INFO       [JL L3/layer06/wrong] Spearman=0.9987, Pearson=0.9987, mean_rel_err=0.0411, dist_var_expl=0.9970, pyth_err=2.53e-15, 4.4s
+18:13:48 DEBUG      [F L3/layer08/all] 28/28 concepts with bases
+18:13:55 INFO       [F L3/layer08/all] 378 pairs from 28 concepts, 372 superposition flags, 7.1s
+18:13:56 INFO       [JL L3/layer08/all] N=10000, k=388, all_pairs, 49,995,000 pairs
+18:14:39 INFO       [JL L3/layer08/all] Spearman=0.9980, Pearson=0.9980, mean_rel_err=0.0596, dist_var_expl=0.9942, pyth_err=3.16e-15, 43.1s
+18:14:59 DEBUG      [F L3/layer08/correct] 23/23 concepts with bases
+18:15:04 INFO       [F L3/layer08/correct] 253 pairs from 23 concepts, 253 superposition flags, 4.8s
+18:15:04 INFO       [JL L3/layer08/correct] N=6720, k=371, all_pairs, 22,575,840 pairs
+18:15:23 INFO       [JL L3/layer08/correct] Spearman=0.9982, Pearson=0.9982, mean_rel_err=0.0546, dist_var_expl=0.9954, pyth_err=1.89e-15, 18.8s
+18:15:32 DEBUG      [F L3/layer08/wrong] 23/23 concepts with bases
+18:15:32 INFO       [F L3/layer08/wrong] 253 pairs from 23 concepts, 237 superposition flags, 0.2s
+18:15:32 INFO       [JL L3/layer08/wrong] N=3280, k=372, all_pairs, 5,377,560 pairs
+18:15:37 INFO       [JL L3/layer08/wrong] Spearman=0.9985, Pearson=0.9983, mean_rel_err=0.0473, dist_var_expl=0.9956, pyth_err=1.58e-15, 4.3s
+18:15:39 DEBUG      [F L3/layer12/all] 28/28 concepts with bases
+18:15:41 INFO       [F L3/layer12/all] 378 pairs from 28 concepts, 372 superposition flags, 1.6s
+18:15:41 INFO       [JL L3/layer12/all] N=10000, k=385, all_pairs, 49,995,000 pairs
+18:16:23 INFO       [JL L3/layer12/all] Spearman=0.9981, Pearson=0.9979, mean_rel_err=0.0583, dist_var_expl=0.9929, pyth_err=2.08e-15, 42.6s
+18:16:44 DEBUG      [F L3/layer12/correct] 23/23 concepts with bases
+18:16:44 INFO       [F L3/layer12/correct] 253 pairs from 23 concepts, 253 superposition flags, 0.2s
+18:16:44 INFO       [JL L3/layer12/correct] N=6720, k=362, all_pairs, 22,575,840 pairs
+18:17:03 INFO       [JL L3/layer12/correct] Spearman=0.9981, Pearson=0.9979, mean_rel_err=0.0567, dist_var_expl=0.9937, pyth_err=2.45e-15, 19.0s
+18:17:12 DEBUG      [F L3/layer12/wrong] 23/23 concepts with bases
+18:17:17 INFO       [F L3/layer12/wrong] 253 pairs from 23 concepts, 253 superposition flags, 5.4s
+18:17:18 INFO       [JL L3/layer12/wrong] N=3280, k=380, all_pairs, 5,377,560 pairs
+18:17:22 INFO       [JL L3/layer12/wrong] Spearman=0.9987, Pearson=0.9986, mean_rel_err=0.0439, dist_var_expl=0.9960, pyth_err=2.88e-15, 4.4s
+18:17:24 DEBUG      [F L3/layer16/all] 28/28 concepts with bases
+18:17:24 INFO       [F L3/layer16/all] 378 pairs from 28 concepts, 369 superposition flags, 0.1s
+18:17:24 INFO       [JL L3/layer16/all] N=10000, k=393, all_pairs, 49,995,000 pairs
+18:18:08 INFO       [JL L3/layer16/all] Spearman=0.9986, Pearson=0.9984, mean_rel_err=0.0479, dist_var_expl=0.9947, pyth_err=4.59e-15, 43.9s
+18:18:31 DEBUG      [F L3/layer16/correct] 23/23 concepts with bases
+18:18:31 INFO       [F L3/layer16/correct] 253 pairs from 23 concepts, 253 superposition flags, 0.2s
+18:18:31 INFO       [JL L3/layer16/correct] N=6720, k=367, all_pairs, 22,575,840 pairs
+18:18:50 INFO       [JL L3/layer16/correct] Spearman=0.9986, Pearson=0.9984, mean_rel_err=0.0471, dist_var_expl=0.9952, pyth_err=2.16e-15, 18.9s
+18:18:59 DEBUG      [F L3/layer16/wrong] 23/23 concepts with bases
+18:18:59 INFO       [F L3/layer16/wrong] 253 pairs from 23 concepts, 253 superposition flags, 0.2s
+18:18:59 INFO       [JL L3/layer16/wrong] N=3280, k=379, all_pairs, 5,377,560 pairs
+18:19:03 INFO       [JL L3/layer16/wrong] Spearman=0.9990, Pearson=0.9989, mean_rel_err=0.0375, dist_var_expl=0.9970, pyth_err=3.28e-15, 4.3s
+18:19:06 DEBUG      [F L3/layer20/all] 28/28 concepts with bases
+18:19:15 INFO       [F L3/layer20/all] 378 pairs from 28 concepts, 342 superposition flags, 8.8s
+18:19:15 INFO       [JL L3/layer20/all] N=10000, k=385, all_pairs, 49,995,000 pairs
+18:19:58 INFO       [JL L3/layer20/all] Spearman=0.9990, Pearson=0.9990, mean_rel_err=0.0428, dist_var_expl=0.9968, pyth_err=2.81e-15, 42.9s
+18:20:18 DEBUG      [F L3/layer20/correct] 23/23 concepts with bases
+18:20:18 INFO       [F L3/layer20/correct] 253 pairs from 23 concepts, 253 superposition flags, 0.2s
+18:20:19 INFO       [JL L3/layer20/correct] N=6720, k=372, all_pairs, 22,575,840 pairs
+18:20:37 INFO       [JL L3/layer20/correct] Spearman=0.9991, Pearson=0.9991, mean_rel_err=0.0392, dist_var_expl=0.9974, pyth_err=3.10e-15, 18.7s
+18:20:46 DEBUG      [F L3/layer20/wrong] 23/23 concepts with bases
+18:20:51 INFO       [F L3/layer20/wrong] 253 pairs from 23 concepts, 238 superposition flags, 4.4s
+18:20:51 INFO       [JL L3/layer20/wrong] N=3280, k=364, all_pairs, 5,377,560 pairs
+18:20:56 INFO       [JL L3/layer20/wrong] Spearman=0.9993, Pearson=0.9994, mean_rel_err=0.0342, dist_var_expl=0.9985, pyth_err=2.27e-15, 5.3s
+18:20:59 DEBUG      [F L3/layer24/all] 28/28 concepts with bases
+18:20:59 INFO       [F L3/layer24/all] 378 pairs from 28 concepts, 343 superposition flags, 0.6s
+18:21:00 INFO       [JL L3/layer24/all] N=10000, k=386, all_pairs, 49,995,000 pairs
+18:21:42 INFO       [JL L3/layer24/all] Spearman=0.9991, Pearson=0.9991, mean_rel_err=0.0411, dist_var_expl=0.9974, pyth_err=2.62e-15, 43.0s
+18:22:03 DEBUG      [F L3/layer24/correct] 23/23 concepts with bases
+18:22:03 INFO       [F L3/layer24/correct] 253 pairs from 23 concepts, 253 superposition flags, 0.2s
+18:22:03 INFO       [JL L3/layer24/correct] N=6720, k=372, all_pairs, 22,575,840 pairs
+18:32:37 INFO     ======================================================================
+18:32:37 INFO     Phase F/JL — Between-Concept Angles & JL Distance Check
+18:32:37 INFO     ======================================================================
+18:32:37 INFO     Phase F levels: [1, 2, 3, 4, 5]
+18:32:37 INFO     JL levels: [2, 3, 4, 5]
+18:32:37 INFO     Layers: [4, 6, 8, 12, 16, 20, 24, 28, 31]
+18:32:37 INFO     Populations: all viable
+18:32:37 INFO     GPU (CuPy): available
+18:32:37 INFO     Phase F only: False
+18:32:37 INFO     JL only: False
+18:32:37 INFO     Phase E spot-check OK: union_basis.npy shape (393, 4096)
+18:32:37 INFO     Phase D metadata files: 2844
+18:32:37 INFO     L1: N=64, populations=['all']
+18:32:37 DEBUG      [F L1/layer04/all] cached — skipping
+18:32:37 DEBUG      [F L1/layer06/all] cached — skipping
+18:32:37 DEBUG      [F L1/layer08/all] cached — skipping
+18:32:37 DEBUG      [F L1/layer12/all] cached — skipping
+18:32:37 DEBUG      [F L1/layer16/all] cached — skipping
+18:32:37 DEBUG      [F L1/layer20/all] cached — skipping
+18:32:37 DEBUG      [F L1/layer24/all] cached — skipping
+18:32:37 DEBUG      [F L1/layer28/all] cached — skipping
+18:32:37 DEBUG      [F L1/layer31/all] cached — skipping
+18:32:37 INFO     L2: N=4000, populations=['all', 'correct']
+18:32:37 DEBUG      [F L2/layer04/all] cached — skipping
+18:32:37 DEBUG      [JL L2/layer04/all] cached — skipping
+18:32:37 DEBUG      [F L2/layer04/correct] cached — skipping
+18:32:37 DEBUG      [JL L2/layer04/correct] cached — skipping
+18:32:37 DEBUG      [F L2/layer06/all] cached — skipping
+18:32:37 DEBUG      [JL L2/layer06/all] cached — skipping
+18:32:37 DEBUG      [F L2/layer06/correct] cached — skipping
+18:32:37 DEBUG      [JL L2/layer06/correct] cached — skipping
+18:32:37 DEBUG      [F L2/layer08/all] cached — skipping
+18:32:37 DEBUG      [JL L2/layer08/all] cached — skipping
+18:32:37 DEBUG      [F L2/layer08/correct] cached — skipping
+18:32:37 DEBUG      [JL L2/layer08/correct] cached — skipping
+18:32:38 DEBUG      [F L2/layer12/all] cached — skipping
+18:32:38 DEBUG      [JL L2/layer12/all] cached — skipping
+18:32:38 DEBUG      [F L2/layer12/correct] cached — skipping
+18:32:38 DEBUG      [JL L2/layer12/correct] cached — skipping
+18:32:38 DEBUG      [F L2/layer16/all] cached — skipping
+18:32:38 DEBUG      [JL L2/layer16/all] cached — skipping
+18:32:38 DEBUG      [F L2/layer16/correct] cached — skipping
+18:32:38 DEBUG      [JL L2/layer16/correct] cached — skipping
+18:32:38 DEBUG      [F L2/layer20/all] cached — skipping
+18:32:38 DEBUG      [JL L2/layer20/all] cached — skipping
+18:32:38 DEBUG      [F L2/layer20/correct] cached — skipping
+18:32:38 DEBUG      [JL L2/layer20/correct] cached — skipping
+18:32:38 DEBUG      [F L2/layer24/all] cached — skipping
+18:32:38 DEBUG      [JL L2/layer24/all] cached — skipping
+18:32:38 DEBUG      [F L2/layer24/correct] cached — skipping
+18:32:38 DEBUG      [JL L2/layer24/correct] cached — skipping
+18:32:38 DEBUG      [F L2/layer28/all] cached — skipping
+18:32:38 DEBUG      [JL L2/layer28/all] cached — skipping
+18:32:38 DEBUG      [F L2/layer28/correct] cached — skipping
+18:32:38 DEBUG      [JL L2/layer28/correct] cached — skipping
+18:32:38 DEBUG      [F L2/layer31/all] cached — skipping
+18:32:38 DEBUG      [JL L2/layer31/all] cached — skipping
+18:32:38 DEBUG      [F L2/layer31/correct] cached — skipping
+18:32:38 DEBUG      [JL L2/layer31/correct] cached — skipping
+18:32:38 INFO     L3: N=10000, populations=['all', 'correct', 'wrong']
+18:32:38 DEBUG      [F L3/layer04/all] cached — skipping
+18:32:38 DEBUG      [JL L3/layer04/all] cached — skipping
+18:32:38 DEBUG      [F L3/layer04/correct] cached — skipping
+18:32:38 DEBUG      [JL L3/layer04/correct] cached — skipping
+18:32:38 DEBUG      [F L3/layer04/wrong] cached — skipping
+18:32:38 DEBUG      [JL L3/layer04/wrong] cached — skipping
+18:32:38 DEBUG      [F L3/layer06/all] cached — skipping
+18:32:38 DEBUG      [JL L3/layer06/all] cached — skipping
+18:32:38 DEBUG      [F L3/layer06/correct] cached — skipping
+18:32:38 DEBUG      [JL L3/layer06/correct] cached — skipping
+18:32:38 DEBUG      [F L3/layer06/wrong] cached — skipping
+18:32:38 DEBUG      [JL L3/layer06/wrong] cached — skipping
+18:32:38 DEBUG      [F L3/layer08/all] cached — skipping
+18:32:38 DEBUG      [JL L3/layer08/all] cached — skipping
+18:32:38 DEBUG      [F L3/layer08/correct] cached — skipping
+18:32:38 DEBUG      [JL L3/layer08/correct] cached — skipping
+18:32:38 DEBUG      [F L3/layer08/wrong] cached — skipping
+18:32:38 DEBUG      [JL L3/layer08/wrong] cached — skipping
+18:32:38 DEBUG      [F L3/layer12/all] cached — skipping
+18:32:38 DEBUG      [JL L3/layer12/all] cached — skipping
+18:32:38 DEBUG      [F L3/layer12/correct] cached — skipping
+18:32:38 DEBUG      [JL L3/layer12/correct] cached — skipping
+18:32:38 DEBUG      [F L3/layer12/wrong] cached — skipping
+18:32:38 DEBUG      [JL L3/layer12/wrong] cached — skipping
+18:32:38 DEBUG      [F L3/layer16/all] cached — skipping
+18:32:38 DEBUG      [JL L3/layer16/all] cached — skipping
+18:32:38 DEBUG      [F L3/layer16/correct] cached — skipping
+18:32:38 DEBUG      [JL L3/layer16/correct] cached — skipping
+18:32:38 DEBUG      [F L3/layer16/wrong] cached — skipping
+18:32:38 DEBUG      [JL L3/layer16/wrong] cached — skipping
+18:32:38 DEBUG      [F L3/layer20/all] cached — skipping
+18:32:38 DEBUG      [JL L3/layer20/all] cached — skipping
+18:32:38 DEBUG      [F L3/layer20/correct] cached — skipping
+18:32:38 DEBUG      [JL L3/layer20/correct] cached — skipping
+18:32:38 DEBUG      [F L3/layer20/wrong] cached — skipping
+18:32:38 DEBUG      [JL L3/layer20/wrong] cached — skipping
+18:32:39 DEBUG      [F L3/layer24/all] cached — skipping
+18:32:39 DEBUG      [JL L3/layer24/all] cached — skipping
+18:32:39 DEBUG      [F L3/layer24/correct] cached — skipping
+18:32:39 INFO       [JL L3/layer24/correct] N=6720, k=372, all_pairs, 22,575,840 pairs
+18:32:59 INFO       [JL L3/layer24/correct] Spearman=0.9992, Pearson=0.9993, mean_rel_err=0.0374, dist_var_expl=0.9978, pyth_err=2.85e-15, 20.6s
+18:33:09 DEBUG      [F L3/layer24/wrong] 23/23 concepts with bases
+18:59:22 INFO     ======================================================================
+18:59:22 INFO     Phase F/JL — Between-Concept Angles & JL Distance Check
+18:59:22 INFO     ======================================================================
+18:59:22 INFO     Phase F levels: [1, 2, 3, 4, 5]
+18:59:22 INFO     JL levels: [2, 3, 4, 5]
+18:59:22 INFO     Layers: [4, 6, 8, 12, 16, 20, 24, 28, 31]
+18:59:22 INFO     Populations: all viable
+18:59:22 INFO     GPU (CuPy): available
+18:59:22 INFO     Phase F only: False
+18:59:22 INFO     JL only: False
+18:59:22 INFO     Phase E spot-check OK: union_basis.npy shape (393, 4096)
+18:59:22 INFO     Phase D metadata files: 2844
+18:59:22 INFO     L1: N=64, populations=['all']
+18:59:22 DEBUG      [F L1/layer04/all] cached — skipping
+18:59:22 DEBUG      [F L1/layer06/all] cached — skipping
+18:59:22 DEBUG      [F L1/layer08/all] cached — skipping
+18:59:22 DEBUG      [F L1/layer12/all] cached — skipping
+18:59:22 DEBUG      [F L1/layer16/all] cached — skipping
+18:59:22 DEBUG      [F L1/layer20/all] cached — skipping
+18:59:22 DEBUG      [F L1/layer24/all] cached — skipping
+18:59:22 DEBUG      [F L1/layer28/all] cached — skipping
+18:59:22 DEBUG      [F L1/layer31/all] cached — skipping
+18:59:22 INFO     L2: N=4000, populations=['all', 'correct']
+18:59:22 DEBUG      [F L2/layer04/all] cached — skipping
+18:59:22 DEBUG      [JL L2/layer04/all] cached — skipping
+18:59:22 DEBUG      [F L2/layer04/correct] cached — skipping
+18:59:22 DEBUG      [JL L2/layer04/correct] cached — skipping
+18:59:22 DEBUG      [F L2/layer06/all] cached — skipping
+18:59:22 DEBUG      [JL L2/layer06/all] cached — skipping
+18:59:22 DEBUG      [F L2/layer06/correct] cached — skipping
+18:59:22 DEBUG      [JL L2/layer06/correct] cached — skipping
+18:59:22 DEBUG      [F L2/layer08/all] cached — skipping
+18:59:22 DEBUG      [JL L2/layer08/all] cached — skipping
+18:59:22 DEBUG      [F L2/layer08/correct] cached — skipping
+18:59:22 DEBUG      [JL L2/layer08/correct] cached — skipping
+18:59:22 DEBUG      [F L2/layer12/all] cached — skipping
+18:59:22 DEBUG      [JL L2/layer12/all] cached — skipping
+18:59:22 DEBUG      [F L2/layer12/correct] cached — skipping
+18:59:22 DEBUG      [JL L2/layer12/correct] cached — skipping
+18:59:22 DEBUG      [F L2/layer16/all] cached — skipping
+18:59:23 DEBUG      [JL L2/layer16/all] cached — skipping
+18:59:23 DEBUG      [F L2/layer16/correct] cached — skipping
+18:59:23 DEBUG      [JL L2/layer16/correct] cached — skipping
+18:59:23 DEBUG      [F L2/layer20/all] cached — skipping
+18:59:23 DEBUG      [JL L2/layer20/all] cached — skipping
+18:59:23 DEBUG      [F L2/layer20/correct] cached — skipping
+18:59:23 DEBUG      [JL L2/layer20/correct] cached — skipping
+18:59:23 DEBUG      [F L2/layer24/all] cached — skipping
+18:59:23 DEBUG      [JL L2/layer24/all] cached — skipping
+18:59:23 DEBUG      [F L2/layer24/correct] cached — skipping
+18:59:23 DEBUG      [JL L2/layer24/correct] cached — skipping
+18:59:23 DEBUG      [F L2/layer28/all] cached — skipping
+18:59:23 DEBUG      [JL L2/layer28/all] cached — skipping
+18:59:23 DEBUG      [F L2/layer28/correct] cached — skipping
+18:59:23 DEBUG      [JL L2/layer28/correct] cached — skipping
+18:59:23 DEBUG      [F L2/layer31/all] cached — skipping
+18:59:23 DEBUG      [JL L2/layer31/all] cached — skipping
+18:59:23 DEBUG      [F L2/layer31/correct] cached — skipping
+18:59:23 DEBUG      [JL L2/layer31/correct] cached — skipping
+18:59:23 INFO     L3: N=10000, populations=['all', 'correct', 'wrong']
+18:59:23 DEBUG      [F L3/layer04/all] cached — skipping
+18:59:23 DEBUG      [JL L3/layer04/all] cached — skipping
+18:59:23 DEBUG      [F L3/layer04/correct] cached — skipping
+18:59:23 DEBUG      [JL L3/layer04/correct] cached — skipping
+18:59:23 DEBUG      [F L3/layer04/wrong] cached — skipping
+18:59:23 DEBUG      [JL L3/layer04/wrong] cached — skipping
+18:59:23 DEBUG      [F L3/layer06/all] cached — skipping
+18:59:23 DEBUG      [JL L3/layer06/all] cached — skipping
+18:59:23 DEBUG      [F L3/layer06/correct] cached — skipping
+18:59:23 DEBUG      [JL L3/layer06/correct] cached — skipping
+18:59:23 DEBUG      [F L3/layer06/wrong] cached — skipping
+18:59:23 DEBUG      [JL L3/layer06/wrong] cached — skipping
+18:59:23 DEBUG      [F L3/layer08/all] cached — skipping
+18:59:23 DEBUG      [JL L3/layer08/all] cached — skipping
+18:59:23 DEBUG      [F L3/layer08/correct] cached — skipping
+18:59:23 DEBUG      [JL L3/layer08/correct] cached — skipping
+18:59:23 DEBUG      [F L3/layer08/wrong] cached — skipping
+18:59:24 DEBUG      [JL L3/layer08/wrong] cached — skipping
+18:59:24 DEBUG      [F L3/layer12/all] cached — skipping
+18:59:24 DEBUG      [JL L3/layer12/all] cached — skipping
+18:59:24 DEBUG      [F L3/layer12/correct] cached — skipping
+18:59:24 DEBUG      [JL L3/layer12/correct] cached — skipping
+18:59:24 DEBUG      [F L3/layer12/wrong] cached — skipping
+18:59:24 DEBUG      [JL L3/layer12/wrong] cached — skipping
+18:59:24 DEBUG      [F L3/layer16/all] cached — skipping
+18:59:24 DEBUG      [JL L3/layer16/all] cached — skipping
+18:59:24 DEBUG      [F L3/layer16/correct] cached — skipping
+18:59:24 DEBUG      [JL L3/layer16/correct] cached — skipping
+18:59:24 DEBUG      [F L3/layer16/wrong] cached — skipping
+18:59:24 DEBUG      [JL L3/layer16/wrong] cached — skipping
+18:59:24 DEBUG      [F L3/layer20/all] cached — skipping
+18:59:24 DEBUG      [JL L3/layer20/all] cached — skipping
+18:59:24 DEBUG      [F L3/layer20/correct] cached — skipping
+18:59:24 DEBUG      [JL L3/layer20/correct] cached — skipping
+18:59:24 DEBUG      [F L3/layer20/wrong] cached — skipping
+18:59:24 DEBUG      [JL L3/layer20/wrong] cached — skipping
+18:59:24 DEBUG      [F L3/layer24/all] cached — skipping
+18:59:24 DEBUG      [JL L3/layer24/all] cached — skipping
+18:59:24 DEBUG      [F L3/layer24/correct] cached — skipping
+18:59:24 DEBUG      [JL L3/layer24/correct] cached — skipping
+18:59:24 DEBUG      [F L3/layer24/wrong] 23/23 concepts with bases
+19:00:57 INFO       [F L3/layer24/wrong] 253 pairs from 23 concepts, 237 superposition flags, 92.8s
+19:00:57 INFO       [JL L3/layer24/wrong] N=3280, k=365, all_pairs, 5,377,560 pairs
+19:01:02 INFO       [JL L3/layer24/wrong] Spearman=0.9993, Pearson=0.9995, mean_rel_err=0.0327, dist_var_expl=0.9988, pyth_err=3.04e-15, 4.8s
+19:01:05 DEBUG      [F L3/layer28/all] 28/28 concepts with bases
+19:02:21 INFO       [F L3/layer28/all] 378 pairs from 28 concepts, 344 superposition flags, 76.4s
+19:02:21 INFO       [JL L3/layer28/all] N=10000, k=387, all_pairs, 49,995,000 pairs
+19:12:33 INFO     ======================================================================
+19:12:33 INFO     Phase F/JL — Between-Concept Angles & JL Distance Check
+19:12:33 INFO     ======================================================================
+19:12:33 INFO     Phase F levels: [1, 2, 3, 4, 5]
+19:12:33 INFO     JL levels: [2, 3, 4, 5]
+19:12:33 INFO     Layers: [4, 6, 8, 12, 16, 20, 24, 28, 31]
+19:12:33 INFO     Populations: all viable
+19:12:33 INFO     GPU (CuPy): available
+19:12:33 INFO     Phase F only: False
+19:12:33 INFO     JL only: False
+19:12:33 INFO     Phase E spot-check OK: union_basis.npy shape (393, 4096)
+19:12:33 INFO     Phase D metadata files: 2844
+19:12:33 INFO     L1: N=64, populations=['all']
+19:12:34 DEBUG      [F L1/layer04/all] cached — skipping
+19:12:34 DEBUG      [F L1/layer06/all] cached — skipping
+19:12:34 DEBUG      [F L1/layer08/all] cached — skipping
+19:12:34 DEBUG      [F L1/layer12/all] cached — skipping
+19:12:34 DEBUG      [F L1/layer16/all] cached — skipping
+19:12:34 DEBUG      [F L1/layer20/all] cached — skipping
+19:12:34 DEBUG      [F L1/layer24/all] cached — skipping
+19:12:34 DEBUG      [F L1/layer28/all] cached — skipping
+19:12:34 DEBUG      [F L1/layer31/all] cached — skipping
+19:12:34 INFO     L2: N=4000, populations=['all', 'correct']
+19:12:34 DEBUG      [F L2/layer04/all] cached — skipping
+19:12:34 DEBUG      [JL L2/layer04/all] cached — skipping
+19:12:34 DEBUG      [F L2/layer04/correct] cached — skipping
+19:12:34 DEBUG      [JL L2/layer04/correct] cached — skipping
+19:12:34 DEBUG      [F L2/layer06/all] cached — skipping
+19:12:34 DEBUG      [JL L2/layer06/all] cached — skipping
+19:12:34 DEBUG      [F L2/layer06/correct] cached — skipping
+19:12:34 DEBUG      [JL L2/layer06/correct] cached — skipping
+19:12:34 DEBUG      [F L2/layer08/all] cached — skipping
+19:12:34 DEBUG      [JL L2/layer08/all] cached — skipping
+19:12:34 DEBUG      [F L2/layer08/correct] cached — skipping
+19:12:34 DEBUG      [JL L2/layer08/correct] cached — skipping
+19:12:34 DEBUG      [F L2/layer12/all] cached — skipping
+19:12:34 DEBUG      [JL L2/layer12/all] cached — skipping
+19:12:34 DEBUG      [F L2/layer12/correct] cached — skipping
+19:12:34 DEBUG      [JL L2/layer12/correct] cached — skipping
+19:12:34 DEBUG      [F L2/layer16/all] cached — skipping
+19:12:34 DEBUG      [JL L2/layer16/all] cached — skipping
+19:12:34 DEBUG      [F L2/layer16/correct] cached — skipping
+19:12:34 DEBUG      [JL L2/layer16/correct] cached — skipping
+19:12:34 DEBUG      [F L2/layer20/all] cached — skipping
+19:12:34 DEBUG      [JL L2/layer20/all] cached — skipping
+19:12:34 DEBUG      [F L2/layer20/correct] cached — skipping
+19:12:34 DEBUG      [JL L2/layer20/correct] cached — skipping
+19:12:34 DEBUG      [F L2/layer24/all] cached — skipping
+19:12:34 DEBUG      [JL L2/layer24/all] cached — skipping
+19:12:34 DEBUG      [F L2/layer24/correct] cached — skipping
+19:12:34 DEBUG      [JL L2/layer24/correct] cached — skipping
+19:12:34 DEBUG      [F L2/layer28/all] cached — skipping
+19:12:34 DEBUG      [JL L2/layer28/all] cached — skipping
+19:12:34 DEBUG      [F L2/layer28/correct] cached — skipping
+19:12:34 DEBUG      [JL L2/layer28/correct] cached — skipping
+19:12:34 DEBUG      [F L2/layer31/all] cached — skipping
+19:12:34 DEBUG      [JL L2/layer31/all] cached — skipping
+19:12:34 DEBUG      [F L2/layer31/correct] cached — skipping
+19:12:34 DEBUG      [JL L2/layer31/correct] cached — skipping
+19:12:34 INFO     L3: N=10000, populations=['all', 'correct', 'wrong']
+19:12:34 DEBUG      [F L3/layer04/all] cached — skipping
+19:12:34 DEBUG      [JL L3/layer04/all] cached — skipping
+19:12:34 DEBUG      [F L3/layer04/correct] cached — skipping
+19:12:34 DEBUG      [JL L3/layer04/correct] cached — skipping
+19:12:34 DEBUG      [F L3/layer04/wrong] cached — skipping
+19:12:35 DEBUG      [JL L3/layer04/wrong] cached — skipping
+19:12:35 DEBUG      [F L3/layer06/all] cached — skipping
+19:12:35 DEBUG      [JL L3/layer06/all] cached — skipping
+19:12:35 DEBUG      [F L3/layer06/correct] cached — skipping
+19:12:35 DEBUG      [JL L3/layer06/correct] cached — skipping
+19:12:35 DEBUG      [F L3/layer06/wrong] cached — skipping
+19:12:35 DEBUG      [JL L3/layer06/wrong] cached — skipping
+19:12:35 DEBUG      [F L3/layer08/all] cached — skipping
+19:12:35 DEBUG      [JL L3/layer08/all] cached — skipping
+19:12:35 DEBUG      [F L3/layer08/correct] cached — skipping
+19:12:35 DEBUG      [JL L3/layer08/correct] cached — skipping
+19:12:35 DEBUG      [F L3/layer08/wrong] cached — skipping
+19:12:35 DEBUG      [JL L3/layer08/wrong] cached — skipping
+19:12:35 DEBUG      [F L3/layer12/all] cached — skipping
+19:12:35 DEBUG      [JL L3/layer12/all] cached — skipping
+19:12:35 DEBUG      [F L3/layer12/correct] cached — skipping
+19:12:35 DEBUG      [JL L3/layer12/correct] cached — skipping
+19:12:35 DEBUG      [F L3/layer12/wrong] cached — skipping
+19:12:35 DEBUG      [JL L3/layer12/wrong] cached — skipping
+19:12:35 DEBUG      [F L3/layer16/all] cached — skipping
+19:12:35 DEBUG      [JL L3/layer16/all] cached — skipping
+19:12:35 DEBUG      [F L3/layer16/correct] cached — skipping
+19:12:35 DEBUG      [JL L3/layer16/correct] cached — skipping
+19:12:35 DEBUG      [F L3/layer16/wrong] cached — skipping
+19:12:35 DEBUG      [JL L3/layer16/wrong] cached — skipping
+19:12:35 DEBUG      [F L3/layer20/all] cached — skipping
+19:12:35 DEBUG      [JL L3/layer20/all] cached — skipping
+19:12:35 DEBUG      [F L3/layer20/correct] cached — skipping
+19:12:35 DEBUG      [JL L3/layer20/correct] cached — skipping
+19:12:35 DEBUG      [F L3/layer20/wrong] cached — skipping
+19:12:35 DEBUG      [JL L3/layer20/wrong] cached — skipping
+19:12:35 DEBUG      [F L3/layer24/all] cached — skipping
+19:12:36 DEBUG      [JL L3/layer24/all] cached — skipping
+19:12:36 DEBUG      [F L3/layer24/correct] cached — skipping
+19:12:36 DEBUG      [JL L3/layer24/correct] cached — skipping
+19:12:36 DEBUG      [F L3/layer24/wrong] cached — skipping
+19:12:36 DEBUG      [JL L3/layer24/wrong] cached — skipping
+19:12:36 DEBUG      [F L3/layer28/all] cached — skipping
+19:12:36 INFO       [JL L3/layer28/all] N=10000, k=387, all_pairs, 49,995,000 pairs
+19:13:19 INFO       [JL L3/layer28/all] Spearman=0.9989, Pearson=0.9987, mean_rel_err=0.0462, dist_var_expl=0.9956, pyth_err=4.06e-15, 43.7s
+19:13:40 DEBUG      [F L3/layer28/correct] 23/23 concepts with bases
+19:14:42 INFO       [F L3/layer28/correct] 253 pairs from 23 concepts, 253 superposition flags, 62.3s
+19:14:43 INFO       [JL L3/layer28/correct] N=6720, k=372, all_pairs, 22,575,840 pairs
+19:15:01 INFO       [JL L3/layer28/correct] Spearman=0.9990, Pearson=0.9989, mean_rel_err=0.0422, dist_var_expl=0.9966, pyth_err=4.31e-15, 18.8s
+19:15:11 DEBUG      [F L3/layer28/wrong] 23/23 concepts with bases
+19:16:26 INFO       [F L3/layer28/wrong] 253 pairs from 23 concepts, 239 superposition flags, 75.6s
+19:16:26 INFO       [JL L3/layer28/wrong] N=3280, k=365, all_pairs, 5,377,560 pairs
+19:16:31 INFO       [JL L3/layer28/wrong] Spearman=0.9991, Pearson=0.9992, mean_rel_err=0.0369, dist_var_expl=0.9978, pyth_err=2.84e-15, 4.4s
+19:16:33 DEBUG      [F L3/layer31/all] 28/28 concepts with bases
+19:17:35 INFO       [F L3/layer31/all] 378 pairs from 28 concepts, 328 superposition flags, 61.9s
+19:17:35 INFO       [JL L3/layer31/all] N=10000, k=383, all_pairs, 49,995,000 pairs
+19:18:18 INFO       [JL L3/layer31/all] Spearman=0.9994, Pearson=0.9994, mean_rel_err=0.0356, dist_var_expl=0.9982, pyth_err=4.17e-15, 43.1s
+19:18:41 DEBUG      [F L3/layer31/correct] 23/23 concepts with bases
+19:18:48 INFO       [F L3/layer31/correct] 253 pairs from 23 concepts, 253 superposition flags, 7.1s
+19:18:48 INFO       [JL L3/layer31/correct] N=6720, k=369, all_pairs, 22,575,840 pairs
+19:19:07 INFO       [JL L3/layer31/correct] Spearman=0.9995, Pearson=0.9995, mean_rel_err=0.0338, dist_var_expl=0.9987, pyth_err=5.10e-15, 18.9s
+19:19:16 DEBUG      [F L3/layer31/wrong] 23/23 concepts with bases
+19:19:32 INFO       [F L3/layer31/wrong] 253 pairs from 23 concepts, 221 superposition flags, 16.5s
+19:19:32 INFO       [JL L3/layer31/wrong] N=3280, k=377, all_pairs, 5,377,560 pairs
+19:19:37 INFO       [JL L3/layer31/wrong] Spearman=0.9994, Pearson=0.9996, mean_rel_err=0.0287, dist_var_expl=0.9989, pyth_err=5.40e-15, 4.8s
+19:19:39 INFO     L4: N=10000, populations=['all', 'correct', 'wrong']
+19:19:40 DEBUG      [F L4/layer04/all] 35/35 concepts with bases
+19:21:24 INFO       [F L4/layer04/all] 595 pairs from 35 concepts, 511 superposition flags, 104.8s
+19:21:25 INFO       [JL L4/layer04/all] N=10000, k=492, all_pairs, 49,995,000 pairs
+19:22:09 INFO       [JL L4/layer04/all] Spearman=0.9972, Pearson=0.9979, mean_rel_err=0.0653, dist_var_expl=0.9955, pyth_err=1.63e-15, 44.3s
+19:22:33 DEBUG      [F L4/layer04/correct] 29/29 concepts with bases
+19:23:19 INFO       [F L4/layer04/correct] 406 pairs from 29 concepts, 382 superposition flags, 46.0s
+19:23:19 INFO       [JL L4/layer04/correct] N=2897, k=443, all_pairs, 4,194,856 pairs
+19:23:23 INFO       [JL L4/layer04/correct] Spearman=0.9976, Pearson=0.9980, mean_rel_err=0.0545, dist_var_expl=0.9960, pyth_err=2.43e-15, 3.9s
+19:23:25 DEBUG      [F L4/layer04/wrong] 29/29 concepts with bases
+19:24:43 INFO       [F L4/layer04/wrong] 406 pairs from 29 concepts, 377 superposition flags, 78.7s
+19:24:43 INFO       [JL L4/layer04/wrong] N=7103, k=492, all_pairs, 25,222,753 pairs
+19:25:06 INFO       [JL L4/layer04/wrong] Spearman=0.9969, Pearson=0.9979, mean_rel_err=0.0652, dist_var_expl=0.9959, pyth_err=2.03e-15, 22.7s
+19:25:18 DEBUG      [F L4/layer06/all] 34/35 concepts with bases
+19:31:18 INFO     ======================================================================
+19:31:18 INFO     Phase F/JL — Between-Concept Angles & JL Distance Check
+19:31:18 INFO     ======================================================================
+19:31:18 INFO     Phase F levels: [1, 2, 3, 4, 5]
+19:31:18 INFO     JL levels: [2, 3, 4, 5]
+19:31:18 INFO     Layers: [4, 6, 8, 12, 16, 20, 24, 28, 31]
+19:31:18 INFO     Populations: all viable
+19:31:18 INFO     GPU (CuPy): available
+19:31:18 INFO     Phase F only: False
+19:31:18 INFO     JL only: False
+19:31:18 INFO     Phase E spot-check OK: union_basis.npy shape (393, 4096)
+19:31:18 INFO     Phase D metadata files: 2844
+19:31:18 INFO     L1: N=64, populations=['all']
+19:31:18 DEBUG      [F L1/layer04/all] cached — skipping
+19:31:18 DEBUG      [F L1/layer06/all] cached — skipping
+19:31:18 DEBUG      [F L1/layer08/all] cached — skipping
+19:31:18 DEBUG      [F L1/layer12/all] cached — skipping
+19:31:18 DEBUG      [F L1/layer16/all] cached — skipping
+19:31:18 DEBUG      [F L1/layer20/all] cached — skipping
+19:31:18 DEBUG      [F L1/layer24/all] cached — skipping
+19:31:18 DEBUG      [F L1/layer28/all] cached — skipping
+19:31:18 DEBUG      [F L1/layer31/all] cached — skipping
+19:31:18 INFO     L2: N=4000, populations=['all', 'correct']
+19:31:18 DEBUG      [F L2/layer04/all] cached — skipping
+19:31:18 DEBUG      [JL L2/layer04/all] cached — skipping
+19:31:18 DEBUG      [F L2/layer04/correct] cached — skipping
+19:31:18 DEBUG      [JL L2/layer04/correct] cached — skipping
+19:31:18 DEBUG      [F L2/layer06/all] cached — skipping
+19:31:18 DEBUG      [JL L2/layer06/all] cached — skipping
+19:31:18 DEBUG      [F L2/layer06/correct] cached — skipping
+19:31:18 DEBUG      [JL L2/layer06/correct] cached — skipping
+19:31:18 DEBUG      [F L2/layer08/all] cached — skipping
+19:31:18 DEBUG      [JL L2/layer08/all] cached — skipping
+19:31:18 DEBUG      [F L2/layer08/correct] cached — skipping
+19:31:18 DEBUG      [JL L2/layer08/correct] cached — skipping
+19:31:18 DEBUG      [F L2/layer12/all] cached — skipping
+19:31:18 DEBUG      [JL L2/layer12/all] cached — skipping
+19:31:18 DEBUG      [F L2/layer12/correct] cached — skipping
+19:31:18 DEBUG      [JL L2/layer12/correct] cached — skipping
+19:31:19 DEBUG      [F L2/layer16/all] cached — skipping
+19:31:19 DEBUG      [JL L2/layer16/all] cached — skipping
+19:31:19 DEBUG      [F L2/layer16/correct] cached — skipping
+19:31:19 DEBUG      [JL L2/layer16/correct] cached — skipping
+19:31:19 DEBUG      [F L2/layer20/all] cached — skipping
+19:31:19 DEBUG      [JL L2/layer20/all] cached — skipping
+19:31:19 DEBUG      [F L2/layer20/correct] cached — skipping
+19:31:19 DEBUG      [JL L2/layer20/correct] cached — skipping
+19:31:19 DEBUG      [F L2/layer24/all] cached — skipping
+19:31:19 DEBUG      [JL L2/layer24/all] cached — skipping
+19:31:19 DEBUG      [F L2/layer24/correct] cached — skipping
+19:31:19 DEBUG      [JL L2/layer24/correct] cached — skipping
+19:31:19 DEBUG      [F L2/layer28/all] cached — skipping
+19:31:19 DEBUG      [JL L2/layer28/all] cached — skipping
+19:31:19 DEBUG      [F L2/layer28/correct] cached — skipping
+19:31:19 DEBUG      [JL L2/layer28/correct] cached — skipping
+19:31:19 DEBUG      [F L2/layer31/all] cached — skipping
+19:31:19 DEBUG      [JL L2/layer31/all] cached — skipping
+19:31:19 DEBUG      [F L2/layer31/correct] cached — skipping
+19:31:19 DEBUG      [JL L2/layer31/correct] cached — skipping
+19:31:19 INFO     L3: N=10000, populations=['all', 'correct', 'wrong']
+19:31:19 DEBUG      [F L3/layer04/all] cached — skipping
+19:31:19 DEBUG      [JL L3/layer04/all] cached — skipping
+19:31:19 DEBUG      [F L3/layer04/correct] cached — skipping
+19:31:19 DEBUG      [JL L3/layer04/correct] cached — skipping
+19:31:19 DEBUG      [F L3/layer04/wrong] cached — skipping
+19:31:19 DEBUG      [JL L3/layer04/wrong] cached — skipping
+19:31:19 DEBUG      [F L3/layer06/all] cached — skipping
+19:31:19 DEBUG      [JL L3/layer06/all] cached — skipping
+19:31:19 DEBUG      [F L3/layer06/correct] cached — skipping
+19:31:19 DEBUG      [JL L3/layer06/correct] cached — skipping
+19:31:19 DEBUG      [F L3/layer06/wrong] cached — skipping
+19:31:19 DEBUG      [JL L3/layer06/wrong] cached — skipping
+19:31:19 DEBUG      [F L3/layer08/all] cached — skipping
+19:31:19 DEBUG      [JL L3/layer08/all] cached — skipping
+19:31:19 DEBUG      [F L3/layer08/correct] cached — skipping
+19:31:19 DEBUG      [JL L3/layer08/correct] cached — skipping
+19:31:19 DEBUG      [F L3/layer08/wrong] cached — skipping
+19:31:19 DEBUG      [JL L3/layer08/wrong] cached — skipping
+19:31:19 DEBUG      [F L3/layer12/all] cached — skipping
+19:31:19 DEBUG      [JL L3/layer12/all] cached — skipping
+19:31:19 DEBUG      [F L3/layer12/correct] cached — skipping
+19:31:19 DEBUG      [JL L3/layer12/correct] cached — skipping
+19:31:19 DEBUG      [F L3/layer12/wrong] cached — skipping
+19:31:19 DEBUG      [JL L3/layer12/wrong] cached — skipping
+19:31:19 DEBUG      [F L3/layer16/all] cached — skipping
+19:31:19 DEBUG      [JL L3/layer16/all] cached — skipping
+19:31:19 DEBUG      [F L3/layer16/correct] cached — skipping
+19:31:19 DEBUG      [JL L3/layer16/correct] cached — skipping
+19:31:19 DEBUG      [F L3/layer16/wrong] cached — skipping
+19:31:19 DEBUG      [JL L3/layer16/wrong] cached — skipping
+19:31:19 DEBUG      [F L3/layer20/all] cached — skipping
+19:31:19 DEBUG      [JL L3/layer20/all] cached — skipping
+19:31:19 DEBUG      [F L3/layer20/correct] cached — skipping
+19:31:19 DEBUG      [JL L3/layer20/correct] cached — skipping
+19:31:19 DEBUG      [F L3/layer20/wrong] cached — skipping
+19:31:19 DEBUG      [JL L3/layer20/wrong] cached — skipping
+19:31:19 DEBUG      [F L3/layer24/all] cached — skipping
+19:31:19 DEBUG      [JL L3/layer24/all] cached — skipping
+19:31:19 DEBUG      [F L3/layer24/correct] cached — skipping
+19:31:19 DEBUG      [JL L3/layer24/correct] cached — skipping
+19:31:19 DEBUG      [F L3/layer24/wrong] cached — skipping
+19:31:19 DEBUG      [JL L3/layer24/wrong] cached — skipping
+19:31:19 DEBUG      [F L3/layer28/all] cached — skipping
+19:31:19 DEBUG      [JL L3/layer28/all] cached — skipping
+19:31:19 DEBUG      [F L3/layer28/correct] cached — skipping
+19:31:19 DEBUG      [JL L3/layer28/correct] cached — skipping
+19:31:19 DEBUG      [F L3/layer28/wrong] cached — skipping
+19:31:19 DEBUG      [JL L3/layer28/wrong] cached — skipping
+19:31:19 DEBUG      [F L3/layer31/all] cached — skipping
+19:31:19 DEBUG      [JL L3/layer31/all] cached — skipping
+19:31:19 DEBUG      [F L3/layer31/correct] cached — skipping
+19:31:20 DEBUG      [JL L3/layer31/correct] cached — skipping
+19:31:20 DEBUG      [F L3/layer31/wrong] cached — skipping
+19:31:20 DEBUG      [JL L3/layer31/wrong] cached — skipping
+19:31:20 INFO     L4: N=10000, populations=['all', 'correct', 'wrong']
+19:31:20 DEBUG      [F L4/layer04/all] cached — skipping
+19:31:20 DEBUG      [JL L4/layer04/all] cached — skipping
+19:31:20 DEBUG      [F L4/layer04/correct] cached — skipping
+19:31:20 DEBUG      [JL L4/layer04/correct] cached — skipping
+19:31:20 DEBUG      [F L4/layer04/wrong] cached — skipping
+19:31:20 DEBUG      [JL L4/layer04/wrong] cached — skipping
+19:31:20 DEBUG      [F L4/layer06/all] 34/35 concepts with bases
+19:33:37 INFO       [F L4/layer06/all] 561 pairs from 34 concepts, 520 superposition flags, 137.4s
+19:33:38 INFO       [JL L4/layer06/all] N=10000, k=480, all_pairs, 49,995,000 pairs
+19:34:22 INFO       [JL L4/layer06/all] Spearman=0.9962, Pearson=0.9973, mean_rel_err=0.0856, dist_var_expl=0.9937, pyth_err=3.21e-15, 44.9s
+19:34:45 DEBUG      [F L4/layer06/correct] 29/29 concepts with bases
+19:35:51 INFO       [F L4/layer06/correct] 406 pairs from 29 concepts, 405 superposition flags, 66.3s
+19:35:51 INFO       [JL L4/layer06/correct] N=2897, k=438, all_pairs, 4,194,856 pairs
+19:35:55 INFO       [JL L4/layer06/correct] Spearman=0.9969, Pearson=0.9975, mean_rel_err=0.0696, dist_var_expl=0.9947, pyth_err=1.67e-15, 3.8s
+19:35:57 DEBUG      [F L4/layer06/wrong] 29/29 concepts with bases
+19:37:25 INFO       [F L4/layer06/wrong] 406 pairs from 29 concepts, 350 superposition flags, 88.6s
+19:37:26 INFO       [JL L4/layer06/wrong] N=7103, k=478, all_pairs, 25,222,753 pairs
+19:37:47 INFO       [JL L4/layer06/wrong] Spearman=0.9960, Pearson=0.9974, mean_rel_err=0.0867, dist_var_expl=0.9943, pyth_err=1.78e-15, 22.0s
+19:37:59 DEBUG      [F L4/layer08/all] 34/35 concepts with bases
+19:39:05 INFO       [F L4/layer08/all] 561 pairs from 34 concepts, 524 superposition flags, 65.8s
+19:39:05 INFO       [JL L4/layer08/all] N=10000, k=480, all_pairs, 49,995,000 pairs
+19:39:50 INFO       [JL L4/layer08/all] Spearman=0.9964, Pearson=0.9970, mean_rel_err=0.0795, dist_var_expl=0.9920, pyth_err=2.71e-15, 44.8s
+19:40:13 DEBUG      [F L4/layer08/correct] 29/29 concepts with bases
+19:40:13 INFO       [F L4/layer08/correct] 406 pairs from 29 concepts, 406 superposition flags, 0.2s
+19:40:13 INFO       [JL L4/layer08/correct] N=2897, k=446, all_pairs, 4,194,856 pairs
+19:40:16 INFO       [JL L4/layer08/correct] Spearman=0.9973, Pearson=0.9976, mean_rel_err=0.0626, dist_var_expl=0.9944, pyth_err=2.12e-15, 3.6s
+19:40:18 DEBUG      [F L4/layer08/wrong] 29/29 concepts with bases
+19:40:22 INFO       [F L4/layer08/wrong] 406 pairs from 29 concepts, 354 superposition flags, 3.9s
+19:40:22 INFO       [JL L4/layer08/wrong] N=7103, k=486, all_pairs, 25,222,753 pairs
+19:40:44 INFO       [JL L4/layer08/wrong] Spearman=0.9964, Pearson=0.9972, mean_rel_err=0.0781, dist_var_expl=0.9927, pyth_err=3.33e-15, 22.3s
+19:40:56 DEBUG      [F L4/layer12/all] 35/35 concepts with bases
+19:42:37 INFO       [F L4/layer12/all] 595 pairs from 35 concepts, 558 superposition flags, 100.9s
+19:42:38 INFO       [JL L4/layer12/all] N=10000, k=515, all_pairs, 49,995,000 pairs
+19:43:22 INFO       [JL L4/layer12/all] Spearman=0.9975, Pearson=0.9978, mean_rel_err=0.0657, dist_var_expl=0.9937, pyth_err=2.45e-15, 44.4s
+19:43:44 DEBUG      [F L4/layer12/correct] 29/29 concepts with bases
+19:43:53 INFO       [F L4/layer12/correct] 406 pairs from 29 concepts, 406 superposition flags, 8.5s
+19:43:53 INFO       [JL L4/layer12/correct] N=2897, k=432, all_pairs, 4,194,856 pairs
+19:43:56 INFO       [JL L4/layer12/correct] Spearman=0.9973, Pearson=0.9975, mean_rel_err=0.0634, dist_var_expl=0.9938, pyth_err=3.80e-15, 3.6s
+19:43:58 DEBUG      [F L4/layer12/wrong] 29/29 concepts with bases
+19:45:15 INFO       [F L4/layer12/wrong] 406 pairs from 29 concepts, 353 superposition flags, 76.8s
+19:45:15 INFO       [JL L4/layer12/wrong] N=7103, k=491, all_pairs, 25,222,753 pairs
+19:45:37 INFO       [JL L4/layer12/wrong] Spearman=0.9969, Pearson=0.9974, mean_rel_err=0.0716, dist_var_expl=0.9929, pyth_err=1.51e-15, 22.0s
+19:45:49 DEBUG      [F L4/layer16/all] 34/35 concepts with bases
+19:47:00 INFO       [F L4/layer16/all] 561 pairs from 34 concepts, 553 superposition flags, 71.7s
+19:47:01 INFO       [JL L4/layer16/all] N=10000, k=507, all_pairs, 49,995,000 pairs
+19:47:45 INFO       [JL L4/layer16/all] Spearman=0.9984, Pearson=0.9985, mean_rel_err=0.0528, dist_var_expl=0.9959, pyth_err=1.85e-15, 44.5s
+19:48:10 DEBUG      [F L4/layer16/correct] 29/29 concepts with bases
+19:48:34 INFO       [F L4/layer16/correct] 406 pairs from 29 concepts, 384 superposition flags, 24.2s
+19:48:34 INFO       [JL L4/layer16/correct] N=2897, k=425, all_pairs, 4,194,856 pairs
+19:48:37 INFO       [JL L4/layer16/correct] Spearman=0.9981, Pearson=0.9982, mean_rel_err=0.0534, dist_var_expl=0.9955, pyth_err=2.55e-15, 3.6s
+19:48:39 DEBUG      [F L4/layer16/wrong] 29/29 concepts with bases
+19:49:26 INFO       [F L4/layer16/wrong] 406 pairs from 29 concepts, 354 superposition flags, 47.1s
+19:49:26 INFO       [JL L4/layer16/wrong] N=7103, k=490, all_pairs, 25,222,753 pairs
+19:49:48 INFO       [JL L4/layer16/wrong] Spearman=0.9982, Pearson=0.9985, mean_rel_err=0.0559, dist_var_expl=0.9961, pyth_err=2.18e-15, 22.0s
+19:50:00 DEBUG      [F L4/layer20/all] 34/35 concepts with bases
+19:50:50 INFO       [F L4/layer20/all] 561 pairs from 34 concepts, 522 superposition flags, 49.8s
+19:50:50 INFO       [JL L4/layer20/all] N=10000, k=484, all_pairs, 49,995,000 pairs
+19:51:35 INFO       [JL L4/layer20/all] Spearman=0.9989, Pearson=0.9992, mean_rel_err=0.0471, dist_var_expl=0.9983, pyth_err=2.63e-15, 44.9s
+19:51:58 DEBUG      [F L4/layer20/correct] 29/29 concepts with bases
+19:52:26 INFO       [F L4/layer20/correct] 406 pairs from 29 concepts, 370 superposition flags, 28.5s
+19:52:26 INFO       [JL L4/layer20/correct] N=2897, k=410, all_pairs, 4,194,856 pairs
+19:52:30 INFO       [JL L4/layer20/correct] Spearman=0.9987, Pearson=0.9991, mean_rel_err=0.0485, dist_var_expl=0.9982, pyth_err=2.02e-15, 3.5s
+19:52:32 DEBUG      [F L4/layer20/wrong] 29/29 concepts with bases

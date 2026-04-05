@@ -1,0 +1,59 @@
+19:31:18 INFO     ======================================================================
+19:31:18 INFO     Phase F/JL — Between-Concept Angles & JL Distance Check
+19:31:18 INFO     ======================================================================
+19:31:18 INFO     Phase F levels: [1, 2, 3, 4, 5]
+19:31:18 INFO     JL levels: [2, 3, 4, 5]
+19:31:18 INFO     Layers: [4, 6, 8, 12, 16, 20, 24, 28, 31]
+19:31:18 INFO     Populations: all viable
+19:31:18 INFO     GPU (CuPy): available
+19:31:18 INFO     Phase F only: False
+19:31:18 INFO     JL only: False
+19:31:18 INFO     Phase E spot-check OK: union_basis.npy shape (393, 4096)
+19:31:18 INFO     Phase D metadata files: 2844
+19:31:18 INFO     L1: N=64, populations=['all']
+L1:   0%|          | 0/9 [00:00<?, ?it/s]                                         19:31:18 INFO     L2: N=4000, populations=['all', 'correct']
+L2:   0%|          | 0/9 [00:00<?, ?it/s]L2:  33%|███▎      | 3/9 [00:00<00:00, 22.78it/s]L2:  67%|██████▋   | 6/9 [00:00<00:00, 23.35it/s]L2: 100%|██████████| 9/9 [00:00<00:00, 23.78it/s]                                                 19:31:19 INFO     L3: N=10000, populations=['all', 'correct', 'wrong']
+L3:   0%|          | 0/9 [00:00<?, ?it/s]L3:  22%|██▏       | 2/9 [00:00<00:00, 10.86it/s]L3:  44%|████▍     | 4/9 [00:00<00:00, 10.98it/s]L3:  67%|██████▋   | 6/9 [00:00<00:00, 11.08it/s]L3:  89%|████████▉ | 8/9 [00:00<00:00, 11.06it/s]                                                 19:31:20 INFO     L4: N=10000, populations=['all', 'correct', 'wrong']
+L4:   0%|          | 0/9 [00:00<?, ?it/s]19:33:37 INFO       [F L4/layer06/all] 561 pairs from 34 concepts, 520 superposition flags, 137.4s
+19:33:38 INFO       [JL L4/layer06/all] N=10000, k=480, all_pairs, 49,995,000 pairs
+19:34:22 INFO       [JL L4/layer06/all] Spearman=0.9962, Pearson=0.9973, mean_rel_err=0.0856, dist_var_expl=0.9937, pyth_err=3.21e-15, 44.9s
+19:35:51 INFO       [F L4/layer06/correct] 406 pairs from 29 concepts, 405 superposition flags, 66.3s
+19:35:51 INFO       [JL L4/layer06/correct] N=2897, k=438, all_pairs, 4,194,856 pairs
+19:35:55 INFO       [JL L4/layer06/correct] Spearman=0.9969, Pearson=0.9975, mean_rel_err=0.0696, dist_var_expl=0.9947, pyth_err=1.67e-15, 3.8s
+19:37:25 INFO       [F L4/layer06/wrong] 406 pairs from 29 concepts, 350 superposition flags, 88.6s
+19:37:26 INFO       [JL L4/layer06/wrong] N=7103, k=478, all_pairs, 25,222,753 pairs
+19:37:47 INFO       [JL L4/layer06/wrong] Spearman=0.9960, Pearson=0.9974, mean_rel_err=0.0867, dist_var_expl=0.9943, pyth_err=1.78e-15, 22.0s
+L4:  22%|██▏       | 2/9 [06:39<23:17, 199.62s/it]19:39:05 INFO       [F L4/layer08/all] 561 pairs from 34 concepts, 524 superposition flags, 65.8s
+19:39:05 INFO       [JL L4/layer08/all] N=10000, k=480, all_pairs, 49,995,000 pairs
+19:39:50 INFO       [JL L4/layer08/all] Spearman=0.9964, Pearson=0.9970, mean_rel_err=0.0795, dist_var_expl=0.9920, pyth_err=2.71e-15, 44.8s
+19:40:13 INFO       [F L4/layer08/correct] 406 pairs from 29 concepts, 406 superposition flags, 0.2s
+19:40:13 INFO       [JL L4/layer08/correct] N=2897, k=446, all_pairs, 4,194,856 pairs
+19:40:16 INFO       [JL L4/layer08/correct] Spearman=0.9973, Pearson=0.9976, mean_rel_err=0.0626, dist_var_expl=0.9944, pyth_err=2.12e-15, 3.6s
+19:40:22 INFO       [F L4/layer08/wrong] 406 pairs from 29 concepts, 354 superposition flags, 3.9s
+19:40:22 INFO       [JL L4/layer08/wrong] N=7103, k=486, all_pairs, 25,222,753 pairs
+19:40:44 INFO       [JL L4/layer08/wrong] Spearman=0.9964, Pearson=0.9972, mean_rel_err=0.0781, dist_var_expl=0.9927, pyth_err=3.33e-15, 22.3s
+L4:  33%|███▎      | 3/9 [09:36<19:00, 190.14s/it]19:42:37 INFO       [F L4/layer12/all] 595 pairs from 35 concepts, 558 superposition flags, 100.9s
+19:42:38 INFO       [JL L4/layer12/all] N=10000, k=515, all_pairs, 49,995,000 pairs
+19:43:22 INFO       [JL L4/layer12/all] Spearman=0.9975, Pearson=0.9978, mean_rel_err=0.0657, dist_var_expl=0.9937, pyth_err=2.45e-15, 44.4s
+19:43:53 INFO       [F L4/layer12/correct] 406 pairs from 29 concepts, 406 superposition flags, 8.5s
+19:43:53 INFO       [JL L4/layer12/correct] N=2897, k=432, all_pairs, 4,194,856 pairs
+19:43:56 INFO       [JL L4/layer12/correct] Spearman=0.9973, Pearson=0.9975, mean_rel_err=0.0634, dist_var_expl=0.9938, pyth_err=3.80e-15, 3.6s
+19:45:15 INFO       [F L4/layer12/wrong] 406 pairs from 29 concepts, 353 superposition flags, 76.8s
+19:45:15 INFO       [JL L4/layer12/wrong] N=7103, k=491, all_pairs, 25,222,753 pairs
+19:45:37 INFO       [JL L4/layer12/wrong] Spearman=0.9969, Pearson=0.9974, mean_rel_err=0.0716, dist_var_expl=0.9929, pyth_err=1.51e-15, 22.0s
+L4:  44%|████▍     | 4/9 [14:28<19:01, 228.37s/it]19:47:00 INFO       [F L4/layer16/all] 561 pairs from 34 concepts, 553 superposition flags, 71.7s
+19:47:01 INFO       [JL L4/layer16/all] N=10000, k=507, all_pairs, 49,995,000 pairs
+19:47:45 INFO       [JL L4/layer16/all] Spearman=0.9984, Pearson=0.9985, mean_rel_err=0.0528, dist_var_expl=0.9959, pyth_err=1.85e-15, 44.5s
+19:48:34 INFO       [F L4/layer16/correct] 406 pairs from 29 concepts, 384 superposition flags, 24.2s
+19:48:34 INFO       [JL L4/layer16/correct] N=2897, k=425, all_pairs, 4,194,856 pairs
+19:48:37 INFO       [JL L4/layer16/correct] Spearman=0.9981, Pearson=0.9982, mean_rel_err=0.0534, dist_var_expl=0.9955, pyth_err=2.55e-15, 3.6s
+19:49:26 INFO       [F L4/layer16/wrong] 406 pairs from 29 concepts, 354 superposition flags, 47.1s
+19:49:26 INFO       [JL L4/layer16/wrong] N=7103, k=490, all_pairs, 25,222,753 pairs
+19:49:48 INFO       [JL L4/layer16/wrong] Spearman=0.9982, Pearson=0.9985, mean_rel_err=0.0559, dist_var_expl=0.9961, pyth_err=2.18e-15, 22.0s
+L4:  56%|█████▌    | 5/9 [18:40<15:45, 236.41s/it]19:50:50 INFO       [F L4/layer20/all] 561 pairs from 34 concepts, 522 superposition flags, 49.8s
+19:50:50 INFO       [JL L4/layer20/all] N=10000, k=484, all_pairs, 49,995,000 pairs
+19:51:35 INFO       [JL L4/layer20/all] Spearman=0.9989, Pearson=0.9992, mean_rel_err=0.0471, dist_var_expl=0.9983, pyth_err=2.63e-15, 44.9s
+19:52:26 INFO       [F L4/layer20/correct] 406 pairs from 29 concepts, 370 superposition flags, 28.5s
+19:52:26 INFO       [JL L4/layer20/correct] N=2897, k=410, all_pairs, 4,194,856 pairs
+19:52:30 INFO       [JL L4/layer20/correct] Spearman=0.9987, Pearson=0.9991, mean_rel_err=0.0485, dist_var_expl=0.9982, pyth_err=2.02e-15, 3.5s
+slurmstepd: error: *** JOB 6953301 ON babel-v9-32 CANCELLED AT 2026-04-04T19:53:04 DUE TO PREEMPTION ***
