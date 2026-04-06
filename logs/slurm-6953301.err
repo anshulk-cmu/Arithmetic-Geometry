@@ -1,59 +1,54 @@
-19:31:18 INFO     ======================================================================
-19:31:18 INFO     Phase F/JL — Between-Concept Angles & JL Distance Check
-19:31:18 INFO     ======================================================================
-19:31:18 INFO     Phase F levels: [1, 2, 3, 4, 5]
-19:31:18 INFO     JL levels: [2, 3, 4, 5]
-19:31:18 INFO     Layers: [4, 6, 8, 12, 16, 20, 24, 28, 31]
-19:31:18 INFO     Populations: all viable
-19:31:18 INFO     GPU (CuPy): available
-19:31:18 INFO     Phase F only: False
-19:31:18 INFO     JL only: False
-19:31:18 INFO     Phase E spot-check OK: union_basis.npy shape (393, 4096)
-19:31:18 INFO     Phase D metadata files: 2844
-19:31:18 INFO     L1: N=64, populations=['all']
-L1:   0%|          | 0/9 [00:00<?, ?it/s]                                         19:31:18 INFO     L2: N=4000, populations=['all', 'correct']
-L2:   0%|          | 0/9 [00:00<?, ?it/s]L2:  33%|███▎      | 3/9 [00:00<00:00, 22.78it/s]L2:  67%|██████▋   | 6/9 [00:00<00:00, 23.35it/s]L2: 100%|██████████| 9/9 [00:00<00:00, 23.78it/s]                                                 19:31:19 INFO     L3: N=10000, populations=['all', 'correct', 'wrong']
-L3:   0%|          | 0/9 [00:00<?, ?it/s]L3:  22%|██▏       | 2/9 [00:00<00:00, 10.86it/s]L3:  44%|████▍     | 4/9 [00:00<00:00, 10.98it/s]L3:  67%|██████▋   | 6/9 [00:00<00:00, 11.08it/s]L3:  89%|████████▉ | 8/9 [00:00<00:00, 11.06it/s]                                                 19:31:20 INFO     L4: N=10000, populations=['all', 'correct', 'wrong']
-L4:   0%|          | 0/9 [00:00<?, ?it/s]19:33:37 INFO       [F L4/layer06/all] 561 pairs from 34 concepts, 520 superposition flags, 137.4s
-19:33:38 INFO       [JL L4/layer06/all] N=10000, k=480, all_pairs, 49,995,000 pairs
-19:34:22 INFO       [JL L4/layer06/all] Spearman=0.9962, Pearson=0.9973, mean_rel_err=0.0856, dist_var_expl=0.9937, pyth_err=3.21e-15, 44.9s
-19:35:51 INFO       [F L4/layer06/correct] 406 pairs from 29 concepts, 405 superposition flags, 66.3s
-19:35:51 INFO       [JL L4/layer06/correct] N=2897, k=438, all_pairs, 4,194,856 pairs
-19:35:55 INFO       [JL L4/layer06/correct] Spearman=0.9969, Pearson=0.9975, mean_rel_err=0.0696, dist_var_expl=0.9947, pyth_err=1.67e-15, 3.8s
-19:37:25 INFO       [F L4/layer06/wrong] 406 pairs from 29 concepts, 350 superposition flags, 88.6s
-19:37:26 INFO       [JL L4/layer06/wrong] N=7103, k=478, all_pairs, 25,222,753 pairs
-19:37:47 INFO       [JL L4/layer06/wrong] Spearman=0.9960, Pearson=0.9974, mean_rel_err=0.0867, dist_var_expl=0.9943, pyth_err=1.78e-15, 22.0s
-L4:  22%|██▏       | 2/9 [06:39<23:17, 199.62s/it]19:39:05 INFO       [F L4/layer08/all] 561 pairs from 34 concepts, 524 superposition flags, 65.8s
-19:39:05 INFO       [JL L4/layer08/all] N=10000, k=480, all_pairs, 49,995,000 pairs
-19:39:50 INFO       [JL L4/layer08/all] Spearman=0.9964, Pearson=0.9970, mean_rel_err=0.0795, dist_var_expl=0.9920, pyth_err=2.71e-15, 44.8s
-19:40:13 INFO       [F L4/layer08/correct] 406 pairs from 29 concepts, 406 superposition flags, 0.2s
-19:40:13 INFO       [JL L4/layer08/correct] N=2897, k=446, all_pairs, 4,194,856 pairs
-19:40:16 INFO       [JL L4/layer08/correct] Spearman=0.9973, Pearson=0.9976, mean_rel_err=0.0626, dist_var_expl=0.9944, pyth_err=2.12e-15, 3.6s
-19:40:22 INFO       [F L4/layer08/wrong] 406 pairs from 29 concepts, 354 superposition flags, 3.9s
-19:40:22 INFO       [JL L4/layer08/wrong] N=7103, k=486, all_pairs, 25,222,753 pairs
-19:40:44 INFO       [JL L4/layer08/wrong] Spearman=0.9964, Pearson=0.9972, mean_rel_err=0.0781, dist_var_expl=0.9927, pyth_err=3.33e-15, 22.3s
-L4:  33%|███▎      | 3/9 [09:36<19:00, 190.14s/it]19:42:37 INFO       [F L4/layer12/all] 595 pairs from 35 concepts, 558 superposition flags, 100.9s
-19:42:38 INFO       [JL L4/layer12/all] N=10000, k=515, all_pairs, 49,995,000 pairs
-19:43:22 INFO       [JL L4/layer12/all] Spearman=0.9975, Pearson=0.9978, mean_rel_err=0.0657, dist_var_expl=0.9937, pyth_err=2.45e-15, 44.4s
-19:43:53 INFO       [F L4/layer12/correct] 406 pairs from 29 concepts, 406 superposition flags, 8.5s
-19:43:53 INFO       [JL L4/layer12/correct] N=2897, k=432, all_pairs, 4,194,856 pairs
-19:43:56 INFO       [JL L4/layer12/correct] Spearman=0.9973, Pearson=0.9975, mean_rel_err=0.0634, dist_var_expl=0.9938, pyth_err=3.80e-15, 3.6s
-19:45:15 INFO       [F L4/layer12/wrong] 406 pairs from 29 concepts, 353 superposition flags, 76.8s
-19:45:15 INFO       [JL L4/layer12/wrong] N=7103, k=491, all_pairs, 25,222,753 pairs
-19:45:37 INFO       [JL L4/layer12/wrong] Spearman=0.9969, Pearson=0.9974, mean_rel_err=0.0716, dist_var_expl=0.9929, pyth_err=1.51e-15, 22.0s
-L4:  44%|████▍     | 4/9 [14:28<19:01, 228.37s/it]19:47:00 INFO       [F L4/layer16/all] 561 pairs from 34 concepts, 553 superposition flags, 71.7s
-19:47:01 INFO       [JL L4/layer16/all] N=10000, k=507, all_pairs, 49,995,000 pairs
-19:47:45 INFO       [JL L4/layer16/all] Spearman=0.9984, Pearson=0.9985, mean_rel_err=0.0528, dist_var_expl=0.9959, pyth_err=1.85e-15, 44.5s
-19:48:34 INFO       [F L4/layer16/correct] 406 pairs from 29 concepts, 384 superposition flags, 24.2s
-19:48:34 INFO       [JL L4/layer16/correct] N=2897, k=425, all_pairs, 4,194,856 pairs
-19:48:37 INFO       [JL L4/layer16/correct] Spearman=0.9981, Pearson=0.9982, mean_rel_err=0.0534, dist_var_expl=0.9955, pyth_err=2.55e-15, 3.6s
-19:49:26 INFO       [F L4/layer16/wrong] 406 pairs from 29 concepts, 354 superposition flags, 47.1s
-19:49:26 INFO       [JL L4/layer16/wrong] N=7103, k=490, all_pairs, 25,222,753 pairs
-19:49:48 INFO       [JL L4/layer16/wrong] Spearman=0.9982, Pearson=0.9985, mean_rel_err=0.0559, dist_var_expl=0.9961, pyth_err=2.18e-15, 22.0s
-L4:  56%|█████▌    | 5/9 [18:40<15:45, 236.41s/it]19:50:50 INFO       [F L4/layer20/all] 561 pairs from 34 concepts, 522 superposition flags, 49.8s
-19:50:50 INFO       [JL L4/layer20/all] N=10000, k=484, all_pairs, 49,995,000 pairs
-19:51:35 INFO       [JL L4/layer20/all] Spearman=0.9989, Pearson=0.9992, mean_rel_err=0.0471, dist_var_expl=0.9983, pyth_err=2.63e-15, 44.9s
-19:52:26 INFO       [F L4/layer20/correct] 406 pairs from 29 concepts, 370 superposition flags, 28.5s
-19:52:26 INFO       [JL L4/layer20/correct] N=2897, k=410, all_pairs, 4,194,856 pairs
-19:52:30 INFO       [JL L4/layer20/correct] Spearman=0.9987, Pearson=0.9991, mean_rel_err=0.0485, dist_var_expl=0.9982, pyth_err=2.02e-15, 3.5s
-slurmstepd: error: *** JOB 6953301 ON babel-v9-32 CANCELLED AT 2026-04-04T19:53:04 DUE TO PREEMPTION ***
+14:50:20 INFO     ======================================================================
+14:50:20 INFO     Phase F/JL — Between-Concept Angles & JL Distance Check
+14:50:20 INFO     ======================================================================
+14:50:20 INFO     Phase F levels: [1, 2, 3, 4, 5]
+14:50:20 INFO     JL levels: [2, 3, 4, 5]
+14:50:20 INFO     Layers: [4, 6, 8, 12, 16, 20, 24, 28, 31]
+14:50:20 INFO     Populations: all viable
+14:50:20 INFO     GPU (CuPy): available
+14:50:20 INFO     Phase F only: False
+14:50:20 INFO     JL only: False
+14:50:20 INFO     Phase E spot-check OK: union_basis.npy shape (393, 4096)
+14:50:20 INFO     Phase D metadata files: 2844
+14:50:20 INFO     L1: N=64, populations=['all']
+L1:   0%|          | 0/9 [00:00<?, ?it/s]                                         14:50:20 INFO     L2: N=4000, populations=['all', 'correct']
+L2:   0%|          | 0/9 [00:00<?, ?it/s]L2:  11%|█         | 1/9 [00:00<00:01,  4.79it/s]L2:  22%|██▏       | 2/9 [00:00<00:01,  4.57it/s]L2:  33%|███▎      | 3/9 [00:00<00:01,  4.60it/s]L2:  44%|████▍     | 4/9 [00:00<00:01,  4.79it/s]L2:  56%|█████▌    | 5/9 [00:01<00:00,  4.79it/s]L2:  67%|██████▋   | 6/9 [00:01<00:00,  4.86it/s]L2:  78%|███████▊  | 7/9 [00:01<00:00,  4.78it/s]L2:  89%|████████▉ | 8/9 [00:01<00:00,  5.12it/s]L2: 100%|██████████| 9/9 [00:01<00:00,  5.05it/s]                                                 14:50:22 INFO     L3: N=10000, populations=['all', 'correct', 'wrong']
+L3:   0%|          | 0/9 [00:00<?, ?it/s]L3:  11%|█         | 1/9 [00:00<00:03,  2.35it/s]L3:  22%|██▏       | 2/9 [00:00<00:03,  2.32it/s]L3:  33%|███▎      | 3/9 [00:01<00:02,  2.06it/s]L3:  44%|████▍     | 4/9 [00:01<00:02,  2.17it/s]L3:  56%|█████▌    | 5/9 [00:02<00:01,  2.31it/s]L3:  67%|██████▋   | 6/9 [00:02<00:01,  2.33it/s]L3:  78%|███████▊  | 7/9 [00:03<00:00,  2.17it/s]L3:  89%|████████▉ | 8/9 [00:03<00:00,  2.22it/s]L3: 100%|██████████| 9/9 [00:04<00:00,  2.21it/s]                                                 14:50:26 INFO     L4: N=10000, populations=['all', 'correct', 'wrong']
+L4:   0%|          | 0/9 [00:00<?, ?it/s]L4:  11%|█         | 1/9 [00:00<00:04,  1.85it/s]L4:  22%|██▏       | 2/9 [00:01<00:04,  1.60it/s]L4:  33%|███▎      | 3/9 [00:02<00:04,  1.43it/s]L4:  44%|████▍     | 4/9 [00:02<00:03,  1.37it/s]L4:  56%|█████▌    | 5/9 [00:03<00:03,  1.33it/s]L4:  67%|██████▋   | 6/9 [00:04<00:02,  1.32it/s]L4:  78%|███████▊  | 7/9 [00:05<00:01,  1.36it/s]L4:  89%|████████▉ | 8/9 [00:05<00:00,  1.32it/s]L4: 100%|██████████| 9/9 [00:06<00:00,  1.34it/s]                                                 14:50:33 INFO     L5: N=122223, populations=['all', 'correct', 'wrong']
+L5:   0%|          | 0/9 [00:00<?, ?it/s]L5:  11%|█         | 1/9 [00:06<00:53,  6.65s/it]L5:  22%|██▏       | 2/9 [00:07<00:22,  3.25s/it]L5:  33%|███▎      | 3/9 [00:08<00:12,  2.16s/it]L5:  44%|████▍     | 4/9 [00:09<00:08,  1.63s/it]L5:  56%|█████▌    | 5/9 [00:10<00:05,  1.34s/it]L5:  67%|██████▋   | 6/9 [00:10<00:03,  1.19s/it]L5:  78%|███████▊  | 7/9 [00:11<00:02,  1.08s/it]L5:  89%|████████▉ | 8/9 [00:12<00:01,  1.01s/it]L5: 100%|██████████| 9/9 [00:13<00:00,  1.03it/s]                                                 14:50:46 INFO     
+14:50:46 INFO     Computation complete: 108 Phase F slices, 99 JL slices
+14:50:46 INFO     
+14:50:46 INFO     Generating summary CSVs...
+14:50:47 INFO       Saved phase_f_principal_angles.csv (42049 rows)
+14:50:47 INFO       Saved superposition_summary.csv (39525 rows)
+14:50:50 INFO       Saved redundancy_decomposition.csv (41345 rows)
+14:50:50 INFO       Saved jl_distance_preservation.csv (99 rows)
+14:50:50 INFO     
+14:50:50 INFO     Generating plots...
+/home/anshulk/arithmetic-geometry/phase_f_jl.py:1228: MatplotlibDeprecationWarning: The 'labels' parameter of boxplot() has been renamed 'tick_labels' since Matplotlib 3.9; support for the old name will be dropped in 3.11.
+  bp = ax.boxplot(data, labels=groups, patch_artist=True)
+/home/anshulk/arithmetic-geometry/phase_f_jl.py:1228: MatplotlibDeprecationWarning: The 'labels' parameter of boxplot() has been renamed 'tick_labels' since Matplotlib 3.9; support for the old name will be dropped in 3.11.
+  bp = ax.boxplot(data, labels=groups, patch_artist=True)
+/home/anshulk/arithmetic-geometry/phase_f_jl.py:1228: MatplotlibDeprecationWarning: The 'labels' parameter of boxplot() has been renamed 'tick_labels' since Matplotlib 3.9; support for the old name will be dropped in 3.11.
+  bp = ax.boxplot(data, labels=groups, patch_artist=True)
+/home/anshulk/arithmetic-geometry/phase_f_jl.py:1228: MatplotlibDeprecationWarning: The 'labels' parameter of boxplot() has been renamed 'tick_labels' since Matplotlib 3.9; support for the old name will be dropped in 3.11.
+  bp = ax.boxplot(data, labels=groups, patch_artist=True)
+/home/anshulk/arithmetic-geometry/phase_f_jl.py:1228: MatplotlibDeprecationWarning: The 'labels' parameter of boxplot() has been renamed 'tick_labels' since Matplotlib 3.9; support for the old name will be dropped in 3.11.
+  bp = ax.boxplot(data, labels=groups, patch_artist=True)
+/home/anshulk/arithmetic-geometry/phase_f_jl.py:1228: MatplotlibDeprecationWarning: The 'labels' parameter of boxplot() has been renamed 'tick_labels' since Matplotlib 3.9; support for the old name will be dropped in 3.11.
+  bp = ax.boxplot(data, labels=groups, patch_artist=True)
+/home/anshulk/arithmetic-geometry/phase_f_jl.py:1228: MatplotlibDeprecationWarning: The 'labels' parameter of boxplot() has been renamed 'tick_labels' since Matplotlib 3.9; support for the old name will be dropped in 3.11.
+  bp = ax.boxplot(data, labels=groups, patch_artist=True)
+/home/anshulk/arithmetic-geometry/phase_f_jl.py:1228: MatplotlibDeprecationWarning: The 'labels' parameter of boxplot() has been renamed 'tick_labels' since Matplotlib 3.9; support for the old name will be dropped in 3.11.
+  bp = ax.boxplot(data, labels=groups, patch_artist=True)
+/home/anshulk/arithmetic-geometry/phase_f_jl.py:1228: MatplotlibDeprecationWarning: The 'labels' parameter of boxplot() has been renamed 'tick_labels' since Matplotlib 3.9; support for the old name will be dropped in 3.11.
+  bp = ax.boxplot(data, labels=groups, patch_artist=True)
+14:51:07 INFO       Generated up to 53 plots in /home/anshulk/arithmetic-geometry/plots/phase_f
+14:51:07 INFO     
+14:51:07 INFO     ======================================================================
+14:51:07 INFO     Phase F/JL complete: 47s (0.8 min)
+14:51:07 INFO       Phase F: 108 slices, 42049 total pairs
+14:51:07 INFO       JL: 99 slices, total compute 61545s
+14:51:07 INFO       JL Spearman range: 0.9942 — 0.9995
+14:51:07 INFO       Superposition flags: 39525/42049
+14:51:07 INFO     ======================================================================

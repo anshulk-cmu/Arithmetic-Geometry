@@ -49,6 +49,8 @@ For L5 carry analysis, rare carry values are binned: carry_1 >= 12, carry_2 >= 1
 | Phase B: Concept Deconfounding | Complete | `phase_b_deconfounding.py` | 2,677 classified pairs, correlation matrices, deconfounding plan |
 | Phase C: Concept Subspaces | Complete (rerun Mar 19) | `phase_c_subspaces.py` | 2,844 subspaces, 2,750 significant (96.7%), GPU-accelerated |
 | Phase D: LDA Refinement | Complete (L1-L5, 18h on 4×A6000) | `phase_d_lda.py`, `run_phase_d.sh` | 1,035 LDA results, 1,026 significant (99.1%), 247 plots |
+| Phase E: Residual Hunting | Complete (L1-L5) | `phase_e_residual_hunting.py`, `run_phase_e.sh` | Union bases, var_explained 80.8-96.6%, Marchenko-Pastur validation |
+| Phase F/JL: Between-Concept Angles & JL Check | Complete (L1-L5, 17.1h on A6000) | `phase_f_jl.py`, `run_phase_f_jl.sh` | 42,049 angle pairs, 39,525 superposition flags, 99 JL slices, 53 plots |
 | Fourier Screening | Planned | — | — |
 
 ## Key Findings
@@ -93,6 +95,24 @@ For L5 carry analysis, rare carry values are binned: carry_1 >= 12, carry_2 >= 1
 - **Correct/wrong divergence peaks at the output stage**: principal angles between correct and wrong subspaces are 10-18° for input digits, 13-31° for intermediates, 38-48° for middle answer digits. The failure manifests in output encoding, not input encoding
 - **Subspace dimensionality is flat across layers**: carries hold the same linear rank from layer 4 to layer 31, yet the model is clearly computing with them. The computation transforms nonlinearly between layers while projecting to the same linear shadow
 
+### Phase E: The Union Subspace Captures 81-97% of Activation Variance
+
+- **Union subspace dimensionality scales with difficulty**: k ≈ 240 (L2), 380 (L3), 490 (L4), 540 (L5) — sub-linear growth despite 8× increase in arithmetic complexity
+- **Variance explained ranges from 80.8% (L5/layer06) to 96.6% (L2/layer04)** across all 36 level×layer combinations
+- **440 residual eigenvalues above Marchenko-Pastur at L5**: the residual is not pure noise — there are structured components, including Spearman >> Pearson nonlinear encoding signatures for partial product interactions
+- **The residual variance is isotropic**: spread across ~3,500 dimensions, each residual dimension carries 28-82× less variance than each projected dimension
+
+### Phase F/JL: Concepts Share Infrastructure, and the Subspace Is Geometrically Complete (subspace-finding pipeline complete)
+
+- **Universal superposition: 39,525 of 42,049 concept pairs (94.0%) share subspace dimensions** significantly below random baselines. At L2, 100% of pairs; at L3-L5, 86-100% depending on layer and population
+- **Algebraic gradient in angles**: carry/colsum/partial-product pairs (T2×T2) have mean θ₁ = 16-32° across levels; input/output digit pairs (T1×T3) have 39-51°. Concepts in the same computational chain share 2× more subspace structure
+- **θ₁ ≈ 0° sanity checks pass**: col_sum_0 ↔ pp_a0_x_b0, carry_0 ↔ col_sum_0, and col_sum_4 ↔ pp_a2_x_b2 share directions exactly (θ₁ < 0.0001°) at every level — confirming Phase D bases capture real algebraic structure
+- **Correct computations are more superposed**: correct population has mean θ₁ 26-35° vs wrong's 34-43° at L3-L5. The model packs concepts tighter when it gets the answer right
+- **Near-perfect JL distance preservation**: Spearman correlations between full-space and projected distances range from 0.9942 to 0.9995 across all 99 slices. The union subspace preserves >98.7% of pairwise distance structure at every level, layer, and population
+- **The variance-vs-distance gap confirms residual is noise**: Phase E's 3-19% residual variance translates to only 0.02-1.28% distance structure lost. The residual is isotropic — it changes activation magnitude but not relative positions
+- **L5 passes the critical test**: with N=122,223 and 7.47 billion pairs per slice, Spearman ≥ 0.9942 at every layer. The nonlinear encoding detected by Phase E is real but low-amplitude — geometrically minor
+- **43.9 billion pairwise distances computed, zero subsampling**: every pair at every level, layer, and population. Pythagorean validation errors at machine epsilon (1.5e-15 to 5.4e-15) across all 99 slices
+
 ## Project Structure
 
 ```
@@ -105,12 +125,16 @@ arithmetic-geometry/                       (workspace, in git)
 ├── phase_b_deconfounding.py                # label-level correlation diagnostics (CPU, <1 min)
 ├── phase_c_subspaces.py                   # concept subspace identification via cond. covariance + SVD (GPU-accelerated)
 ├── phase_d_lda.py                         # LDA refinement of Phase C subspaces (GPU-accelerated)
+├── phase_e_residual_hunting.py            # union subspace + variance decomposition (GPU)
+├── phase_f_jl.py                          # between-concept angles + JL distance check (GPU)
 ├── config.yaml                            # all parameters, paths, model config
 ├── run.sh                                 # SLURM: main pipeline (GPU, ~14 min)
 ├── run_l5_screen.sh                       # SLURM: L5 screening (GPU, ~50 min)
 ├── run_phase_b.sh                         # SLURM: Phase B deconfounding (CPU, <1 min)
 ├── run_phase_c.sh                         # SLURM: Phase C subspaces (GPU, ~3.5 hours)
 ├── run_phase_d.sh                         # SLURM: Phase D LDA refinement (4×GPU, ~18 hours L5)
+├── run_phase_e.sh                         # SLURM: Phase E residual hunting (GPU)
+├── run_phase_f_jl.sh                      # SLURM: Phase F/JL angles + distances (GPU, ~17 hours)
 ├── labels/                                # per-level labels + analysis summary
 │   ├── level_{1-5}.json                   # L5 is 160 MB (122,223 problems)
 │   └── analysis_summary.json
@@ -141,11 +165,21 @@ arithmetic-geometry/                       (workspace, in git)
 │   ├── classified_pairs.csv               # 2,677 pairs with classification + action
 │   ├── deconfounding_plan.json            # per-level confound lists for Phase C
 │   └── summary.json                       # aggregate statistics
-└── phase_c/                               # Phase C outputs (26 GB)
-    ├── residualized/                      # 45 product-residualized activation files (21 GB)
-    ├── subspaces/                         # concept subspaces (basis, eigenvalues, null) (5.5 GB)
-    │   └── L{N}/layer_{LL}/{pop}/{concept}/
-    └── summary/                           # master CSVs (results, divergence, alignment)
+├── phase_c/                               # Phase C outputs (26 GB)
+│   ├── residualized/                      # 45 product-residualized activation files (21 GB)
+│   ├── subspaces/                         # concept subspaces (basis, eigenvalues, null) (5.5 GB)
+│   │   └── L{N}/layer_{LL}/{pop}/{concept}/
+│   └── summary/                           # master CSVs (results, divergence, alignment)
+├── phase_d/                               # Phase D LDA outputs
+│   └── L{N}/layer_{LL}/{pop}/{concept}/   # merged bases, eigenvalues, metadata
+├── phase_e/                               # Phase E outputs
+│   └── L{N}/layer_{LL}/{pop}/             # union bases, var_explained, eigenvalue spectra
+└── phase_f/                               # Phase F/JL outputs
+    ├── principal_angles/                  # pairwise angle CSVs per (level, layer, pop)
+    ├── jl_check/                          # JL metrics per (level, layer, pop)
+    └── summary/                           # phase_f_principal_angles.csv (42,049 rows),
+                                           # superposition_summary.csv (39,525 rows),
+                                           # jl_distance_preservation.csv (99 rows)
 ```
 
 ## Setup
@@ -182,6 +216,12 @@ sbatch run_phase_c.sh
 # Phase D: LDA refinement (4×A6000 GPU, ~18 hours for L5)
 sbatch run_phase_d.sh
 
+# Phase E: Residual hunting (GPU, ~2 hours)
+sbatch run_phase_e.sh
+
+# Phase F/JL: Between-concept angles + JL distance check (A6000 GPU, ~17 hours)
+sbatch run_phase_f_jl.sh
+
 # Or run Phase C with pilot mode first (L3/layer16 only, ~2 minutes)
 python phase_c_subspaces.py --config config.yaml --pilot
 ```
@@ -192,13 +232,13 @@ python phase_c_subspaces.py --config config.yaml --pilot
 - **[Phase A Analysis](docs/phase_a_analysis.md)** — UMAP/t-SNE embedding methodology, interestingness scoring, CKA matrices, activation norm profiles, priority list for downstream phases
 - **[Phase B Analysis](docs/phase_b_analysis.md)** — Label-level correlation diagnostics, the suppression effect discovery, four-category classification system, deconfounding plan, all 2,677 pairs verified
 - **[Phase C Analysis](docs/phase_c_analysis.md)** — Conditional covariance + SVD methodology, permutation null validation, eigenvalue spectra, cross-layer alignment, correct/wrong divergence, all 2,844 subspaces documented. Includes first-run vs rerun comparison showing which findings survived the 17x L5 scale-up
+- **[Phase F/JL Analysis](docs/phase_f_jl_analysis.md)** — Principal angles between all concept pairs, superposition detection, JL distance preservation across 99 slices with 43.9 billion pairwise distances, variance-vs-distance gap analysis, complete L2-L5 results. Marks the completion of the subspace-finding pipeline
 
 ## What's Next: Beyond Linear Subspaces
 
-Phase C established the linear baseline — every atomic concept has a clean subspace, but composition is missing. The next stages look *inside* those subspaces for the nonlinear structure that encodes the actual computation.
+**The subspace-finding pipeline (Phases A–F/JL) is complete.** Every atomic concept has a clean linear subspace (Phase C/D). The union of 43 concept subspaces captures >98.7% of pairwise distance structure (Phase E/JL). Concepts share dimensions in proportion to their algebraic relationship (Phase F). Composed middle answer digits lack linear subspaces at L5 (Phase C). The linear toolkit has done everything it can — the next stages look *inside* the subspaces for the nonlinear structure that encodes the actual computation.
 
 - **Fourier screening**: do digit centroids sit on circles inside their 9D subspaces? If a_tens values 0-9 trace a periodic curve, that's a Fourier encoding — the same structure Bai et al. found in toy models, now tested in a production LLM. Circles enable rotation-based arithmetic; lines don't
-- **GPLVM / GP metric tensors**: full nonlinear manifold characterization with uncertainty. Discovers intrinsic dimensionality and shape without assuming circles or helices. For correct vs. wrong: does the correct population trace a clean 1D curve while the wrong population scatters? The GP gives uncertainty bars, which matter for rare carry values
-- **Phase D — LDA refinement** *(complete)*: Fisher LDA with permutation null to catch low-variance carry directions Phase C may have missed. Last linear method — completing the linear toolkit before going fully nonlinear
-- **Manifold interaction**: how do digit manifolds and carry manifolds compose? If carry propagation is a geometric operation (rotation on the carry manifold conditional on the digit manifold), that explains both how computation works and how it fails
+- **GPLVM / GP metric tensors**: full nonlinear manifold characterization with uncertainty. Discovers intrinsic dimensionality and shape without assuming circles or helices. For correct vs. wrong: does the correct population trace a clean 1D curve while the wrong population scatters? The GP gives uncertainty bars, which matter for rare carry values. Phase JL confirms these methods can operate in the k-dimensional union subspace (k ≈ 240-540) with negligible information loss
+- **Manifold interaction**: how do digit manifolds and carry manifolds compose? Phase F shows carry↔col_sum pairs share directions (θ₁ < 5°), constraining where composition manifolds can live. If carry propagation is a geometric operation (rotation on the carry manifold conditional on the digit manifold), that explains both how computation works and how it fails
 - **Causal validation**: ablation and patching along discovered manifolds. Steer activations along the digit circle and verify the output rotates accordingly. This is the difference between "the model stores X here" and "the model uses X here"

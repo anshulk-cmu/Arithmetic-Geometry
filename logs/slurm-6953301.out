@@ -3,7 +3,7 @@ Phase F/JL — Between-Concept Angles & JL Distance Check
 ============================================================
 Job ID: 6953301
 Node: babel-v9-32
-Start time: Sat Apr  4 19:31:13 EDT 2026
+Start time: Sun Apr  5 14:50:12 EDT 2026
 ============================================================
 Activating conda environment...
 
@@ -36,3 +36,38 @@ Running Phase F/JL
   GPU: 1× A6000
 ============================================================
 
+
+============================================================
+Post-Run Validation
+============================================================
+--- Phase F (Principal Angles) ---
+  Principal angles metadata.json: 108 / 108
+  Principal angles pairwise_angles.csv: 99
+
+--- JL (Distance Preservation) ---
+  JL metadata.json: 99 / 99
+  JL jl_results.json: 99
+
+--- Summary files ---
+  phase_f_principal_angles.csv: 42050 rows
+  superposition_summary.csv: 39526 rows
+  redundancy_decomposition.csv: 41346 rows
+  jl_distance_preservation.csv: 100 rows
+
+--- Plots ---
+  superposition_heatmaps: 9 plots
+  angle_distributions: 4 plots
+  cross_layer_superposition: 15 plots
+  tier_boxplots: 9 plots
+  jl_scatter: 9 plots
+  jl_trajectories: 4 plots
+  variance_budget: 3 plots
+
+============================================================
+Job Complete
+============================================================
+End time: Sun Apr  5 14:51:07 EDT 2026
+Exit code: 0
+Total runtime: 55 seconds (0 minutes)
+
+Phase F/JL completed successfully

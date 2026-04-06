@@ -758,3 +758,1019 @@
 19:52:26 INFO       [JL L4/layer20/correct] N=2897, k=410, all_pairs, 4,194,856 pairs
 19:52:30 INFO       [JL L4/layer20/correct] Spearman=0.9987, Pearson=0.9991, mean_rel_err=0.0485, dist_var_expl=0.9982, pyth_err=2.02e-15, 3.5s
 19:52:32 DEBUG      [F L4/layer20/wrong] 29/29 concepts with bases
+20:16:25 INFO     ======================================================================
+20:16:25 INFO     Phase F/JL — Between-Concept Angles & JL Distance Check
+20:16:25 INFO     ======================================================================
+20:16:25 INFO     Phase F levels: [1, 2, 3, 4, 5]
+20:16:25 INFO     JL levels: [2, 3, 4, 5]
+20:16:25 INFO     Layers: [4, 6, 8, 12, 16, 20, 24, 28, 31]
+20:16:25 INFO     Populations: all viable
+20:16:25 INFO     GPU (CuPy): available
+20:16:25 INFO     Phase F only: False
+20:16:25 INFO     JL only: False
+20:16:25 INFO     Phase E spot-check OK: union_basis.npy shape (393, 4096)
+20:16:25 INFO     Phase D metadata files: 2844
+20:16:25 INFO     L1: N=64, populations=['all']
+20:16:25 DEBUG      [F L1/layer04/all] cached — skipping
+20:16:25 DEBUG      [F L1/layer06/all] cached — skipping
+20:16:25 DEBUG      [F L1/layer08/all] cached — skipping
+20:16:25 DEBUG      [F L1/layer12/all] cached — skipping
+20:16:25 DEBUG      [F L1/layer16/all] cached — skipping
+20:16:25 DEBUG      [F L1/layer20/all] cached — skipping
+20:16:25 DEBUG      [F L1/layer24/all] cached — skipping
+20:16:25 DEBUG      [F L1/layer28/all] cached — skipping
+20:16:25 DEBUG      [F L1/layer31/all] cached — skipping
+20:16:25 INFO     L2: N=4000, populations=['all', 'correct']
+20:16:25 DEBUG      [F L2/layer04/all] cached — skipping
+20:16:25 DEBUG      [JL L2/layer04/all] cached — skipping
+20:16:25 DEBUG      [F L2/layer04/correct] cached — skipping
+20:16:25 DEBUG      [JL L2/layer04/correct] cached — skipping
+20:16:25 DEBUG      [F L2/layer06/all] cached — skipping
+20:16:25 DEBUG      [JL L2/layer06/all] cached — skipping
+20:16:25 DEBUG      [F L2/layer06/correct] cached — skipping
+20:16:25 DEBUG      [JL L2/layer06/correct] cached — skipping
+20:16:25 DEBUG      [F L2/layer08/all] cached — skipping
+20:16:25 DEBUG      [JL L2/layer08/all] cached — skipping
+20:16:25 DEBUG      [F L2/layer08/correct] cached — skipping
+20:16:26 DEBUG      [JL L2/layer08/correct] cached — skipping
+20:16:26 DEBUG      [F L2/layer12/all] cached — skipping
+20:16:26 DEBUG      [JL L2/layer12/all] cached — skipping
+20:16:26 DEBUG      [F L2/layer12/correct] cached — skipping
+20:16:26 DEBUG      [JL L2/layer12/correct] cached — skipping
+20:16:26 DEBUG      [F L2/layer16/all] cached — skipping
+20:16:26 DEBUG      [JL L2/layer16/all] cached — skipping
+20:16:26 DEBUG      [F L2/layer16/correct] cached — skipping
+20:16:26 DEBUG      [JL L2/layer16/correct] cached — skipping
+20:16:26 DEBUG      [F L2/layer20/all] cached — skipping
+20:16:26 DEBUG      [JL L2/layer20/all] cached — skipping
+20:16:26 DEBUG      [F L2/layer20/correct] cached — skipping
+20:16:26 DEBUG      [JL L2/layer20/correct] cached — skipping
+20:16:26 DEBUG      [F L2/layer24/all] cached — skipping
+20:16:26 DEBUG      [JL L2/layer24/all] cached — skipping
+20:16:26 DEBUG      [F L2/layer24/correct] cached — skipping
+20:16:26 DEBUG      [JL L2/layer24/correct] cached — skipping
+20:16:26 DEBUG      [F L2/layer28/all] cached — skipping
+20:16:26 DEBUG      [JL L2/layer28/all] cached — skipping
+20:16:26 DEBUG      [F L2/layer28/correct] cached — skipping
+20:16:26 DEBUG      [JL L2/layer28/correct] cached — skipping
+20:16:26 DEBUG      [F L2/layer31/all] cached — skipping
+20:16:26 DEBUG      [JL L2/layer31/all] cached — skipping
+20:16:26 DEBUG      [F L2/layer31/correct] cached — skipping
+20:16:26 DEBUG      [JL L2/layer31/correct] cached — skipping
+20:16:26 INFO     L3: N=10000, populations=['all', 'correct', 'wrong']
+20:16:26 DEBUG      [F L3/layer04/all] cached — skipping
+20:16:26 DEBUG      [JL L3/layer04/all] cached — skipping
+20:16:26 DEBUG      [F L3/layer04/correct] cached — skipping
+20:16:26 DEBUG      [JL L3/layer04/correct] cached — skipping
+20:16:26 DEBUG      [F L3/layer04/wrong] cached — skipping
+20:16:26 DEBUG      [JL L3/layer04/wrong] cached — skipping
+20:16:26 DEBUG      [F L3/layer06/all] cached — skipping
+20:16:26 DEBUG      [JL L3/layer06/all] cached — skipping
+20:16:26 DEBUG      [F L3/layer06/correct] cached — skipping
+20:16:26 DEBUG      [JL L3/layer06/correct] cached — skipping
+20:16:26 DEBUG      [F L3/layer06/wrong] cached — skipping
+20:16:26 DEBUG      [JL L3/layer06/wrong] cached — skipping
+20:16:26 DEBUG      [F L3/layer08/all] cached — skipping
+20:16:26 DEBUG      [JL L3/layer08/all] cached — skipping
+20:16:26 DEBUG      [F L3/layer08/correct] cached — skipping
+20:16:26 DEBUG      [JL L3/layer08/correct] cached — skipping
+20:16:26 DEBUG      [F L3/layer08/wrong] cached — skipping
+20:16:26 DEBUG      [JL L3/layer08/wrong] cached — skipping
+20:16:26 DEBUG      [F L3/layer12/all] cached — skipping
+20:16:26 DEBUG      [JL L3/layer12/all] cached — skipping
+20:16:26 DEBUG      [F L3/layer12/correct] cached — skipping
+20:16:26 DEBUG      [JL L3/layer12/correct] cached — skipping
+20:16:26 DEBUG      [F L3/layer12/wrong] cached — skipping
+20:16:26 DEBUG      [JL L3/layer12/wrong] cached — skipping
+20:16:26 DEBUG      [F L3/layer16/all] cached — skipping
+20:16:26 DEBUG      [JL L3/layer16/all] cached — skipping
+20:16:26 DEBUG      [F L3/layer16/correct] cached — skipping
+20:16:26 DEBUG      [JL L3/layer16/correct] cached — skipping
+20:16:26 DEBUG      [F L3/layer16/wrong] cached — skipping
+20:16:26 DEBUG      [JL L3/layer16/wrong] cached — skipping
+20:16:26 DEBUG      [F L3/layer20/all] cached — skipping
+20:16:26 DEBUG      [JL L3/layer20/all] cached — skipping
+20:16:27 DEBUG      [F L3/layer20/correct] cached — skipping
+20:16:27 DEBUG      [JL L3/layer20/correct] cached — skipping
+20:16:27 DEBUG      [F L3/layer20/wrong] cached — skipping
+20:16:27 DEBUG      [JL L3/layer20/wrong] cached — skipping
+20:16:27 DEBUG      [F L3/layer24/all] cached — skipping
+20:16:27 DEBUG      [JL L3/layer24/all] cached — skipping
+20:16:27 DEBUG      [F L3/layer24/correct] cached — skipping
+20:16:27 DEBUG      [JL L3/layer24/correct] cached — skipping
+20:16:27 DEBUG      [F L3/layer24/wrong] cached — skipping
+20:16:27 DEBUG      [JL L3/layer24/wrong] cached — skipping
+20:16:27 DEBUG      [F L3/layer28/all] cached — skipping
+20:16:27 DEBUG      [JL L3/layer28/all] cached — skipping
+20:16:27 DEBUG      [F L3/layer28/correct] cached — skipping
+20:16:27 DEBUG      [JL L3/layer28/correct] cached — skipping
+20:16:27 DEBUG      [F L3/layer28/wrong] cached — skipping
+20:16:27 DEBUG      [JL L3/layer28/wrong] cached — skipping
+20:16:27 DEBUG      [F L3/layer31/all] cached — skipping
+20:16:27 DEBUG      [JL L3/layer31/all] cached — skipping
+20:16:27 DEBUG      [F L3/layer31/correct] cached — skipping
+20:16:27 DEBUG      [JL L3/layer31/correct] cached — skipping
+20:16:27 DEBUG      [F L3/layer31/wrong] cached — skipping
+20:16:27 DEBUG      [JL L3/layer31/wrong] cached — skipping
+20:16:27 INFO     L4: N=10000, populations=['all', 'correct', 'wrong']
+20:16:27 DEBUG      [F L4/layer04/all] cached — skipping
+20:16:27 DEBUG      [JL L4/layer04/all] cached — skipping
+20:16:27 DEBUG      [F L4/layer04/correct] cached — skipping
+20:16:27 DEBUG      [JL L4/layer04/correct] cached — skipping
+20:16:27 DEBUG      [F L4/layer04/wrong] cached — skipping
+20:16:27 DEBUG      [JL L4/layer04/wrong] cached — skipping
+20:16:27 DEBUG      [F L4/layer06/all] cached — skipping
+20:16:27 DEBUG      [JL L4/layer06/all] cached — skipping
+20:16:27 DEBUG      [F L4/layer06/correct] cached — skipping
+20:16:27 DEBUG      [JL L4/layer06/correct] cached — skipping
+20:16:27 DEBUG      [F L4/layer06/wrong] cached — skipping
+20:16:27 DEBUG      [JL L4/layer06/wrong] cached — skipping
+20:16:28 DEBUG      [F L4/layer08/all] cached — skipping
+20:16:28 DEBUG      [JL L4/layer08/all] cached — skipping
+20:16:28 DEBUG      [F L4/layer08/correct] cached — skipping
+20:16:28 DEBUG      [JL L4/layer08/correct] cached — skipping
+20:16:28 DEBUG      [F L4/layer08/wrong] cached — skipping
+20:16:28 DEBUG      [JL L4/layer08/wrong] cached — skipping
+20:16:28 DEBUG      [F L4/layer12/all] cached — skipping
+20:16:28 DEBUG      [JL L4/layer12/all] cached — skipping
+20:16:28 DEBUG      [F L4/layer12/correct] cached — skipping
+20:16:28 DEBUG      [JL L4/layer12/correct] cached — skipping
+20:16:28 DEBUG      [F L4/layer12/wrong] cached — skipping
+20:16:28 DEBUG      [JL L4/layer12/wrong] cached — skipping
+20:16:28 DEBUG      [F L4/layer16/all] cached — skipping
+20:16:28 DEBUG      [JL L4/layer16/all] cached — skipping
+20:16:28 DEBUG      [F L4/layer16/correct] cached — skipping
+20:16:28 DEBUG      [JL L4/layer16/correct] cached — skipping
+20:16:28 DEBUG      [F L4/layer16/wrong] cached — skipping
+20:16:28 DEBUG      [JL L4/layer16/wrong] cached — skipping
+20:16:28 DEBUG      [F L4/layer20/all] cached — skipping
+20:16:28 DEBUG      [JL L4/layer20/all] cached — skipping
+20:16:28 DEBUG      [F L4/layer20/correct] cached — skipping
+20:16:28 DEBUG      [JL L4/layer20/correct] cached — skipping
+20:16:28 DEBUG      [F L4/layer20/wrong] 29/29 concepts with bases
+20:17:29 INFO       [F L4/layer20/wrong] 406 pairs from 29 concepts, 353 superposition flags, 60.4s
+20:17:29 INFO       [JL L4/layer20/wrong] N=7103, k=457, all_pairs, 25,222,753 pairs
+20:17:51 INFO       [JL L4/layer20/wrong] Spearman=0.9987, Pearson=0.9992, mean_rel_err=0.0519, dist_var_expl=0.9983, pyth_err=2.17e-15, 21.9s
+20:18:03 DEBUG      [F L4/layer24/all] 34/35 concepts with bases
+20:20:06 INFO       [F L4/layer24/all] 561 pairs from 34 concepts, 523 superposition flags, 123.9s
+20:20:07 INFO       [JL L4/layer24/all] N=10000, k=488, all_pairs, 49,995,000 pairs
+20:20:51 INFO       [JL L4/layer24/all] Spearman=0.9988, Pearson=0.9992, mean_rel_err=0.0490, dist_var_expl=0.9982, pyth_err=2.80e-15, 44.9s
+20:21:14 DEBUG      [F L4/layer24/correct] 29/29 concepts with bases
+20:22:06 INFO       [F L4/layer24/correct] 406 pairs from 29 concepts, 347 superposition flags, 52.0s
+20:22:06 INFO       [JL L4/layer24/correct] N=2897, k=408, all_pairs, 4,194,856 pairs
+20:22:09 INFO       [JL L4/layer24/correct] Spearman=0.9984, Pearson=0.9991, mean_rel_err=0.0518, dist_var_expl=0.9980, pyth_err=2.31e-15, 3.5s
+20:22:11 DEBUG      [F L4/layer24/wrong] 29/29 concepts with bases
+20:23:01 INFO       [F L4/layer24/wrong] 406 pairs from 29 concepts, 353 superposition flags, 49.8s
+20:23:01 INFO       [JL L4/layer24/wrong] N=7103, k=442, all_pairs, 25,222,753 pairs
+20:23:23 INFO       [JL L4/layer24/wrong] Spearman=0.9983, Pearson=0.9990, mean_rel_err=0.0580, dist_var_expl=0.9978, pyth_err=2.51e-15, 22.2s
+20:23:35 DEBUG      [F L4/layer28/all] 35/35 concepts with bases
+20:24:35 INFO       [F L4/layer28/all] 595 pairs from 35 concepts, 555 superposition flags, 60.1s
+20:24:36 INFO       [JL L4/layer28/all] N=10000, k=507, all_pairs, 49,995,000 pairs
+20:35:39 INFO     ======================================================================
+20:35:39 INFO     Phase F/JL — Between-Concept Angles & JL Distance Check
+20:35:39 INFO     ======================================================================
+20:35:39 INFO     Phase F levels: [1, 2, 3, 4, 5]
+20:35:39 INFO     JL levels: [2, 3, 4, 5]
+20:35:39 INFO     Layers: [4, 6, 8, 12, 16, 20, 24, 28, 31]
+20:35:39 INFO     Populations: all viable
+20:35:39 INFO     GPU (CuPy): available
+20:35:39 INFO     Phase F only: False
+20:35:39 INFO     JL only: False
+20:35:39 INFO     Phase E spot-check OK: union_basis.npy shape (393, 4096)
+20:35:39 INFO     Phase D metadata files: 2844
+20:35:39 INFO     L1: N=64, populations=['all']
+20:35:39 DEBUG      [F L1/layer04/all] cached — skipping
+20:35:39 DEBUG      [F L1/layer06/all] cached — skipping
+20:35:39 DEBUG      [F L1/layer08/all] cached — skipping
+20:35:39 DEBUG      [F L1/layer12/all] cached — skipping
+20:35:39 DEBUG      [F L1/layer16/all] cached — skipping
+20:35:39 DEBUG      [F L1/layer20/all] cached — skipping
+20:35:39 DEBUG      [F L1/layer24/all] cached — skipping
+20:35:39 DEBUG      [F L1/layer28/all] cached — skipping
+20:35:39 DEBUG      [F L1/layer31/all] cached — skipping
+20:35:39 INFO     L2: N=4000, populations=['all', 'correct']
+20:35:39 DEBUG      [F L2/layer04/all] cached — skipping
+20:35:39 DEBUG      [JL L2/layer04/all] cached — skipping
+20:35:39 DEBUG      [F L2/layer04/correct] cached — skipping
+20:35:39 DEBUG      [JL L2/layer04/correct] cached — skipping
+20:35:39 DEBUG      [F L2/layer06/all] cached — skipping
+20:35:39 DEBUG      [JL L2/layer06/all] cached — skipping
+20:35:39 DEBUG      [F L2/layer06/correct] cached — skipping
+20:35:39 DEBUG      [JL L2/layer06/correct] cached — skipping
+20:35:39 DEBUG      [F L2/layer08/all] cached — skipping
+20:35:39 DEBUG      [JL L2/layer08/all] cached — skipping
+20:35:39 DEBUG      [F L2/layer08/correct] cached — skipping
+20:35:39 DEBUG      [JL L2/layer08/correct] cached — skipping
+20:35:39 DEBUG      [F L2/layer12/all] cached — skipping
+20:35:39 DEBUG      [JL L2/layer12/all] cached — skipping
+20:35:39 DEBUG      [F L2/layer12/correct] cached — skipping
+20:35:39 DEBUG      [JL L2/layer12/correct] cached — skipping
+20:35:39 DEBUG      [F L2/layer16/all] cached — skipping
+20:35:39 DEBUG      [JL L2/layer16/all] cached — skipping
+20:35:39 DEBUG      [F L2/layer16/correct] cached — skipping
+20:35:39 DEBUG      [JL L2/layer16/correct] cached — skipping
+20:35:39 DEBUG      [F L2/layer20/all] cached — skipping
+20:35:39 DEBUG      [JL L2/layer20/all] cached — skipping
+20:35:39 DEBUG      [F L2/layer20/correct] cached — skipping
+20:35:39 DEBUG      [JL L2/layer20/correct] cached — skipping
+20:35:39 DEBUG      [F L2/layer24/all] cached — skipping
+20:35:39 DEBUG      [JL L2/layer24/all] cached — skipping
+20:35:39 DEBUG      [F L2/layer24/correct] cached — skipping
+20:35:39 DEBUG      [JL L2/layer24/correct] cached — skipping
+20:35:39 DEBUG      [F L2/layer28/all] cached — skipping
+20:35:39 DEBUG      [JL L2/layer28/all] cached — skipping
+20:35:39 DEBUG      [F L2/layer28/correct] cached — skipping
+20:35:39 DEBUG      [JL L2/layer28/correct] cached — skipping
+20:35:39 DEBUG      [F L2/layer31/all] cached — skipping
+20:35:39 DEBUG      [JL L2/layer31/all] cached — skipping
+20:35:39 DEBUG      [F L2/layer31/correct] cached — skipping
+20:35:39 DEBUG      [JL L2/layer31/correct] cached — skipping
+20:35:39 INFO     L3: N=10000, populations=['all', 'correct', 'wrong']
+20:35:39 DEBUG      [F L3/layer04/all] cached — skipping
+20:35:39 DEBUG      [JL L3/layer04/all] cached — skipping
+20:35:39 DEBUG      [F L3/layer04/correct] cached — skipping
+20:35:39 DEBUG      [JL L3/layer04/correct] cached — skipping
+20:35:39 DEBUG      [F L3/layer04/wrong] cached — skipping
+20:35:39 DEBUG      [JL L3/layer04/wrong] cached — skipping
+20:35:40 DEBUG      [F L3/layer06/all] cached — skipping
+20:35:40 DEBUG      [JL L3/layer06/all] cached — skipping
+20:35:40 DEBUG      [F L3/layer06/correct] cached — skipping
+20:35:40 DEBUG      [JL L3/layer06/correct] cached — skipping
+20:35:40 DEBUG      [F L3/layer06/wrong] cached — skipping
+20:35:40 DEBUG      [JL L3/layer06/wrong] cached — skipping
+20:35:40 DEBUG      [F L3/layer08/all] cached — skipping
+20:35:40 DEBUG      [JL L3/layer08/all] cached — skipping
+20:35:40 DEBUG      [F L3/layer08/correct] cached — skipping
+20:35:40 DEBUG      [JL L3/layer08/correct] cached — skipping
+20:35:40 DEBUG      [F L3/layer08/wrong] cached — skipping
+20:35:40 DEBUG      [JL L3/layer08/wrong] cached — skipping
+20:35:40 DEBUG      [F L3/layer12/all] cached — skipping
+20:35:40 DEBUG      [JL L3/layer12/all] cached — skipping
+20:35:40 DEBUG      [F L3/layer12/correct] cached — skipping
+20:35:40 DEBUG      [JL L3/layer12/correct] cached — skipping
+20:35:40 DEBUG      [F L3/layer12/wrong] cached — skipping
+20:35:40 DEBUG      [JL L3/layer12/wrong] cached — skipping
+20:35:40 DEBUG      [F L3/layer16/all] cached — skipping
+20:35:40 DEBUG      [JL L3/layer16/all] cached — skipping
+20:35:40 DEBUG      [F L3/layer16/correct] cached — skipping
+20:35:40 DEBUG      [JL L3/layer16/correct] cached — skipping
+20:35:40 DEBUG      [F L3/layer16/wrong] cached — skipping
+20:35:40 DEBUG      [JL L3/layer16/wrong] cached — skipping
+20:35:40 DEBUG      [F L3/layer20/all] cached — skipping
+20:35:40 DEBUG      [JL L3/layer20/all] cached — skipping
+20:35:40 DEBUG      [F L3/layer20/correct] cached — skipping
+20:35:40 DEBUG      [JL L3/layer20/correct] cached — skipping
+20:35:40 DEBUG      [F L3/layer20/wrong] cached — skipping
+20:35:40 DEBUG      [JL L3/layer20/wrong] cached — skipping
+20:35:40 DEBUG      [F L3/layer24/all] cached — skipping
+20:35:40 DEBUG      [JL L3/layer24/all] cached — skipping
+20:35:40 DEBUG      [F L3/layer24/correct] cached — skipping
+20:35:40 DEBUG      [JL L3/layer24/correct] cached — skipping
+20:35:40 DEBUG      [F L3/layer24/wrong] cached — skipping
+20:35:40 DEBUG      [JL L3/layer24/wrong] cached — skipping
+20:35:40 DEBUG      [F L3/layer28/all] cached — skipping
+20:35:40 DEBUG      [JL L3/layer28/all] cached — skipping
+20:35:40 DEBUG      [F L3/layer28/correct] cached — skipping
+20:35:40 DEBUG      [JL L3/layer28/correct] cached — skipping
+20:35:40 DEBUG      [F L3/layer28/wrong] cached — skipping
+20:35:40 DEBUG      [JL L3/layer28/wrong] cached — skipping
+20:35:40 DEBUG      [F L3/layer31/all] cached — skipping
+20:35:40 DEBUG      [JL L3/layer31/all] cached — skipping
+20:35:40 DEBUG      [F L3/layer31/correct] cached — skipping
+20:35:40 DEBUG      [JL L3/layer31/correct] cached — skipping
+20:35:40 DEBUG      [F L3/layer31/wrong] cached — skipping
+20:35:40 DEBUG      [JL L3/layer31/wrong] cached — skipping
+20:35:40 INFO     L4: N=10000, populations=['all', 'correct', 'wrong']
+20:35:40 DEBUG      [F L4/layer04/all] cached — skipping
+20:35:40 DEBUG      [JL L4/layer04/all] cached — skipping
+20:35:40 DEBUG      [F L4/layer04/correct] cached — skipping
+20:35:40 DEBUG      [JL L4/layer04/correct] cached — skipping
+20:35:40 DEBUG      [F L4/layer04/wrong] cached — skipping
+20:35:40 DEBUG      [JL L4/layer04/wrong] cached — skipping
+20:35:40 DEBUG      [F L4/layer06/all] cached — skipping
+20:35:40 DEBUG      [JL L4/layer06/all] cached — skipping
+20:35:40 DEBUG      [F L4/layer06/correct] cached — skipping
+20:35:40 DEBUG      [JL L4/layer06/correct] cached — skipping
+20:35:40 DEBUG      [F L4/layer06/wrong] cached — skipping
+20:35:40 DEBUG      [JL L4/layer06/wrong] cached — skipping
+20:35:40 DEBUG      [F L4/layer08/all] cached — skipping
+20:35:40 DEBUG      [JL L4/layer08/all] cached — skipping
+20:35:40 DEBUG      [F L4/layer08/correct] cached — skipping
+20:35:41 DEBUG      [JL L4/layer08/correct] cached — skipping
+20:35:41 DEBUG      [F L4/layer08/wrong] cached — skipping
+20:35:41 DEBUG      [JL L4/layer08/wrong] cached — skipping
+20:35:41 DEBUG      [F L4/layer12/all] cached — skipping
+20:35:41 DEBUG      [JL L4/layer12/all] cached — skipping
+20:35:41 DEBUG      [F L4/layer12/correct] cached — skipping
+20:35:41 DEBUG      [JL L4/layer12/correct] cached — skipping
+20:35:41 DEBUG      [F L4/layer12/wrong] cached — skipping
+20:35:41 DEBUG      [JL L4/layer12/wrong] cached — skipping
+20:35:41 DEBUG      [F L4/layer16/all] cached — skipping
+20:35:41 DEBUG      [JL L4/layer16/all] cached — skipping
+20:35:41 DEBUG      [F L4/layer16/correct] cached — skipping
+20:35:41 DEBUG      [JL L4/layer16/correct] cached — skipping
+20:35:41 DEBUG      [F L4/layer16/wrong] cached — skipping
+20:35:41 DEBUG      [JL L4/layer16/wrong] cached — skipping
+20:35:41 DEBUG      [F L4/layer20/all] cached — skipping
+20:35:41 DEBUG      [JL L4/layer20/all] cached — skipping
+20:35:41 DEBUG      [F L4/layer20/correct] cached — skipping
+20:35:41 DEBUG      [JL L4/layer20/correct] cached — skipping
+20:35:41 DEBUG      [F L4/layer20/wrong] cached — skipping
+20:35:41 DEBUG      [JL L4/layer20/wrong] cached — skipping
+20:35:41 DEBUG      [F L4/layer24/all] cached — skipping
+20:35:41 DEBUG      [JL L4/layer24/all] cached — skipping
+20:35:41 DEBUG      [F L4/layer24/correct] cached — skipping
+20:35:41 DEBUG      [JL L4/layer24/correct] cached — skipping
+20:35:41 DEBUG      [F L4/layer24/wrong] cached — skipping
+20:35:41 DEBUG      [JL L4/layer24/wrong] cached — skipping
+20:35:41 DEBUG      [F L4/layer28/all] cached — skipping
+20:35:41 INFO       [JL L4/layer28/all] N=10000, k=507, all_pairs, 49,995,000 pairs
+20:36:27 INFO       [JL L4/layer28/all] Spearman=0.9983, Pearson=0.9988, mean_rel_err=0.0584, dist_var_expl=0.9968, pyth_err=1.77e-15, 45.5s
+20:36:50 DEBUG      [F L4/layer28/correct] 29/29 concepts with bases
+20:38:11 INFO       [F L4/layer28/correct] 406 pairs from 29 concepts, 385 superposition flags, 81.6s
+20:38:11 INFO       [JL L4/layer28/correct] N=2897, k=440, all_pairs, 4,194,856 pairs
+20:38:15 INFO       [JL L4/layer28/correct] Spearman=0.9981, Pearson=0.9988, mean_rel_err=0.0567, dist_var_expl=0.9971, pyth_err=3.05e-15, 3.6s
+20:38:16 DEBUG      [F L4/layer28/wrong] 29/29 concepts with bases
+20:38:54 INFO       [F L4/layer28/wrong] 406 pairs from 29 concepts, 353 superposition flags, 37.8s
+20:38:54 INFO       [JL L4/layer28/wrong] N=7103, k=459, all_pairs, 25,222,753 pairs
+20:39:16 INFO       [JL L4/layer28/wrong] Spearman=0.9976, Pearson=0.9984, mean_rel_err=0.0676, dist_var_expl=0.9960, pyth_err=2.28e-15, 22.2s
+20:39:28 DEBUG      [F L4/layer31/all] 35/35 concepts with bases
+20:42:02 INFO       [F L4/layer31/all] 595 pairs from 35 concepts, 559 superposition flags, 154.1s
+20:42:03 INFO       [JL L4/layer31/all] N=10000, k=522, all_pairs, 49,995,000 pairs
+20:42:47 INFO       [JL L4/layer31/all] Spearman=0.9986, Pearson=0.9990, mean_rel_err=0.0475, dist_var_expl=0.9969, pyth_err=2.40e-15, 45.1s
+20:43:12 DEBUG      [F L4/layer31/correct] 29/29 concepts with bases
+20:43:50 INFO       [F L4/layer31/correct] 406 pairs from 29 concepts, 384 superposition flags, 38.3s
+20:43:50 INFO       [JL L4/layer31/correct] N=2897, k=454, all_pairs, 4,194,856 pairs
+20:43:54 INFO       [JL L4/layer31/correct] Spearman=0.9985, Pearson=0.9990, mean_rel_err=0.0466, dist_var_expl=0.9973, pyth_err=3.59e-15, 3.9s
+20:43:56 DEBUG      [F L4/layer31/wrong] 29/29 concepts with bases
+20:44:46 INFO       [F L4/layer31/wrong] 406 pairs from 29 concepts, 378 superposition flags, 49.9s
+20:44:46 INFO       [JL L4/layer31/wrong] N=7103, k=491, all_pairs, 25,222,753 pairs
+20:45:08 INFO       [JL L4/layer31/wrong] Spearman=0.9985, Pearson=0.9989, mean_rel_err=0.0508, dist_var_expl=0.9966, pyth_err=2.36e-15, 22.1s
+20:45:19 INFO     L5: N=122223, populations=['all', 'correct', 'wrong']
+20:45:24 DEBUG      [F L5/layer04/all] 43/43 concepts with bases
+20:46:30 INFO       [F L5/layer04/all] 903 pairs from 43 concepts, 836 superposition flags, 66.1s
+20:46:30 INFO       [JL L5/layer04/all] N=122223, k=539, all_pairs_rowwise, 7,469,169,753 pairs
+20:46:30 INFO         rowwise: allocating 2 × 7,469,169,753 float32 arrays (59.8 GB)
+20:49:25 DEBUG        rowwise: 10000/122223 rows, 1,172,337,222/7,469,169,753 pairs
+20:52:11 DEBUG        rowwise: 20000/122223 rows, 2,244,552,222/7,469,169,753 pairs
+20:54:50 DEBUG        rowwise: 30000/122223 rows, 3,216,767,222/7,469,169,753 pairs
+20:57:09 DEBUG        rowwise: 40000/122223 rows, 4,088,982,222/7,469,169,753 pairs
+20:59:17 DEBUG        rowwise: 50000/122223 rows, 4,861,197,222/7,469,169,753 pairs
+21:01:08 DEBUG        rowwise: 60000/122223 rows, 5,533,412,222/7,469,169,753 pairs
+21:02:44 DEBUG        rowwise: 70000/122223 rows, 6,105,627,222/7,469,169,753 pairs
+21:04:01 DEBUG        rowwise: 80000/122223 rows, 6,577,842,222/7,469,169,753 pairs
+21:04:59 DEBUG        rowwise: 90000/122223 rows, 6,950,057,222/7,469,169,753 pairs
+21:05:44 DEBUG        rowwise: 100000/122223 rows, 7,222,272,222/7,469,169,753 pairs
+21:06:13 DEBUG        rowwise: 110000/122223 rows, 7,394,487,222/7,469,169,753 pairs
+21:06:25 DEBUG        rowwise: 120000/122223 rows, 7,466,702,222/7,469,169,753 pairs
+21:06:26 INFO         Large-N metrics: 7,469,169,753 pairs, using chunked computations
+21:09:23 INFO         Spearman: ranking 7,469,169,753 values (pass 1/2)...
+21:30:49 INFO         Spearman: ranking 7,469,169,753 values (pass 2/2)...
+21:50:18 INFO         Spearman: computing correlation from ranks...
+21:50:20 INFO       [JL L5/layer04/all] Spearman=0.9945, Pearson=0.9956, mean_rel_err=0.0887, dist_var_expl=0.9872, pyth_err=1.98e-15, 3829.7s
+21:56:22 DEBUG      [F L5/layer04/correct] 35/36 concepts with bases
+21:57:01 INFO       [F L5/layer04/correct] 595 pairs from 35 concepts, 566 superposition flags, 38.9s
+21:57:01 INFO       [JL L5/layer04/correct] N=4197, k=507, all_pairs, 8,805,306 pairs
+21:57:09 INFO       [JL L5/layer04/correct] Spearman=0.9966, Pearson=0.9974, mean_rel_err=0.0612, dist_var_expl=0.9950, pyth_err=2.07e-15, 7.9s
+21:57:13 DEBUG      [F L5/layer04/wrong] 36/36 concepts with bases
+21:58:07 INFO       [F L5/layer04/wrong] 630 pairs from 36 concepts, 601 superposition flags, 54.8s
+21:58:08 INFO       [JL L5/layer04/wrong] N=118026, k=544, all_pairs_rowwise, 6,965,009,325 pairs
+21:58:08 INFO         rowwise: allocating 2 × 6,965,009,325 float32 arrays (55.7 GB)
+22:00:56 DEBUG        rowwise: 10000/118026 rows, 1,130,363,025/6,965,009,325 pairs
+22:03:29 DEBUG        rowwise: 20000/118026 rows, 2,160,608,025/6,965,009,325 pairs
+22:05:48 DEBUG        rowwise: 30000/118026 rows, 3,090,853,025/6,965,009,325 pairs
+22:07:53 DEBUG        rowwise: 40000/118026 rows, 3,921,098,025/6,965,009,325 pairs
+22:09:43 DEBUG        rowwise: 50000/118026 rows, 4,651,343,025/6,965,009,325 pairs
+22:11:18 DEBUG        rowwise: 60000/118026 rows, 5,281,588,025/6,965,009,325 pairs
+22:12:38 DEBUG        rowwise: 70000/118026 rows, 5,811,833,025/6,965,009,325 pairs
+22:13:43 DEBUG        rowwise: 80000/118026 rows, 6,242,078,025/6,965,009,325 pairs
+22:14:33 DEBUG        rowwise: 90000/118026 rows, 6,572,323,025/6,965,009,325 pairs
+22:15:08 DEBUG        rowwise: 100000/118026 rows, 6,802,568,025/6,965,009,325 pairs
+22:15:29 DEBUG        rowwise: 110000/118026 rows, 6,932,813,025/6,965,009,325 pairs
+22:15:34 INFO         Large-N metrics: 6,965,009,325 pairs, using chunked computations
+22:17:30 INFO         Spearman: ranking 6,965,009,325 values (pass 1/2)...
+22:33:58 INFO         Spearman: ranking 6,965,009,325 values (pass 2/2)...
+22:50:57 INFO         Spearman: computing correlation from ranks...
+22:50:58 INFO       [JL L5/layer04/wrong] Spearman=0.9951, Pearson=0.9965, mean_rel_err=0.0852, dist_var_expl=0.9916, pyth_err=1.93e-15, 3170.4s
+22:51:01 DEBUG      [F L5/layer06/all] 43/43 concepts with bases
+22:52:08 INFO       [F L5/layer06/all] 903 pairs from 43 concepts, 888 superposition flags, 67.4s
+22:52:08 INFO       [JL L5/layer06/all] N=122223, k=538, all_pairs_rowwise, 7,469,169,753 pairs
+22:52:08 INFO         rowwise: allocating 2 × 7,469,169,753 float32 arrays (59.8 GB)
+22:55:04 DEBUG        rowwise: 10000/122223 rows, 1,172,337,222/7,469,169,753 pairs
+22:57:45 DEBUG        rowwise: 20000/122223 rows, 2,244,552,222/7,469,169,753 pairs
+23:00:11 DEBUG        rowwise: 30000/122223 rows, 3,216,767,222/7,469,169,753 pairs
+23:02:21 DEBUG        rowwise: 40000/122223 rows, 4,088,982,222/7,469,169,753 pairs
+23:04:16 DEBUG        rowwise: 50000/122223 rows, 4,861,197,222/7,469,169,753 pairs
+23:05:56 DEBUG        rowwise: 60000/122223 rows, 5,533,412,222/7,469,169,753 pairs
+23:07:23 DEBUG        rowwise: 70000/122223 rows, 6,105,627,222/7,469,169,753 pairs
+23:08:34 DEBUG        rowwise: 80000/122223 rows, 6,577,842,222/7,469,169,753 pairs
+23:09:31 DEBUG        rowwise: 90000/122223 rows, 6,950,057,222/7,469,169,753 pairs
+23:10:12 DEBUG        rowwise: 100000/122223 rows, 7,222,272,222/7,469,169,753 pairs
+23:10:39 DEBUG        rowwise: 110000/122223 rows, 7,394,487,222/7,469,169,753 pairs
+23:10:51 DEBUG        rowwise: 120000/122223 rows, 7,466,702,222/7,469,169,753 pairs
+23:10:51 INFO         Large-N metrics: 7,469,169,753 pairs, using chunked computations
+23:12:56 INFO         Spearman: ranking 7,469,169,753 values (pass 1/2)...
+23:30:23 INFO         Spearman: ranking 7,469,169,753 values (pass 2/2)...
+23:48:12 INFO         Spearman: computing correlation from ranks...
+23:48:14 INFO       [JL L5/layer06/all] Spearman=0.9942, Pearson=0.9959, mean_rel_err=0.1107, dist_var_expl=0.9890, pyth_err=2.63e-15, 3365.7s
+23:48:14 DEBUG      [F L5/layer06/correct] 35/36 concepts with bases
+23:48:44 INFO       [F L5/layer06/correct] 595 pairs from 35 concepts, 561 superposition flags, 30.6s
+23:48:45 INFO       [JL L5/layer06/correct] N=4197, k=495, all_pairs, 8,805,306 pairs
+23:48:52 INFO       [JL L5/layer06/correct] Spearman=0.9959, Pearson=0.9967, mean_rel_err=0.0819, dist_var_expl=0.9930, pyth_err=1.97e-15, 7.7s
+23:48:56 DEBUG      [F L5/layer06/wrong] 36/36 concepts with bases
+23:50:44 INFO       [F L5/layer06/wrong] 630 pairs from 36 concepts, 630 superposition flags, 108.2s
+23:50:44 INFO       [JL L5/layer06/wrong] N=118026, k=551, all_pairs_rowwise, 6,965,009,325 pairs
+23:50:45 INFO         rowwise: allocating 2 × 6,965,009,325 float32 arrays (55.7 GB)
+23:53:32 DEBUG        rowwise: 10000/118026 rows, 1,130,363,025/6,965,009,325 pairs
+23:56:05 DEBUG        rowwise: 20000/118026 rows, 2,160,608,025/6,965,009,325 pairs
+23:58:25 DEBUG        rowwise: 30000/118026 rows, 3,090,853,025/6,965,009,325 pairs
+00:00:29 DEBUG        rowwise: 40000/118026 rows, 3,921,098,025/6,965,009,325 pairs
+00:02:18 DEBUG        rowwise: 50000/118026 rows, 4,651,343,025/6,965,009,325 pairs
+00:03:52 DEBUG        rowwise: 60000/118026 rows, 5,281,588,025/6,965,009,325 pairs
+00:05:12 DEBUG        rowwise: 70000/118026 rows, 5,811,833,025/6,965,009,325 pairs
+00:06:17 DEBUG        rowwise: 80000/118026 rows, 6,242,078,025/6,965,009,325 pairs
+00:07:07 DEBUG        rowwise: 90000/118026 rows, 6,572,323,025/6,965,009,325 pairs
+00:07:43 DEBUG        rowwise: 100000/118026 rows, 6,802,568,025/6,965,009,325 pairs
+00:08:03 DEBUG        rowwise: 110000/118026 rows, 6,932,813,025/6,965,009,325 pairs
+00:08:09 INFO         Large-N metrics: 6,965,009,325 pairs, using chunked computations
+00:10:05 INFO         Spearman: ranking 6,965,009,325 values (pass 1/2)...
+00:26:18 INFO         Spearman: ranking 6,965,009,325 values (pass 2/2)...
+00:42:35 INFO         Spearman: computing correlation from ranks...
+00:42:36 INFO       [JL L5/layer06/wrong] Spearman=0.9950, Pearson=0.9965, mean_rel_err=0.1037, dist_var_expl=0.9907, pyth_err=1.51e-15, 3111.4s
+00:42:41 DEBUG      [F L5/layer08/all] 43/43 concepts with bases
+00:43:57 INFO       [F L5/layer08/all] 903 pairs from 43 concepts, 887 superposition flags, 75.6s
+00:43:57 INFO       [JL L5/layer08/all] N=122223, k=568, all_pairs_rowwise, 7,469,169,753 pairs
+00:43:57 INFO         rowwise: allocating 2 × 7,469,169,753 float32 arrays (59.8 GB)
+00:46:53 DEBUG        rowwise: 10000/122223 rows, 1,172,337,222/7,469,169,753 pairs
+00:49:32 DEBUG        rowwise: 20000/122223 rows, 2,244,552,222/7,469,169,753 pairs
+00:51:56 DEBUG        rowwise: 30000/122223 rows, 3,216,767,222/7,469,169,753 pairs
+00:54:07 DEBUG        rowwise: 40000/122223 rows, 4,088,982,222/7,469,169,753 pairs
+00:56:03 DEBUG        rowwise: 50000/122223 rows, 4,861,197,222/7,469,169,753 pairs
+00:57:43 DEBUG        rowwise: 60000/122223 rows, 5,533,412,222/7,469,169,753 pairs
+00:59:09 DEBUG        rowwise: 70000/122223 rows, 6,105,627,222/7,469,169,753 pairs
+01:00:19 DEBUG        rowwise: 80000/122223 rows, 6,577,842,222/7,469,169,753 pairs
+01:01:15 DEBUG        rowwise: 90000/122223 rows, 6,950,057,222/7,469,169,753 pairs
+01:01:56 DEBUG        rowwise: 100000/122223 rows, 7,222,272,222/7,469,169,753 pairs
+01:02:23 DEBUG        rowwise: 110000/122223 rows, 7,394,487,222/7,469,169,753 pairs
+01:02:35 DEBUG        rowwise: 120000/122223 rows, 7,466,702,222/7,469,169,753 pairs
+01:02:36 INFO         Large-N metrics: 7,469,169,753 pairs, using chunked computations
+01:04:40 INFO         Spearman: ranking 7,469,169,753 values (pass 1/2)...
+01:22:16 INFO         Spearman: ranking 7,469,169,753 values (pass 2/2)...
+01:40:23 INFO         Spearman: computing correlation from ranks...
+01:40:24 INFO       [JL L5/layer08/all] Spearman=0.9956, Pearson=0.9965, mean_rel_err=0.0939, dist_var_expl=0.9891, pyth_err=2.78e-15, 3387.4s
+01:40:25 DEBUG      [F L5/layer08/correct] 35/36 concepts with bases
+01:40:53 INFO       [F L5/layer08/correct] 595 pairs from 35 concepts, 559 superposition flags, 28.4s
+01:40:53 INFO       [JL L5/layer08/correct] N=4197, k=489, all_pairs, 8,805,306 pairs
+01:41:00 INFO       [JL L5/layer08/correct] Spearman=0.9959, Pearson=0.9964, mean_rel_err=0.0800, dist_var_expl=0.9911, pyth_err=2.04e-15, 7.5s
+01:41:05 DEBUG      [F L5/layer08/wrong] 36/36 concepts with bases
+01:42:24 INFO       [F L5/layer08/wrong] 630 pairs from 36 concepts, 630 superposition flags, 79.9s
+01:42:24 INFO       [JL L5/layer08/wrong] N=118026, k=573, all_pairs_rowwise, 6,965,009,325 pairs
+01:42:24 INFO         rowwise: allocating 2 × 6,965,009,325 float32 arrays (55.7 GB)
+01:45:14 DEBUG        rowwise: 10000/118026 rows, 1,130,363,025/6,965,009,325 pairs
+01:47:47 DEBUG        rowwise: 20000/118026 rows, 2,160,608,025/6,965,009,325 pairs
+01:50:05 DEBUG        rowwise: 30000/118026 rows, 3,090,853,025/6,965,009,325 pairs
+01:52:10 DEBUG        rowwise: 40000/118026 rows, 3,921,098,025/6,965,009,325 pairs
+01:54:00 DEBUG        rowwise: 50000/118026 rows, 4,651,343,025/6,965,009,325 pairs
+01:55:34 DEBUG        rowwise: 60000/118026 rows, 5,281,588,025/6,965,009,325 pairs
+01:56:53 DEBUG        rowwise: 70000/118026 rows, 5,811,833,025/6,965,009,325 pairs
+01:57:58 DEBUG        rowwise: 80000/118026 rows, 6,242,078,025/6,965,009,325 pairs
+01:58:48 DEBUG        rowwise: 90000/118026 rows, 6,572,323,025/6,965,009,325 pairs
+01:59:23 DEBUG        rowwise: 100000/118026 rows, 6,802,568,025/6,965,009,325 pairs
+01:59:43 DEBUG        rowwise: 110000/118026 rows, 6,932,813,025/6,965,009,325 pairs
+01:59:49 INFO         Large-N metrics: 6,965,009,325 pairs, using chunked computations
+02:01:43 INFO         Spearman: ranking 6,965,009,325 values (pass 1/2)...
+02:18:09 INFO         Spearman: ranking 6,965,009,325 values (pass 2/2)...
+02:34:55 INFO         Spearman: computing correlation from ranks...
+02:34:56 INFO       [JL L5/layer08/wrong] Spearman=0.9960, Pearson=0.9968, mean_rel_err=0.0912, dist_var_expl=0.9898, pyth_err=3.56e-15, 3152.0s
+02:35:02 DEBUG      [F L5/layer12/all] 43/43 concepts with bases
+02:35:08 INFO       [F L5/layer12/all] 903 pairs from 43 concepts, 888 superposition flags, 7.2s
+02:35:09 INFO       [JL L5/layer12/all] N=122223, k=567, all_pairs_rowwise, 7,469,169,753 pairs
+02:35:09 INFO         rowwise: allocating 2 × 7,469,169,753 float32 arrays (59.8 GB)
+02:38:04 DEBUG        rowwise: 10000/122223 rows, 1,172,337,222/7,469,169,753 pairs
+02:40:45 DEBUG        rowwise: 20000/122223 rows, 2,244,552,222/7,469,169,753 pairs
+02:43:11 DEBUG        rowwise: 30000/122223 rows, 3,216,767,222/7,469,169,753 pairs
+02:45:22 DEBUG        rowwise: 40000/122223 rows, 4,088,982,222/7,469,169,753 pairs
+02:47:17 DEBUG        rowwise: 50000/122223 rows, 4,861,197,222/7,469,169,753 pairs
+02:48:58 DEBUG        rowwise: 60000/122223 rows, 5,533,412,222/7,469,169,753 pairs
+02:50:25 DEBUG        rowwise: 70000/122223 rows, 6,105,627,222/7,469,169,753 pairs
+02:51:37 DEBUG        rowwise: 80000/122223 rows, 6,577,842,222/7,469,169,753 pairs
+02:52:33 DEBUG        rowwise: 90000/122223 rows, 6,950,057,222/7,469,169,753 pairs
+02:53:15 DEBUG        rowwise: 100000/122223 rows, 7,222,272,222/7,469,169,753 pairs
+02:53:42 DEBUG        rowwise: 110000/122223 rows, 7,394,487,222/7,469,169,753 pairs
+02:53:54 DEBUG        rowwise: 120000/122223 rows, 7,466,702,222/7,469,169,753 pairs
+02:53:55 INFO         Large-N metrics: 7,469,169,753 pairs, using chunked computations
+02:56:02 INFO         Spearman: ranking 7,469,169,753 values (pass 1/2)...
+03:13:44 INFO         Spearman: ranking 7,469,169,753 values (pass 2/2)...
+03:32:43 INFO         Spearman: computing correlation from ranks...
+03:32:44 INFO       [JL L5/layer12/all] Spearman=0.9958, Pearson=0.9964, mean_rel_err=0.0856, dist_var_expl=0.9877, pyth_err=3.81e-15, 3455.6s
+03:32:45 DEBUG      [F L5/layer12/correct] 35/36 concepts with bases
+03:33:35 INFO       [F L5/layer12/correct] 595 pairs from 35 concepts, 567 superposition flags, 50.1s
+03:33:35 INFO       [JL L5/layer12/correct] N=4197, k=521, all_pairs, 8,805,306 pairs
+03:33:43 INFO       [JL L5/layer12/correct] Spearman=0.9970, Pearson=0.9973, mean_rel_err=0.0678, dist_var_expl=0.9919, pyth_err=3.08e-15, 8.6s
+03:33:48 DEBUG      [F L5/layer12/wrong] 36/36 concepts with bases
+03:35:29 INFO       [F L5/layer12/wrong] 630 pairs from 36 concepts, 628 superposition flags, 102.5s
+03:35:30 INFO       [JL L5/layer12/wrong] N=118026, k=583, all_pairs_rowwise, 6,965,009,325 pairs
+03:35:30 INFO         rowwise: allocating 2 × 6,965,009,325 float32 arrays (55.7 GB)
+03:38:19 DEBUG        rowwise: 10000/118026 rows, 1,130,363,025/6,965,009,325 pairs
+03:40:52 DEBUG        rowwise: 20000/118026 rows, 2,160,608,025/6,965,009,325 pairs
+03:43:12 DEBUG        rowwise: 30000/118026 rows, 3,090,853,025/6,965,009,325 pairs
+03:45:16 DEBUG        rowwise: 40000/118026 rows, 3,921,098,025/6,965,009,325 pairs
+03:47:05 DEBUG        rowwise: 50000/118026 rows, 4,651,343,025/6,965,009,325 pairs
+03:48:40 DEBUG        rowwise: 60000/118026 rows, 5,281,588,025/6,965,009,325 pairs
+03:50:00 DEBUG        rowwise: 70000/118026 rows, 5,811,833,025/6,965,009,325 pairs
+03:51:05 DEBUG        rowwise: 80000/118026 rows, 6,242,078,025/6,965,009,325 pairs
+03:51:55 DEBUG        rowwise: 90000/118026 rows, 6,572,323,025/6,965,009,325 pairs
+03:52:31 DEBUG        rowwise: 100000/118026 rows, 6,802,568,025/6,965,009,325 pairs
+03:52:51 DEBUG        rowwise: 110000/118026 rows, 6,932,813,025/6,965,009,325 pairs
+03:52:57 INFO         Large-N metrics: 6,965,009,325 pairs, using chunked computations
+03:54:58 INFO         Spearman: ranking 6,965,009,325 values (pass 1/2)...
+04:11:03 INFO         Spearman: ranking 6,965,009,325 values (pass 2/2)...
+04:28:06 INFO         Spearman: computing correlation from ranks...
+04:28:08 INFO       [JL L5/layer12/wrong] Spearman=0.9964, Pearson=0.9969, mean_rel_err=0.0809, dist_var_expl=0.9892, pyth_err=3.27e-15, 3158.1s
+04:28:11 DEBUG      [F L5/layer16/all] 43/43 concepts with bases
+04:29:32 INFO       [F L5/layer16/all] 903 pairs from 43 concepts, 853 superposition flags, 81.5s
+04:29:33 INFO       [JL L5/layer16/all] N=122223, k=560, all_pairs_rowwise, 7,469,169,753 pairs
+04:29:33 INFO         rowwise: allocating 2 × 7,469,169,753 float32 arrays (59.8 GB)
+04:32:28 DEBUG        rowwise: 10000/122223 rows, 1,172,337,222/7,469,169,753 pairs
+04:35:06 DEBUG        rowwise: 20000/122223 rows, 2,244,552,222/7,469,169,753 pairs
+04:37:32 DEBUG        rowwise: 30000/122223 rows, 3,216,767,222/7,469,169,753 pairs
+04:39:43 DEBUG        rowwise: 40000/122223 rows, 4,088,982,222/7,469,169,753 pairs
+04:41:38 DEBUG        rowwise: 50000/122223 rows, 4,861,197,222/7,469,169,753 pairs
+04:43:18 DEBUG        rowwise: 60000/122223 rows, 5,533,412,222/7,469,169,753 pairs
+04:44:43 DEBUG        rowwise: 70000/122223 rows, 6,105,627,222/7,469,169,753 pairs
+04:45:55 DEBUG        rowwise: 80000/122223 rows, 6,577,842,222/7,469,169,753 pairs
+04:46:52 DEBUG        rowwise: 90000/122223 rows, 6,950,057,222/7,469,169,753 pairs
+04:47:33 DEBUG        rowwise: 100000/122223 rows, 7,222,272,222/7,469,169,753 pairs
+04:48:00 DEBUG        rowwise: 110000/122223 rows, 7,394,487,222/7,469,169,753 pairs
+04:48:12 DEBUG        rowwise: 120000/122223 rows, 7,466,702,222/7,469,169,753 pairs
+04:48:13 INFO         Large-N metrics: 7,469,169,753 pairs, using chunked computations
+04:50:19 INFO         Spearman: ranking 7,469,169,753 values (pass 1/2)...
+05:08:25 INFO         Spearman: ranking 7,469,169,753 values (pass 2/2)...
+05:27:50 INFO         Spearman: computing correlation from ranks...
+05:27:52 INFO       [JL L5/layer16/all] Spearman=0.9972, Pearson=0.9972, mean_rel_err=0.0701, dist_var_expl=0.9898, pyth_err=1.99e-15, 3498.9s
+05:33:57 DEBUG      [F L5/layer16/correct] 35/36 concepts with bases
+05:34:08 INFO       [F L5/layer16/correct] 595 pairs from 35 concepts, 567 superposition flags, 11.0s
+05:34:08 INFO       [JL L5/layer16/correct] N=4197, k=492, all_pairs, 8,805,306 pairs
+05:34:15 INFO       [JL L5/layer16/correct] Spearman=0.9975, Pearson=0.9978, mean_rel_err=0.0635, dist_var_expl=0.9938, pyth_err=1.95e-15, 7.5s
+05:34:19 DEBUG      [F L5/layer16/wrong] 36/36 concepts with bases
+05:35:39 INFO       [F L5/layer16/wrong] 630 pairs from 36 concepts, 594 superposition flags, 80.2s
+05:35:39 INFO       [JL L5/layer16/wrong] N=118026, k=576, all_pairs_rowwise, 6,965,009,325 pairs
+05:35:40 INFO         rowwise: allocating 2 × 6,965,009,325 float32 arrays (55.7 GB)
+05:38:29 DEBUG        rowwise: 10000/118026 rows, 1,130,363,025/6,965,009,325 pairs
+05:41:03 DEBUG        rowwise: 20000/118026 rows, 2,160,608,025/6,965,009,325 pairs
+05:43:20 DEBUG        rowwise: 30000/118026 rows, 3,090,853,025/6,965,009,325 pairs
+05:45:24 DEBUG        rowwise: 40000/118026 rows, 3,921,098,025/6,965,009,325 pairs
+05:47:15 DEBUG        rowwise: 50000/118026 rows, 4,651,343,025/6,965,009,325 pairs
+05:48:50 DEBUG        rowwise: 60000/118026 rows, 5,281,588,025/6,965,009,325 pairs
+05:50:10 DEBUG        rowwise: 70000/118026 rows, 5,811,833,025/6,965,009,325 pairs
+05:51:15 DEBUG        rowwise: 80000/118026 rows, 6,242,078,025/6,965,009,325 pairs
+05:52:06 DEBUG        rowwise: 90000/118026 rows, 6,572,323,025/6,965,009,325 pairs
+05:52:41 DEBUG        rowwise: 100000/118026 rows, 6,802,568,025/6,965,009,325 pairs
+05:53:02 DEBUG        rowwise: 110000/118026 rows, 6,932,813,025/6,965,009,325 pairs
+05:53:08 INFO         Large-N metrics: 6,965,009,325 pairs, using chunked computations
+05:55:06 INFO         Spearman: ranking 6,965,009,325 values (pass 1/2)...
+06:11:33 INFO         Spearman: ranking 6,965,009,325 values (pass 2/2)...
+06:28:02 INFO         Spearman: computing correlation from ranks...
+06:28:03 INFO       [JL L5/layer16/wrong] Spearman=0.9976, Pearson=0.9975, mean_rel_err=0.0655, dist_var_expl=0.9910, pyth_err=3.00e-15, 3143.9s
+06:28:10 DEBUG      [F L5/layer20/all] 43/43 concepts with bases
+06:28:28 INFO       [F L5/layer20/all] 903 pairs from 43 concepts, 782 superposition flags, 18.6s
+06:28:29 INFO       [JL L5/layer20/all] N=122223, k=535, all_pairs_rowwise, 7,469,169,753 pairs
+06:28:29 INFO         rowwise: allocating 2 × 7,469,169,753 float32 arrays (59.8 GB)
+06:31:23 DEBUG        rowwise: 10000/122223 rows, 1,172,337,222/7,469,169,753 pairs
+06:34:04 DEBUG        rowwise: 20000/122223 rows, 2,244,552,222/7,469,169,753 pairs
+06:36:29 DEBUG        rowwise: 30000/122223 rows, 3,216,767,222/7,469,169,753 pairs
+06:38:38 DEBUG        rowwise: 40000/122223 rows, 4,088,982,222/7,469,169,753 pairs
+06:40:33 DEBUG        rowwise: 50000/122223 rows, 4,861,197,222/7,469,169,753 pairs
+06:42:14 DEBUG        rowwise: 60000/122223 rows, 5,533,412,222/7,469,169,753 pairs
+06:43:41 DEBUG        rowwise: 70000/122223 rows, 6,105,627,222/7,469,169,753 pairs
+06:44:53 DEBUG        rowwise: 80000/122223 rows, 6,577,842,222/7,469,169,753 pairs
+06:45:49 DEBUG        rowwise: 90000/122223 rows, 6,950,057,222/7,469,169,753 pairs
+06:46:31 DEBUG        rowwise: 100000/122223 rows, 7,222,272,222/7,469,169,753 pairs
+06:46:58 DEBUG        rowwise: 110000/122223 rows, 7,394,487,222/7,469,169,753 pairs
+06:47:10 DEBUG        rowwise: 120000/122223 rows, 7,466,702,222/7,469,169,753 pairs
+06:47:10 INFO         Large-N metrics: 7,469,169,753 pairs, using chunked computations
+06:49:18 INFO         Spearman: ranking 7,469,169,753 values (pass 1/2)...
+07:07:19 INFO         Spearman: ranking 7,469,169,753 values (pass 2/2)...
+07:27:10 INFO         Spearman: computing correlation from ranks...
+07:27:12 INFO       [JL L5/layer20/all] Spearman=0.9981, Pearson=0.9984, mean_rel_err=0.0615, dist_var_expl=0.9953, pyth_err=3.77e-15, 3522.9s
+07:27:12 DEBUG      [F L5/layer20/correct] 35/36 concepts with bases
+07:27:45 INFO       [F L5/layer20/correct] 595 pairs from 35 concepts, 552 superposition flags, 33.6s
+07:27:45 INFO       [JL L5/layer20/correct] N=4197, k=511, all_pairs, 8,805,306 pairs
+07:27:53 INFO       [JL L5/layer20/correct] Spearman=0.9988, Pearson=0.9991, mean_rel_err=0.0499, dist_var_expl=0.9979, pyth_err=2.25e-15, 7.7s
+07:27:57 DEBUG      [F L5/layer20/wrong] 36/36 concepts with bases
+07:29:14 INFO       [F L5/layer20/wrong] 630 pairs from 36 concepts, 595 superposition flags, 77.1s
+07:29:14 INFO       [JL L5/layer20/wrong] N=118026, k=551, all_pairs_rowwise, 6,965,009,325 pairs
+07:29:14 INFO         rowwise: allocating 2 × 6,965,009,325 float32 arrays (55.7 GB)
+07:32:04 DEBUG        rowwise: 10000/118026 rows, 1,130,363,025/6,965,009,325 pairs
+07:34:38 DEBUG        rowwise: 20000/118026 rows, 2,160,608,025/6,965,009,325 pairs
+07:36:57 DEBUG        rowwise: 30000/118026 rows, 3,090,853,025/6,965,009,325 pairs
+07:39:00 DEBUG        rowwise: 40000/118026 rows, 3,921,098,025/6,965,009,325 pairs
+07:40:48 DEBUG        rowwise: 50000/118026 rows, 4,651,343,025/6,965,009,325 pairs
+07:42:23 DEBUG        rowwise: 60000/118026 rows, 5,281,588,025/6,965,009,325 pairs
+07:43:43 DEBUG        rowwise: 70000/118026 rows, 5,811,833,025/6,965,009,325 pairs
+07:44:49 DEBUG        rowwise: 80000/118026 rows, 6,242,078,025/6,965,009,325 pairs
+07:45:39 DEBUG        rowwise: 90000/118026 rows, 6,572,323,025/6,965,009,325 pairs
+07:46:15 DEBUG        rowwise: 100000/118026 rows, 6,802,568,025/6,965,009,325 pairs
+07:46:35 DEBUG        rowwise: 110000/118026 rows, 6,932,813,025/6,965,009,325 pairs
+07:46:41 INFO         Large-N metrics: 6,965,009,325 pairs, using chunked computations
+07:48:39 INFO         Spearman: ranking 6,965,009,325 values (pass 1/2)...
+08:05:20 INFO         Spearman: ranking 6,965,009,325 values (pass 2/2)...
+08:22:00 INFO         Spearman: computing correlation from ranks...
+08:22:02 INFO       [JL L5/layer20/wrong] Spearman=0.9985, Pearson=0.9987, mean_rel_err=0.0568, dist_var_expl=0.9962, pyth_err=3.00e-15, 3167.4s
+08:22:08 DEBUG      [F L5/layer24/all] 43/43 concepts with bases
+08:22:31 INFO       [F L5/layer24/all] 903 pairs from 43 concepts, 783 superposition flags, 24.0s
+08:22:32 INFO       [JL L5/layer24/all] N=122223, k=506, all_pairs_rowwise, 7,469,169,753 pairs
+08:22:32 INFO         rowwise: allocating 2 × 7,469,169,753 float32 arrays (59.8 GB)
+08:25:27 DEBUG        rowwise: 10000/122223 rows, 1,172,337,222/7,469,169,753 pairs
+08:28:08 DEBUG        rowwise: 20000/122223 rows, 2,244,552,222/7,469,169,753 pairs
+08:30:33 DEBUG        rowwise: 30000/122223 rows, 3,216,767,222/7,469,169,753 pairs
+08:32:43 DEBUG        rowwise: 40000/122223 rows, 4,088,982,222/7,469,169,753 pairs
+08:34:37 DEBUG        rowwise: 50000/122223 rows, 4,861,197,222/7,469,169,753 pairs
+08:36:18 DEBUG        rowwise: 60000/122223 rows, 5,533,412,222/7,469,169,753 pairs
+08:37:44 DEBUG        rowwise: 70000/122223 rows, 6,105,627,222/7,469,169,753 pairs
+08:38:56 DEBUG        rowwise: 80000/122223 rows, 6,577,842,222/7,469,169,753 pairs
+08:39:53 DEBUG        rowwise: 90000/122223 rows, 6,950,057,222/7,469,169,753 pairs
+08:40:35 DEBUG        rowwise: 100000/122223 rows, 7,222,272,222/7,469,169,753 pairs
+08:41:01 DEBUG        rowwise: 110000/122223 rows, 7,394,487,222/7,469,169,753 pairs
+08:41:13 DEBUG        rowwise: 120000/122223 rows, 7,466,702,222/7,469,169,753 pairs
+08:41:14 INFO         Large-N metrics: 7,469,169,753 pairs, using chunked computations
+08:43:21 INFO         Spearman: ranking 7,469,169,753 values (pass 1/2)...
+09:01:14 INFO         Spearman: ranking 7,469,169,753 values (pass 2/2)...
+09:20:18 INFO         Spearman: computing correlation from ranks...
+09:20:19 INFO       [JL L5/layer24/all] Spearman=0.9978, Pearson=0.9982, mean_rel_err=0.0662, dist_var_expl=0.9945, pyth_err=1.88e-15, 3467.6s
+09:20:20 DEBUG      [F L5/layer24/correct] 35/36 concepts with bases
+09:20:23 INFO       [F L5/layer24/correct] 595 pairs from 35 concepts, 551 superposition flags, 4.0s
+09:20:24 INFO       [JL L5/layer24/correct] N=4197, k=485, all_pairs, 8,805,306 pairs
+09:20:31 INFO       [JL L5/layer24/correct] Spearman=0.9987, Pearson=0.9991, mean_rel_err=0.0529, dist_var_expl=0.9980, pyth_err=2.16e-15, 7.5s
+09:20:35 DEBUG      [F L5/layer24/wrong] 36/36 concepts with bases
+09:20:35 INFO       [F L5/layer24/wrong] 630 pairs from 36 concepts, 561 superposition flags, 0.7s
+09:20:36 INFO       [JL L5/layer24/wrong] N=118026, k=492, all_pairs_rowwise, 6,965,009,325 pairs
+09:20:36 INFO         rowwise: allocating 2 × 6,965,009,325 float32 arrays (55.7 GB)
+09:23:26 DEBUG        rowwise: 10000/118026 rows, 1,130,363,025/6,965,009,325 pairs
+09:26:00 DEBUG        rowwise: 20000/118026 rows, 2,160,608,025/6,965,009,325 pairs
+09:28:19 DEBUG        rowwise: 30000/118026 rows, 3,090,853,025/6,965,009,325 pairs
+09:30:23 DEBUG        rowwise: 40000/118026 rows, 3,921,098,025/6,965,009,325 pairs
+09:32:11 DEBUG        rowwise: 50000/118026 rows, 4,651,343,025/6,965,009,325 pairs
+09:33:45 DEBUG        rowwise: 60000/118026 rows, 5,281,588,025/6,965,009,325 pairs
+09:35:05 DEBUG        rowwise: 70000/118026 rows, 5,811,833,025/6,965,009,325 pairs
+09:36:10 DEBUG        rowwise: 80000/118026 rows, 6,242,078,025/6,965,009,325 pairs
+09:37:01 DEBUG        rowwise: 90000/118026 rows, 6,572,323,025/6,965,009,325 pairs
+09:37:36 DEBUG        rowwise: 100000/118026 rows, 6,802,568,025/6,965,009,325 pairs
+09:37:57 DEBUG        rowwise: 110000/118026 rows, 6,932,813,025/6,965,009,325 pairs
+09:38:02 INFO         Large-N metrics: 6,965,009,325 pairs, using chunked computations
+09:40:01 INFO         Spearman: ranking 6,965,009,325 values (pass 1/2)...
+09:56:42 INFO         Spearman: ranking 6,965,009,325 values (pass 2/2)...
+10:13:53 INFO         Spearman: computing correlation from ranks...
+10:13:55 INFO       [JL L5/layer24/wrong] Spearman=0.9975, Pearson=0.9979, mean_rel_err=0.0691, dist_var_expl=0.9936, pyth_err=2.60e-15, 3199.0s
+10:14:01 DEBUG      [F L5/layer28/all] 43/43 concepts with bases
+10:14:01 INFO       [F L5/layer28/all] 903 pairs from 43 concepts, 782 superposition flags, 0.6s
+10:14:01 INFO       [JL L5/layer28/all] N=122223, k=515, all_pairs_rowwise, 7,469,169,753 pairs
+10:14:01 INFO         rowwise: allocating 2 × 7,469,169,753 float32 arrays (59.8 GB)
+10:16:55 DEBUG        rowwise: 10000/122223 rows, 1,172,337,222/7,469,169,753 pairs
+10:19:33 DEBUG        rowwise: 20000/122223 rows, 2,244,552,222/7,469,169,753 pairs
+10:21:58 DEBUG        rowwise: 30000/122223 rows, 3,216,767,222/7,469,169,753 pairs
+10:24:09 DEBUG        rowwise: 40000/122223 rows, 4,088,982,222/7,469,169,753 pairs
+10:26:05 DEBUG        rowwise: 50000/122223 rows, 4,861,197,222/7,469,169,753 pairs
+10:27:47 DEBUG        rowwise: 60000/122223 rows, 5,533,412,222/7,469,169,753 pairs
+10:29:12 DEBUG        rowwise: 70000/122223 rows, 6,105,627,222/7,469,169,753 pairs
+10:30:23 DEBUG        rowwise: 80000/122223 rows, 6,577,842,222/7,469,169,753 pairs
+10:31:19 DEBUG        rowwise: 90000/122223 rows, 6,950,057,222/7,469,169,753 pairs
+10:32:00 DEBUG        rowwise: 100000/122223 rows, 7,222,272,222/7,469,169,753 pairs
+10:32:27 DEBUG        rowwise: 110000/122223 rows, 7,394,487,222/7,469,169,753 pairs
+10:32:38 DEBUG        rowwise: 120000/122223 rows, 7,466,702,222/7,469,169,753 pairs
+10:32:39 INFO         Large-N metrics: 7,469,169,753 pairs, using chunked computations
+10:34:43 INFO         Spearman: ranking 7,469,169,753 values (pass 1/2)...
+10:52:35 INFO         Spearman: ranking 7,469,169,753 values (pass 2/2)...
+11:11:53 INFO         Spearman: computing correlation from ranks...
+11:11:55 INFO       [JL L5/layer28/all] Spearman=0.9969, Pearson=0.9971, mean_rel_err=0.0775, dist_var_expl=0.9902, pyth_err=2.18e-15, 3473.9s
+11:11:56 DEBUG      [F L5/layer28/correct] 35/36 concepts with bases
+11:12:50 INFO       [F L5/layer28/correct] 595 pairs from 35 concepts, 551 superposition flags, 54.8s
+11:12:50 INFO       [JL L5/layer28/correct] N=4197, k=492, all_pairs, 8,805,306 pairs
+11:12:58 INFO       [JL L5/layer28/correct] Spearman=0.9981, Pearson=0.9986, mean_rel_err=0.0636, dist_var_expl=0.9963, pyth_err=3.23e-15, 7.6s
+11:13:02 DEBUG      [F L5/layer28/wrong] 36/36 concepts with bases
+11:13:40 INFO       [F L5/layer28/wrong] 630 pairs from 36 concepts, 561 superposition flags, 39.1s
+11:13:41 INFO       [JL L5/layer28/wrong] N=118026, k=502, all_pairs_rowwise, 6,965,009,325 pairs
+11:13:41 INFO         rowwise: allocating 2 × 6,965,009,325 float32 arrays (55.7 GB)
+11:16:30 DEBUG        rowwise: 10000/118026 rows, 1,130,363,025/6,965,009,325 pairs
+11:19:05 DEBUG        rowwise: 20000/118026 rows, 2,160,608,025/6,965,009,325 pairs
+11:21:25 DEBUG        rowwise: 30000/118026 rows, 3,090,853,025/6,965,009,325 pairs
+11:23:29 DEBUG        rowwise: 40000/118026 rows, 3,921,098,025/6,965,009,325 pairs
+11:25:19 DEBUG        rowwise: 50000/118026 rows, 4,651,343,025/6,965,009,325 pairs
+11:26:53 DEBUG        rowwise: 60000/118026 rows, 5,281,588,025/6,965,009,325 pairs
+11:28:12 DEBUG        rowwise: 70000/118026 rows, 5,811,833,025/6,965,009,325 pairs
+11:29:17 DEBUG        rowwise: 80000/118026 rows, 6,242,078,025/6,965,009,325 pairs
+11:30:06 DEBUG        rowwise: 90000/118026 rows, 6,572,323,025/6,965,009,325 pairs
+11:30:41 DEBUG        rowwise: 100000/118026 rows, 6,802,568,025/6,965,009,325 pairs
+11:31:02 DEBUG        rowwise: 110000/118026 rows, 6,932,813,025/6,965,009,325 pairs
+11:31:07 INFO         Large-N metrics: 6,965,009,325 pairs, using chunked computations
+11:33:05 INFO         Spearman: ranking 6,965,009,325 values (pass 1/2)...
+11:49:43 INFO         Spearman: ranking 6,965,009,325 values (pass 2/2)...
+12:07:30 INFO         Spearman: computing correlation from ranks...
+12:07:31 INFO       [JL L5/layer28/wrong] Spearman=0.9966, Pearson=0.9967, mean_rel_err=0.0804, dist_var_expl=0.9889, pyth_err=1.80e-15, 3230.7s
+12:07:37 DEBUG      [F L5/layer31/all] 43/43 concepts with bases
+12:07:41 INFO       [F L5/layer31/all] 903 pairs from 43 concepts, 861 superposition flags, 3.8s
+12:07:41 INFO       [JL L5/layer31/all] N=122223, k=525, all_pairs_rowwise, 7,469,169,753 pairs
+12:07:41 INFO         rowwise: allocating 2 × 7,469,169,753 float32 arrays (59.8 GB)
+12:10:36 DEBUG        rowwise: 10000/122223 rows, 1,172,337,222/7,469,169,753 pairs
+12:13:17 DEBUG        rowwise: 20000/122223 rows, 2,244,552,222/7,469,169,753 pairs
+12:15:42 DEBUG        rowwise: 30000/122223 rows, 3,216,767,222/7,469,169,753 pairs
+12:17:52 DEBUG        rowwise: 40000/122223 rows, 4,088,982,222/7,469,169,753 pairs
+12:19:47 DEBUG        rowwise: 50000/122223 rows, 4,861,197,222/7,469,169,753 pairs
+12:21:26 DEBUG        rowwise: 60000/122223 rows, 5,533,412,222/7,469,169,753 pairs
+12:22:53 DEBUG        rowwise: 70000/122223 rows, 6,105,627,222/7,469,169,753 pairs
+12:24:04 DEBUG        rowwise: 80000/122223 rows, 6,577,842,222/7,469,169,753 pairs
+12:25:01 DEBUG        rowwise: 90000/122223 rows, 6,950,057,222/7,469,169,753 pairs
+12:25:43 DEBUG        rowwise: 100000/122223 rows, 7,222,272,222/7,469,169,753 pairs
+12:26:10 DEBUG        rowwise: 110000/122223 rows, 7,394,487,222/7,469,169,753 pairs
+12:26:21 DEBUG        rowwise: 120000/122223 rows, 7,466,702,222/7,469,169,753 pairs
+12:26:22 INFO         Large-N metrics: 7,469,169,753 pairs, using chunked computations
+12:28:28 INFO         Spearman: ranking 7,469,169,753 values (pass 1/2)...
+12:46:16 INFO         Spearman: ranking 7,469,169,753 values (pass 2/2)...
+13:07:28 INFO         Spearman: computing correlation from ranks...
+13:07:29 INFO       [JL L5/layer31/all] Spearman=0.9977, Pearson=0.9978, mean_rel_err=0.0639, dist_var_expl=0.9917, pyth_err=1.66e-15, 3588.4s
+13:13:33 DEBUG      [F L5/layer31/correct] 35/36 concepts with bases
+13:13:45 INFO       [F L5/layer31/correct] 595 pairs from 35 concepts, 567 superposition flags, 11.9s
+13:13:45 INFO       [JL L5/layer31/correct] N=4197, k=512, all_pairs, 8,805,306 pairs
+13:13:53 INFO       [JL L5/layer31/correct] Spearman=0.9986, Pearson=0.9990, mean_rel_err=0.0528, dist_var_expl=0.9971, pyth_err=2.35e-15, 7.9s
+13:13:57 DEBUG      [F L5/layer31/wrong] 36/36 concepts with bases
+13:13:57 INFO       [F L5/layer31/wrong] 630 pairs from 36 concepts, 595 superposition flags, 0.3s
+13:13:57 INFO       [JL L5/layer31/wrong] N=118026, k=517, all_pairs_rowwise, 6,965,009,325 pairs
+13:13:57 INFO         rowwise: allocating 2 × 6,965,009,325 float32 arrays (55.7 GB)
+13:16:47 DEBUG        rowwise: 10000/118026 rows, 1,130,363,025/6,965,009,325 pairs
+13:19:20 DEBUG        rowwise: 20000/118026 rows, 2,160,608,025/6,965,009,325 pairs
+13:21:38 DEBUG        rowwise: 30000/118026 rows, 3,090,853,025/6,965,009,325 pairs
+13:23:42 DEBUG        rowwise: 40000/118026 rows, 3,921,098,025/6,965,009,325 pairs
+13:25:30 DEBUG        rowwise: 50000/118026 rows, 4,651,343,025/6,965,009,325 pairs
+13:27:05 DEBUG        rowwise: 60000/118026 rows, 5,281,588,025/6,965,009,325 pairs
+13:28:25 DEBUG        rowwise: 70000/118026 rows, 5,811,833,025/6,965,009,325 pairs
+13:29:30 DEBUG        rowwise: 80000/118026 rows, 6,242,078,025/6,965,009,325 pairs
+13:30:21 DEBUG        rowwise: 90000/118026 rows, 6,572,323,025/6,965,009,325 pairs
+13:30:56 DEBUG        rowwise: 100000/118026 rows, 6,802,568,025/6,965,009,325 pairs
+13:31:17 DEBUG        rowwise: 110000/118026 rows, 6,932,813,025/6,965,009,325 pairs
+13:31:23 INFO         Large-N metrics: 6,965,009,325 pairs, using chunked computations
+13:33:20 INFO         Spearman: ranking 6,965,009,325 values (pass 1/2)...
+13:49:54 INFO         Spearman: ranking 6,965,009,325 values (pass 2/2)...
+14:07:19 INFO         Spearman: computing correlation from ranks...
+14:07:20 INFO       [JL L5/layer31/wrong] Spearman=0.9975, Pearson=0.9976, mean_rel_err=0.0656, dist_var_expl=0.9910, pyth_err=2.78e-15, 3203.2s
+14:07:20 INFO     
+14:07:20 INFO     Computation complete: 108 Phase F slices, 99 JL slices
+14:07:20 INFO     
+14:07:20 INFO     Generating summary CSVs...
+14:07:21 INFO       Saved phase_f_principal_angles.csv (42049 rows)
+14:07:22 INFO       Saved superposition_summary.csv (39525 rows)
+14:07:24 INFO       Saved redundancy_decomposition.csv (41345 rows)
+14:07:24 INFO       Saved jl_distance_preservation.csv (99 rows)
+14:07:24 INFO     
+14:07:24 INFO     Generating plots...
+14:07:41 INFO       Generated up to 53 plots in /home/anshulk/arithmetic-geometry/plots/phase_f
+14:07:41 INFO     
+14:07:41 INFO     ======================================================================
+14:07:41 INFO     Phase F/JL complete: 63123s (1052.0 min)
+14:07:41 INFO       Phase F: 108 slices, 42049 total pairs
+14:07:41 INFO       JL: 99 slices, total compute 61545s
+14:07:41 INFO       JL Spearman range: 0.9942 — 0.9995
+14:07:41 INFO       Superposition flags: 39525/42049
+14:07:41 INFO     ======================================================================
+14:50:20 INFO     ======================================================================
+14:50:20 INFO     Phase F/JL — Between-Concept Angles & JL Distance Check
+14:50:20 INFO     ======================================================================
+14:50:20 INFO     Phase F levels: [1, 2, 3, 4, 5]
+14:50:20 INFO     JL levels: [2, 3, 4, 5]
+14:50:20 INFO     Layers: [4, 6, 8, 12, 16, 20, 24, 28, 31]
+14:50:20 INFO     Populations: all viable
+14:50:20 INFO     GPU (CuPy): available
+14:50:20 INFO     Phase F only: False
+14:50:20 INFO     JL only: False
+14:50:20 INFO     Phase E spot-check OK: union_basis.npy shape (393, 4096)
+14:50:20 INFO     Phase D metadata files: 2844
+14:50:20 INFO     L1: N=64, populations=['all']
+14:50:20 DEBUG      [F L1/layer04/all] cached — skipping
+14:50:20 DEBUG      [F L1/layer06/all] cached — skipping
+14:50:20 DEBUG      [F L1/layer08/all] cached — skipping
+14:50:20 DEBUG      [F L1/layer12/all] cached — skipping
+14:50:20 DEBUG      [F L1/layer16/all] cached — skipping
+14:50:20 DEBUG      [F L1/layer20/all] cached — skipping
+14:50:20 DEBUG      [F L1/layer24/all] cached — skipping
+14:50:20 DEBUG      [F L1/layer28/all] cached — skipping
+14:50:20 DEBUG      [F L1/layer31/all] cached — skipping
+14:50:20 INFO     L2: N=4000, populations=['all', 'correct']
+14:50:20 DEBUG      [F L2/layer04/all] cached — skipping
+14:50:20 DEBUG      [JL L2/layer04/all] cached — skipping
+14:50:20 DEBUG      [F L2/layer04/correct] cached — skipping
+14:50:20 DEBUG      [JL L2/layer04/correct] cached — skipping
+14:50:20 DEBUG      [F L2/layer06/all] cached — skipping
+14:50:21 DEBUG      [JL L2/layer06/all] cached — skipping
+14:50:21 DEBUG      [F L2/layer06/correct] cached — skipping
+14:50:21 DEBUG      [JL L2/layer06/correct] cached — skipping
+14:50:21 DEBUG      [F L2/layer08/all] cached — skipping
+14:50:21 DEBUG      [JL L2/layer08/all] cached — skipping
+14:50:21 DEBUG      [F L2/layer08/correct] cached — skipping
+14:50:21 DEBUG      [JL L2/layer08/correct] cached — skipping
+14:50:21 DEBUG      [F L2/layer12/all] cached — skipping
+14:50:21 DEBUG      [JL L2/layer12/all] cached — skipping
+14:50:21 DEBUG      [F L2/layer12/correct] cached — skipping
+14:50:21 DEBUG      [JL L2/layer12/correct] cached — skipping
+14:50:21 DEBUG      [F L2/layer16/all] cached — skipping
+14:50:21 DEBUG      [JL L2/layer16/all] cached — skipping
+14:50:21 DEBUG      [F L2/layer16/correct] cached — skipping
+14:50:21 DEBUG      [JL L2/layer16/correct] cached — skipping
+14:50:21 DEBUG      [F L2/layer20/all] cached — skipping
+14:50:21 DEBUG      [JL L2/layer20/all] cached — skipping
+14:50:21 DEBUG      [F L2/layer20/correct] cached — skipping
+14:50:21 DEBUG      [JL L2/layer20/correct] cached — skipping
+14:50:22 DEBUG      [F L2/layer24/all] cached — skipping
+14:50:22 DEBUG      [JL L2/layer24/all] cached — skipping
+14:50:22 DEBUG      [F L2/layer24/correct] cached — skipping
+14:50:22 DEBUG      [JL L2/layer24/correct] cached — skipping
+14:50:22 DEBUG      [F L2/layer28/all] cached — skipping
+14:50:22 DEBUG      [JL L2/layer28/all] cached — skipping
+14:50:22 DEBUG      [F L2/layer28/correct] cached — skipping
+14:50:22 DEBUG      [JL L2/layer28/correct] cached — skipping
+14:50:22 DEBUG      [F L2/layer31/all] cached — skipping
+14:50:22 DEBUG      [JL L2/layer31/all] cached — skipping
+14:50:22 DEBUG      [F L2/layer31/correct] cached — skipping
+14:50:22 DEBUG      [JL L2/layer31/correct] cached — skipping
+14:50:22 INFO     L3: N=10000, populations=['all', 'correct', 'wrong']
+14:50:22 DEBUG      [F L3/layer04/all] cached — skipping
+14:50:22 DEBUG      [JL L3/layer04/all] cached — skipping
+14:50:22 DEBUG      [F L3/layer04/correct] cached — skipping
+14:50:22 DEBUG      [JL L3/layer04/correct] cached — skipping
+14:50:22 DEBUG      [F L3/layer04/wrong] cached — skipping
+14:50:22 DEBUG      [JL L3/layer04/wrong] cached — skipping
+14:50:23 DEBUG      [F L3/layer06/all] cached — skipping
+14:50:23 DEBUG      [JL L3/layer06/all] cached — skipping
+14:50:23 DEBUG      [F L3/layer06/correct] cached — skipping
+14:50:23 DEBUG      [JL L3/layer06/correct] cached — skipping
+14:50:23 DEBUG      [F L3/layer06/wrong] cached — skipping
+14:50:23 DEBUG      [JL L3/layer06/wrong] cached — skipping
+14:50:23 DEBUG      [F L3/layer08/all] cached — skipping
+14:50:23 DEBUG      [JL L3/layer08/all] cached — skipping
+14:50:23 DEBUG      [F L3/layer08/correct] cached — skipping
+14:50:23 DEBUG      [JL L3/layer08/correct] cached — skipping
+14:50:23 DEBUG      [F L3/layer08/wrong] cached — skipping
+14:50:23 DEBUG      [JL L3/layer08/wrong] cached — skipping
+14:50:24 DEBUG      [F L3/layer12/all] cached — skipping
+14:50:24 DEBUG      [JL L3/layer12/all] cached — skipping
+14:50:24 DEBUG      [F L3/layer12/correct] cached — skipping
+14:50:24 DEBUG      [JL L3/layer12/correct] cached — skipping
+14:50:24 DEBUG      [F L3/layer12/wrong] cached — skipping
+14:50:24 DEBUG      [JL L3/layer12/wrong] cached — skipping
+14:50:24 DEBUG      [F L3/layer16/all] cached — skipping
+14:50:24 DEBUG      [JL L3/layer16/all] cached — skipping
+14:50:24 DEBUG      [F L3/layer16/correct] cached — skipping
+14:50:24 DEBUG      [JL L3/layer16/correct] cached — skipping
+14:50:24 DEBUG      [F L3/layer16/wrong] cached — skipping
+14:50:24 DEBUG      [JL L3/layer16/wrong] cached — skipping
+14:50:25 DEBUG      [F L3/layer20/all] cached — skipping
+14:50:25 DEBUG      [JL L3/layer20/all] cached — skipping
+14:50:25 DEBUG      [F L3/layer20/correct] cached — skipping
+14:50:25 DEBUG      [JL L3/layer20/correct] cached — skipping
+14:50:25 DEBUG      [F L3/layer20/wrong] cached — skipping
+14:50:25 DEBUG      [JL L3/layer20/wrong] cached — skipping
+14:50:25 DEBUG      [F L3/layer24/all] cached — skipping
+14:50:25 DEBUG      [JL L3/layer24/all] cached — skipping
+14:50:25 DEBUG      [F L3/layer24/correct] cached — skipping
+14:50:25 DEBUG      [JL L3/layer24/correct] cached — skipping
+14:50:25 DEBUG      [F L3/layer24/wrong] cached — skipping
+14:50:25 DEBUG      [JL L3/layer24/wrong] cached — skipping
+14:50:25 DEBUG      [F L3/layer28/all] cached — skipping
+14:50:25 DEBUG      [JL L3/layer28/all] cached — skipping
+14:50:25 DEBUG      [F L3/layer28/correct] cached — skipping
+14:50:26 DEBUG      [JL L3/layer28/correct] cached — skipping
+14:50:26 DEBUG      [F L3/layer28/wrong] cached — skipping
+14:50:26 DEBUG      [JL L3/layer28/wrong] cached — skipping
+14:50:26 DEBUG      [F L3/layer31/all] cached — skipping
+14:50:26 DEBUG      [JL L3/layer31/all] cached — skipping
+14:50:26 DEBUG      [F L3/layer31/correct] cached — skipping
+14:50:26 DEBUG      [JL L3/layer31/correct] cached — skipping
+14:50:26 DEBUG      [F L3/layer31/wrong] cached — skipping
+14:50:26 DEBUG      [JL L3/layer31/wrong] cached — skipping
+14:50:26 INFO     L4: N=10000, populations=['all', 'correct', 'wrong']
+14:50:26 DEBUG      [F L4/layer04/all] cached — skipping
+14:50:26 DEBUG      [JL L4/layer04/all] cached — skipping
+14:50:26 DEBUG      [F L4/layer04/correct] cached — skipping
+14:50:27 DEBUG      [JL L4/layer04/correct] cached — skipping
+14:50:27 DEBUG      [F L4/layer04/wrong] cached — skipping
+14:50:27 DEBUG      [JL L4/layer04/wrong] cached — skipping
+14:50:27 DEBUG      [F L4/layer06/all] cached — skipping
+14:50:27 DEBUG      [JL L4/layer06/all] cached — skipping
+14:50:27 DEBUG      [F L4/layer06/correct] cached — skipping
+14:50:27 DEBUG      [JL L4/layer06/correct] cached — skipping
+14:50:27 DEBUG      [F L4/layer06/wrong] cached — skipping
+14:50:27 DEBUG      [JL L4/layer06/wrong] cached — skipping
+14:50:28 DEBUG      [F L4/layer08/all] cached — skipping
+14:50:28 DEBUG      [JL L4/layer08/all] cached — skipping
+14:50:28 DEBUG      [F L4/layer08/correct] cached — skipping
+14:50:28 DEBUG      [JL L4/layer08/correct] cached — skipping
+14:50:28 DEBUG      [F L4/layer08/wrong] cached — skipping
+14:50:28 DEBUG      [JL L4/layer08/wrong] cached — skipping
+14:50:29 DEBUG      [F L4/layer12/all] cached — skipping
+14:50:29 DEBUG      [JL L4/layer12/all] cached — skipping
+14:50:29 DEBUG      [F L4/layer12/correct] cached — skipping
+14:50:29 DEBUG      [JL L4/layer12/correct] cached — skipping
+14:50:29 DEBUG      [F L4/layer12/wrong] cached — skipping
+14:50:29 DEBUG      [JL L4/layer12/wrong] cached — skipping
+14:50:29 DEBUG      [F L4/layer16/all] cached — skipping
+14:50:29 DEBUG      [JL L4/layer16/all] cached — skipping
+14:50:29 DEBUG      [F L4/layer16/correct] cached — skipping
+14:50:30 DEBUG      [JL L4/layer16/correct] cached — skipping
+14:50:30 DEBUG      [F L4/layer16/wrong] cached — skipping
+14:50:30 DEBUG      [JL L4/layer16/wrong] cached — skipping
+14:50:30 DEBUG      [F L4/layer20/all] cached — skipping
+14:50:30 DEBUG      [JL L4/layer20/all] cached — skipping
+14:50:30 DEBUG      [F L4/layer20/correct] cached — skipping
+14:50:30 DEBUG      [JL L4/layer20/correct] cached — skipping
+14:50:30 DEBUG      [F L4/layer20/wrong] cached — skipping
+14:50:30 DEBUG      [JL L4/layer20/wrong] cached — skipping
+14:50:31 DEBUG      [F L4/layer24/all] cached — skipping
+14:50:31 DEBUG      [JL L4/layer24/all] cached — skipping
+14:50:31 DEBUG      [F L4/layer24/correct] cached — skipping
+14:50:31 DEBUG      [JL L4/layer24/correct] cached — skipping
+14:50:31 DEBUG      [F L4/layer24/wrong] cached — skipping
+14:50:31 DEBUG      [JL L4/layer24/wrong] cached — skipping
+14:50:32 DEBUG      [F L4/layer28/all] cached — skipping
+14:50:32 DEBUG      [JL L4/layer28/all] cached — skipping
+14:50:32 DEBUG      [F L4/layer28/correct] cached — skipping
+14:50:32 DEBUG      [JL L4/layer28/correct] cached — skipping
+14:50:32 DEBUG      [F L4/layer28/wrong] cached — skipping
+14:50:32 DEBUG      [JL L4/layer28/wrong] cached — skipping
+14:50:32 DEBUG      [F L4/layer31/all] cached — skipping
+14:50:32 DEBUG      [JL L4/layer31/all] cached — skipping
+14:50:32 DEBUG      [F L4/layer31/correct] cached — skipping
+14:50:33 DEBUG      [JL L4/layer31/correct] cached — skipping
+14:50:33 DEBUG      [F L4/layer31/wrong] cached — skipping
+14:50:33 DEBUG      [JL L4/layer31/wrong] cached — skipping
+14:50:33 INFO     L5: N=122223, populations=['all', 'correct', 'wrong']
+14:50:39 DEBUG      [F L5/layer04/all] cached — skipping
+14:50:39 DEBUG      [JL L5/layer04/all] cached — skipping
+14:50:39 DEBUG      [F L5/layer04/correct] cached — skipping
+14:50:39 DEBUG      [JL L5/layer04/correct] cached — skipping
+14:50:39 DEBUG      [F L5/layer04/wrong] cached — skipping
+14:50:39 DEBUG      [JL L5/layer04/wrong] cached — skipping
+14:50:40 DEBUG      [F L5/layer06/all] cached — skipping
+14:50:40 DEBUG      [JL L5/layer06/all] cached — skipping
+14:50:40 DEBUG      [F L5/layer06/correct] cached — skipping
+14:50:40 DEBUG      [JL L5/layer06/correct] cached — skipping
+14:50:40 DEBUG      [F L5/layer06/wrong] cached — skipping
+14:50:40 DEBUG      [JL L5/layer06/wrong] cached — skipping
+14:50:41 DEBUG      [F L5/layer08/all] cached — skipping
+14:50:41 DEBUG      [JL L5/layer08/all] cached — skipping
+14:50:41 DEBUG      [F L5/layer08/correct] cached — skipping
+14:50:41 DEBUG      [JL L5/layer08/correct] cached — skipping
+14:50:41 DEBUG      [F L5/layer08/wrong] cached — skipping
+14:50:41 DEBUG      [JL L5/layer08/wrong] cached — skipping
+14:50:42 DEBUG      [F L5/layer12/all] cached — skipping
+14:50:42 DEBUG      [JL L5/layer12/all] cached — skipping
+14:50:42 DEBUG      [F L5/layer12/correct] cached — skipping
+14:50:42 DEBUG      [JL L5/layer12/correct] cached — skipping
+14:50:42 DEBUG      [F L5/layer12/wrong] cached — skipping
+14:50:42 DEBUG      [JL L5/layer12/wrong] cached — skipping
+14:50:42 DEBUG      [F L5/layer16/all] cached — skipping
+14:50:43 DEBUG      [JL L5/layer16/all] cached — skipping
+14:50:43 DEBUG      [F L5/layer16/correct] cached — skipping
+14:50:43 DEBUG      [JL L5/layer16/correct] cached — skipping
+14:50:43 DEBUG      [F L5/layer16/wrong] cached — skipping
+14:50:43 DEBUG      [JL L5/layer16/wrong] cached — skipping
+14:50:43 DEBUG      [F L5/layer20/all] cached — skipping
+14:50:43 DEBUG      [JL L5/layer20/all] cached — skipping
+14:50:43 DEBUG      [F L5/layer20/correct] cached — skipping
+14:50:44 DEBUG      [JL L5/layer20/correct] cached — skipping
+14:50:44 DEBUG      [F L5/layer20/wrong] cached — skipping
+14:50:44 DEBUG      [JL L5/layer20/wrong] cached — skipping
+14:50:44 DEBUG      [F L5/layer24/all] cached — skipping
+14:50:44 DEBUG      [JL L5/layer24/all] cached — skipping
+14:50:44 DEBUG      [F L5/layer24/correct] cached — skipping
+14:50:44 DEBUG      [JL L5/layer24/correct] cached — skipping
+14:50:44 DEBUG      [F L5/layer24/wrong] cached — skipping
+14:50:45 DEBUG      [JL L5/layer24/wrong] cached — skipping
+14:50:45 DEBUG      [F L5/layer28/all] cached — skipping
+14:50:45 DEBUG      [JL L5/layer28/all] cached — skipping
+14:50:45 DEBUG      [F L5/layer28/correct] cached — skipping
+14:50:45 DEBUG      [JL L5/layer28/correct] cached — skipping
+14:50:45 DEBUG      [F L5/layer28/wrong] cached — skipping
+14:50:45 DEBUG      [JL L5/layer28/wrong] cached — skipping
+14:50:46 DEBUG      [F L5/layer31/all] cached — skipping
+14:50:46 DEBUG      [JL L5/layer31/all] cached — skipping
+14:50:46 DEBUG      [F L5/layer31/correct] cached — skipping
+14:50:46 DEBUG      [JL L5/layer31/correct] cached — skipping
+14:50:46 DEBUG      [F L5/layer31/wrong] cached — skipping
+14:50:46 DEBUG      [JL L5/layer31/wrong] cached — skipping
+14:50:46 INFO     
+14:50:46 INFO     Computation complete: 108 Phase F slices, 99 JL slices
+14:50:46 INFO     
+14:50:46 INFO     Generating summary CSVs...
+14:50:47 INFO       Saved phase_f_principal_angles.csv (42049 rows)
+14:50:47 INFO       Saved superposition_summary.csv (39525 rows)
+14:50:50 INFO       Saved redundancy_decomposition.csv (41345 rows)
+14:50:50 INFO       Saved jl_distance_preservation.csv (99 rows)
+14:50:50 INFO     
+14:50:50 INFO     Generating plots...
+14:51:07 INFO       Generated up to 53 plots in /home/anshulk/arithmetic-geometry/plots/phase_f
+14:51:07 INFO     
+14:51:07 INFO     ======================================================================
+14:51:07 INFO     Phase F/JL complete: 47s (0.8 min)
+14:51:07 INFO       Phase F: 108 slices, 42049 total pairs
+14:51:07 INFO       JL: 99 slices, total compute 61545s
+14:51:07 INFO       JL Spearman range: 0.9942 — 0.9995
+14:51:07 INFO       Superposition flags: 39525/42049
+14:51:07 INFO     ======================================================================
