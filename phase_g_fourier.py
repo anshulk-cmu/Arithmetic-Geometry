@@ -680,6 +680,7 @@ def fourier_all_coordinates(centroids, values, period, logger=None):
             "per_coord_dominant_freq": per_coord_dominant_freq,
             "per_coord_per_freq_power": per_coord_per_freq_power,
             "per_freq_two_axis_power": np.zeros(K),
+            "per_freq_top2_coords": np.zeros((K, 2), dtype=int),
             "total_power": total_power,
             "fcr_top1_max": 0.0,
             "fcr_top1_max_coord": 0,
@@ -850,11 +851,18 @@ def compute_helix_fcr(fourier_results, linear_power, v_linear=None,
                 best_linear_power = linear_power_rescaled[j]
                 best_linear_coord = j
         if best_linear_coord == -1:
-            # All coords used by Fourier (d <= 2), use whatever is available
-            best_linear_coord = 0
-            best_linear_power = linear_power_rescaled[0]
-            if logger:
-                logger.debug("    Helix: d=%d, cannot exclude top-2, using coord 0", d)
+            if d == 0:
+                # No coordinates at all — helix is undefined, use zero power
+                best_linear_coord = 0
+                best_linear_power = 0.0
+                if logger:
+                    logger.debug("    Helix: d=0, no coords available, using zero power")
+            else:
+                # All coords used by Fourier (d <= 2), use whatever is available
+                best_linear_coord = 0
+                best_linear_power = linear_power_rescaled[0]
+                if logger:
+                    logger.debug("    Helix: d=%d, cannot exclude top-2, using coord 0", d)
 
         helix_power_per_freq[ki] = per_freq_two_axis_power[ki] + best_linear_power
         helix_linear_coord_per_freq[ki] = best_linear_coord
@@ -1017,7 +1025,7 @@ def permutation_null(projected, labels, unique_values, period, v_linear,
     elapsed = time.time() - t0
     logger.debug(
         "    Permutation null complete: %.1fs total (%.3fs/perm)",
-        elapsed, elapsed / n_perms,
+        elapsed, elapsed / n_perms if n_perms > 0 else 0.0,
     )
 
     # p-value floor: 1 / min(n_perms + 1, m!)
@@ -1137,25 +1145,33 @@ def analyze_one(level, layer, pop_name, concept_info, period, period_spec,
     # Step 9: Circle and helix detection (pre-FDR)
     coord_a = fourier_res["two_axis_coord_a"]
     coord_b = fourier_res["two_axis_coord_b"]
-    circle_detected = (
-        p_two_axis < PERM_ALPHA
-        and p_coord[coord_a] < COORD_P_THRESHOLD
-        and p_coord[coord_b] < COORD_P_THRESHOLD
-    )
+    if d == 0:
+        # Zero-dimensional subspace: no geometry possible
+        circle_detected = False
+        helix_detected = False
+        helix_linear_coord = 0
+        helix_coord_a = 0
+        helix_coord_b = 0
+    else:
+        circle_detected = (
+            p_two_axis < PERM_ALPHA
+            and p_coord[coord_a] < COORD_P_THRESHOLD
+            and p_coord[coord_b] < COORD_P_THRESHOLD
+        )
 
-    helix_linear_coord = helix_res["helix_linear_coord"]
-    # For helix, find the top-2 Fourier coords at the helix's best frequency
-    helix_best_freq_idx = helix_res["helix_best_freq"] - 1
-    helix_fourier_top2 = fourier_res["per_freq_top2_coords"][helix_best_freq_idx]
-    helix_coord_a = int(helix_fourier_top2[0])
-    helix_coord_b = int(helix_fourier_top2[1]) if d > 1 else 0
-    helix_detected = (
-        d >= 2
-        and p_helix < PERM_ALPHA
-        and p_coord[helix_coord_a] < COORD_P_THRESHOLD
-        and p_coord[helix_coord_b] < COORD_P_THRESHOLD
-        and p_linear[helix_linear_coord] < LINEAR_P_THRESHOLD
-    )
+        helix_linear_coord = helix_res["helix_linear_coord"]
+        # For helix, find the top-2 Fourier coords at the helix's best frequency
+        helix_best_freq_idx = helix_res["helix_best_freq"] - 1
+        helix_fourier_top2 = fourier_res["per_freq_top2_coords"][helix_best_freq_idx]
+        helix_coord_a = int(helix_fourier_top2[0])
+        helix_coord_b = int(helix_fourier_top2[1]) if d > 1 else 0
+        helix_detected = (
+            d >= 2
+            and p_helix < PERM_ALPHA
+            and p_coord[helix_coord_a] < COORD_P_THRESHOLD
+            and p_coord[helix_coord_b] < COORD_P_THRESHOLD
+            and p_linear[helix_linear_coord] < LINEAR_P_THRESHOLD
+        )
 
     # Fix 3: Hierarchical geometry classifier
     if helix_detected:
@@ -1438,7 +1454,7 @@ def process_level_layer_pop(level, layer, pop_name, paths, coloring_df,
                 level, layer, pop_name, concept_name, paths, logger
             )
 
-            if merged_basis is not None:
+            if merged_basis is not None and merged_basis.shape[0] > 0:
                 # Load residualized activations (lazy, once per slice)
                 if resid_acts is None:
                     resid_acts = load_residualized(level, layer, paths, logger)
@@ -2384,7 +2400,17 @@ def run_pilot_0b(paths, logger):
     )
     if not basis_path.exists():
         logger.error("  Phase C basis not found: %s", basis_path)
-        return {"status": "skipped", "reason": "no Phase C basis"}
+        return {
+            "status": "skipped",
+            "reason": "no Phase C basis",
+            "fcr_residualized": None,
+            "fcr_raw": None,
+            "fcr_disagreement_pct": None,
+            "helix_residualized": None,
+            "helix_raw": None,
+            "helix_disagreement_pct": None,
+            "use_raw": False,
+        }
     basis = np.load(basis_path)
     logger.info("  Phase C basis shape: %s", basis.shape)
 
