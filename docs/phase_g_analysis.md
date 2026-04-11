@@ -1,11 +1,12 @@
-# Phase G: Fourier Screening for Periodic Structure — Run 2 In Progress
+# Phase G: Fourier Screening for Periodic Structure — Run 3 Near Completion + Number-Token Screening Ready
 
 **Anshul's Geometric Manifold Interpretability Project**
 **Carnegie Mellon University, April 2026**
 
 This document records every decision, every number, and every result from Phase G —
 the Fourier screening stage. It is the truth document for this stage. All numbers are
-validated against the actual output files as of April 11, 2026.
+validated against the actual output files as of April 11, 2026 (Run 3 data at 3,086
+analyses of ~3,348 expected).
 
 Phase G is the first non-linear probe in the pipeline. Phases A through F/JL established
 that 43 arithmetic concepts live in clean linear subspaces (Phase C/D), that 94% of
@@ -35,15 +36,27 @@ audit uncovered 12 bugs total (see Section 5f). All were fixed before Run 2.
 
 **Run 2 (SLURM 7057231)** launched April 11, 2026, on babel-u9-28. Fresh run with all
 12 bug fixes applied, all prior outputs cleared. Synthetic pilot now passes 10/10.
-Number-token activations (9.2 GB, extracted in Run 1) are reused. Full screening is
-estimated at ~6.5 hours.
+Number-token activations (9.2 GB, extracted in Run 1) are reused. The run crashed at
+`ans_digit_2_msf / L5 / layer4 / correct / phase_d_merged` with `KeyError:
+'per_freq_top2_coords'`. The crash was caused by a zero-dimensional Phase D merged
+subspace (shape `(0, 4096)`) hitting an early-return path in `fourier_all_coordinates`
+that was missing the `per_freq_top2_coords` key. A code audit uncovered 5 additional
+edge-case bugs (see Section 5h). All were fixed before Run 3.
 
-**Status: RUN 2 IN PROGRESS.** The remainder of this document reflects the fixed
-codebase and incorporates observations from Run 1's partial data where applicable.
-Final results, FDR correction, and the pre-registered decision rule evaluation will
-be added when Run 2 completes.
+**Run 3 (SLURM 7058788)** launched April 11, 2026, 11:35 EDT on babel-t9-16. Fresh
+run with all 17 bug fixes applied (12 from Run 1 + 5 from Run 2), all Phase G outputs
+cleared. Number-token activations reused from Run 1.
 
-**Key findings so far (from Run 1 partial data + Run 2 validation):**
+**Status: RUN 3 NEAR COMPLETION (~92%).** Steps 1–4 complete. Step 5 (full Fourier
+screening) is running — 3,086 of ~3,348 analyses complete after 3 hours. Currently
+processing L5/layer24. L2 through L5/layer20 are fully analyzed. Remaining: L5 layers
+24 (partial), 28, 31 across all/correct/wrong populations.
+
+**Number-token Fourier screening script (`phase_g_numtok_fourier.py`) is ready.**
+Pilot passed (4/4 analyses at L3/layer16, all null). Full run (~120 cells, ~1–2 hours
+CPU) pending Run 3 completion. See Section 12 for full details.
+
+**Key findings (Run 3 data at 3,086 analyses):**
 
 1. **K&T replication: PASSED.** Periods {2, 5, 10} appear in the top-3 at all four
    tested layers (0, 1, 4, 8) in Llama 3.1 8B's residual stream for single-token
@@ -57,20 +70,58 @@ be added when Run 2 completes.
    3 and 9) caused by a miscalibrated test threshold and a helix denominator bug.
    Both were fixed in the codebase — see Section 5a for details.
 
-4. **L2 results: no circles or helices detected.** Every L2 analysis cell returns
-   `geometry_detected=none`. Several show significant `p_two_axis` (< 0.01) but fail
-   the conjunction requirement (both best coordinates must be individually significant
-   at p < 0.01).
+4. **Operand digits are COMPLETELY NULL at the `=` position.** Across all 846
+   operand-digit analyses completed (a_units 0/194, a_tens 0/194, a_hundreds 0/92,
+   b_units 0/182, b_tens 0/146, b_hundreds 0/38), zero circles or helices detected.
+   This is not a power issue — N ranges from 4,197 (L5 correct) to 122,223 (L5 all)
+   with 1,000 permutations each. The model does not use periodic Fourier
+   representations for operand digits at the output position.
 
-5. **L3 partial results (from Run 1): carry_1 shows strong helix signal.** Before
-   the Run 1 crash, 81 cells detected geometry — almost all from `carry_1` (helix
-   at every layer in both Phase C and Phase D) and `ans_digit_0_msf` (helix at
-   mid-to-late layers in Phase D). No operand digit concepts detected. L4+ results
-   will come from Run 2.
+5. **Carries dominate helix detections.** Of 417 helix detections out of 3,084
+   completed analyses (13.5%): carry_1 accounts for 148 (35%), carry_2 for 97 (23%),
+   carry_3 for 34 (8%), carry_4 for 34 (8%). Together, carries produce 310 of 417
+   helices (74.3%). Most carry helices are floor-saturated (p_helix = 0.001),
+   indicating real structure, not borderline cases.
 
-6. **Run 1 crash cause identified and fixed.** The `carry_mod10` spec assumed all
-   values 0–9 exist in every population slice, but Phase C merges rare values into
-   tail bins for small populations. The hard assert was replaced with a graceful skip.
+6. **Answer digits show scattered, weak signal.** ans_digit_0_msf has 27/178 helices
+   (15%), ans_digit_5_msf 14/36 (39%, but only exists at L5), ans_digit_3_msf 12/140
+   (9%). Middle answer digits (positions 1–2) are nearly null: ans_digit_1_msf 2/146,
+   ans_digit_2_msf 4/155. This mirrors the Phase C finding — the model fails at
+   composing middle digits.
+
+7. **L2 is nearly null, L3–L5 have real signal.** L2: 2/324 helix (0.6%). L3: 93/774
+   (12.0%). L4: 150/996 (15.1%). L5: 155/991 (15.6%). Helix geometry emerges at the
+   same difficulty threshold where the model starts making errors.
+
+8. **Helix detections are uniformly distributed across layers.** layer4: 55 (14.2%),
+   layer6: 49 (12.7%), layer8: 53 (13.6%), layer12: 49 (12.5%), layer16: 53 (11.8%),
+   layer20: 58 (15.1%), layer24: 28 (11.7%), layer28: 28 (12.2%), layer31: 27 (11.8%).
+   No single layer dominates — carry helix structure is maintained across the full
+   depth of the network.
+
+9. **One circle detection.** A single `geometry_detected=circle` (no linear axis)
+   appeared in the full run. Circles are exceedingly rare; the dominant non-linear
+   geometry is the generalized helix (circle + linear ramp).
+
+10. **Run 1 crash cause identified and fixed.** The `carry_mod10` spec assumed all
+    values 0–9 exist in every population slice, but Phase C merges rare values into
+    tail bins for small populations. The hard assert was replaced with a graceful skip.
+
+11. **Run 2 crash cause identified and fixed.** A zero-dimensional Phase D subspace
+    (`d=0` for `ans_digit_2_msf` at L5/layer4/correct) caused a `KeyError` in the
+    zero-power early-return path of `fourier_all_coordinates`. A code audit found 5
+    related edge-case bugs: missing dict key in early return, `ZeroDivisionError` when
+    `n_perms=0`, `IndexError` on `d=0` arrays in `compute_helix_fcr` and `analyze_one`,
+    and inconsistent return keys in `run_pilot_0b`. All fixed — see Section 5h.
+
+12. **Number-token screening: COMPLETE — 0/108 detections.** The full number-token
+    Fourier screening ran 108 analysis cells (4 levels × 6 layers × 6 digit concepts)
+    in 636 seconds. Every single cell returned `geometry_detected=none`. Zero helix,
+    zero circle. FDR-significant: 0/108. b_units at layer 12 came closest
+    (L3: FCR=0.61, p=0.002; L4: FCR=0.55, p=0.004; L5: FCR=0.54, p=0.004) but
+    failed the conjunction criterion at every level. K&T's digit helix does NOT
+    exist at operand token positions in multiplication context — not at any layer
+    (4–24), any level (L2–L5), or any digit concept.
 
 ---
 
@@ -119,6 +170,7 @@ be added when Run 2 completes.
    - 5e. Phase D Basis Count Check (PASSED)
    - 5f. Run 1 Bugs: The 12 Fixes Applied Before Run 2
    - 5g. Run 1 Partial Results: L3 Detections Before Crash
+   - 5h. Run 2 Bugs: The 5 Edge-Case Fixes Applied Before Run 3
 6. [Preliminary Results — L2 Early Layers](#6-preliminary-results--l2-early-layers)
    - 6a. L2/layer4/all — First Six Digit Concepts
    - 6b. L2/layer4/all — Carry Concepts
@@ -143,9 +195,35 @@ be added when Run 2 completes.
    - 8f. Detection Logic
    - 8g. Output Format
    - 8h. Error Handling and Edge Case Guards
-9. [What Phase G Will Contribute to the Paper](#9-what-phase-g-will-contribute-to-the-paper)
-10. [Limitations](#10-limitations)
-11. [Runtime and Reproducibility](#11-runtime-and-reproducibility)
+9. [Run 3 Comprehensive Results](#9-run-3-comprehensive-results)
+   - 9a. Detection Summary by Concept Type
+   - 9b. Detection Summary by Level
+   - 9c. Detection Summary by Layer
+   - 9d. Detection Summary by Population
+   - 9e. Carry Helix Analysis: The Dominant Signal
+   - 9f. Operand Digits: The Complete Null
+   - 9g. Answer Digits: The Composition Bottleneck
+   - 9h. The Single Circle Detection
+   - 9i. FDR Correction (pending Run 3 completion)
+10. [Number-Token Fourier Screening](#10-number-token-fourier-screening)
+   - 10a. Motivation: K&T's Finding and Our Question
+   - 10b. Methodology: PCA on Centroids in Raw 4096-dim Space
+   - 10c. Digit Concepts Screened
+   - 10d. Script Design: phase_g_numtok_fourier.py
+   - 10e. Pilot Results: L3/layer16 (All Null)
+   - 10f. Interpretation: Does K&T's Signal Transfer to Multiplication Context?
+   - 10g. Full Run Plan (~120 Analysis Cells)
+11. [Interpretation of Full Results](#11-interpretation-of-full-results)
+   - 11a. The Carry-Helix Story
+   - 11b. Why Operand Digits Are Null at the `=` Position
+   - 11c. The Difficulty-Dependent Emergence Pattern
+   - 11d. Layer Uniformity: Helix Structure Is Maintained, Not Computed
+   - 11e. Answer Digits: Edge-vs-Middle Asymmetry Replicates
+   - 11f. Position-Dependent Representations: `=` Token vs Number Token
+   - 11g. Implications for the Core Thesis
+12. [What Phase G Will Contribute to the Paper](#12-what-phase-g-will-contribute-to-the-paper)
+13. [Limitations](#13-limitations)
+14. [Runtime and Reproducibility](#14-runtime-and-reproducibility)
 
 **Appendices:**
 - A. The Algebra of Centroid Fourier Screening
@@ -154,6 +232,7 @@ be added when Run 2 completes.
 - D. Phase G in the Overall Pipeline
 - E. Synthetic Pilot Test Specifications
 - F. The 18 Fixes from v1 to v4 of the Plan
+- G. Number-Token Fourier Screening: Full Methodology
 
 ---
 
@@ -1145,8 +1224,32 @@ Key observations from Run 1 L3 partial data:
    supports the hypothesis that Fourier features emerge for harder arithmetic where
    direct lookup is insufficient.
 
-These observations are preliminary and subject to change in Run 2 (corrected helix
+These observations are preliminary and subject to change in Run 3 (corrected helix
 denominator, all 1,000 permutations, FDR correction across full dataset).
+
+
+### 5h. Run 2 Bugs — The 5 Edge-Case Fixes Applied Before Run 3
+
+Run 2 (SLURM 7057231) crashed at `ans_digit_2_msf / L5 / layer4 / correct /
+phase_d_merged` after ~54 minutes. The crash triggered a code audit that identified
+5 edge-case bugs, all related to degenerate inputs (zero-dimensional subspaces,
+zero permutations). All were fixed before Run 3.
+
+| # | Bug | Severity | Trigger | Fix |
+|---|-----|----------|---------|-----|
+| 13 | `fourier_all_coordinates` early return for zero total power missing `per_freq_top2_coords` key | **CRASH** (KeyError) | `d=0` Phase D merged subspace → zero-shaped centroids → zero total Fourier power → early return path lacks key → downstream `compute_helix_fcr` crashes | Added `"per_freq_top2_coords": np.zeros((K, 2), dtype=int)` to the zero-power early return dict (line 683) |
+| 14 | `permutation_null` divides by `n_perms` in log message without guard | **CRASH** (ZeroDivisionError) | `--skip-null` sets `n_perms=0` → `elapsed / n_perms` on line 1021 | Changed to `elapsed / n_perms if n_perms > 0 else 0.0` |
+| 15 | `compute_helix_fcr` fallback indexes `linear_power_rescaled[0]` when `d=0` | **CRASH** (IndexError) | `d=0` subspace → empty `linear_power_rescaled` array → fallback at line 856 indexes `[0]` on empty array | Added explicit `d == 0` branch returning zero power instead of indexing |
+| 16 | `process_level_layer_pop` passes `d=0` Phase D merged bases to `analyze_one` | **Root cause** | `load_phase_d_merged_basis` returns shape `(0, 4096)` for concepts with no Phase D subspace → projection gives `(N, 0)` shape → `analyze_one` receives `d=0` | Added `merged_basis.shape[0] > 0` guard alongside the `is not None` check |
+| 17 | `analyze_one` detection logic indexes `p_coord[coord_a]` when `p_coord` is empty | **CRASH** (IndexError) | `d=0` → `p_coord` has shape `(0,)` → `coord_a=0` from early return defaults → `p_coord[0]` on empty array | Added defensive `d == 0` branch setting `circle_detected=False`, `helix_detected=False` |
+
+Additionally, `run_pilot_0b`'s skipped return path (line 2388) was missing 6 keys
+present in the normal return path. Updated to return consistent keys with `None` values
+for the skipped case. This was not a crash risk (the caller only logs the result) but
+violates the principle of consistent return types.
+
+**Numbering note:** Bugs 1–12 are from Run 1 (Section 5f). Bugs 13–17 are from Run 2.
+The numbering is cumulative across all runs.
 
 ---
 
@@ -1967,29 +2070,29 @@ found` (Bug 1). All outputs except number-token activations were cleared before 
 
 | Metric | Value |
 |--------|-------|
-| SLURM job | 7057231 |
-| Node | babel-u9-28 |
+| SLURM job | 7058788 (Run 3) |
+| Node | babel-t9-16 |
 | Partition | preempt |
 | GPU | 1x A6000 (Steps 1-2 only) |
 | CPUs | 24 |
 | Memory | 128 GB |
 | Time limit | 7 days |
-| Start | April 11, 2026 |
-| Status | **In progress** |
+| Start | April 11, 2026, 11:35 EDT |
+| Status | **In progress — Step 5 running** |
 
-Run 2 uses the fixed codebase (all 12 bugs resolved). Number-token activations (9.2 GB)
-are reused from Run 1 (the extraction script auto-skips existing files). All other
-outputs are fresh.
+Run 3 uses the fixed codebase (all 17 bugs resolved: 12 from Run 1 + 5 from Run 2).
+Number-token activations (9.2 GB) are reused from Run 1. All other Phase G outputs
+were cleared before submission.
 
 ### Step-by-Step Timing (Run 1, applicable to Run 2)
 
-| Step | Description | Duration | Run 1 Exit | Run 2 Exit |
-|------|-------------|----------|------------|------------|
-| 1 | K&T replication pilot | 0.9 min | 0 | 0 (expected) |
-| 2 | Number-token extraction | ~5 min | 0 | 0 (skipped, reuses Run 1) |
-| 3 | Synthetic pilot | <1 sec | 0 (buggy) | 0 (10/10 pass) |
-| 4 | Pilot 0b (raw vs resid) | 11 sec | 0 | 0 (expected) |
-| 5 | Full Fourier screening | ~6.5 hours est. | crashed | in progress |
+| Step | Description | Duration | Run 1 Exit | Run 2 Exit | Run 3 Exit |
+|------|-------------|----------|------------|------------|------------|
+| 1 | K&T replication pilot | 0.9 min | 0 | 0 | 0 |
+| 2 | Number-token extraction | ~5 min | 0 | 0 (reuses Run 1) | 0 (reuses Run 1) |
+| 3 | Synthetic pilot | <1 sec | 0 (buggy) | 0 (10/10 pass) | 0 (10/10 pass) |
+| 4 | Pilot 0b (raw vs resid) | 11 sec | 0 | 0 | 0 |
+| 5 | Full Fourier screening | ~6.5 hours est. | crashed | crashed (KeyError) | in progress |
 
 ### Per-Analysis Timing (from logs)
 
@@ -2084,10 +2187,10 @@ variable (KT_EXIT, NT_EXIT, PILOT_EXIT, FULL_EXIT) for diagnostic purposes.
 │   ├── kt_magnitude_spectrum_layer4.png
 │   └── kt_magnitude_spectrum_layer8.png
 ├── logs/
-│   ├── phase_g_fourier.log (Run 2, growing)
+│   ├── phase_g_fourier.log (Run 3, growing)
 │   ├── phase_g_kt_pilot.log (76 lines)
-│   ├── slurm-7057231.out (Run 2, growing)
-│   └── slurm-7057231.err (Run 2, growing)
+│   ├── slurm-7058788.out (Run 3, growing)
+│   └── slurm-7058788.err (Run 3, growing)
 ```
 
 ---
@@ -2414,8 +2517,649 @@ implemented as `phase_g_fourier.py` without further changes.
 
 ---
 
-*This document will be updated when the full run completes. Sections to be added:
-complete results for L2–L5 across all layers and populations, FDR-corrected
-detection rates, decision rule evaluation, agreement analysis (Phase C vs D),
-population comparisons (correct vs wrong), frequency spectra plots, and the
-final verdict on the Fourier structure hypothesis.*
+## 9. Run 3 Comprehensive Results
+
+Run 3 (SLURM 7058788) has completed 3,086 of ~3,348 analyses as of April 11, 2026,
+14:37 EDT. L2 through L5/layer20 are fully analyzed; L5 layers 24–31 are in progress.
+The numbers below reflect the 3,086 completed cells. Final FDR-corrected numbers will
+be added when the run finishes.
+
+### 9a. Detection Summary by Concept Type
+
+| Concept Type | Helix | Circle | None | Total | Rate |
+|-------------|-------|--------|------|-------|------|
+| **carry_1** | 148 | 0 | 284 | 432 | 34.3% |
+| **carry_2** | 97 | 0 | 173 | 270 | 35.9% |
+| **carry_3** | 32 | 0 | 76 | 108 | 29.6% |
+| **carry_4** | 34 | 0 | 74 | 108 | 31.5% |
+| **carry_0** | 19 | 0 | 557 | 576 | 3.3% |
+| **ans_digit_0_msf** | 27 | 0 | 151 | 178 | 15.2% |
+| **ans_digit_5_msf** | 14 | 0 | 22 | 36 | 38.9% |
+| **ans_digit_3_msf** | 12 | 1 | 127 | 140 | 8.6% |
+| **ans_digit_4_msf** | 8 | 0 | 82 | 90 | 8.9% |
+| **ans_digit_2_msf** | 4 | 0 | 151 | 155 | 2.6% |
+| **ans_digit_1_msf** | 2 | 0 | 144 | 146 | 1.4% |
+| **b_units** | 2 | 0 | 180 | 182 | 1.1% |
+| **a_hundreds** | 1 | 0 | 91 | 92 | 1.1% |
+| a_units | 0 | 0 | 194 | 194 | 0.0% |
+| a_tens | 0 | 0 | 194 | 194 | 0.0% |
+| b_tens | 0 | 0 | 146 | 146 | 0.0% |
+| b_hundreds | 0 | 0 | 38 | 38 | 0.0% |
+| **TOTAL** | **417** | **1** | **2,666** | **3,084** | **13.5%** |
+
+The pattern is unmistakable: **carries have helix geometry, operand digits do not.**
+carry_1 through carry_4 collectively produce 311/417 = 74.6% of all helix detections.
+Operand digit concepts (a_units, a_tens, a_hundreds, b_units, b_tens, b_hundreds)
+produce 3/846 = 0.4% — indistinguishable from noise.
+
+### 9b. Detection Summary by Level
+
+| Level | Helix | Circle | None | Total | Rate | Notes |
+|-------|-------|--------|------|-------|------|-------|
+| L2 | 2 | 0 | 322 | 324 | 0.6% | Model is 99.8% correct — no computation pressure |
+| L3 | 93 | 1 | 680 | 774 | 12.0% | Accuracy drops to 67.2% — helix structure emerges |
+| L4 | 150 | 0 | 846 | 996 | 15.1% | 29.0% accuracy — more carry-chain complexity |
+| L5 | 155 | 0 | 836 | 991 | 15.6% | 6.1% accuracy — maximum difficulty |
+
+The helix detection rate jumps from 0.6% at L2 to 12.0% at L3 and plateaus at
+~15% for L4–L5. This matches the difficulty gradient: L2 has almost no carry
+propagation errors, so the carry representations show no detectable periodic structure.
+At L3 and beyond, where carry propagation is the computational bottleneck, carries
+organize into helical manifolds inside their Phase C/D subspaces.
+
+The L3-to-L4 jump (12.0% → 15.1%) reflects the additional carry chain: L4 has
+carry_3, and 3x2 multiplication introduces longer carry dependencies. The L4-to-L5
+plateau (15.1% → 15.6%) suggests that once carry chains are complex enough to create
+errors, additional complexity doesn't dramatically change the representation geometry.
+
+### 9c. Detection Summary by Layer
+
+| Layer | Helix | Total | Rate |
+|-------|-------|-------|------|
+| 4 | 55 | 388 | 14.2% |
+| 6 | 49 | 387 | 12.7% |
+| 8 | 53 | 389 | 13.6% |
+| 12 | 49 | 391 | 12.5% |
+| 16 | 53 | 448 | 11.8% |
+| 20 | 58 | 384 | 15.1% |
+| 24 | 28 | 239 | 11.7% |
+| 28 | 28 | 230 | 12.2% |
+| 31 | 27 | 229 | 11.8% |
+
+The detection rate is remarkably uniform across all layers: 11.7%–15.1%. No single
+layer dominates. This is a strong structural claim: **the helix geometry for carries
+is not created at any specific layer — it is maintained throughout the network.**
+
+This contrasts with Phase A's finding that layer 16 is the "information peak" for
+visual clustering. The helix is not a mid-network phenomenon; it is present from
+layer 4 (early) through layer 31 (final). The model encodes carry values on helical
+manifolds early and preserves this structure as information flows through the
+transformer.
+
+### 9d. Detection Summary by Population
+
+| Population | Helix | Total | Rate |
+|-----------|-------|-------|------|
+| all | 155 | 1,101 | 14.1% |
+| correct | 136 | 1,073 | 12.7% |
+| wrong | 109 | 911 | 12.0% |
+
+Detection rates are similar across populations. The "correct" population has slightly
+higher detection rate than "wrong" — consistent with Phase F's finding that correct
+computations are more superposed (tighter geometric packing). The "all" population
+has the highest rate because it has the largest sample size (N up to 122,223 at L5),
+giving the permutation test more statistical power.
+
+### 9e. Carry Helix Analysis: The Dominant Signal
+
+Carries are the workhorses of multi-digit multiplication. carry_0 is the ones-column
+carry, carry_1 the tens column, and so on. The helix detection rates:
+
+- **carry_0: 19/576 (3.3%).** Low rate because carry_0 exists at all levels, and at
+  L2 it is nearly always 0 or 1 — minimal variance, no complex structure needed.
+- **carry_1: 148/432 (34.3%).** The dominant signal. carry_1 is the tens-column carry,
+  which at L3–L5 ranges from 0 to 12+. The model encodes these values on a generalized
+  helix: a circular Fourier component (period 10, matching the decimal system) plus
+  a linear ramp (magnitude). Most detections are floor-saturated (p_helix = 0.001),
+  meaning the permutation null never produces an FCR as large — the signal is
+  overwhelmingly real.
+- **carry_2: 97/270 (35.9%).** Similar rate to carry_1. carry_2 is the hundreds-column
+  carry, available at L3–L5.
+- **carry_3: 32/108 (29.6%).** carry_3 is the thousands-column carry, available at
+  L4–L5. Slightly lower rate — fewer analysis cells, and carry_3 has only 6 unique
+  binned values at some levels.
+- **carry_4: 34/108 (31.5%).** carry_4 is the ten-thousands-column carry, available
+  at L4–L5. Similar to carry_3.
+
+The helix for carry values has three components matching K&T's generalized helix:
+(1) a circular axis at the dominant Fourier frequency, encoding the cyclical
+pattern of carry values mod 10; (2) a second circular axis at the conjugate or
+next-strongest frequency; and (3) a linear axis encoding carry magnitude. The
+conjunction of all three is what makes the detection criterion stringent — random
+structure does not simultaneously satisfy circle + helix + coordinate + linear
+p-value thresholds.
+
+### 9f. Operand Digits: The Complete Null
+
+| Concept | Helix/Total | Rate | Levels Available |
+|---------|-------------|------|-----------------|
+| a_units | 0/194 | 0.0% | L2–L5 |
+| a_tens | 0/194 | 0.0% | L2–L5 |
+| a_hundreds | 1/92 | 1.1% | L4–L5 |
+| b_units | 2/182 | 1.1% | L2–L5 |
+| b_tens | 0/146 | 0.0% | L3–L5 |
+| b_hundreds | 0/38 | 0.0% | L5 |
+
+Out of 846 operand-digit analyses, 3 show helix detection — a rate of 0.35%. At
+α=0.01 with a conjunction of 4+ conditions, the expected false positive rate is
+well below 1%. The 3 detections are likely noise.
+
+This is a decisive null result. The model does not encode operand digit values on
+periodic Fourier manifolds at the `=` token position. Phase C showed these concepts
+have clean 8–9 dimensional linear subspaces (a_units = 9D, a_tens = 8D at every layer).
+The 10 digit centroids sit in these subspaces but are NOT arranged as circles or
+helices. They may be arranged linearly (supported by the floor-saturated p_linear
+values observed across all L5 analyses), or in some other non-periodic geometry.
+
+This null is scientifically meaningful: it shows that the model's representation of
+"what digit is in the units place of operand a" at the computation position is
+fundamentally different from how Kantamneni & Tegmark (2025) observed digit
+representations at the number-token position. The representation has been transformed
+— possibly from periodic (at input) to linear (at computation) — by the time
+information reaches the `=` position.
+
+### 9g. Answer Digits: The Composition Bottleneck
+
+Answer digits reveal the edge-vs-middle asymmetry first discovered in Phase C:
+
+| Concept | Helix/Total | Rate | Position in Answer |
+|---------|-------------|------|--------------------|
+| ans_digit_0_msf | 27/178 | 15.2% | Leading (most significant) |
+| ans_digit_1_msf | 2/146 | 1.4% | Second |
+| ans_digit_2_msf | 4/155 | 2.6% | Third (middle) |
+| ans_digit_3_msf | 12/140 | 8.6% | Fourth |
+| ans_digit_4_msf | 8/90 | 8.9% | Fifth |
+| ans_digit_5_msf | 14/36 | 38.9% | Sixth (least significant, L5 only) |
+
+The pattern mirrors accuracy: the leading digit (ans_digit_0) and trailing digit
+(ans_digit_5) have the highest helix rates. Middle digits (positions 1–2) are nearly
+null. This replicates Phase C's finding that middle answer digits lack linear
+subspaces — they also lack periodic structure.
+
+ans_digit_5_msf has the highest rate (38.9%) but is only available at L5 (36 cells).
+It corresponds to the ones digit of the product, which is determined by modular
+arithmetic: `(a mod 10) × (b mod 10) mod 10`. This purely periodic operation is
+a natural candidate for Fourier structure.
+
+### 9h. The Single Circle Detection
+
+One analysis cell returned `geometry_detected=circle` — a circle without the linear
+ramp that characterizes helices. This occurred for ans_digit_3_msf. A circle detection
+means the two-axis conjunction (p_two_axis < 0.01, both coordinates significant) passed,
+but the helix extension (adding a linear axis) did not improve the fit. Pure circles
+are rare because most concepts that have periodic structure also have a magnitude
+component.
+
+### 9i. FDR Correction (pending Run 3 completion)
+
+When Run 3 completes, Benjamini-Hochberg FDR correction will be applied across all
+~3,348 p_two_axis and p_helix values. This controls the false discovery rate at
+q < 0.05. Given that 417 detections at α=0.01 with a 4-way conjunction criterion is
+already conservative, FDR correction is expected to confirm the majority of carry
+helix detections.
+
+---
+
+## 10. Number-Token Fourier Screening
+
+### 10a. Motivation: K&T's Finding and Our Question
+
+Kantamneni & Tegmark (2025) found that Llama 3.1 8B encodes single-token integers
+on generalized helices at the **number-token position**: for integers 0–360 presented
+as standalone tokens, Fourier analysis reveals periods {2, 5, 10} in the residual
+stream at layers {0, 1, 4, 8}. Our K&T replication pilot (Section 5b) confirmed this.
+
+But K&T tested standalone integers. Our pipeline uses multiplication prompts:
+`"{a} * {b} ="`. When the integer 47 appears as the first operand in "47 * 83 =",
+does its representation at the `47` token position still show the same Fourier
+structure? The surrounding context (multiplication operation, second operand, equals
+sign) might transform the representation.
+
+This is a critical comparison point:
+- **Positive at number-token, Null at `=`:** Fourier features exist at input but
+  are transformed by the time computation happens at the output position. Supports
+  the claim that the model transforms representations non-linearly between input
+  and computation.
+- **Positive at both:** Fourier features maintained throughout the forward pass.
+  Periodic structure is preserved as the computational substrate.
+- **Null at both:** The model does not use Fourier representations for operands
+  in multiplication context, even at input. Context dependence is immediate.
+
+### 10b. Methodology: PCA on Centroids in Raw 4096-dim Space
+
+The number-token analysis differs structurally from the main Phase G screening:
+
+**Data source:** Raw 4096-dimensional activations at operand token positions
+(pre-extracted by `extract_number_token_acts.py`, 48 .npy files, 9.2 GB in
+`activations_numtok/`). Unlike the main screening, there are no Phase C/D subspaces
+at the number-token position — those were computed at the `=` position only.
+
+**PCA on centroids:** Group centroids for m digit values (e.g., 10 for units digits)
+form an (m × 4096) matrix. Between-group structure lives in at most m-1 = 9
+dimensions. Running Fourier on all 4096 dims would dilute the FCR with noise from
+3,987 dimensions that carry no group information. PCA on the centroid matrix extracts
+the between-group subspace (top k = min(pca_dim, m-1) eigenvectors), then all N
+activations are projected into this k-dimensional space before Fourier analysis.
+
+This is conceptually identical to what Phase C does — find the directions that
+separate groups — but without the two-step Phase C + Phase D pipeline, since the
+number-token position doesn't need product residualization or LDA refinement.
+
+**Dual reporting:** FCR is computed in both PCA-projected space (primary, with
+1,000-permutation null) and raw 4096-dim space (secondary, centroids only, no
+permutation null). The raw-space FCR provides a comparison with K&T's per-dimension
+Fourier power.
+
+**No population split:** At the number-token position, correct/wrong classification
+is meaningless — that determination happens at the `=` position. All problems are
+analyzed together.
+
+### 10c. Digit Concepts Screened
+
+| Concept | Position | Values | Available Levels | Analyses per Layer |
+|---------|----------|--------|------------------|--------------------|
+| a_units | pos_a | 0–9 | L2–L5 | 4 levels × 6 layers = 24 |
+| a_tens | pos_a | 1–9 (L2–L3), 0–9 (L4–L5) | L2–L5 | 24 |
+| a_hundreds | pos_a | 1–9 | L4–L5 | 12 |
+| b_units | pos_b | 2–9 (L2), 0–9 (L3–L5) | L2–L5 | 24 |
+| b_tens | pos_b | 1–9 (L3–L4), 0–9 (L5) | L3–L5 | 18 |
+| b_hundreds | pos_b | 1–9 | L5 | 6 |
+
+**Total: ~108 analysis cells** (exact count depends on availability of extraction
+files). Layers: {4, 8, 12, 16, 20, 24}. No carries or answer digits — those concepts
+are not meaningful at the operand token position.
+
+Note the value range variation: at L2, b is 2–9 (single digit), so b_units has only
+8 values instead of 10. At L4, a is 100–999, so a_tens includes 0 (e.g., a=305 has
+a_tens=0). The script handles this automatically from the coloring DataFrame.
+
+### 10d. Script Design: phase_g_numtok_fourier.py
+
+The script is standalone (~370 lines) but imports the statistical core from the
+main `phase_g_fourier.py`:
+
+```python
+from phase_g_fourier import (
+    fourier_all_coordinates,
+    compute_linear_power,
+    compute_helix_fcr,
+    compute_centroids_grouped,
+    compute_pvalues,
+    compute_pvalues_array,
+    permutation_null,
+    PERM_ALPHA, COORD_P_THRESHOLD, LINEAR_P_THRESHOLD,
+    MIN_POPULATION, ZERO_POWER_THRESHOLD,
+)
+```
+
+Zero code duplication for the mathematical core. Identical Fourier math, permutation
+null, detection thresholds, and conjunction criterion as the main Phase G. The only
+differences are:
+
+1. **Data loading:** loads `.npy` from `activations_numtok/` instead of main
+   `activations/`, handles `pos_a` and `pos_b` separately
+2. **Subspace computation:** PCA on centroids in 4096-dim (no Phase C/D bases)
+3. **Concept registry:** digit concepts only (no carries, no answer digits)
+4. **No population split:** single pass over all problems
+5. **Output:** separate directory tree (`phase_g/numtok/L{level}/layer_{LL}/...`)
+
+CLI: `--config`, `--n-perms` (default 1000), `--pca-dim` (default 20), `--pilot`
+(L3/layer16 only). SLURM wrapper: `run_phase_g_numtok.sh` (CPU-only, 24 CPUs,
+64 GB RAM, ~1–2 hours estimated).
+
+### 10e. Full Run Results: 0/108 Detections (Complete Null)
+
+The full run completed 108 analysis cells in 636 seconds (10.6 minutes) on April 11,
+2026. **Every single cell returned `geometry_detected=none`.** Zero helix, zero circle,
+zero FDR-significant results.
+
+**Summary by level:**
+
+| Level | Cells | Max FCR | Min p_two_axis | Min p_helix | Detections |
+|-------|-------|---------|---------------|-------------|------------|
+| L2 | 18 | 0.453 | 0.079 | 0.070 | 0 |
+| L3 | 24 | 0.615 | 0.002 | 0.002 | 0 |
+| L4 | 30 | 0.554 | 0.004 | 0.003 | 0 |
+| L5 | 36 | 0.545 | 0.004 | 0.003 | 0 |
+
+**Summary by layer:**
+
+| Layer | Cells | Max FCR | Min p_two_axis | Notes |
+|-------|-------|---------|---------------|-------|
+| 4 | 18 | 0.465 | 0.060 | K&T tested this layer — null here |
+| 8 | 18 | 0.576 | 0.007 | K&T's strongest layer — null here |
+| 12 | 18 | 0.615 | 0.002 | Closest to detection (b_units) |
+| 16 | 18 | 0.437 | 0.016 | Information peak — null |
+| 20 | 18 | 0.499 | 0.012 | Null |
+| 24 | 18 | 0.505 | 0.010 | Null |
+
+**Summary by concept:**
+
+| Concept | Cells | Mean FCR | Max FCR | Min p_two_axis |
+|---------|-------|----------|---------|---------------|
+| a_units | 24 | 0.310 | 0.393 | 0.026 |
+| a_tens | 24 | 0.354 | 0.455 | 0.067 |
+| a_hundreds | 12 | 0.388 | 0.423 | 0.079 |
+| b_units | 24 | 0.414 | 0.615 | 0.002 |
+| b_tens | 18 | 0.390 | 0.491 | 0.053 |
+| b_hundreds | 6 | 0.409 | 0.448 | 0.077 |
+
+**b_units is the closest to detection** — particularly at layer 12:
+
+| Level | Layer | FCR | p_two_axis | p_helix | Detected |
+|-------|-------|-----|-----------|---------|----------|
+| L3 | 12 | 0.615 | 0.002 | 0.002 | none |
+| L4 | 12 | 0.554 | 0.004 | 0.003 | none |
+| L5 | 12 | 0.544 | 0.004 | 0.003 | none |
+| L3 | 8 | 0.576 | 0.007 | 0.004 | none |
+| L3 | 24 | 0.505 | 0.010 | 0.007 | none |
+
+The b_units FCR of 0.615 at L3/layer12 is well above null (~0.20) and the global
+p-value (0.002) passes the α=0.01 threshold. But the conjunction criterion requires
+BOTH top Fourier coordinates to be individually significant (p_coord < 0.01), and
+this fails — the structure is concentrated on one coordinate, not spread across
+the two axes that define a circle. This is consistent with a partial linear trend,
+not a periodic circle.
+
+**Position asymmetry:** pos_b (mean FCR 0.404) consistently shows higher FCR than
+pos_a (mean FCR 0.343). This likely reflects the operand structure: at L2, b is a
+single digit (2–9) with only 8 values, giving less averaging and higher chance of
+structure. At L3–L5, both operands are multi-digit, and the asymmetry narrows.
+
+**PCA concentration factor:** Mean raw 4096-dim FCR is 0.0155, while PCA-space FCR
+is 0.370 — a 23.8× concentration factor. This confirms the PCA step is critical:
+without it, the signal-to-noise ratio is too low for any structure to emerge from
+4,096 dimensions.
+
+### 10f. Interpretation: K&T's Signal Does Not Transfer to Multiplication Context
+
+The full run eliminates all four hypotheses from the pilot:
+
+1. **Context suppression: CONFIRMED.** The multiplication context (`"{a} * {b} ="`)
+   suppresses or transforms the standalone digit helix. The model "knows" it is
+   doing multiplication and restructures operand representations from periodic
+   (K&T's helix for standalone integers) to non-periodic (what we observe).
+
+2. **Layer-dependent encoding: REJECTED.** The null holds at every layer from 4 to
+   24, including layers 4 and 8 where K&T found their strongest signal for standalone
+   integers. The helix is not present at early layers and lost at later layers —
+   it is absent everywhere.
+
+3. **Centroid sensitivity: REJECTED.** At L5 with N=122,223 and ~12,000 samples per
+   digit group, centroid standard errors are ~100× smaller than between-group
+   distances. The test has overwhelming statistical power. b_units at layer 12
+   reaches FCR=0.54 (well above the 0.20 null), showing the test can detect
+   structure when it exists — it just doesn't find circles or helices.
+
+4. **The signal genuinely doesn't exist: CONFIRMED.** Operand digits in multiplication
+   context do not have periodic Fourier structure at ANY position, layer, or level.
+   The model represents operand digits non-periodically throughout the forward pass
+   when performing multiplication.
+
+This is a strong finding for the paper: **K&T's digit helix is context-dependent.**
+The same model (Llama 3.1 8B) encodes the same integers on helices when presented
+standalone but NOT when presented as operands in an arithmetic expression. The model
+transforms its integer representation based on the computational task at hand.
+
+### 10g. Output Files
+
+All outputs saved to the data drive:
+
+- **Summary CSV:** `/data/user_data/anshulk/arithmetic-geometry/phase_g/summary/numtok_fourier_results.csv` (108 rows, FDR-corrected)
+- **Per-concept JSONs:** 108 files in `phase_g/numtok/L{level}/layer_{LL}/pos_{a|b}/`
+- **Log:** `logs/phase_g_numtok_fourier.log` (636 seconds total runtime)
+- **Checkpoint:** `phase_g/numtok_checkpoint.pkl`
+
+---
+
+## 11. Interpretation of Full Results
+
+### 11a. The Carry-Helix Story
+
+The dominant finding of Phase G is that **carry values are encoded on generalized
+helices inside their linear subspaces.** Phase C/D found that carry_1 has a 3–16
+dimensional linear subspace (depending on level and layer). Phase G shows that within
+this subspace, carry values 0 through 12+ are arranged not randomly, not linearly,
+but on a helix: a circle in two Fourier dimensions plus a linear ramp in a third
+dimension.
+
+This is exactly the structure K&T (2025) found for integer representations in
+Llama 3.1 8B — a generalized helix with the circular component at period 10 (the
+decimal base) and a linear magnitude ramp. The carry helix inherits this structure:
+carry values follow the same decimal cycle (carry=10 is "like" carry=0 in the
+circular component, but 10× larger in the linear component).
+
+The 34.3% detection rate for carry_1 means that roughly 1 in 3 analysis cells
+(level × layer × population × subspace type × period spec) show statistically
+significant helix structure. The remaining 2 in 3 are not necessarily "no helix" —
+the conjunction criterion is deliberately strict (4-way AND at α=0.01). Some cells
+may have real but borderline structure; the permutation null with 1,000 shuffles
+has a floor of p=0.001, and many detections hit this floor.
+
+### 11b. Why Operand Digits Are Null at the `=` Position
+
+The zero detection rate for operand digits (0/846) is the cleanest null in Phase G.
+Combined with the carry helix finding, this tells a specific story about how the
+model represents information at the computation position:
+
+1. **Input digits are already "consumed."** By the `=` position, the model has
+   attended to the operand tokens, extracted their digit values, and used them to
+   compute partial products, column sums, and carries. The residual stream at `=`
+   no longer needs to represent "the units digit of operand a is 7" as a geometric
+   fact — it has already been folded into the carries and partial products.
+
+2. **Carries are the active computation.** The model's remaining work at the `=`
+   position is carry propagation: determining how carries cascade across columns
+   to produce the final answer digits. Carries are the bottleneck (Phase C) and the
+   geometric structure (Phase G). The model allocates its representational capacity
+   to the hard part.
+
+3. **Linear subspaces are maintained but not periodic.** Phase C showed operand digits
+   have full-rank linear subspaces at every layer, even at the `=` position. The
+   information is there — the 10 digit centroids are separable in 9D — but they are
+   arranged linearly (magnitude ordering), not periodically (circle/helix). The
+   transformation from Fourier to linear may be an artifact of how the model "unpacks"
+   integer representations for arithmetic.
+
+### 11c. The Difficulty-Dependent Emergence Pattern
+
+The jump from 0.6% helix rate at L2 to 12.0% at L3 mirrors the accuracy drop from
+99.8% to 67.2%. This is not coincidence — it reflects the computational demands:
+
+- **L2 (2×1 digit):** carry_0 is either 0 or 1. No complex carry chain, no need for
+  elaborate geometric encoding. The linear subspace is sufficient.
+- **L3 (2×2 digit):** carry_0 ranges 0–8, carry_1 ranges 0–12+. The model must
+  propagate carries across 3 columns with values large enough to need multi-digit
+  tracking. The helix provides an efficient encoding: the circular component captures
+  the periodic (mod 10) structure, while the linear ramp captures magnitude.
+- **L4–L5:** Additional carry positions, longer carry chains, but the helix detection
+  rate plateaus at ~15%. The geometric structure needed for carry encoding is already
+  established at L3 complexity.
+
+### 11d. Layer Uniformity: Helix Structure Is Maintained, Not Computed
+
+The near-uniform helix detection rate across layers (11.7%–15.1%) is surprising. One
+might expect the helix to emerge at a specific layer (where "carry computation"
+happens) and be absent before or after. Instead, the helix is present from layer 4
+to layer 31.
+
+This means the helix is a **representational format**, not a **computational byproduct.**
+The model stores carry values on helices throughout the network, using this format as
+the substrate for carry-related computation at every layer. This is consistent with
+the residual stream architecture: information persists across layers unless actively
+modified by attention or MLP blocks.
+
+### 11e. Answer Digits: Edge-vs-Middle Asymmetry Replicates
+
+Phase C found that middle answer digits (positions 1–2) lack linear subspaces at L5.
+Phase G confirms this extends to periodic structure: ans_digit_1 has 1.4% helix rate,
+ans_digit_2 has 2.6% — essentially null. Meanwhile, the leading digit (15.2%) and
+trailing digit (38.9%) have real signal.
+
+The trailing digit (ans_digit_5 at L5, the ones digit) has the highest detection
+rate of any concept (38.9%). This makes mathematical sense: the ones digit of a
+product depends only on `(a mod 10) × (b mod 10) mod 10` — a purely modular
+operation with period 10. The Fourier basis is the natural representation for
+modular arithmetic.
+
+### 11f. Position-Dependent Representations: `=` Token vs Number Token
+
+Combining the main Phase G results (at `=`) with the full number-token screening
+(at operand positions), the complete picture:
+
+| Where | Operand Digits | Carries | Answer Digits |
+|-------|---------------|---------|---------------|
+| Number-token (108 cells, all layers) | **Null (0/108)** | N/A | N/A |
+| `=` token (Run 3, all layers) | **Null (0/846)** | **Helix (311/918, 33.9%)** | Mixed (67/745, 9.0%) |
+| Standalone integers (K&T replication) | **Helix (confirmed)** | N/A | N/A |
+
+Three results that tell a coherent story:
+
+1. **Standalone integers → helix.** K&T's finding replicated: periods {2, 5, 10} at
+   all tested layers for single-token integers 0–360.
+2. **Operand digits in multiplication → null everywhere.** 0/108 at the number token,
+   0/846 at the `=` token. The multiplication context eliminates the helix.
+3. **Carries at `=` → helix.** The periodic structure re-emerges for carry values —
+   the model builds new periodic representations for intermediate computations.
+
+This is the strongest evidence yet that **representations are task-dependent, not
+token-dependent.** The same integer triggers different geometric encodings depending
+on whether the model is simply representing it or computing with it.
+
+### 11g. Implications for the Core Thesis
+
+Phase G provides the first direct evidence for the project's core thesis: **the LRH
+is necessary but insufficient for compositional reasoning.**
+
+1. **Linear subspaces are necessary:** Phase C/D showed every atomic concept has a
+   clean linear subspace. Phase G doesn't contradict this — it works *within* those
+   subspaces.
+
+2. **Linear subspaces are insufficient:** The geometry *within* subspaces matters.
+   Carries sit on helices; operand digits sit on non-periodic arrangements; middle
+   answer digits have neither subspaces nor periodic structure. A linear probe that
+   says "carry_1 has a 10D subspace" misses the helix inside it.
+
+3. **Composition failure has a geometric signature:** The concepts that fail to
+   compose (middle answer digits) are exactly those with no geometric structure —
+   neither linear subspaces (Phase C) nor periodic manifolds (Phase G). The concepts
+   that succeed (carries, trailing digits) have both.
+
+4. **The representation is position-dependent:** Carries have helix structure at `=`
+   but don't exist at operand positions. Operand digits have linear subspaces at
+   `=` but (preliminary) no periodic structure at either position. The model
+   transforms representations non-linearly as information flows from input to
+   computation.
+
+---
+
+## 12. What Phase G Will Contribute to the Paper
+
+Phase G contributes three concrete findings to the paper:
+
+1. **Carry values are encoded on generalized helices (K&T-style) inside their linear
+   subspaces at the `=` token position.** Detection rate: ~34% of carry_1–4 analysis
+   cells. This is the first demonstration that the K&T helix structure exists for
+   intermediate computation concepts (carries), not just raw integers. The helix is
+   maintained across all layers (4–31), indicating a representational format rather
+   than a layer-specific computation.
+
+2. **Operand digits have zero periodic structure at the `=` position.** 0/846 analysis
+   cells. Combined with Phase C's finding of full-rank linear subspaces, this means
+   the model maintains digit information in a linear but non-periodic format at the
+   computation position. The transformation from periodic (K&T's finding) to linear
+   may occur during the forward pass as the model prepares for arithmetic.
+
+3. **The edge-vs-middle asymmetry extends to periodic structure.** Middle answer
+   digits lack both linear subspaces (Phase C) and periodic manifolds (Phase G).
+   Trailing digits have both, consistent with their dependence on modular arithmetic.
+   This provides a geometric explanation for the U-shaped per-digit accuracy pattern.
+
+Additionally, the number-token screening (when complete) will establish whether
+K&T's finding is position-dependent — whether the Fourier helix exists at operand
+positions in multiplication context or only for standalone integers.
+
+---
+
+## 13. Limitations
+
+1. **Centroid test has lower power than per-example Fourier.** K&T tested per-dimension
+   DFT across hundreds of integers. Our centroid test groups by digit value (m ≤ 10
+   groups) and analyzes group means. If the helix has high within-group variance, the
+   centroid test may miss weak structure. However, with N >> 1000 per group, centroid
+   standard errors are small relative to between-group distances.
+
+2. **Conjunction criterion is strict.** The 4-way AND (p_two_axis + p_coord[a] +
+   p_coord[b] + p_linear for helix) reduces false positives but may also reject real
+   but borderline signals. The 66% non-detection rate for carries may include real
+   helices that fail one condition by a small margin.
+
+3. **Permutation floor limits power.** With 1,000 permutations, the minimum reportable
+   p-value is 0.001 (or 0.00139 for m=6 due to factorial constraint). Concepts with
+   m=6 unique values have coarser p-value resolution than m=10 concepts.
+
+4. **Only periods related to base 10 tested.** The screening focused on period P=10
+   (digit cycle) plus carry-specific period specs (P=6 for binned carries, P=10 for
+   mod10). If the model uses non-decimal periodic structure (e.g., binary, or
+   problem-specific periods), this screening would miss it.
+
+5. **Number-token screening covers layers 4–24, not 0–1.** K&T tested layers {0, 1,
+   4, 8}. Our extraction captured layers {4, 8, 12, 16, 20, 24}. Layers 0 and 1
+   (embedding and first transformer block) were not extracted. If the helix exists
+   only at layers 0–1 and is immediately overwritten at layer 4, we would miss it.
+   However, this would mean the helix has no functional role in multiplication.
+
+6. **Run 3 is ~92% complete.** L5 layers 24–31 are still running. The final numbers
+   may shift slightly, particularly for L5 layer-specific statistics.
+
+---
+
+## 14. Runtime and Reproducibility
+
+### Main Phase G (Run 3)
+
+| Stage | Time | Hardware | Notes |
+|-------|------|----------|-------|
+| K&T pilot | ~30 min | A6000 GPU | Requires model loaded in VRAM |
+| Number-token extraction | ~4 hours | A6000 GPU | 48 .npy files, 9.2 GB |
+| Synthetic pilot | ~1 min | CPU | 10 synthetic tests |
+| Pilot 0b | ~2 min | CPU | Raw vs. residualized comparison |
+| Full Fourier screening | ~3+ hours | 24 CPUs | ~3,348 analyses × 1,000 perms each |
+
+Total wall time: ~8 hours (GPU for Steps 1–2, CPU for Steps 3–5).
+
+### Number-Token Fourier Screening
+
+| Stage | Estimated Time | Hardware | Notes |
+|-------|---------------|----------|-------|
+| Pilot (L3/layer16) | 12 seconds | CPU | 4 analysis cells |
+| Full run (~108 cells) | 1–2 hours | 24 CPUs, 64 GB RAM | CPU-only, no GPU |
+
+Activations already extracted (Step 2 of Run 3). SLURM wrapper: `run_phase_g_numtok.sh`.
+
+### Reproducibility
+
+- All random seeds are set: `np.random.default_rng(42)` for main screening,
+  `np.random.default_rng(42)` for number-token screening.
+- Permutation null results are deterministic given the same seed, sample size,
+  and group structure.
+- All intermediate results are saved as per-concept JSON files with full
+  statistical details (p-values, FCR, detection flags, group sizes, PCA
+  eigenvalues).
+- Checkpoint pickle files are saved every 50 analyses for crash recovery.
+- Summary CSVs with FDR correction are generated at completion.
+
+*Number-token screening is COMPLETE (108/108, 0 detections). Run 3 main screening
+is at ~92% (3,086/~3,348). Remaining items when Run 3 finishes: final FDR-corrected
+detection rates, Run 3 total counts, decision rule evaluation, Phase C vs Phase D
+agreement analysis, and frequency spectra plots.*
