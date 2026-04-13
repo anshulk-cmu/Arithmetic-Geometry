@@ -235,6 +235,8 @@ snapshot_download('meta-llama/Meta-Llama-3.1-8B',
 "
 ```
 
+**Running in Google Colab?** See [COLAB.md](COLAB.md) for a Colab-ready config and step-by-step cells.
+
 ## Usage
 
 ```bash
