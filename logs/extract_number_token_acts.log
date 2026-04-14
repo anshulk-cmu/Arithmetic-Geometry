@@ -1,0 +1,308 @@
+11:36:12 INFO     ============================================================
+11:36:12 INFO     NUMBER-TOKEN ACTIVATION EXTRACTION
+11:36:12 INFO     ============================================================
+11:36:12 INFO     Levels: [2, 3, 4, 5]
+11:36:12 INFO     Layers: [4, 8, 12, 16, 20, 24]
+11:36:12 INFO     Operand positions: found by token content (a, b)
+11:36:12 INFO     Output: /data/user_data/anshulk/arithmetic-geometry/activations_numtok
+11:36:15 INFO     Loading tokenizer from /data/user_data/anshulk/arithmetic-geometry/model
+11:36:16 INFO     Tokenizer loaded: vocab_size=128000
+11:36:16 INFO     Loading model from /data/user_data/anshulk/arithmetic-geometry/model
+11:36:20 INFO     Model loaded in 4.3s
+11:36:20 INFO     --- Level 2 ---
+11:36:20 INFO       Level 2 already complete, skipping
+11:36:20 INFO     --- Level 3 ---
+11:36:20 INFO       Level 3 already complete, skipping
+11:36:20 INFO     --- Level 4 ---
+11:36:20 INFO       Level 4 already complete, skipping
+11:36:20 INFO     --- Level 5 ---
+11:36:20 INFO       Level 5 already complete, skipping
+11:36:20 INFO     ============================================================
+11:36:20 INFO     EXTRACTION COMPLETE: 0.0 minutes (0.0 hours)
+11:36:20 INFO     ============================================================
+15:50:25 INFO     ============================================================
+15:50:25 INFO     NUMBER-TOKEN ACTIVATION EXTRACTION
+15:50:25 INFO     ============================================================
+15:50:25 INFO     Levels: [2, 3, 4, 5]
+15:50:25 INFO     Layers: [4, 8, 12, 16, 20, 24]
+15:50:25 INFO     Operand positions: found by token content (a, b)
+15:50:25 INFO     Output: /data/user_data/anshulk/arithmetic-geometry/activations_numtok
+15:50:28 INFO     Loading tokenizer from /data/user_data/anshulk/arithmetic-geometry/model
+15:50:29 INFO     Tokenizer loaded: vocab_size=128000
+15:50:29 INFO     Loading model from /data/user_data/anshulk/arithmetic-geometry/model
+15:50:33 INFO     Model loaded in 4.5s
+15:50:33 INFO     --- Level 2 ---
+15:50:33 INFO       Level 2 already complete, skipping
+15:50:33 INFO     --- Level 3 ---
+15:50:33 INFO       Level 3 already complete, skipping
+15:50:33 INFO     --- Level 4 ---
+15:50:33 INFO       Level 4 already complete, skipping
+15:50:33 INFO     --- Level 5 ---
+15:50:33 INFO       Level 5 already complete, skipping
+15:50:34 INFO     ============================================================
+15:50:34 INFO     EXTRACTION COMPLETE: 0.0 minutes (0.0 hours)
+15:50:34 INFO     ============================================================
+19:14:59 INFO     ============================================================
+19:14:59 INFO     NUMBER-TOKEN ACTIVATION EXTRACTION
+19:14:59 INFO     ============================================================
+19:14:59 INFO     Levels: [2, 3, 4, 5]
+19:14:59 INFO     Layers: [4, 8, 12, 16, 20, 24]
+19:14:59 INFO     Operand positions: found by token content (a, b)
+19:14:59 INFO     Output: /data/user_data/anshulk/arithmetic-geometry/activations_numtok
+19:15:02 INFO     Loading tokenizer from /data/user_data/anshulk/arithmetic-geometry/model
+19:15:03 INFO     Tokenizer loaded: vocab_size=128000
+19:15:03 INFO     Loading model from /data/user_data/anshulk/arithmetic-geometry/model
+19:15:07 INFO     Model loaded in 4.1s
+19:15:07 INFO     --- Level 2 ---
+19:15:07 INFO       Level 2 already complete, skipping
+19:15:07 INFO     --- Level 3 ---
+19:15:07 INFO       Level 3 already complete, skipping
+19:15:07 INFO     --- Level 4 ---
+19:15:07 INFO       Level 4 already complete, skipping
+19:15:07 INFO     --- Level 5 ---
+19:15:07 INFO       Level 5 already complete, skipping
+19:15:07 INFO     ============================================================
+19:15:07 INFO     EXTRACTION COMPLETE: 0.0 minutes (0.0 hours)
+19:15:07 INFO     ============================================================
+19:23:42 INFO     ============================================================
+19:23:42 INFO     NUMBER-TOKEN ACTIVATION EXTRACTION
+19:23:42 INFO     ============================================================
+19:23:42 INFO     Levels: [2, 3, 4, 5]
+19:23:42 INFO     Layers: [4, 8, 12, 16, 20, 24]
+19:23:42 INFO     Operand positions: found by token content (a, b)
+19:23:42 INFO     Output: /data/user_data/anshulk/arithmetic-geometry/activations_numtok
+19:23:45 INFO     Loading tokenizer from /data/user_data/anshulk/arithmetic-geometry/model
+19:23:46 INFO     Tokenizer loaded: vocab_size=128000
+19:23:46 INFO     Loading model from /data/user_data/anshulk/arithmetic-geometry/model
+19:23:51 INFO     Model loaded in 5.3s
+19:23:51 INFO     --- Level 2 ---
+19:23:51 INFO       Level 2 already complete, skipping
+19:23:51 INFO     --- Level 3 ---
+19:23:51 INFO       Level 3 already complete, skipping
+19:23:51 INFO     --- Level 4 ---
+19:23:51 INFO       Level 4 already complete, skipping
+19:23:51 INFO     --- Level 5 ---
+19:23:51 INFO       Level 5 already complete, skipping
+19:23:51 INFO     ============================================================
+19:23:51 INFO     EXTRACTION COMPLETE: 0.0 minutes (0.0 hours)
+19:23:51 INFO     ============================================================
+19:28:56 INFO     ============================================================
+19:28:56 INFO     NUMBER-TOKEN ACTIVATION EXTRACTION
+19:28:56 INFO     ============================================================
+19:28:56 INFO     Levels: [2, 3, 4, 5]
+19:28:56 INFO     Layers: [4, 8, 12, 16, 20, 24]
+19:28:56 INFO     Operand positions: found by token content (a, b)
+19:28:56 INFO     Output: /data/user_data/anshulk/arithmetic-geometry/activations_numtok
+19:28:58 INFO     Loading tokenizer from /data/user_data/anshulk/arithmetic-geometry/model
+19:28:59 INFO     Tokenizer loaded: vocab_size=128000
+19:28:59 INFO     Loading model from /data/user_data/anshulk/arithmetic-geometry/model
+19:29:01 INFO     Model loaded in 2.3s
+19:29:01 INFO     --- Level 2 ---
+19:29:01 INFO       Level 2 already complete, skipping
+19:29:01 INFO     --- Level 3 ---
+19:29:01 INFO       Level 3 already complete, skipping
+19:29:01 INFO     --- Level 4 ---
+19:29:01 INFO       Level 4 already complete, skipping
+19:29:01 INFO     --- Level 5 ---
+19:29:01 INFO       Level 5 already complete, skipping
+19:29:01 INFO     ============================================================
+19:29:01 INFO     EXTRACTION COMPLETE: 0.0 minutes (0.0 hours)
+19:29:01 INFO     ============================================================
+06:00:21 INFO     ============================================================
+06:00:21 INFO     NUMBER-TOKEN ACTIVATION EXTRACTION
+06:00:21 INFO     ============================================================
+06:00:21 INFO     Levels: [2, 3, 4, 5]
+06:00:21 INFO     Layers: [4, 8, 12, 16, 20, 24]
+06:00:21 INFO     Operand positions: found by token content (a, b)
+06:00:21 INFO     Output: /data/user_data/anshulk/arithmetic-geometry/activations_numtok
+06:00:23 INFO     Loading tokenizer from /data/user_data/anshulk/arithmetic-geometry/model
+06:00:24 INFO     Tokenizer loaded: vocab_size=128000
+06:00:24 INFO     Loading model from /data/user_data/anshulk/arithmetic-geometry/model
+06:00:27 INFO     Model loaded in 2.8s
+06:00:27 INFO     --- Level 2 ---
+06:00:27 INFO       Level 2 already complete, skipping
+06:00:27 INFO     --- Level 3 ---
+06:00:27 INFO       Level 3 already complete, skipping
+06:00:27 INFO     --- Level 4 ---
+06:00:27 INFO       Level 4 already complete, skipping
+06:00:27 INFO     --- Level 5 ---
+06:00:27 INFO       Level 5 already complete, skipping
+06:00:27 INFO     ============================================================
+06:00:27 INFO     EXTRACTION COMPLETE: 0.0 minutes (0.0 hours)
+06:00:27 INFO     ============================================================
+06:17:52 INFO     ============================================================
+06:17:52 INFO     NUMBER-TOKEN ACTIVATION EXTRACTION
+06:17:52 INFO     ============================================================
+06:17:52 INFO     Levels: [2, 3, 4, 5]
+06:17:52 INFO     Layers: [4, 8, 12, 16, 20, 24]
+06:17:52 INFO     Operand positions: found by token content (a, b)
+06:17:52 INFO     Output: /data/user_data/anshulk/arithmetic-geometry/activations_numtok
+06:17:55 INFO     Loading tokenizer from /data/user_data/anshulk/arithmetic-geometry/model
+06:17:56 INFO     Tokenizer loaded: vocab_size=128000
+06:17:56 INFO     Loading model from /data/user_data/anshulk/arithmetic-geometry/model
+06:18:01 INFO     Model loaded in 5.5s
+06:18:01 INFO     --- Level 2 ---
+06:18:01 INFO       Level 2 already complete, skipping
+06:18:01 INFO     --- Level 3 ---
+06:18:01 INFO       Level 3 already complete, skipping
+06:18:01 INFO     --- Level 4 ---
+06:18:01 INFO       Level 4 already complete, skipping
+06:18:01 INFO     --- Level 5 ---
+06:18:01 INFO       Level 5 already complete, skipping
+06:18:01 INFO     ============================================================
+06:18:01 INFO     EXTRACTION COMPLETE: 0.0 minutes (0.0 hours)
+06:18:01 INFO     ============================================================
+09:25:15 INFO     ============================================================
+09:25:15 INFO     NUMBER-TOKEN ACTIVATION EXTRACTION
+09:25:15 INFO     ============================================================
+09:25:15 INFO     Levels: [2, 3, 4, 5]
+09:25:15 INFO     Layers: [4, 8, 12, 16, 20, 24]
+09:25:15 INFO     Operand positions: found by token content (a, b)
+09:25:15 INFO     Output: /data/user_data/anshulk/arithmetic-geometry/activations_numtok
+09:25:19 INFO     Loading tokenizer from /data/user_data/anshulk/arithmetic-geometry/model
+09:25:19 INFO     Tokenizer loaded: vocab_size=128000
+09:25:19 INFO     Loading model from /data/user_data/anshulk/arithmetic-geometry/model
+09:25:24 INFO     Model loaded in 4.8s
+09:25:24 INFO     --- Level 2 ---
+09:25:24 INFO       Level 2 already complete, skipping
+09:25:24 INFO     --- Level 3 ---
+09:25:24 INFO       Level 3 already complete, skipping
+09:25:24 INFO     --- Level 4 ---
+09:25:24 INFO       Level 4 already complete, skipping
+09:25:24 INFO     --- Level 5 ---
+09:25:24 INFO       Level 5 already complete, skipping
+09:25:24 INFO     ============================================================
+09:25:24 INFO     EXTRACTION COMPLETE: 0.0 minutes (0.0 hours)
+09:25:24 INFO     ============================================================
+10:07:38 INFO     ============================================================
+10:07:38 INFO     NUMBER-TOKEN ACTIVATION EXTRACTION
+10:07:38 INFO     ============================================================
+10:07:38 INFO     Levels: [2, 3, 4, 5]
+10:07:38 INFO     Layers: [4, 8, 12, 16, 20, 24]
+10:07:38 INFO     Operand positions: found by token content (a, b)
+10:07:38 INFO     Output: /data/user_data/anshulk/arithmetic-geometry/activations_numtok
+10:07:41 INFO     Loading tokenizer from /data/user_data/anshulk/arithmetic-geometry/model
+10:07:41 INFO     Tokenizer loaded: vocab_size=128000
+10:07:41 INFO     Loading model from /data/user_data/anshulk/arithmetic-geometry/model
+10:07:44 INFO     Model loaded in 3.0s
+10:07:44 INFO     --- Level 2 ---
+10:07:44 INFO       Level 2 already complete, skipping
+10:07:44 INFO     --- Level 3 ---
+10:07:44 INFO       Level 3 already complete, skipping
+10:07:44 INFO     --- Level 4 ---
+10:07:44 INFO       Level 4 already complete, skipping
+10:07:44 INFO     --- Level 5 ---
+10:07:44 INFO       Level 5 already complete, skipping
+10:07:45 INFO     ============================================================
+10:07:45 INFO     EXTRACTION COMPLETE: 0.0 minutes (0.0 hours)
+10:07:45 INFO     ============================================================
+10:17:58 INFO     ============================================================
+10:17:58 INFO     NUMBER-TOKEN ACTIVATION EXTRACTION
+10:17:58 INFO     ============================================================
+10:17:58 INFO     Levels: [2, 3, 4, 5]
+10:17:58 INFO     Layers: [4, 8, 12, 16, 20, 24]
+10:17:58 INFO     Operand positions: found by token content (a, b)
+10:17:58 INFO     Output: /data/user_data/anshulk/arithmetic-geometry/activations_numtok
+10:18:00 INFO     Loading tokenizer from /data/user_data/anshulk/arithmetic-geometry/model
+10:18:01 INFO     Tokenizer loaded: vocab_size=128000
+10:18:01 INFO     Loading model from /data/user_data/anshulk/arithmetic-geometry/model
+10:18:04 INFO     Model loaded in 2.8s
+10:18:04 INFO     --- Level 2 ---
+10:18:04 INFO       Level 2 already complete, skipping
+10:18:04 INFO     --- Level 3 ---
+10:18:04 INFO       Level 3 already complete, skipping
+10:18:04 INFO     --- Level 4 ---
+10:18:04 INFO       Level 4 already complete, skipping
+10:18:04 INFO     --- Level 5 ---
+10:18:04 INFO       Level 5 already complete, skipping
+10:18:04 INFO     ============================================================
+10:18:04 INFO     EXTRACTION COMPLETE: 0.0 minutes (0.0 hours)
+10:18:04 INFO     ============================================================
+10:57:24 INFO     ============================================================
+10:57:24 INFO     NUMBER-TOKEN ACTIVATION EXTRACTION
+10:57:24 INFO     ============================================================
+10:57:24 INFO     Levels: [2, 3, 4, 5]
+10:57:24 INFO     Layers: [4, 8, 12, 16, 20, 24]
+10:57:24 INFO     Operand positions: found by token content (a, b)
+10:57:24 INFO     Output: /data/user_data/anshulk/arithmetic-geometry/activations_numtok
+10:57:26 INFO     Loading tokenizer from /data/user_data/anshulk/arithmetic-geometry/model
+10:57:27 INFO     Tokenizer loaded: vocab_size=128000
+10:57:27 INFO     Loading model from /data/user_data/anshulk/arithmetic-geometry/model
+10:57:30 INFO     Model loaded in 2.7s
+10:57:30 INFO     --- Level 2 ---
+10:57:30 INFO       Level 2 already complete, skipping
+10:57:30 INFO     --- Level 3 ---
+10:57:30 INFO       Level 3 already complete, skipping
+10:57:30 INFO     --- Level 4 ---
+10:57:30 INFO       Level 4 already complete, skipping
+10:57:30 INFO     --- Level 5 ---
+10:57:30 INFO       Level 5 already complete, skipping
+10:57:30 INFO     ============================================================
+10:57:30 INFO     EXTRACTION COMPLETE: 0.0 minutes (0.0 hours)
+10:57:30 INFO     ============================================================
+12:39:34 INFO     ============================================================
+12:39:34 INFO     NUMBER-TOKEN ACTIVATION EXTRACTION
+12:39:34 INFO     ============================================================
+12:39:34 INFO     Levels: [2, 3, 4, 5]
+12:39:34 INFO     Layers: [4, 8, 12, 16, 20, 24]
+12:39:34 INFO     Operand positions: found by token content (a, b)
+12:39:34 INFO     Output: /data/user_data/anshulk/arithmetic-geometry/activations_numtok
+12:39:38 INFO     Loading tokenizer from /data/user_data/anshulk/arithmetic-geometry/model
+12:39:38 INFO     Tokenizer loaded: vocab_size=128000
+12:39:38 INFO     Loading model from /data/user_data/anshulk/arithmetic-geometry/model
+12:39:44 INFO     Model loaded in 5.5s
+12:39:44 INFO     --- Level 2 ---
+12:39:44 INFO       Level 2 already complete, skipping
+12:39:44 INFO     --- Level 3 ---
+12:39:44 INFO       Level 3 already complete, skipping
+12:39:44 INFO     --- Level 4 ---
+12:39:44 INFO       Level 4 already complete, skipping
+12:39:44 INFO     --- Level 5 ---
+12:39:44 INFO       Level 5 already complete, skipping
+12:39:44 INFO     ============================================================
+12:39:44 INFO     EXTRACTION COMPLETE: 0.0 minutes (0.0 hours)
+12:39:44 INFO     ============================================================
+22:55:49 INFO     ============================================================
+22:55:49 INFO     NUMBER-TOKEN ACTIVATION EXTRACTION
+22:55:49 INFO     ============================================================
+22:55:49 INFO     Levels: [2, 3, 4, 5]
+22:55:49 INFO     Layers: [4, 8, 12, 16, 20, 24]
+22:55:49 INFO     Operand positions: found by token content (a, b)
+22:55:49 INFO     Output: /data/user_data/anshulk/arithmetic-geometry/activations_numtok
+22:55:52 INFO     Loading tokenizer from /data/user_data/anshulk/arithmetic-geometry/model
+22:55:53 INFO     Tokenizer loaded: vocab_size=128000
+22:55:53 INFO     Loading model from /data/user_data/anshulk/arithmetic-geometry/model
+22:55:59 INFO     Model loaded in 5.5s
+22:55:59 INFO     --- Level 2 ---
+22:55:59 INFO       Level 2 already complete, skipping
+22:55:59 INFO     --- Level 3 ---
+22:55:59 INFO       Level 3 already complete, skipping
+22:55:59 INFO     --- Level 4 ---
+22:55:59 INFO       Level 4 already complete, skipping
+22:55:59 INFO     --- Level 5 ---
+22:55:59 INFO       Level 5 already complete, skipping
+22:55:59 INFO     ============================================================
+22:55:59 INFO     EXTRACTION COMPLETE: 0.0 minutes (0.0 hours)
+22:55:59 INFO     ============================================================
+02:15:50 INFO     ============================================================
+02:15:50 INFO     NUMBER-TOKEN ACTIVATION EXTRACTION
+02:15:50 INFO     ============================================================
+02:15:50 INFO     Levels: [2, 3, 4, 5]
+02:15:50 INFO     Layers: [4, 8, 12, 16, 20, 24]
+02:15:50 INFO     Operand positions: found by token content (a, b)
+02:15:50 INFO     Output: /data/user_data/anshulk/arithmetic-geometry/activations_numtok
+02:15:53 INFO     Loading tokenizer from /data/user_data/anshulk/arithmetic-geometry/model
+02:15:54 INFO     Tokenizer loaded: vocab_size=128000
+02:15:54 INFO     Loading model from /data/user_data/anshulk/arithmetic-geometry/model
+02:15:59 INFO     Model loaded in 4.7s
+02:15:59 INFO     --- Level 2 ---
+02:15:59 INFO       Level 2 already complete, skipping
+02:15:59 INFO     --- Level 3 ---
+02:15:59 INFO       Level 3 already complete, skipping
+02:15:59 INFO     --- Level 4 ---
+02:15:59 INFO       Level 4 already complete, skipping
+02:15:59 INFO     --- Level 5 ---
+02:15:59 INFO       Level 5 already complete, skipping
+02:15:59 INFO     ============================================================
+02:15:59 INFO     EXTRACTION COMPLETE: 0.0 minutes (0.0 hours)
+02:15:59 INFO     ============================================================

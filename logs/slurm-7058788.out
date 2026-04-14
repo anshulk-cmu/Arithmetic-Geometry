@@ -1,0 +1,26 @@
+=========================================
+Phase G: Full Pipeline
+Job ID: 7058788
+Node:   babel-t9-24
+Date:   Mon Apr 13 02:15:28 EDT 2026
+=========================================
+Activating conda environment...
+
+Step 1: K&T replication pilot...
+K&T pilot complete.
+
+Step 2: Number-token activation extraction...
+Number-token extraction complete.
+
+Step 3: Synthetic pilot tests...
+Synthetic pilot PASSED.
+
+Step 4: Pilot 0b (raw vs residualized)...
+Pilot 0b complete.
+
+Step 5: Full Phase G Fourier screening...
+
+=========================================
+Phase G COMPLETE
+Date: Mon Apr 13 06:03:39 EDT 2026
+=========================================
