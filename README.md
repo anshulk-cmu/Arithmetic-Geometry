@@ -51,8 +51,9 @@ For L5 carry analysis, rare carry values are binned: carry_1 >= 12, carry_2 >= 1
 | Phase D: LDA Refinement | Complete (L1-L5, 18h on 4×A6000) | `phase_d_lda.py`, `run_phase_d.sh` | 1,035 LDA results, 1,026 significant (99.1%), 247 plots |
 | Phase E: Residual Hunting | Complete (L1-L5) | `phase_e_residual_hunting.py`, `run_phase_e.sh` | Union bases, var_explained 80.8-96.6%, Marchenko-Pastur validation |
 | Phase F/JL: Between-Concept Angles & JL Check | Complete (L1-L5, 17.1h on A6000) | `phase_f_jl.py`, `run_phase_f_jl.sh` | 42,049 angle pairs, 39,525 superposition flags, 99 JL slices, 53 plots |
-| Phase G: Fourier Screening | Run 3 Near Completion (~92%) | `phase_g_fourier.py`, `phase_g_kt_pilot.py`, `run_phase_g.sh` | 3,086 analyses: 417 helix, 1 circle, 2,666 none |
+| Phase G: Fourier Screening | **Complete** | `phase_g_fourier.py`, `phase_g_kt_pilot.py`, `run_phase_g.sh` | 3,480 cells, 500 helix, 1 circle; 458 floor-saturated; carries dominant (419/500 = 83.8%) |
 | Phase G: Number-Token Screening | **Complete** (0/108) | `phase_g_numtok_fourier.py`, `run_phase_g_numtok.sh` | K&T digit helix absent in multiplication context |
+| Step B.1: Curated Set v1 | **Complete** | `build_curated_set.py` | 8,264 problems (L3/L4/L5), 2,400 difficulty-matched pairs, 0 undocumented gaps; 22 MB JSON |
 
 ## Key Findings
 
@@ -132,6 +133,14 @@ For L5 carry analysis, rare carry values are binned: carry_1 >= 12, carry_2 >= 1
 - **K&T's helix is context-dependent.** Same model, same integers, different context → different geometry. Standalone integers sit on helices (K&T confirmed). Operand digits in multiplication do not — neither at the number token (0/108) nor at the `=` token (0/846). The model transforms representations based on computational task, not token identity
 - **The three-way comparison tells the story:** (1) Standalone integers → helix (K&T replicated); (2) Operand digits at number token → null (0/108); (3) Carries at `=` → helix (311/918, 33.9%). Periodic structure is destroyed for inputs but rebuilt for intermediate computations
 
+### Step B.1: Curated Set v1 (Complete)
+
+- **8,264 problems selected** from the L3, L4, L5 pools (L1 and L2 excluded — L1 is uniformly correct, L2 has only 7 wrong examples). Per-level: L3 = 1,200 c / 1,201 w / 2,401 t; L4 = 1,000 c / 1,846 w / 2,846 t; L5 = 1,401 c / 1,616 w / 3,017 t. 22 MB JSON at `/data/user_data/anshulk/arithmetic-geometry/curated/curated_set_v1.json`
+- **2,400 difficulty-matched pairs** (1,000 at L4 + 1,400 at L5). Matching is strict on (`magnitude_tier`, `carry_count_tier`, `answer_length`); only `carry_count_tier ±1` relaxes on miss. **993/1,000 L4 pairs strict + 7 relaxed; 1,399/1,400 L5 pairs strict + 1 relaxed; 0 unmatched at both levels.** Mean correct−wrong difference per axis at L5: leading_digit_pair_index = 0.008, nonzero_carry_count = −0.004, answer_length = 0.0. Matched pairs are functionally indistinguishable on every axis
+- **All 17 concepts × per-value floor of 30 examples met where math allows.** 0 below-floor non-documented cells. 19 below-floor documented cells (3 mathematically excluded — operand-tens=0 at L3/L4; 16 pool-limited — extreme high-carry values whose underlying pool has < 30 examples)
+- **Reproducibility:** seed = 42, single threaded RNG, sha256 of script + config + output JSON recorded in metadata. Re-running with same seed yields byte-identical output. Build runtime: 181.6s on the login node
+- **Schema:** every problem record carries `(curated_id, level, source_index, a, b, product, predicted, correct, raw_text, magnitude_tier, carry_count_tier, answer_length, nonzero_carry_count, matched_pair_id, matched_relaxed, labels)`. The `source_index` resolves directly into `level{level}_layer{layer}.npy[source_index]` for activation lookup. The full `compute_labels(a, b)` dict is nested under `labels`
+
 ## Project Structure
 
 ```
@@ -150,6 +159,7 @@ arithmetic-geometry/                       (workspace, in git)
 ├── phase_g_fourier.py                     # Fourier screening: periodic structure in subspaces (CPU)
 ├── extract_number_token_acts.py           # number-token activation extraction (GPU)
 ├── phase_g_numtok_fourier.py              # number-token Fourier screening (CPU)
+├── build_curated_set.py                   # B.1: build the 8,264-problem curated set with matched pairs (CPU, ~3 min)
 ├── config.yaml                            # all parameters, paths, model config
 ├── run.sh                                 # SLURM: main pipeline (GPU, ~14 min)
 ├── run_l5_screen.sh                       # SLURM: L5 screening (GPU, ~50 min)
@@ -171,7 +181,12 @@ arithmetic-geometry/                       (workspace, in git)
     ├── phase_a_analysis.md                # complete Phase A reference
     ├── phase_b_analysis.md                # complete Phase B reference
     ├── phase_c_analysis.md                # complete Phase C reference
-    └── phase_g_analysis.md               # Phase G Fourier screening reference
+    ├── phase_d_analysis.md                # Phase D LDA reference
+    ├── phase_e_analysis.md                # Phase E residual hunting reference
+    ├── phase_f_jl_analysis.md             # Phase F/JL reference
+    ├── phase_g_analysis.md                # Phase G Fourier screening reference
+    ├── next_steps.md                      # Part B execution plan (B.1 done; B.2-B.12 pending)
+    └── curated_set_coverage_report.md     # B.1 build report: tables, gaps, matched-pair diagnostics, reproducibility manifest
 
 /data/user_data/anshulk/arithmetic-geometry/  (heavy files, not in git)
 ├── model/                                 # Llama 3.1 8B weights (~30 GB)
@@ -215,8 +230,10 @@ arithmetic-geometry/                       (workspace, in git)
 │   └── summary/                           # checkpoint + final CSVs
 │       ├── fourier_results.csv            # main screening summary (pending)
 │       └── numtok_fourier_results.csv     # number-token summary (with FDR)
-└── activations_numtok/                    # number-token position activations (9.2 GB)
-    └── level{N}_layer_{LL}_pos_{a|b}.npy  # 48 files, float16, shape (N, 4096)
+├── activations_numtok/                    # number-token position activations (9.2 GB)
+│   └── level{N}_layer_{LL}_pos_{a|b}.npy  # 48 files, float16, shape (N, 4096)
+└── curated/                               # B.1 curated set (22 MB)
+    └── curated_set_v1.json                # 8,264 problems with full labels + matched-pair metadata; sha256 recorded in build log
 ```
 
 ## Setup
@@ -265,6 +282,10 @@ sbatch run_phase_g.sh
 # Phase G: Number-token Fourier screening (CPU only, ~1-2 hours)
 sbatch run_phase_g_numtok.sh
 
+# B.1: Build the curated set (CPU, ~3 minutes; outputs JSON + coverage report + log)
+python build_curated_set.py            # refuses to overwrite existing v1
+python build_curated_set.py --force    # re-runs (deterministic, byte-identical given seed=42)
+
 # Or run any phase with pilot mode first (L3/layer16 only, ~2 minutes)
 python phase_c_subspaces.py --config config.yaml --pilot
 python phase_g_numtok_fourier.py --config config.yaml --pilot
@@ -277,16 +298,22 @@ python phase_g_numtok_fourier.py --config config.yaml --pilot
 - **[Phase B Analysis](docs/phase_b_analysis.md)** — Label-level correlation diagnostics, the suppression effect discovery, four-category classification system, deconfounding plan, all 2,677 pairs verified
 - **[Phase C Analysis](docs/phase_c_analysis.md)** — Conditional covariance + SVD methodology, permutation null validation, eigenvalue spectra, cross-layer alignment, correct/wrong divergence, all 2,844 subspaces documented. Includes first-run vs rerun comparison showing which findings survived the 17x L5 scale-up
 - **[Phase F/JL Analysis](docs/phase_f_jl_analysis.md)** — Principal angles between all concept pairs, superposition detection, JL distance preservation across 99 slices with 43.9 billion pairwise distances, variance-vs-distance gap analysis, complete L2-L5 results. Marks the completion of the subspace-finding pipeline
-- **[Phase G Analysis](docs/phase_g_analysis.md)** — Fourier screening for periodic structure (circles, helices) within concept subspaces. K&T replication, synthetic pilot validation, full mathematical framework, Run 3 results (417 helix detections, carries dominant), number-token screening design and pilot results, interpretation of position-dependent representations
+- **[Phase G Analysis](docs/phase_g_analysis.md)** — Fourier screening for periodic structure (circles, helices) within concept subspaces. K&T replication, synthetic pilot validation, full mathematical framework, Run 3 results (500 helix detections, carries dominant), number-token screening design and pilot results, interpretation of position-dependent representations
+- **[Curated Set Coverage Report](docs/curated_set_coverage_report.md)** — Step B.1 truth document: full per-position digit/carry coverage tables across L3/L4/L5, matched-pair diagnostics (1,000 + 1,400 pairs, 0 unmatched, mean diffs ≈ 0), 19 documented hard-ceiling gaps with mathematical justification, eight-check verification, reproducibility manifest. 1,589 lines
+- **[Next Steps](docs/next_steps.md)** — Part B execution plan: pre-registered thresholds, dependency graph, failure modes, the eleven steps that follow B.1 (within-group PCA, orthogonalization, GPLVM, persistent homology, the two causal experiments, difficulty-matched validation, cross-method table, case-study figure, paper writing)
 
-## What's Next: Beyond Linear Subspaces
+## What's Next: Part B (depth-of-structure on the curated set)
 
-**The subspace-finding pipeline (Phases A–F/JL) is complete. Phase G Fourier screening is near completion (~92%). Number-token Fourier screening is COMPLETE (0/108).**
+**Phases A through G are complete. Step B.1 (curated set v1) is complete. Steps B.2 through B.12 are pending.**
 
-Every atomic concept has a clean linear subspace (Phase C/D). The union of 43 concept subspaces captures >98.7% of pairwise distance structure (Phase E/JL). Concepts share dimensions in proportion to their algebraic relationship (Phase F). Composed middle answer digits lack linear subspaces at L5 (Phase C). Phase G revealed the first nonlinear structure: carries sit on generalized helices inside their linear subspaces, while operand digits are completely null. The pipeline now enters the stage of characterizing *how* these geometric structures compose.
+Every atomic concept has a clean linear subspace (Phase C/D). The union of 43 concept subspaces captures >98.7% of pairwise distance structure (Phase E/JL). Concepts share dimensions in proportion to their algebraic relationship (Phase F). Composed middle answer digits lack linear subspaces at L5 (Phase C). Phase G revealed the first nonlinear structure: carries sit on generalized helices inside their linear subspaces (500 helix detections / 3,480 cells, 458 floor-saturated, FDR-significant), while operand digits at the `=` position are completely null. The 8,264-problem curated set with 2,400 difficulty-matched pairs (Step B.1) is the input to every remaining Part B step. See [`docs/next_steps.md`](docs/next_steps.md) for the full execution plan and pre-registered thresholds.
 
-- **Fourier screening (Phase G — Run 3 at 92%)**: 417 helix detections out of 3,084 analyses. Carries dominate (74.6% of helices), operand digits are completely null (0/846). Helix structure matches K&T's generalized helix (circular component + linear ramp). Detection rate uniform across layers 4–31 (helix is maintained, not computed at a specific layer). Remaining: L5 layers 24–31, FDR correction, final summary CSV
-- **Number-token Fourier screening (COMPLETE — 0/108)**: K&T's digit helix is absent at operand positions in multiplication context. 108 cells across 4 levels × 6 layers × 6 concepts, zero detections. b_units at layer 12 came closest (FCR=0.61, p=0.002) but failed conjunction. The helix is context-dependent: present for standalone integers (K&T confirmed), absent for multiplication operands, rebuilt for carries at the computation position
-- **GPLVM / GP metric tensors (HIGH PRIORITY)**: full nonlinear manifold characterization with uncertainty. The Fourier test finds circles/helices; GPLVM finds *arbitrary* manifold shapes. For the carry helix: what is the intrinsic dimensionality? For correct vs. wrong: does the correct population trace a clean 1D curve while the wrong population scatters? The GP gives uncertainty bars, which matter for rare carry values. Phase JL confirms these methods can operate in the k-dimensional union subspace (k ≈ 240-540) with negligible information loss
-- **Manifold interaction**: how do digit manifolds and carry manifolds compose? Phase F shows carry↔col_sum pairs share directions (θ₁ < 5°), constraining where composition manifolds can live. Phase G shows carries sit on helices — does the carry helix orientation depend on the digit values? If carry propagation is a geometric operation (rotation on the carry manifold conditional on the digit manifold), that explains both how computation works and how it fails
-- **Causal validation (GOLD STANDARD)**: ablation and patching along discovered manifolds. Steer activations along the carry helix and verify the output rotates accordingly. This is the difference between "the model stores carries on helices" and "the model uses the helix for carry computation." Phase G found the geometry; causal validation tests whether the geometry is functional
+- **B.2 Within-group PCA + disconnected-manifold diagnostic**: settle whether centroid analysis is sound for each (concept, value) cell, and whether single-GPLVM is admissible (k-NN connectivity check on centroids). Pre-registered green/yellow/red interpretation of WGCR + Hartigan dip
+- **B.3 Orthogonalization control for superposition**: project carry activations onto the orthogonal complement of their algebraic correlates (col_sum, partial products) and re-run Phase G's conjunction test. Quantifies how much of the helix belongs to the carry's own representation vs. inherited from shared subspaces
+- **B.4 GPLVM as the primary non-linear manifold method (HIGH PRIORITY)**: exact Bayesian GPLVM with ARD on the curated set. Phase G periods (18, 27, 19, 10) plug in as kernel priors so the comparison becomes a falsification of the periodic hypothesis under the more flexible probabilistic framework, not a search over unknown periods. Comparison of periodic / RBF / periodic+linear via marginal log-likelihood at the K&R "decisive" threshold (≥5 nats ≈ 2.17 log₁₀)
+- **B.5 RBF VAE as a scalable surrogate (downgraded)**: shares GPLVM's uncertainty mechanism, so agreement is expected by construction; runs only if GPLVM is infeasible
+- **B.6 Persistent homology as primary independent validation (elevated)**: H₀/H₁ persistence diagrams using `gudhi` or `ripser` on the curated centroids. Different math (combinatorial topology) from GPLVM (Bayesian inference); genuine cross-method evidence. Pre-registered 1.5× null-floor threshold with sensitivity sweep at 1.0×, 1.5×, 2.0×
+- **B.7 Causal experiment 1 — subspace ablation on carry_1**: project residual stream onto carry_1's orthogonal complement at layer 16 and continue the forward pass. 100-trial random-Grassmannian control + irrelevant-concept control. Compute budget pre-committed: ~1.47M forward passes, ~20 GPU-hours
+- **B.8 Causal experiment 2 — helix rotation on the trailing answer digit**: the surgical experiment. Calibrate Δθ_step on the 10 ans_digit_5_msf centroids in the curated set, rotate by one digit-step, measure whether the model's output increments (v+1) mod 10. Pre-registered ≥25% predicted-shift threshold (vs 10% chance). Compute budget: ~1 GPU-hour
+- **B.9 Difficulty-matched correct/wrong validation**: re-run Phase G on the 2,400 matched pairs to test whether the correct/wrong helix asymmetry survives controlling for difficulty. Pre-registered Branch 1/2/3 framings ready in advance
+- **B.10–B.12**: cross-method consistency table, case-study figure (carry_1 at L5 layer 16), paper writing

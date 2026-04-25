@@ -1,0 +1,305 @@
+2026-04-25 16:33:40,507 | INFO    | build_curated_set | ========================================================================
+2026-04-25 16:33:40,507 | INFO    | build_curated_set | build_curated_set start
+2026-04-25 16:33:40,507 | INFO    | build_curated_set | ========================================================================
+2026-04-25 16:33:42,207 | INFO    | build_curated_set | Seed: 42 (np.random.RandomState)
+2026-04-25 16:33:42,208 | INFO    | build_curated_set | Pass 0 start: loading labels and answers for L3, L4, L5.
+2026-04-25 16:33:42,208 | DEBUG   | build_curated_set | Loading /home/anshulk/arithmetic-geometry/labels/level_3.json
+2026-04-25 16:33:42,343 | DEBUG   | build_curated_set | Loading /data/user_data/anshulk/arithmetic-geometry/answers/level_3.json
+2026-04-25 16:33:42,420 | INFO    | build_curated_set | Pass 0 L3: loaded 5733 unique-(a,b) rows (3859c/1874w); dropped 4267 duplicate rows.
+2026-04-25 16:33:42,420 | DEBUG   | build_curated_set | Loading /home/anshulk/arithmetic-geometry/labels/level_4.json
+2026-04-25 16:33:42,604 | DEBUG   | build_curated_set | Loading /data/user_data/anshulk/arithmetic-geometry/answers/level_4.json
+2026-04-25 16:33:42,717 | INFO    | build_curated_set | Pass 0 L4: loaded 9414 unique-(a,b) rows (2723c/6691w); dropped 586 duplicate rows.
+2026-04-25 16:33:42,717 | DEBUG   | build_curated_set | Loading /home/anshulk/arithmetic-geometry/labels/level_5.json
+2026-04-25 16:33:45,995 | DEBUG   | build_curated_set | Loading /data/user_data/anshulk/arithmetic-geometry/answers/level_5.json
+2026-04-25 16:33:46,971 | INFO    | build_curated_set | Pass 0 L5: loaded 122223 unique-(a,b) rows (4197c/118026w); dropped 0 duplicate rows.
+2026-04-25 16:33:47,187 | INFO    | build_curated_set | Computing magnitude_tier, carry_count_tier, answer_length per row.
+2026-04-25 16:33:47,261 | INFO    | build_curated_set | Tier enrichment L3: rows=5733, distinct cells=27
+2026-04-25 16:33:47,261 | DEBUG   | build_curated_set | L3 magnitude_tier histogram: {4: 639, 8: 648, 2: 621, 5: 628, 6: 640, 7: 657, 3: 619, 1: 632, 0: 649}
+2026-04-25 16:33:47,262 | DEBUG   | build_curated_set | L3 carry_count_tier histogram: {1: 4990, 0: 743}
+2026-04-25 16:33:47,262 | DEBUG   | build_curated_set | L3 answer_length histogram: {4: 4682, 3: 1051}
+2026-04-25 16:33:47,379 | INFO    | build_curated_set | Tier enrichment L4: rows=9414, distinct cells=36
+2026-04-25 16:33:47,379 | DEBUG   | build_curated_set | L4 magnitude_tier histogram: {2: 1000, 5: 1108, 6: 1022, 3: 1097, 8: 1035, 7: 1037, 4: 1051, 0: 1016, 1: 1048}
+2026-04-25 16:33:47,380 | DEBUG   | build_curated_set | L4 carry_count_tier histogram: {2: 4591, 1: 4334, 0: 489}
+2026-04-25 16:33:47,380 | DEBUG   | build_curated_set | L4 answer_length histogram: {5: 7766, 4: 1648}
+2026-04-25 16:33:48,942 | INFO    | build_curated_set | Tier enrichment L5: rows=122223, distinct cells=40
+2026-04-25 16:33:48,949 | DEBUG   | build_curated_set | L5 magnitude_tier histogram: {0: 13469, 1: 13683, 2: 13741, 3: 13557, 4: 13577, 5: 13465, 6: 13589, 7: 13610, 8: 13532}
+2026-04-25 16:33:48,955 | DEBUG   | build_curated_set | L5 carry_count_tier histogram: {0: 221, 1: 5608, 2: 116394}
+2026-04-25 16:33:48,961 | DEBUG   | build_curated_set | L5 answer_length histogram: {5: 20677, 6: 101546}
+2026-04-25 16:33:48,961 | INFO    | build_curated_set | compute_labels round-trip check: sampling 100 rows per level.
+2026-04-25 16:33:49,031 | DEBUG   | build_curated_set | L3: 100 rows round-tripped cleanly.
+2026-04-25 16:33:49,125 | DEBUG   | build_curated_set | L4: 100 rows round-tripped cleanly.
+2026-04-25 16:33:52,920 | DEBUG   | build_curated_set | L5: 100 rows round-tripped cleanly.
+2026-04-25 16:33:52,920 | INFO    | build_curated_set | compute_labels round-trip check passed.
+2026-04-25 16:33:54,799 | INFO    | build_curated_set | Documented gap set derived: 22 cells (includes 3 math-excluded).
+2026-04-25 16:33:54,799 | DEBUG   | build_curated_set | DOCUMENTED_GAP (3, 'a_tens', 0): mathematically excluded (operand range starts at 10)
+2026-04-25 16:33:54,799 | DEBUG   | build_curated_set | DOCUMENTED_GAP (3, 'b_tens', 0): mathematically excluded (operand range starts at 10)
+2026-04-25 16:33:54,799 | DEBUG   | build_curated_set | DOCUMENTED_GAP (3, 'carry_1', 13): L3 pool has only 27 examples (< floor 30)
+2026-04-25 16:33:54,800 | DEBUG   | build_curated_set | DOCUMENTED_GAP (3, 'carry_1', 14): L3 pool has only 16 examples (< floor 30)
+2026-04-25 16:33:54,800 | DEBUG   | build_curated_set | DOCUMENTED_GAP (3, 'carry_1', 15): L3 pool has only 3 examples (< floor 30)
+2026-04-25 16:33:54,800 | DEBUG   | build_curated_set | DOCUMENTED_GAP (3, 'carry_1', 16): L3 pool has only 2 examples (< floor 30)
+2026-04-25 16:33:54,800 | DEBUG   | build_curated_set | DOCUMENTED_GAP (3, 'carry_1', 17): L3 pool has only 1 examples (< floor 30)
+2026-04-25 16:33:54,800 | DEBUG   | build_curated_set | DOCUMENTED_GAP (3, 'carry_1', 18): L3 pool has only 0 examples (< floor 30)
+2026-04-25 16:33:54,800 | DEBUG   | build_curated_set | DOCUMENTED_GAP (4, 'b_tens', 0): mathematically excluded (operand range starts at 10)
+2026-04-25 16:33:54,800 | DEBUG   | build_curated_set | DOCUMENTED_GAP (4, 'carry_1', 14): L4 pool has only 19 examples (< floor 30)
+2026-04-25 16:33:54,800 | DEBUG   | build_curated_set | DOCUMENTED_GAP (4, 'carry_1', 15): L4 pool has only 8 examples (< floor 30)
+2026-04-25 16:33:54,800 | DEBUG   | build_curated_set | DOCUMENTED_GAP (4, 'carry_1', 16): L4 pool has only 2 examples (< floor 30)
+2026-04-25 16:33:54,800 | DEBUG   | build_curated_set | DOCUMENTED_GAP (4, 'carry_1', 17): L4 pool has only 1 examples (< floor 30)
+2026-04-25 16:33:54,800 | DEBUG   | build_curated_set | DOCUMENTED_GAP (4, 'carry_1', 18): L4 pool has only 0 examples (< floor 30)
+2026-04-25 16:33:54,800 | DEBUG   | build_curated_set | DOCUMENTED_GAP (4, 'carry_2', 15): L4 pool has only 14 examples (< floor 30)
+2026-04-25 16:33:54,800 | DEBUG   | build_curated_set | DOCUMENTED_GAP (4, 'carry_2', 16): L4 pool has only 4 examples (< floor 30)
+2026-04-25 16:33:54,800 | DEBUG   | build_curated_set | DOCUMENTED_GAP (4, 'carry_2', 17): L4 pool has only 1 examples (< floor 30)
+2026-04-25 16:33:54,801 | DEBUG   | build_curated_set | DOCUMENTED_GAP (4, 'carry_2', 18): L4 pool has only 0 examples (< floor 30)
+2026-04-25 16:33:54,801 | DEBUG   | build_curated_set | DOCUMENTED_GAP (5, 'carry_2', 24): L5 pool has only 20 examples (< floor 30)
+2026-04-25 16:33:54,801 | DEBUG   | build_curated_set | DOCUMENTED_GAP (5, 'carry_2', 25): L5 pool has only 6 examples (< floor 30)
+2026-04-25 16:33:54,801 | DEBUG   | build_curated_set | DOCUMENTED_GAP (5, 'carry_2', 26): L5 pool has only 1 examples (< floor 30)
+2026-04-25 16:33:54,801 | DEBUG   | build_curated_set | DOCUMENTED_GAP (5, 'carry_3', 18): L5 pool has only 12 examples (< floor 30)
+2026-04-25 16:33:54,822 | INFO    | build_curated_set | Pass 1 start: stratify L4 (1000c/1800w) and L5 (1400c/1400w) by tier triple.
+2026-04-25 16:33:54,827 | DEBUG   | build_curated_set | Pass1 L4 correct cell=(0, 0, 4) pool=147 drawn=53
+2026-04-25 16:33:54,827 | DEBUG   | build_curated_set | Pass1 L4 correct cell=(0, 1, 4) pool=314 drawn=132
+2026-04-25 16:33:54,827 | DEBUG   | build_curated_set | Pass1 L4 correct cell=(0, 1, 5) pool=24 drawn=8
+2026-04-25 16:33:54,827 | DEBUG   | build_curated_set | Pass1 L4 correct cell=(0, 2, 5) pool=33 drawn=12
+2026-04-25 16:33:54,827 | DEBUG   | build_curated_set | Pass1 L4 correct cell=(1, 0, 4) pool=27 drawn=9
+2026-04-25 16:33:54,827 | DEBUG   | build_curated_set | Pass1 L4 correct cell=(1, 0, 5) pool=5 drawn=1
+2026-04-25 16:33:54,827 | DEBUG   | build_curated_set | Pass1 L4 correct cell=(1, 1, 4) pool=115 drawn=42
+2026-04-25 16:33:54,827 | DEBUG   | build_curated_set | Pass1 L4 correct cell=(1, 1, 5) pool=141 drawn=51
+2026-04-25 16:33:54,827 | DEBUG   | build_curated_set | Pass1 L4 correct cell=(1, 2, 5) pool=97 drawn=35
+2026-04-25 16:33:54,827 | DEBUG   | build_curated_set | Pass1 L4 correct cell=(2, 0, 4) pool=10 drawn=3
+2026-04-25 16:33:54,828 | DEBUG   | build_curated_set | Pass1 L4 correct cell=(2, 0, 5) pool=4 drawn=1
+2026-04-25 16:33:54,828 | DEBUG   | build_curated_set | Pass1 L4 correct cell=(2, 1, 4) pool=17 drawn=6
+2026-04-25 16:33:54,828 | DEBUG   | build_curated_set | Pass1 L4 correct cell=(2, 1, 5) pool=115 drawn=42
+2026-04-25 16:33:54,828 | DEBUG   | build_curated_set | Pass1 L4 correct cell=(2, 2, 5) pool=103 drawn=37
+2026-04-25 16:33:54,828 | DEBUG   | build_curated_set | Pass1 L4 correct cell=(3, 0, 4) pool=76 drawn=27
+2026-04-25 16:33:54,828 | DEBUG   | build_curated_set | Pass1 L4 correct cell=(3, 0, 5) pool=14 drawn=5
+2026-04-25 16:33:54,828 | DEBUG   | build_curated_set | Pass1 L4 correct cell=(3, 1, 4) pool=75 drawn=27
+2026-04-25 16:33:54,828 | DEBUG   | build_curated_set | Pass1 L4 correct cell=(3, 1, 5) pool=150 drawn=55
+2026-04-25 16:33:54,828 | DEBUG   | build_curated_set | Pass1 L4 correct cell=(3, 2, 5) pool=146 drawn=53
+2026-04-25 16:33:54,828 | DEBUG   | build_curated_set | Pass1 L4 correct cell=(4, 0, 5) pool=7 drawn=2
+2026-04-25 16:33:54,828 | DEBUG   | build_curated_set | Pass1 L4 correct cell=(4, 1, 5) pool=163 drawn=59
+2026-04-25 16:33:54,828 | DEBUG   | build_curated_set | Pass1 L4 correct cell=(4, 2, 5) pool=91 drawn=33
+2026-04-25 16:33:54,828 | DEBUG   | build_curated_set | Pass1 L4 correct cell=(5, 0, 5) pool=1 drawn=1
+2026-04-25 16:33:54,828 | DEBUG   | build_curated_set | Pass1 L4 correct cell=(5, 1, 5) pool=115 drawn=42
+2026-04-25 16:33:54,829 | DEBUG   | build_curated_set | Pass1 L4 correct cell=(5, 2, 5) pool=70 drawn=25
+2026-04-25 16:33:54,829 | DEBUG   | build_curated_set | Pass1 L4 correct cell=(6, 0, 4) pool=31 drawn=11
+2026-04-25 16:33:54,829 | DEBUG   | build_curated_set | Pass1 L4 correct cell=(6, 0, 5) pool=6 drawn=2
+2026-04-25 16:33:54,829 | DEBUG   | build_curated_set | Pass1 L4 correct cell=(6, 1, 4) pool=13 drawn=4
+2026-04-25 16:33:54,829 | DEBUG   | build_curated_set | Pass1 L4 correct cell=(6, 1, 5) pool=141 drawn=51
+2026-04-25 16:33:54,829 | DEBUG   | build_curated_set | Pass1 L4 correct cell=(6, 2, 5) pool=112 drawn=41
+2026-04-25 16:33:54,829 | DEBUG   | build_curated_set | Pass1 L4 correct cell=(7, 0, 5) pool=5 drawn=1
+2026-04-25 16:33:54,829 | DEBUG   | build_curated_set | Pass1 L4 correct cell=(7, 1, 5) pool=150 drawn=55
+2026-04-25 16:33:54,829 | DEBUG   | build_curated_set | Pass1 L4 correct cell=(7, 2, 5) pool=66 drawn=24
+2026-04-25 16:33:54,829 | DEBUG   | build_curated_set | Pass1 L4 correct cell=(8, 0, 5) pool=3 drawn=1
+2026-04-25 16:33:54,829 | DEBUG   | build_curated_set | Pass1 L4 correct cell=(8, 1, 5) pool=82 drawn=30
+2026-04-25 16:33:54,829 | DEBUG   | build_curated_set | Pass1 L4 correct cell=(8, 2, 5) pool=54 drawn=19
+2026-04-25 16:33:54,833 | DEBUG   | build_curated_set | Pass1 L4 wrong cell=(0, 0, 4) pool=65 drawn=17
+2026-04-25 16:33:54,833 | DEBUG   | build_curated_set | Pass1 L4 wrong cell=(0, 1, 4) pool=349 drawn=93
+2026-04-25 16:33:54,833 | DEBUG   | build_curated_set | Pass1 L4 wrong cell=(0, 1, 5) pool=28 drawn=7
+2026-04-25 16:33:54,833 | DEBUG   | build_curated_set | Pass1 L4 wrong cell=(0, 2, 5) pool=56 drawn=15
+2026-04-25 16:33:54,833 | DEBUG   | build_curated_set | Pass1 L4 wrong cell=(1, 0, 4) pool=17 drawn=4
+2026-04-25 16:33:54,833 | DEBUG   | build_curated_set | Pass1 L4 wrong cell=(1, 0, 5) pool=3 drawn=1
+2026-04-25 16:33:54,833 | DEBUG   | build_curated_set | Pass1 L4 wrong cell=(1, 1, 4) pool=141 drawn=37
+2026-04-25 16:33:54,833 | DEBUG   | build_curated_set | Pass1 L4 wrong cell=(1, 1, 5) pool=176 drawn=47
+2026-04-25 16:33:54,833 | DEBUG   | build_curated_set | Pass1 L4 wrong cell=(1, 2, 5) pool=326 drawn=87
+2026-04-25 16:33:54,833 | DEBUG   | build_curated_set | Pass1 L4 wrong cell=(2, 0, 4) pool=8 drawn=2
+2026-04-25 16:33:54,833 | DEBUG   | build_curated_set | Pass1 L4 wrong cell=(2, 0, 5) pool=5 drawn=1
+2026-04-25 16:33:54,833 | DEBUG   | build_curated_set | Pass1 L4 wrong cell=(2, 1, 4) pool=30 drawn=8
+2026-04-25 16:33:54,834 | DEBUG   | build_curated_set | Pass1 L4 wrong cell=(2, 1, 5) pool=275 drawn=73
+2026-04-25 16:33:54,834 | DEBUG   | build_curated_set | Pass1 L4 wrong cell=(2, 2, 5) pool=433 drawn=116
+2026-04-25 16:33:54,834 | DEBUG   | build_curated_set | Pass1 L4 wrong cell=(3, 0, 4) pool=36 drawn=9
+2026-04-25 16:33:54,834 | DEBUG   | build_curated_set | Pass1 L4 wrong cell=(3, 0, 5) pool=2 drawn=1
+2026-04-25 16:33:54,834 | DEBUG   | build_curated_set | Pass1 L4 wrong cell=(3, 1, 4) pool=153 drawn=41
+2026-04-25 16:33:54,834 | DEBUG   | build_curated_set | Pass1 L4 wrong cell=(3, 1, 5) pool=133 drawn=35
+2026-04-25 16:33:54,834 | DEBUG   | build_curated_set | Pass1 L4 wrong cell=(3, 2, 5) pool=312 drawn=83
+2026-04-25 16:33:54,834 | DEBUG   | build_curated_set | Pass1 L4 wrong cell=(4, 0, 5) pool=2 drawn=1
+2026-04-25 16:33:54,834 | DEBUG   | build_curated_set | Pass1 L4 wrong cell=(4, 1, 5) pool=266 drawn=71
+2026-04-25 16:33:54,834 | DEBUG   | build_curated_set | Pass1 L4 wrong cell=(4, 2, 5) pool=522 drawn=140
+2026-04-25 16:33:54,834 | DEBUG   | build_curated_set | Pass1 L4 wrong cell=(5, 0, 5) pool=2 drawn=1
+2026-04-25 16:33:54,834 | DEBUG   | build_curated_set | Pass1 L4 wrong cell=(5, 1, 5) pool=323 drawn=86
+2026-04-25 16:33:54,834 | DEBUG   | build_curated_set | Pass1 L4 wrong cell=(5, 2, 5) pool=597 drawn=172
+2026-04-25 16:33:54,834 | DEBUG   | build_curated_set | Pass1 L4 wrong cell=(6, 0, 4) pool=8 drawn=2
+2026-04-25 16:33:54,834 | DEBUG   | build_curated_set | Pass1 L4 wrong cell=(6, 0, 5) pool=1 drawn=1
+2026-04-25 16:33:54,835 | DEBUG   | build_curated_set | Pass1 L4 wrong cell=(6, 1, 4) pool=16 drawn=4
+2026-04-25 16:33:54,835 | DEBUG   | build_curated_set | Pass1 L4 wrong cell=(6, 1, 5) pool=215 drawn=57
+2026-04-25 16:33:54,835 | DEBUG   | build_curated_set | Pass1 L4 wrong cell=(6, 2, 5) pool=479 drawn=128
+2026-04-25 16:33:54,835 | DEBUG   | build_curated_set | Pass1 L4 wrong cell=(7, 0, 5) pool=1 drawn=1
+2026-04-25 16:33:54,835 | DEBUG   | build_curated_set | Pass1 L4 wrong cell=(7, 1, 5) pool=276 drawn=74
+2026-04-25 16:33:54,835 | DEBUG   | build_curated_set | Pass1 L4 wrong cell=(7, 2, 5) pool=539 drawn=145
+2026-04-25 16:33:54,835 | DEBUG   | build_curated_set | Pass1 L4 wrong cell=(8, 0, 5) pool=3 drawn=1
+2026-04-25 16:33:54,835 | DEBUG   | build_curated_set | Pass1 L4 wrong cell=(8, 1, 5) pool=338 drawn=90
+2026-04-25 16:33:54,835 | DEBUG   | build_curated_set | Pass1 L4 wrong cell=(8, 2, 5) pool=555 drawn=149
+2026-04-25 16:33:54,835 | INFO    | build_curated_set | Pass 1 L4: drew 1000 correct + 1800 wrong.
+2026-04-25 16:33:54,847 | DEBUG   | build_curated_set | Pass1 L5 correct cell=(0, 0, 5) pool=40 drawn=13
+2026-04-25 16:33:54,847 | DEBUG   | build_curated_set | Pass1 L5 correct cell=(0, 1, 5) pool=314 drawn=104
+2026-04-25 16:33:54,847 | DEBUG   | build_curated_set | Pass1 L5 correct cell=(0, 1, 6) pool=4 drawn=1
+2026-04-25 16:33:54,847 | DEBUG   | build_curated_set | Pass1 L5 correct cell=(0, 2, 5) pool=920 drawn=318
+2026-04-25 16:33:54,847 | DEBUG   | build_curated_set | Pass1 L5 correct cell=(0, 2, 6) pool=113 drawn=37
+2026-04-25 16:33:54,847 | DEBUG   | build_curated_set | Pass1 L5 correct cell=(1, 0, 5) pool=11 drawn=3
+2026-04-25 16:33:54,847 | DEBUG   | build_curated_set | Pass1 L5 correct cell=(1, 1, 5) pool=44 drawn=14
+2026-04-25 16:33:54,847 | DEBUG   | build_curated_set | Pass1 L5 correct cell=(1, 1, 6) pool=22 drawn=7
+2026-04-25 16:33:54,847 | DEBUG   | build_curated_set | Pass1 L5 correct cell=(1, 2, 5) pool=182 drawn=60
+2026-04-25 16:33:54,847 | DEBUG   | build_curated_set | Pass1 L5 correct cell=(1, 2, 6) pool=357 drawn=119
+2026-04-25 16:33:54,847 | DEBUG   | build_curated_set | Pass1 L5 correct cell=(2, 0, 5) pool=5 drawn=1
+2026-04-25 16:33:54,848 | DEBUG   | build_curated_set | Pass1 L5 correct cell=(2, 0, 6) pool=2 drawn=1
+2026-04-25 16:33:54,848 | DEBUG   | build_curated_set | Pass1 L5 correct cell=(2, 1, 5) pool=8 drawn=2
+2026-04-25 16:33:54,848 | DEBUG   | build_curated_set | Pass1 L5 correct cell=(2, 1, 6) pool=11 drawn=3
+2026-04-25 16:33:54,848 | DEBUG   | build_curated_set | Pass1 L5 correct cell=(2, 2, 5) pool=22 drawn=7
+2026-04-25 16:33:54,848 | DEBUG   | build_curated_set | Pass1 L5 correct cell=(2, 2, 6) pool=301 drawn=100
+2026-04-25 16:33:54,848 | DEBUG   | build_curated_set | Pass1 L5 correct cell=(3, 0, 5) pool=12 drawn=4
+2026-04-25 16:33:54,848 | DEBUG   | build_curated_set | Pass1 L5 correct cell=(3, 1, 5) pool=70 drawn=23
+2026-04-25 16:33:54,848 | DEBUG   | build_curated_set | Pass1 L5 correct cell=(3, 1, 6) pool=19 drawn=6
+2026-04-25 16:33:54,848 | DEBUG   | build_curated_set | Pass1 L5 correct cell=(3, 2, 5) pool=213 drawn=71
+2026-04-25 16:33:54,848 | DEBUG   | build_curated_set | Pass1 L5 correct cell=(3, 2, 6) pool=374 drawn=124
+2026-04-25 16:33:54,848 | DEBUG   | build_curated_set | Pass1 L5 correct cell=(4, 1, 6) pool=20 drawn=6
+2026-04-25 16:33:54,848 | DEBUG   | build_curated_set | Pass1 L5 correct cell=(4, 2, 6) pool=232 drawn=77
+2026-04-25 16:33:54,848 | DEBUG   | build_curated_set | Pass1 L5 correct cell=(5, 1, 6) pool=14 drawn=4
+2026-04-25 16:33:54,848 | DEBUG   | build_curated_set | Pass1 L5 correct cell=(5, 2, 6) pool=120 drawn=40
+2026-04-25 16:33:54,849 | DEBUG   | build_curated_set | Pass1 L5 correct cell=(6, 0, 5) pool=9 drawn=3
+2026-04-25 16:33:54,849 | DEBUG   | build_curated_set | Pass1 L5 correct cell=(6, 0, 6) pool=2 drawn=1
+2026-04-25 16:33:54,849 | DEBUG   | build_curated_set | Pass1 L5 correct cell=(6, 1, 5) pool=18 drawn=6
+2026-04-25 16:33:54,849 | DEBUG   | build_curated_set | Pass1 L5 correct cell=(6, 1, 6) pool=40 drawn=13
+2026-04-25 16:33:54,849 | DEBUG   | build_curated_set | Pass1 L5 correct cell=(6, 2, 5) pool=43 drawn=14
+2026-04-25 16:33:54,849 | DEBUG   | build_curated_set | Pass1 L5 correct cell=(6, 2, 6) pool=404 drawn=134
+2026-04-25 16:33:54,849 | DEBUG   | build_curated_set | Pass1 L5 correct cell=(7, 0, 6) pool=1 drawn=1
+2026-04-25 16:33:54,849 | DEBUG   | build_curated_set | Pass1 L5 correct cell=(7, 1, 6) pool=21 drawn=7
+2026-04-25 16:33:54,849 | DEBUG   | build_curated_set | Pass1 L5 correct cell=(7, 2, 6) pool=159 drawn=53
+2026-04-25 16:33:54,849 | DEBUG   | build_curated_set | Pass1 L5 correct cell=(8, 1, 6) pool=2 drawn=1
+2026-04-25 16:33:54,849 | DEBUG   | build_curated_set | Pass1 L5 correct cell=(8, 2, 6) pool=68 drawn=22
+2026-04-25 16:33:54,884 | DEBUG   | build_curated_set | Pass1 L5 wrong cell=(0, 0, 5) pool=60 drawn=1
+2026-04-25 16:33:54,884 | DEBUG   | build_curated_set | Pass1 L5 wrong cell=(0, 1, 5) pool=1832 drawn=21
+2026-04-25 16:33:54,884 | DEBUG   | build_curated_set | Pass1 L5 wrong cell=(0, 1, 6) pool=9 drawn=1
+2026-04-25 16:33:54,884 | DEBUG   | build_curated_set | Pass1 L5 wrong cell=(0, 2, 5) pool=8297 drawn=98
+2026-04-25 16:33:54,884 | DEBUG   | build_curated_set | Pass1 L5 wrong cell=(0, 2, 6) pool=1880 drawn=22
+2026-04-25 16:33:54,884 | DEBUG   | build_curated_set | Pass1 L5 wrong cell=(1, 0, 5) pool=21 drawn=1
+2026-04-25 16:33:54,884 | DEBUG   | build_curated_set | Pass1 L5 wrong cell=(1, 0, 6) pool=6 drawn=1
+2026-04-25 16:33:54,884 | DEBUG   | build_curated_set | Pass1 L5 wrong cell=(1, 1, 5) pool=516 drawn=6
+2026-04-25 16:33:54,884 | DEBUG   | build_curated_set | Pass1 L5 wrong cell=(1, 1, 6) pool=215 drawn=2
+2026-04-25 16:33:54,884 | DEBUG   | build_curated_set | Pass1 L5 wrong cell=(1, 2, 5) pool=3105 drawn=36
+2026-04-25 16:33:54,885 | DEBUG   | build_curated_set | Pass1 L5 wrong cell=(1, 2, 6) pool=9204 drawn=109
+2026-04-25 16:33:54,885 | DEBUG   | build_curated_set | Pass1 L5 wrong cell=(2, 0, 5) pool=8 drawn=1
+2026-04-25 16:33:54,885 | DEBUG   | build_curated_set | Pass1 L5 wrong cell=(2, 0, 6) pool=2 drawn=1
+2026-04-25 16:33:54,885 | DEBUG   | build_curated_set | Pass1 L5 wrong cell=(2, 1, 5) pool=214 drawn=2
+2026-04-25 16:33:54,885 | DEBUG   | build_curated_set | Pass1 L5 wrong cell=(2, 1, 6) pool=236 drawn=2
+2026-04-25 16:33:54,885 | DEBUG   | build_curated_set | Pass1 L5 wrong cell=(2, 2, 5) pool=498 drawn=5
+2026-04-25 16:33:54,885 | DEBUG   | build_curated_set | Pass1 L5 wrong cell=(2, 2, 6) pool=12434 drawn=147
+2026-04-25 16:33:54,885 | DEBUG   | build_curated_set | Pass1 L5 wrong cell=(3, 0, 5) pool=21 drawn=1
+2026-04-25 16:33:54,885 | DEBUG   | build_curated_set | Pass1 L5 wrong cell=(3, 0, 6) pool=4 drawn=1
+2026-04-25 16:33:54,885 | DEBUG   | build_curated_set | Pass1 L5 wrong cell=(3, 1, 5) pool=498 drawn=5
+2026-04-25 16:33:54,885 | DEBUG   | build_curated_set | Pass1 L5 wrong cell=(3, 1, 6) pool=187 drawn=2
+2026-04-25 16:33:54,885 | DEBUG   | build_curated_set | Pass1 L5 wrong cell=(3, 2, 5) pool=3016 drawn=35
+2026-04-25 16:33:54,885 | DEBUG   | build_curated_set | Pass1 L5 wrong cell=(3, 2, 6) pool=9143 drawn=108
+2026-04-25 16:33:54,886 | DEBUG   | build_curated_set | Pass1 L5 wrong cell=(4, 0, 6) pool=2 drawn=1
+2026-04-25 16:33:54,886 | DEBUG   | build_curated_set | Pass1 L5 wrong cell=(4, 1, 6) pool=271 drawn=3
+2026-04-25 16:33:54,886 | DEBUG   | build_curated_set | Pass1 L5 wrong cell=(4, 2, 6) pool=13052 drawn=154
+2026-04-25 16:33:54,886 | DEBUG   | build_curated_set | Pass1 L5 wrong cell=(5, 1, 6) pool=197 drawn=2
+2026-04-25 16:33:54,886 | DEBUG   | build_curated_set | Pass1 L5 wrong cell=(5, 2, 6) pool=13134 drawn=155
+2026-04-25 16:33:54,886 | DEBUG   | build_curated_set | Pass1 L5 wrong cell=(6, 0, 5) pool=13 drawn=1
+2026-04-25 16:33:54,886 | DEBUG   | build_curated_set | Pass1 L5 wrong cell=(6, 1, 5) pool=168 drawn=1
+2026-04-25 16:33:54,886 | DEBUG   | build_curated_set | Pass1 L5 wrong cell=(6, 1, 6) pool=202 drawn=2
+2026-04-25 16:33:54,886 | DEBUG   | build_curated_set | Pass1 L5 wrong cell=(6, 2, 5) pool=499 drawn=5
+2026-04-25 16:33:54,886 | DEBUG   | build_curated_set | Pass1 L5 wrong cell=(6, 2, 6) pool=12191 drawn=144
+2026-04-25 16:33:54,886 | DEBUG   | build_curated_set | Pass1 L5 wrong cell=(7, 0, 6) pool=1 drawn=1
+2026-04-25 16:33:54,886 | DEBUG   | build_curated_set | Pass1 L5 wrong cell=(7, 1, 6) pool=247 drawn=2
+2026-04-25 16:33:54,886 | DEBUG   | build_curated_set | Pass1 L5 wrong cell=(7, 2, 6) pool=13181 drawn=156
+2026-04-25 16:33:54,886 | DEBUG   | build_curated_set | Pass1 L5 wrong cell=(8, 0, 6) pool=1 drawn=1
+2026-04-25 16:33:54,886 | DEBUG   | build_curated_set | Pass1 L5 wrong cell=(8, 1, 6) pool=209 drawn=2
+2026-04-25 16:33:54,887 | DEBUG   | build_curated_set | Pass1 L5 wrong cell=(8, 2, 6) pool=13252 drawn=162
+2026-04-25 16:33:54,887 | INFO    | build_curated_set | Pass 1 L5: drew 1400 correct + 1400 wrong.
+2026-04-25 16:33:54,889 | INFO    | build_curated_set | Pass 2 start: concept floor=30, registry has 17 unique concepts.
+2026-04-25 16:33:54,892 | DEBUG   | build_curated_set | Pass2 L3 correct cell=(0, 0, 3) pool=249 drawn=77
+2026-04-25 16:33:54,892 | DEBUG   | build_curated_set | Pass2 L3 correct cell=(0, 1, 3) pool=286 drawn=88
+2026-04-25 16:33:54,892 | DEBUG   | build_curated_set | Pass2 L3 correct cell=(0, 1, 4) pool=62 drawn=19
+2026-04-25 16:33:54,892 | DEBUG   | build_curated_set | Pass2 L3 correct cell=(1, 0, 3) pool=98 drawn=30
+2026-04-25 16:33:54,892 | DEBUG   | build_curated_set | Pass2 L3 correct cell=(1, 0, 4) pool=20 drawn=6
+2026-04-25 16:33:54,892 | DEBUG   | build_curated_set | Pass2 L3 correct cell=(1, 1, 3) pool=86 drawn=26
+2026-04-25 16:33:54,892 | DEBUG   | build_curated_set | Pass2 L3 correct cell=(1, 1, 4) pool=325 drawn=101
+2026-04-25 16:33:54,892 | DEBUG   | build_curated_set | Pass2 L3 correct cell=(2, 0, 3) pool=43 drawn=13
+2026-04-25 16:33:54,892 | DEBUG   | build_curated_set | Pass2 L3 correct cell=(2, 0, 4) pool=19 drawn=5
+2026-04-25 16:33:54,892 | DEBUG   | build_curated_set | Pass2 L3 correct cell=(2, 1, 3) pool=4 drawn=1
+2026-04-25 16:33:54,892 | DEBUG   | build_curated_set | Pass2 L3 correct cell=(2, 1, 4) pool=370 drawn=115
+2026-04-25 16:33:54,892 | DEBUG   | build_curated_set | Pass2 L3 correct cell=(3, 0, 3) pool=97 drawn=30
+2026-04-25 16:33:54,893 | DEBUG   | build_curated_set | Pass2 L3 correct cell=(3, 0, 4) pool=25 drawn=7
+2026-04-25 16:33:54,893 | DEBUG   | build_curated_set | Pass2 L3 correct cell=(3, 1, 3) pool=83 drawn=25
+2026-04-25 16:33:54,893 | DEBUG   | build_curated_set | Pass2 L3 correct cell=(3, 1, 4) pool=311 drawn=96
+2026-04-25 16:33:54,893 | DEBUG   | build_curated_set | Pass2 L3 correct cell=(4, 0, 4) pool=27 drawn=8
+2026-04-25 16:33:54,893 | DEBUG   | build_curated_set | Pass2 L3 correct cell=(4, 1, 4) pool=389 drawn=135
+2026-04-25 16:33:54,893 | DEBUG   | build_curated_set | Pass2 L3 correct cell=(5, 0, 4) pool=18 drawn=5
+2026-04-25 16:33:54,893 | DEBUG   | build_curated_set | Pass2 L3 correct cell=(5, 1, 4) pool=299 drawn=92
+2026-04-25 16:33:54,893 | DEBUG   | build_curated_set | Pass2 L3 correct cell=(6, 0, 3) pool=48 drawn=14
+2026-04-25 16:33:54,893 | DEBUG   | build_curated_set | Pass2 L3 correct cell=(6, 0, 4) pool=22 drawn=6
+2026-04-25 16:33:54,893 | DEBUG   | build_curated_set | Pass2 L3 correct cell=(6, 1, 3) pool=6 drawn=1
+2026-04-25 16:33:54,893 | DEBUG   | build_curated_set | Pass2 L3 correct cell=(6, 1, 4) pool=388 drawn=120
+2026-04-25 16:33:54,893 | DEBUG   | build_curated_set | Pass2 L3 correct cell=(7, 0, 4) pool=21 drawn=6
+2026-04-25 16:33:54,893 | DEBUG   | build_curated_set | Pass2 L3 correct cell=(7, 1, 4) pool=311 drawn=96
+2026-04-25 16:33:54,894 | DEBUG   | build_curated_set | Pass2 L3 correct cell=(8, 0, 4) pool=14 drawn=4
+2026-04-25 16:33:54,894 | DEBUG   | build_curated_set | Pass2 L3 correct cell=(8, 1, 4) pool=238 drawn=74
+2026-04-25 16:33:54,895 | DEBUG   | build_curated_set | Pass2 L3 wrong cell=(0, 0, 3) pool=13 drawn=8
+2026-04-25 16:33:54,895 | DEBUG   | build_curated_set | Pass2 L3 wrong cell=(0, 1, 3) pool=21 drawn=13
+2026-04-25 16:33:54,895 | DEBUG   | build_curated_set | Pass2 L3 wrong cell=(0, 1, 4) pool=18 drawn=11
+2026-04-25 16:33:54,895 | DEBUG   | build_curated_set | Pass2 L3 wrong cell=(1, 0, 3) pool=4 drawn=2
+2026-04-25 16:33:54,895 | DEBUG   | build_curated_set | Pass2 L3 wrong cell=(1, 0, 4) pool=3 drawn=1
+2026-04-25 16:33:54,895 | DEBUG   | build_curated_set | Pass2 L3 wrong cell=(1, 1, 3) pool=5 drawn=3
+2026-04-25 16:33:54,895 | DEBUG   | build_curated_set | Pass2 L3 wrong cell=(1, 1, 4) pool=91 drawn=58
+2026-04-25 16:33:54,896 | DEBUG   | build_curated_set | Pass2 L3 wrong cell=(2, 0, 3) pool=3 drawn=1
+2026-04-25 16:33:54,896 | DEBUG   | build_curated_set | Pass2 L3 wrong cell=(2, 0, 4) pool=2 drawn=1
+2026-04-25 16:33:54,896 | DEBUG   | build_curated_set | Pass2 L3 wrong cell=(2, 1, 4) pool=180 drawn=115
+2026-04-25 16:33:54,896 | DEBUG   | build_curated_set | Pass2 L3 wrong cell=(3, 0, 3) pool=2 drawn=1
+2026-04-25 16:33:54,896 | DEBUG   | build_curated_set | Pass2 L3 wrong cell=(3, 1, 3) pool=2 drawn=1
+2026-04-25 16:33:54,896 | DEBUG   | build_curated_set | Pass2 L3 wrong cell=(3, 1, 4) pool=99 drawn=63
+2026-04-25 16:33:54,896 | DEBUG   | build_curated_set | Pass2 L3 wrong cell=(4, 0, 4) pool=2 drawn=1
+2026-04-25 16:33:54,896 | DEBUG   | build_curated_set | Pass2 L3 wrong cell=(4, 1, 4) pool=221 drawn=141
+2026-04-25 16:33:54,896 | DEBUG   | build_curated_set | Pass2 L3 wrong cell=(5, 0, 4) pool=2 drawn=1
+2026-04-25 16:33:54,896 | DEBUG   | build_curated_set | Pass2 L3 wrong cell=(5, 1, 4) pool=309 drawn=197
+2026-04-25 16:33:54,896 | DEBUG   | build_curated_set | Pass2 L3 wrong cell=(6, 0, 3) pool=1 drawn=1
+2026-04-25 16:33:54,896 | DEBUG   | build_curated_set | Pass2 L3 wrong cell=(6, 1, 4) pool=175 drawn=112
+2026-04-25 16:33:54,896 | DEBUG   | build_curated_set | Pass2 L3 wrong cell=(7, 0, 4) pool=2 drawn=1
+2026-04-25 16:33:54,896 | DEBUG   | build_curated_set | Pass2 L3 wrong cell=(7, 1, 4) pool=323 drawn=206
+2026-04-25 16:33:54,896 | DEBUG   | build_curated_set | Pass2 L3 wrong cell=(8, 0, 4) pool=8 drawn=5
+2026-04-25 16:33:54,897 | DEBUG   | build_curated_set | Pass2 L3 wrong cell=(8, 1, 4) pool=388 drawn=257
+2026-04-25 16:33:54,897 | INFO    | build_curated_set | Pass 2 L3: drew 1200 correct + 1200 wrong.
+2026-04-25 16:33:54,955 | INFO    | build_curated_set | Pass 2 L3: 1 below-floor cells; greedy-filling.
+2026-04-25 16:33:54,980 | INFO    | build_curated_set | Pass 2 L3: added 1 extras (0 correct, 1 wrong); 0 gaps remaining.
+2026-04-25 16:33:55,071 | INFO    | build_curated_set | Pass 2 L4: 7 below-floor cells; greedy-filling.
+2026-04-25 16:33:55,156 | DEBUG   | build_curated_set | Pass 2 L4 greedy round 50: gaps=2 added=50
+2026-04-25 16:33:55,157 | INFO    | build_curated_set | Pass 2 L4: added 55 extras (3 correct, 52 wrong); 0 gaps remaining.
+2026-04-25 16:33:55,281 | INFO    | build_curated_set | Pass 2 L5: 20 below-floor cells; greedy-filling.
+2026-04-25 16:33:59,724 | DEBUG   | build_curated_set | Pass 2 L5 greedy round 50: gaps=15 added=50
+2026-04-25 16:34:01,504 | DEBUG   | build_curated_set | Pass 2 L5 greedy round 100: gaps=10 added=100
+2026-04-25 16:34:02,667 | DEBUG   | build_curated_set | Pass 2 L5 greedy round 150: gaps=1 added=150
+2026-04-25 16:34:02,673 | INFO    | build_curated_set | Pass 2 L5: added 153 extras (0 correct, 153 wrong); 0 gaps remaining.
+2026-04-25 16:34:02,756 | INFO    | build_curated_set | Pass 3 start: matching L4 (1000) and L5 (1400) correct->wrong on (magnitude_tier, carry_count_tier, answer_length); relax carry_count_tier ±1 on miss.
+2026-04-25 16:34:03,046 | INFO    | build_curated_set | Pass 3 L4: 200 pairs (200 strict, 0 relaxed)
+2026-04-25 16:34:03,230 | INFO    | build_curated_set | Pass 3 L4: 400 pairs (396 strict, 4 relaxed)
+2026-04-25 16:34:03,344 | INFO    | build_curated_set | Pass 3 L4: 600 pairs (593 strict, 7 relaxed)
+2026-04-25 16:34:03,458 | INFO    | build_curated_set | Pass 3 L4: 800 pairs (793 strict, 7 relaxed)
+2026-04-25 16:34:03,578 | INFO    | build_curated_set | Pass 3 L4: 1000 pairs (993 strict, 7 relaxed)
+2026-04-25 16:34:03,578 | INFO    | build_curated_set | Pass 3 L4: pairs=1000 (strict=993, relaxed=7); unmatched_dropped=0 (loss=0.0%).
+2026-04-25 16:34:11,090 | INFO    | build_curated_set | Pass 3 L5: 200 pairs (200 strict, 0 relaxed)
+2026-04-25 16:34:16,794 | INFO    | build_curated_set | Pass 3 L5: 400 pairs (399 strict, 1 relaxed)
+2026-04-25 16:34:20,254 | INFO    | build_curated_set | Pass 3 L5: 600 pairs (599 strict, 1 relaxed)
+2026-04-25 16:34:26,044 | INFO    | build_curated_set | Pass 3 L5: 800 pairs (799 strict, 1 relaxed)
+2026-04-25 16:34:28,845 | INFO    | build_curated_set | Pass 3 L5: 1000 pairs (999 strict, 1 relaxed)
+2026-04-25 16:34:33,659 | INFO    | build_curated_set | Pass 3 L5: 1200 pairs (1199 strict, 1 relaxed)
+2026-04-25 16:34:36,134 | INFO    | build_curated_set | Pass 3 L5: 1400 pairs (1399 strict, 1 relaxed)
+2026-04-25 16:34:36,134 | INFO    | build_curated_set | Pass 3 L5: pairs=1400 (strict=1399, relaxed=1); unmatched_dropped=0 (loss=0.0%).
+2026-04-25 16:34:36,230 | INFO    | build_curated_set | Pass 4 start: assembling final curated set.
+2026-04-25 16:34:36,233 | INFO    | build_curated_set | Pass 4 L4: added 800 unmatched wrongs to reach wrong budget 1800.
+2026-04-25 16:34:36,233 | INFO    | build_curated_set | Pass 4 L4: selected 2800 rows (1000 matched correct + 1000 matched wrong + extras).
+2026-04-25 16:34:36,248 | INFO    | build_curated_set | Pass 4 L5: selected 2800 rows (1400 matched correct + 1400 matched wrong + extras).
+2026-04-25 16:34:36,248 | INFO    | build_curated_set | Pass 4 L3: selected 2401 rows (no matching at L3).
+2026-04-25 16:34:36,446 | INFO    | build_curated_set | Pass 4 duplicates dropped: 0.
+2026-04-25 16:34:40,841 | INFO    | build_curated_set | Pass 4 round-trip check passed on 100 rows.
+2026-04-25 16:34:40,867 | DEBUG   | build_curated_set | L3 activation index check OK (n_rows=10000).
+2026-04-25 16:34:40,952 | DEBUG   | build_curated_set | L4 activation index check OK (n_rows=10000).
+2026-04-25 16:34:40,973 | DEBUG   | build_curated_set | L5 activation index check OK (n_rows=122223).
+2026-04-25 16:34:41,165 | INFO    | build_curated_set | Pass 5 start: post-assembly concept-coverage top-up.
+2026-04-25 16:34:46,293 | INFO    | build_curated_set | Pass 5 L3: no below-floor non-documented cells.
+2026-04-25 16:34:46,311 | INFO    | build_curated_set | Pass 5 L4: 8 below-floor cells to fill.
+2026-04-25 16:34:46,768 | INFO    | build_curated_set | Pass 5 L4: added 46 rows; remaining gaps=0.
+2026-04-25 16:34:46,791 | INFO    | build_curated_set | Pass 5 L5: 27 below-floor cells to fill.
+2026-04-25 16:36:43,313 | INFO    | build_curated_set | Pass 5 L5: added 217 rows; remaining gaps=0.
+2026-04-25 16:36:43,314 | INFO    | build_curated_set | Pass 5 done: added 263 concept-topup rows total.
+2026-04-25 16:36:43,775 | INFO    | build_curated_set | L4 matched pairs: n=1000 relaxed=7 mean_diffs={'leading_digit_pair_index': 0.127, 'nonzero_carry_count': -0.058, 'answer_length': 0.0} pvals={'leading_digit_pair_index': 0.001998001998001998, 'nonzero_carry_count': 0.000999000999000999, 'answer_length': 1.0}
+2026-04-25 16:36:43,824 | INFO    | build_curated_set | L5 matched pairs: n=1400 relaxed=1 mean_diffs={'leading_digit_pair_index': 0.007857142857142858, 'nonzero_carry_count': -0.0035714285714285713, 'answer_length': 0.0} pvals={'leading_digit_pair_index': 0.5144855144855145, 'nonzero_carry_count': 0.06293706293706294, 'answer_length': 1.0}
+2026-04-25 16:36:45,966 | INFO    | build_curated_set | Wrote /data/user_data/anshulk/arithmetic-geometry/curated/curated_set_v1.json sha256=464c888d5f265384080a691172961d631e5b04b1358de7543c62542975596181
+2026-04-25 16:36:45,970 | INFO    | build_curated_set | Wrote coverage report to /home/anshulk/arithmetic-geometry/docs/curated_set_coverage_report.md
+2026-04-25 16:36:45,970 | INFO    | build_curated_set | Wrote /home/anshulk/arithmetic-geometry/docs/curated_set_coverage_report.md sha256=ca7f951e571db8083c8e44a8c69f5d988c99072c7bded64da8cad1b14be5c8fc
+2026-04-25 16:36:45,970 | INFO    | build_curated_set | Build complete: n_problems=8264 n_matched_pairs={'4': 1000, '5': 1400} runtime=183.8s
