@@ -4561,10 +4561,393 @@ for the breakdown and Section 12f for the interpretation.
 
 ---
 
+## Appendix H: Curated-Subset Fourier Re-run via Phase H Raw Branch
+
+This appendix documents the Phase G Fourier statistic recomputed on the curated
+8,264-problem subset — that is, what Phase G's `analyze_one` reports when given the
+same `(level, layer, population, concept, period_spec, subspace_type)` cells but with
+N restricted to the curated rows only. The data source is the **raw branch** of the
+Phase H / B.2 run (SLURM job 7666131, started Sun May 3 2026 01:19:37 EDT).
+
+The orthogonalized branch of that run is the actual B.2 deliverable (carries-vs-
+correlates question, see [phase_h_analysis.md](phase_h_analysis.md)). The raw branch
+exists only as a correctness gate — it must reproduce Phase G to verify the curated-
+row filter and centering are applied identically. But because that raw branch
+*recomputes* Phase G's statistic on a smaller and differently-distributed sample, it
+also gives us a free robustness check on the Phase G headline. This appendix uses it
+for that purpose.
+
+### H.1 Why we get a curated re-run "for free"
+
+Phase H's `process_cell` calls `analyze_one` twice with identical machinery — first on
+`raw_projected`, then on `orthog_projected`. The raw call uses Phase G's exact pipeline
+(same `compute_centroids_grouped`, same `permutation_null` with `N_PERMUTATIONS=1000`,
+same Benjamini–Hochberg correction inside the function, same significance gates). The
+only difference from Phase G is the row set: instead of all problems for that level,
+B.2 filters to `curated ∩ population ∩ valid-label ∩ value-in-set`. So the raw branch
+is "Phase G on the curated subset."
+
+This is not a designed experiment — it is an accidental robustness probe that falls
+out of how B.2 is implemented. But the comparison is informative for three reasons:
+
+1. **Headline durability.** If Phase G's helix detections survive the move to a
+   ~12× smaller, difficulty-balanced sample, the headline is robust. If they vanish,
+   the headline depends on the population-scale density of training problems and
+   loses some external validity.
+2. **Permutation null behavior at smaller N.** Phase G's null was tight enough that
+   458 of 500 helix detections hit the floor (`p = 0.001`). At curated N, the null
+   is wider. We can quantify how much wider, and whether the headline still clears
+   the wider null.
+3. **Distributional sensitivity.** The curated set is stratified by difficulty and
+   correctness. If the curated raw FCR for a Phase G helix cell deviates from the
+   full-data FCR by more than the cross-cell variance, that points to a population-
+   level confound — the "helix" might be more about what difficulty bucket dominates
+   the full data than about the underlying carry geometry.
+
+### H.2 What's in the table (per cell)
+
+Every cell in the Phase H raw branch produces, via the same code path Phase G ran:
+
+- `two_axis_fcr` and `two_axis_p_value`
+- `helix_fcr` and `helix_p_value`
+- `helix_best_freq`, `helix_linear_coord`
+- `total_helix_power`, `helix_linear_power`
+- `geometry_detected` (`none` / `circle` / `helix`)
+- `p_saturated` flag
+
+Final post-FDR q-values for the raw branch land in
+`phase_h/summary/orthogonalization_results.csv` columns `raw_helix_q_value` and
+`raw_two_axis_q_value`. Joining on the seven keys `(concept, level, layer, population,
+subspace_type, period_spec, period)` connects each curated cell to its full-data
+partner in `phase_g_helices.csv`.
+
+### H.3 The bit-identical-FCR question, addressed in advance
+
+A natural question: should the curated raw `helix_fcr` exactly equal the full-data
+Phase G `helix_fcr`?
+
+**No, and we should not expect it to.** They share the projection mean, basis, and
+period; they differ on N. The FCR is computed on centroids — `compute_centroids_grouped`
+averages projected coordinates within each value group, then Fourier-transforms the
+centroid sequence. Centroids on a smaller sample have larger sampling noise, so the
+FCR on centroids drawn from a curated subset is in general different from the FCR on
+centroids drawn from the full population, even for the same underlying signal.
+
+The bit-identical gate that B.2 enforces is **invariance across the four sensitivity
+branches at the same target cell** — the raw FCR for `(concept, level, layer,
+population, subspace_type, period_spec)` should be the same number whether the
+correlate threshold is 0.20, 0.30, or 0.50, because the raw projection does not
+depend on the correlate set. This has been verified in the in-flight log: e.g.
+carry_1 / L3 / layer 4 / all / phase_c / carry_raw raw `helix_fcr = 0.5484` exact
+across all four branches; carry_0 / L3 / layer 4 / all / phase_d_merged / carry_raw
+raw `helix_fcr = 0.3264` exact across all four branches.
+
+The full-data-vs-curated comparison is a *different* check: do the curated centroids
+estimate the same population-level FCR as the full-data centroids, or is there a
+sampling-distributional shift? §H.5 below answers this with the in-flight numbers.
+
+### H.4 Curated-set N per level and per population
+
+For reference (verified Sun May 3 2026):
+
+| Level | Curated total | Curated correct | Curated wrong | Full Phase C `all` N |
+|---|---|---|---|---|
+| L3 | 2,401 | 1,200 | 1,201 | 10,000 |
+| L4 | 2,846 | 1,000 | 1,846 | ≈30,000 |
+| L5 | 3,017 | 1,401 | 1,616 | 122,223 |
+
+So the curated re-run loses a factor of:
+- L3: 4.2× (`all`), 4.3× (`correct`), 4.2× (`wrong`)
+- L4: ~10× (`all`), even more for `correct` only
+- L5: 41× (`all`), 87× (`correct`)
+
+Because the FCR test's permutation null variance scales as roughly `1/sqrt(N)`, the
+null at L5/curated is `sqrt(41) ≈ 6.4×` wider than at L5/full. A Phase G cell with
+floor-saturated `p = 0.001` could come back at curated `p ≈ 0.005` or even `p ≈ 0.05`
+without the underlying signal having changed at all. This is the wider-null artifact;
+it bites L5 the hardest and L3 the least.
+
+### H.5 Final curated-vs-full FCR comparison
+
+Phase H completed on Sun May 3 2026 at 02:30:05 EDT. The raw branch gives a final
+curated-subset replay for all 419 carry helix rows from `phase_g_helices.csv`.
+
+Important scope note: this appendix covers the 419 **carry helix targets** only. It is
+not a full 3,480-cell Phase G rerun over every concept. It answers: among the carry
+rows that were helix detections on the full population, what does the same Fourier
+statistic look like on the curated 8,264-problem set?
+
+Overall full-vs-curated FCR comparison:
+
+| Statistic | Full-data Phase G `helix_fcr` | Curated raw `helix_fcr` | Curated minus full |
+|---|---:|---:|---:|
+| Min | 0.125002 | 0.153717 | -0.201229 |
+| P10 | 0.229820 | 0.242594 | -0.067563 |
+| P25 | 0.277336 | 0.279342 | -0.032998 |
+| Median | 0.334476 | 0.335290 | -0.002334 |
+| P75 | 0.461088 | 0.435209 | 0.021437 |
+| P90 | 0.521909 | 0.497473 | 0.043034 |
+| Max | 0.723224 | 0.738414 | 0.119659 |
+| Mean | 0.367775 | 0.360481 | -0.007294 |
+
+The Pearson correlation between full-data `helix_fcr` and curated raw `helix_fcr` is
+0.9300. Median absolute FCR change is 0.02543. The FCR statistic itself is therefore
+fairly stable under curation, but not identical.
+
+### H.6 Final significance comparison
+
+The significance story is weaker than the FCR story because the curated subset is much
+smaller and Phase H corrects q-values over its own raw+orthog p-value pool.
+
+| Quantity | Full-data Phase G | Curated raw replay |
+|---|---:|---:|
+| Rows compared | 419 | 419 |
+| Helix q < 0.05 | 419 | 237 |
+| Helix q ≥ 0.05 | 0 | 182 |
+| `p_saturated = True` | 413 | 95 |
+| `geometry_detected = helix` | 419 | 24 |
+| `geometry_detected = circle` | 0 | 2 |
+| `geometry_detected = none` | 0 | 393 |
+
+This is the main caveat. The curated replay preserves the broad FCR magnitude, but
+the strict Phase G conjunction verdict does not reproduce for most rows on the 8k
+subset. That does not erase the full-data Phase G result; it says the 8k curated set
+is a lower-power replay, especially for the conjunction tests and FDR calls.
+
+### H.6a Per-concept curated replay
+
+| Concept | Rows | Full median FCR | Curated median FCR | Median ΔFCR | Median abs ΔFCR | Full p-sat | Curated p-sat | Curated q<.05 | Lost raw FDR |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| `carry_0` | 19 | 0.335884 | 0.326380 | -0.009504 | 0.016697 | 18 | 0 | 3 | 16 |
+| `carry_1` | 176 | 0.423911 | 0.390388 | -0.001347 | 0.027681 | 173 | 53 | 123 | 53 |
+| `carry_2` | 116 | 0.318850 | 0.315808 | 0.008359 | 0.023851 | 114 | 37 | 88 | 28 |
+| `carry_3` | 54 | 0.291105 | 0.275028 | 0.005615 | 0.026298 | 54 | 5 | 23 | 31 |
+| `carry_4` | 54 | 0.383546 | 0.371408 | -0.030782 | 0.033363 | 54 | 0 | 0 | 54 |
+
+`lost raw FDR` means full-data Phase G had `helix_q_value < 0.05`, but the curated raw
+replay has `raw_helix_q_value >= 0.05`.
+
+Plain reading:
+
+- `carry_1` and `carry_2` retain most of the curated raw significance.
+- `carry_0`, `carry_3`, and especially `carry_4` are weaker on the curated subset.
+- `carry_4` has a stable median FCR magnitude but 0 / 54 curated raw q-significant
+  rows. This is a lower-power / value-coverage result, not a statement that the
+  full-data Phase G carry_4 detections were absent.
+
+### H.6b Per-level curated replay
+
+| Level | Rows | Full median FCR | Curated median FCR | Median ΔFCR | Median abs ΔFCR | Full p-sat | Curated p-sat | Curated q<.05 | Lost raw FDR |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| L3 | 69 | 0.319337 | 0.319316 | 0.005370 | 0.014767 | 65 | 28 | 50 | 19 |
+| L4 | 134 | 0.435652 | 0.398978 | -0.012766 | 0.032964 | 132 | 33 | 84 | 50 |
+| L5 | 216 | 0.324514 | 0.316522 | -0.001253 | 0.024604 | 216 | 34 | 103 | 113 |
+
+The FCR median is close at every level. The q-value loss is largest at L5 because the
+full L5 population is very large (122,223 rows) while the curated L5 subset is 3,017
+rows.
+
+### H.6c Population, basis, and period-spec replay
+
+By population:
+
+| Population | Rows | Full median FCR | Curated median FCR | Median ΔFCR | Median abs ΔFCR | Full p-sat | Curated p-sat | Curated q<.05 | Lost raw FDR |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| `all` | 137 | 0.381618 | 0.382329 | -0.003478 | 0.027210 | 135 | 44 | 91 | 46 |
+| `correct` | 146 | 0.303385 | 0.299477 | 0.005466 | 0.020908 | 145 | 13 | 65 | 81 |
+| `wrong` | 136 | 0.358978 | 0.361785 | -0.016041 | 0.034130 | 133 | 38 | 81 | 55 |
+
+By basis:
+
+| Subspace type | Rows | Full median FCR | Curated median FCR | Median ΔFCR | Median abs ΔFCR | Full p-sat | Curated p-sat | Curated q<.05 | Lost raw FDR |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| `phase_c` | 199 | 0.452267 | 0.423732 | -0.009130 | 0.022008 | 199 | 51 | 128 | 71 |
+| `phase_d_merged` | 220 | 0.281721 | 0.290877 | 0.009913 | 0.027971 | 214 | 44 | 109 | 111 |
+
+By period spec:
+
+| Period spec | Rows | Full median FCR | Curated median FCR | Median ΔFCR | Median abs ΔFCR | Full p-sat | Curated p-sat | Curated q<.05 | Lost raw FDR |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| `carry_binned` | 22 | 0.403295 | 0.389664 | -0.007357 | 0.013536 | 17 | 18 | 22 | 0 |
+| `carry_raw` | 397 | 0.329752 | 0.330926 | -0.001722 | 0.026339 | 396 | 77 | 215 | 182 |
+
+The binned rows are much more stable under curation. The raw-value rows preserve FCR
+but lose many q-significant calls under the smaller curated N.
+
+### H.6d Curated geometry verdicts by concept
+
+Full-data Phase G geometry was `helix` for all 419 rows in this appendix. Curated raw
+geometry is:
+
+| Concept | `circle` | `helix` | `none` |
+|---|---:|---:|---:|
+| `carry_0` | 0 | 0 | 19 |
+| `carry_1` | 0 | 16 | 160 |
+| `carry_2` | 2 | 8 | 106 |
+| `carry_3` | 0 | 0 | 54 |
+| `carry_4` | 0 | 0 | 54 |
+| **Total** | **2** | **24** | **393** |
+
+This table is deliberately separated from the FCR table. The FCR statistic is fairly
+stable; the all-gates `geometry_detected` classification is not. The latter requires
+the global helix test plus per-coordinate Fourier and linear-axis conjunction tests,
+and it is much more sensitive to N and value coverage.
+
+### H.7 Statistical notes on the curated re-run
+
+**Group-size preservation in the permutation null.** Phase G's permutation_null
+function preserves the group sizes of the value-conditional grouping under permutation
+([phase_g_fourier.py:942-1048](../../arithmetic-geometry/phase_g_fourier.py#L942-L1048)).
+This is true at any N, including the curated re-run. So the null we are comparing
+against is conditional on the curated value-distribution, which is the right thing
+to do — it would be wrong to use Phase G's full-data null for the curated FCRs.
+
+**FDR pool composition.** Phase H runs FDR over the 1,676 cell × 4 test (raw two_axis,
+raw helix, orthog two_axis, orthog helix) pool internally. The raw branch's q-values
+are therefore corrected against a pool that is dominated by the orthog branch's tests
+(many of which will be near-null, dragging FDR thresholds down). This is mildly
+conservative for the raw branch; raw cells that would have cleared a raw-only FDR
+correction might miss the joint pool. We accept this conservatism because the raw
+branch is the correctness gate, not the headline statistic.
+
+**Bonferroni anchor.** The 419 carry helix targets, each tested four ways in the
+raw branch, give 1,676 raw tests. A Bonferroni correction at α = 0.05 across that
+many tests requires p ≤ 3 × 10⁻⁵ for individual significance; well above the
+permutation floor of 1/1001 ≈ 1 × 10⁻³. So Bonferroni-significant raw cells, if any,
+must be re-run with a denser permutation budget. We do not commit to that re-run
+unless an interpretation specifically rests on Bonferroni-level significance.
+
+### H.8 Headline L5 / layer 16 / carry_1 replay
+
+The actual final Phase G rows for `carry_1 / L5 / layer 16` are `carry_raw`, not
+`carry_binned`. The Phase G full-population rows are:
+
+| Population | Basis | Spec | Full FCR | Full q | Full p-sat |
+|---|---|---|---:|---:|---|
+| all | phase_c | carry_raw | 0.656754 | 0.004292 | True |
+| correct | phase_c | carry_raw | 0.432781 | 0.004292 | True |
+| wrong | phase_c | carry_raw | 0.660069 | 0.004292 | True |
+| all | phase_d_merged | carry_raw | 0.258613 | 0.004292 | True |
+| correct | phase_d_merged | carry_raw | 0.241645 | 0.004292 | True |
+| wrong | phase_d_merged | carry_raw | 0.222535 | 0.004292 | True |
+
+The corresponding curated raw replay from the Phase H headline branch is:
+
+| Population | Basis | Spec | Curated N | Curated FCR | Curated q | Curated p-sat | Curated geom |
+|---|---|---|---:|---:|---:|---|---|
+| all | phase_c | carry_raw | 3,017 | 0.685845 | 0.014392 | False | none |
+| correct | phase_c | carry_raw | 1,401 | 0.469039 | 0.012704 | False | none |
+| wrong | phase_c | carry_raw | 1,616 | 0.645040 | 0.009034 | False | none |
+| all | phase_d_merged | carry_raw | 3,017 | 0.285823 | 0.126802 | False | none |
+| correct | phase_d_merged | carry_raw | 1,401 | 0.320762 | 0.084159 | False | none |
+| wrong | phase_d_merged | carry_raw | 1,616 | 0.229756 | 0.208825 | False | none |
+
+For the Phase C rows, the curated raw FCR is close to the full-data FCR and remains
+q-significant, but `geometry_detected` is still `none` because the full conjunction
+criteria do not all pass on the curated subset. For Phase D merged rows, curated q
+does not clear 0.05 in this Phase H FDR pool.
+
+### H.9 What this appendix does NOT do
+
+- It does not change Section 7's headline numbers. Those are population-level Phase G
+  results from the full data, unchanged.
+- It does not change Section 8's per-concept tables. Those remain the authoritative
+  Phase G report.
+- It does not re-derive Phase G's verdicts or revisit any of the FDR / saturation /
+  agreement statistics. Those are all from the full Phase G run.
+- It does not address number-token Fourier results — Phase H operates only at the `=`
+  position, like the bulk of Phase G; the number-token screening (Appendix G) is not
+  re-run in this appendix.
+
+What this appendix *does* do is record, with the same rigor as the rest of this
+document, the curated-subset behavior of Phase G's statistic for the carry-helix
+cells — and provide a comparison point that will let the paper say something
+quantitative about the robustness of the headline finding to a difficulty-balanced
+sub-sample.
+
+### H.10 Cross-reference
+
+Detailed setup, branch design, validation gates, and verdicts for the orthogonalized
+branch live in [phase_h_analysis.md](phase_h_analysis.md). This appendix is purely
+about the *raw* branch of that run, viewed as a curated re-run of Phase G. The
+orthogonalized branch is the substantive new science (B.2: orthogonalization control
+for superposition); the raw branch is the gate that makes the orthogonalized branch
+trustworthy and, as a side effect, gives us this curated robustness probe.
+
+The cross-method consistency table (B.9 in `next_steps.md`) will, when populated,
+join three columns per cell:
+- `phase_g_helices.csv`: full-data Phase G FCR / q-value / p_saturated / verdict.
+- `orthogonalization_results.csv` raw_*: curated Phase G FCR / q-value / p_saturated.
+- `orthogonalization_results.csv` orthog_*: curated post-orthog FCR / q-value /
+  power / verdict.
+
+The first two columns answer "did the helix survive curation?" The first and third
+columns together answer "did the helix survive correlate orthogonalization?" These
+are independent perturbations of the Phase G result and the cross-tabulation
+will tell us where each one is the load-bearing assumption.
+
+### H.11 What this appendix changes for paper wording
+
+The result is mixed in a precise way:
+
+- The **FCR magnitude** is robust enough to describe as stable under curation:
+  full-vs-curated correlation 0.93, median signed ΔFCR -0.0023, median absolute
+  ΔFCR 0.0254.
+- The **strict Phase G helix verdict** is not robust at the same level on 8k:
+  only 24 / 419 rows reproduce as `geometry_detected = helix` and 237 / 419 rows
+  keep raw helix q < 0.05.
+- Therefore, the curated set is a valid lower-power robustness probe, but it should
+  not be called a full-power reproduction of Phase G.
+
+Use this wording:
+
+> Phase G found 419 full-population carry helix detections. On the curated
+> 8,264-problem subset used for B.2, raw Fourier FCRs remain strongly correlated with
+> the full-population FCRs (r = 0.93, median absolute ΔFCR = 0.025), but the strict
+> conjunction verdict reproduces as helix for only 24 rows. The curated subset is
+> adequate for the orthogonalization control, but it is not a full-power rerun of
+> Phase G.
+
+Do not use this wording:
+
+> The 8k curated set reproduces all Phase G carry helices.
+
+That sentence is false under the strict `geometry_detected` column.
+
+### H.12 Why this matters for the paper
+
+The Phase G headline number (419 carry helix detections) is computed on the full
+population. A reviewer can ask: "is this a property of the carry concept, or an
+artifact of the specific problem distribution Phase A sampled?" The natural answer
+is not simply "we re-ran on a difficulty-balanced curated subset and got the same
+answer." The precise answer is:
+
+> The FCR statistic is stable under curation, but the full conjunction verdict loses
+> power on the smaller curated sample.
+
+That is still useful. It separates "the shape statistic moved a lot" from "the sample
+is too small for the original strict detection rule." The first would undermine the
+Phase G geometry story; the second mainly constrains how strongly we can use the
+curated subset for re-detection.
+
+### H.13 Appendix update log
+
+- **Sun May 3 2026 ~01:42 EDT.** Section drafted from in-flight log lines for cells
+  carry_0 and carry_1 at L3/layer 4/all. 442 cells of 1,676 logged.
+- **Sun May 3 2026 after 02:30 EDT.** Appendix updated from completed
+  `orthogonalization_results.csv` and joined to `phase_g_helices.csv` on
+  `(level, layer, population, concept, subspace_type, period_spec)`. Final comparison:
+  419 / 419 joined, 0 missing.
+
+---
+
 *End of document. All numbers in Sections 6–14 are verified against
 `/data/user_data/anshulk/arithmetic-geometry/phase_g/summary/phase_g_results.csv`
 (Apr 13 05:46 EDT, 3,481 lines, 1.4 MB), `numtok_fourier_results.csv`,
 `phase_g_decisions.json`, and `kt_pilot_summary.json`. Methodology in Sections
 2–3 is verified against `phase_g_fourier.py` (2,623 lines). Run history in
 Section 6 is verified against `slurm-7058788.out`, `slurm-7058788.err`, and
-the four log rotations of `phase_g_fourier.log`.*
+the four log rotations of `phase_g_fourier.log`. Appendix H numbers are verified
+against completed Phase H job 7666131 and
+`/data/user_data/anshulk/arithmetic-geometry/phase_h/summary/orthogonalization_results.csv`
+(May 3 02:30 EDT, 1,677 lines, 1.8 MB).*
